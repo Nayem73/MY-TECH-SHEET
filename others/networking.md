@@ -10,10 +10,6 @@
 
 * capture and forward dile then packet ta switch e ashce.
 
-
-
-
-
 # Q: ekhane total koyta network ase?
 
 - ek network theke arek network e data pathanor jonno router lagbe.
