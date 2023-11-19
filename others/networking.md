@@ -127,3 +127,19 @@ with DNS server
 3. DNS server e services add korte hoy. HTTP and HTTPS on korte hoy.
 
 4. ei ip address ta http server er modhe ase.
+
+5. dns server er config
+
+6. dns server er ip address
+
+7. dns server er dns e (www.nayem.com and 192.168.0.4)
+
+8. http server er config
+
+9. http server er ip address e (192.168.0.4)
+
+10. http server er services e .http file import.
+
+11. -----------------
+
+12. http server e 192.168.0.4 ip address die www.nayem.com nam ta kina hoyse. dns er kaj hosse ei nam ta import korbe, eta ami jader theke nam ta kinsi tara kore disse.
