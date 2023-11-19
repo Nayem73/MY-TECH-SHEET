@@ -112,9 +112,9 @@
 
 with DNS server
 
-* DNS server address resolute kore. meaning, ekta address er jonno DNS server ip address dey.
+* DNS server address resolute kore. meaning, ekta address er jonno DNS server ip address dey. so dns e rakhe website address er respected ip address. and jotogulo website and er ip address dns e save thakbe, oi prottekta website er jonno http server lagbe. ei http server er ip address hobe oi dns e save kora ip address. and ei http server er kaj hosse website er data hold kora.
 
-* http server website er khoj kore
+* so, http server website er khoj kore
 
 * DHCP server(basically ekta wireless server - Dynamic Host Control Protocol): prottekta wireless router er ei server enable thake. eke ekta range die dile she ip provide kore, er shathe jei device gulo connected ase taderke.
 
