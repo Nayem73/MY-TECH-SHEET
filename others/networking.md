@@ -18,8 +18,6 @@
 
 - dynamically host allocate korte holeo router dorkar.
 
-
-
 ---------------------
 
 1. class-c te, first 24 bit is network id and last 8 bit is for host id. we can only change this host id.
@@ -27,8 +25,6 @@
 2. if network id is different, then you can not find other device connected with a switch. for example. for pc0(192.168.10.2) to pc1(192.168.11.3) is not possible.
 
 3. If we want to use different network ids, then we need router.
-
-
 
 # Router CLI
 
@@ -88,8 +84,6 @@
   
   - `eigrp` namok routing protocol die amra kaj korbo.
 
-
-
 ### Add `eigrp` routing protocol:
 
 - current router er shathe jotogulo network enable ase, oigulor prottektar network address current router ke bole dite hobe.
@@ -103,3 +97,33 @@
   network 185.100.70.0
   no shutdown
   ```
+
+--------------------
+
+# amader koyekta network ase. ekhon ei ek network theke onno network e data pathate hole router dorkar hoy.
+
+# Router er ip addressing korte hoy router er node e orthat  jei point e connict kortesi, oi point er ip addressing korte hoy.
+
+
+
+
+
+-------------------------
+
+with DNS server
+
+* DNS server address resolute kore. meaning, ekta address er jonno DNS server ip address dey.
+
+* http server website er khoj kore
+
+* DHCP server(basically ekta wireless server - Dynamic Host Control Protocol): prottekta wireless router er ei server enable thake. eke ekta range die dile she ip provide kore, er shathe jei device gulo connected ase taderke.
+
+--------------------------
+
+1. DHCP er config e default gateway 172.10.0.1 dilam and dns dilam 192.168.0.10
+
+2. pc0 te static er poriborte DHCP on kore disi. (DHCP automatically ei pc0 te ip assign kore dibe)
+
+3. DNS server e services add korte hoy. HTTP and HTTPS on korte hoy.
+
+4. ei ip address ta http server er modhe ase.
