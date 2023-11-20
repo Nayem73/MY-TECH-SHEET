@@ -104,10 +104,6 @@
 
 # Router er ip addressing korte hoy router er node e orthat  jei point e connict kortesi, oi point er ip addressing korte hoy.
 
-
-
-
-
 -------------------------
 
 with DNS server
