@@ -54,8 +54,6 @@ In your Java code, you've declared three different types of arrays: `int[] a`, `
 
 In summary, the main difference between `int arr[] = new int[5]` and the other two declarations (`int[] a` and `Cat[] cats`) is that the former initializes the array at the time of declaration, while the latter two need separate initialization statements to assign a new array to them. Additionally, `int[] a` is an array of integers, and `Cat[] cats` is an array of objects of type `Cat`.
 
-
-
 You
 
 Also, what is the difference with above 3 different array types with int[] a2 = {5,6};
@@ -97,3 +95,34 @@ javaCopy code
 `int[] a2 = new int[2]; a2[0] = 5; a2[1] = 6;`
 
 So, in summary, the main difference is the shorthand initialization syntax for arrays with specific values in the case of `int[] a2 = {5, 6};`, making the code more concise and readable when you know the values at the time of declaration.
+
+
+
+---------------------------------------------------------------------
+
+
+
+cauliflower e effiecient net use kore transfer laerning in
+
+caluliflower e Create model porjonto
+
+import tensorflow as tf
+
+# Setup the base model and freeze its layers (this will extract features)
+
+base_model = tf.keras.applications.EfficientNetB0(include_top=False)
+base_model.trainable= False
+
+#Setup model architecture with trainable top layers
+inputs = tf.keras.layers.Input(shape=(224,224,3), name='input_layer')
+x = data_augmentation(inputs)
+x = base_model(x, training=False)
+x = tf.keras.layers.GlobalAveragePooling2D(name='global_avg_pooling_layer')(x)
+outputs = tf.keras.layers.Dense(len(class_names), activation='softmax', name='output_layer')(x)
+model = tf.keras.Model(inputs, outputs)
+
+-------------------------
+
+### cauliflower er model er ag porjonto....
+
+ar model er nicher theke nibo bakigula......

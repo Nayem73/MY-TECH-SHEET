@@ -656,60 +656,60 @@ public String getName() {
   
       }
   } 
-  
-  
+  ```
+
   package com.nayemtech;
-  
+
   public class Person {
       private static String address = "Baltic Sea";
       private String firstName;
       private String lastName;
       private int age;
-  
+
       public Person(String firstName, String lastName, int age) {
           this.firstName = firstName;
           this.lastName = lastName;
           this.age = age;
       }
-  
+    
       public Person() {
       }
-  
+    
       public static String getAddress() {
           return address;
       }
-  
+    
       public static void setAddress(String address) {
           Person.address = address;
       }
-  
+    
       public String getFirstName() {
           return firstName;
       }
-  
+    
       public void setFirstName(String firstName) {
           this.firstName = firstName;
       }
-  
+    
       public String getLastName() {
           return lastName;
       }
-  
+    
       public void setLastName(String lastName) {
           this.lastName = lastName;
       }
-  
+    
       public int getAge() {
           return age;
       }
-  
+    
       public void setAge(int age) {
           this.age = age;
       }
+
   }
-  
-  
-  ```
+
+```
 38. # static keyword of main method
 
 JVM can access the main method directly without need to creating instance of main class from anywhere. for example:
@@ -720,26 +720,24 @@ package com.nayemtech;
 import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
-    }
+  public static void main(String[] args) {
+  }
 } 
 
 
 package com.nayemtech;
 
 public class Person {
-    private static String address = "Baltic Sea";
-    private String firstName;
-    private String lastName;
-    private int age;
+  private static String address = "Baltic Sea";
+  private String firstName;
+  private String lastName;
+  private int age;
 
-    public static void meth() {
-        Main.main();
-    }
+  public static void meth() {
+      Main.main();
+  }
 
 }
-
-
 ```
 
 - if the above main method had no static keyword then we would have to do:
@@ -769,11 +767,9 @@ public class Person {
     }
 
 }
-
-
-```
 ```
 
+```
 39. # Question: when should you static and when not?
 - when you don't need an instance for using a particular method, you should use static. for example: 
 
@@ -787,3 +783,23 @@ Integer.parseInt()
 - Utility classes are classes which can be reused throughout every single package
 
 - package: utils
+41. User:
+    if I write BigDecimal carPrice = new BigDecimal("1217000"); as BigDecimal carPrice = new BigDecimal(1217000); will it work?
+
+ChatGPT:
+
+In Java, the `BigDecimal` class has two constructors: one that takes a `String` as an argument and another that takes a `double` as an argument. The constructor that takes a `double` can lead to precision issues due to the way floating-point numbers are represented in binary.
+
+If you use `BigDecimal carPrice = new BigDecimal(1217000);`, it will compile and run, but it may not give you the exact precision you expect. The `BigDecimal` constructor that takes a `double` is not recommended for precise calculations because of potential rounding errors inherent in floating-point representations.
+
+To ensure precise representation of the decimal value, it is recommended to use the constructor that takes a `String`:
+
+`BigDecimal carPrice = new BigDecimal("1217000");`
+
+This way, you avoid the inaccuracies that can arise from using the `double` constructor. When dealing with currency or other situations where precision is crucial, it's generally safer to use the `String` constructor.
+
+
+
+42. would you look at this! if I didn't add toString() to Car class then it wouldn't show the cars when I added `System.out.println(alex);` So I need toString() in all classes which are being used to construct alex (an instance of person class)
+
+43. 
