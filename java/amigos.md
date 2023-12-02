@@ -657,56 +657,57 @@ public String getName() {
       }
   } 
   ```
-
+  
   package com.nayemtech;
-
+  
   public class Person {
+  
       private static String address = "Baltic Sea";
       private String firstName;
       private String lastName;
       private int age;
-
+      
       public Person(String firstName, String lastName, int age) {
           this.firstName = firstName;
           this.lastName = lastName;
           this.age = age;
       }
-    
+      
       public Person() {
       }
-    
+      
       public static String getAddress() {
           return address;
       }
-    
+      
       public static void setAddress(String address) {
           Person.address = address;
       }
-    
+      
       public String getFirstName() {
           return firstName;
       }
-    
+      
       public void setFirstName(String firstName) {
           this.firstName = firstName;
       }
-    
+      
       public String getLastName() {
           return lastName;
       }
-    
+      
       public void setLastName(String lastName) {
           this.lastName = lastName;
       }
-    
+      
       public int getAge() {
           return age;
       }
-    
+      
       public void setAge(int age) {
           this.age = age;
       }
-
+  
   }
 
 ```
@@ -797,8 +798,6 @@ To ensure precise representation of the decimal value, it is recommended to use 
 `BigDecimal carPrice = new BigDecimal("1217000");`
 
 This way, you avoid the inaccuracies that can arise from using the `double` constructor. When dealing with currency or other situations where precision is crucial, it's generally safer to use the `String` constructor.
-
-
 
 42. would you look at this! if I didn't add toString() to Car class then it wouldn't show the cars when I added `System.out.println(alex);` So I need toString() in all classes which are being used to construct alex (an instance of person class)
 
