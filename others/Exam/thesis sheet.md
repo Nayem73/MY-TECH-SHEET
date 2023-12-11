@@ -37,3 +37,5 @@ datasets:
 |              |                           |                                                        |                                       |
 |              |                           |                                                        |                                       |
 |              |                           |                                                        |                                       |
+
+EfficientNetB0 + VGG16 = super slow
