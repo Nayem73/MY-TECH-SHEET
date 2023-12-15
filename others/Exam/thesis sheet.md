@@ -184,6 +184,12 @@ EfficientNetB0 + VGG16 = super slow
 
 **
 
+
+
+# what is imagenet, hyperparameter,
+
+# how many layers in EfficentNet and resnet?
+
 | Class Name   | EuroSAT                                                              | UC Merced                                                         | RESISC45                                                             | PatternNet                                                             |
 | ------------ | -------------------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | agricultural | One image from Eurosat agriculture class((if class is available)<br> | One image from UC Merced agriculture class(if class is available) | One image from RESISC45 agriculture class(if class is available)<br> | One image from PatternNet agriculture class(if class is available)<br> |
@@ -206,3 +212,13 @@ freeway+runway
 stadium+football_field+basketball_field
 
 mobile_home_park+residential
+
+
+
+
+
+# models
+
+1. InceptionV3 = low accuracy
+
+2. VGG16, 19 = huge computational power needed (slow as hell)
