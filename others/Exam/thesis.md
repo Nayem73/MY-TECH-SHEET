@@ -271,10 +271,6 @@ for image_batch,label_batch in test_data.take(1):
         title = f"""True: {true_class}\n Predict: {predict_class}"""
         plt.title(title, color='g' if true_class==predict_class else 'r')
         plt.axis("off")
-
-
-
-
 ```
 
 This code performs several tasks related to working with a machine learning model for image classification using the EuroSAT dataset. Let's break it down step by step:
@@ -338,8 +334,6 @@ This code performs several tasks related to working with a machine learning mode
     - Plots a batch of images from the test dataset along with their true and predicted classes.
 
 In summary, this code sets up the environment, downloads and preprocesses the EuroSAT dataset, defines a deep learning model, trains the model, and evaluates its performance through various visualizations and metrics.
-
-
 
 ##### for above code, in your explanation, I don't understand point 4: Data preparation. Go through every line of code of point 4 and explain intensively.
 
