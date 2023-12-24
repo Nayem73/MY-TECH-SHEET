@@ -37,27 +37,21 @@ into play.
 
 10.
 
-11. java is always pass by 
-    value. No pass by reference. primitive type er jonno o pass by value, 
-    Reference type er jonno o pass by value.  
-
-12. All the instruction 
+11. All the instruction 
     written in a Dockerfile are instructions to docker for setting up the 
     image. Now keep in mind, the image is the template for the container. 
     The image is what you don't run in the end, You run a container based on
     a image.  
 
-13. for primitives, default values are 0 and for Reference types, default value is null  
+12. for primitives, default values are 0 and for Reference types, default value is null  
 
-14. 
+13. static keyword before any method or attribute means it belongs to the class and not the instance itself.  
 
-15. static keyword before any method or attribute means it belongs to the class and not the instance itself.  
+14. static means no need to create an instance of that class. the static method can be invoked directly.  
 
-16. static means no need to create an instance of that class. the static method can be invoked directly.  
+15. 
 
-17. 
-
-18. enums in java:  
+16. enums in java:  
     enum Gender {  
     MALE,  
     FEMALE  
@@ -655,62 +649,61 @@ public String getName() {
           System.out.println(Person.getAddress()); // works
   
       }
-  } 
-  ```
+  }
   
   package com.nayemtech;
   
   public class Person {
+  private static String address = "Baltic Sea";
+  private String firstName;
+  private String lastName;
+  private int age;
   
-      private static String address = "Baltic Sea";
-      private String firstName;
-      private String lastName;
-      private int age;
-      
-      public Person(String firstName, String lastName, int age) {
-          this.firstName = firstName;
-          this.lastName = lastName;
-          this.age = age;
-      }
-      
-      public Person() {
-      }
-      
-      public static String getAddress() {
-          return address;
-      }
-      
-      public static void setAddress(String address) {
-          Person.address = address;
-      }
-      
-      public String getFirstName() {
-          return firstName;
-      }
-      
-      public void setFirstName(String firstName) {
-          this.firstName = firstName;
-      }
-      
-      public String getLastName() {
-          return lastName;
-      }
-      
-      public void setLastName(String lastName) {
-          this.lastName = lastName;
-      }
-      
-      public int getAge() {
-          return age;
-      }
-      
-      public void setAge(int age) {
-          this.age = age;
-      }
-  
+  public Person(String firstName, String lastName, int age) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.age = age;
   }
+  
+  public Person() {
+  }
+  
+  public static String getAddress() {
+      return address;
+  }
+  
+  public static void setAddress(String address) {
+      Person.address = address;
+  }
+  
+  public String getFirstName() {
+      return firstName;
+  }
+  
+  public void setFirstName(String firstName) {
+      this.firstName = firstName;
+  }
+  
+  public String getLastName() {
+      return lastName;
+  }
+  
+  public void setLastName(String lastName) {
+      this.lastName = lastName;
+  }
+  
+  public int getAge() {
+      return age;
+  }
+  
+  public void setAge(int age) {
+      this.age = age;
+  }
+  }
+   
+  ```
 
-```
+```java
 38. # static keyword of main method
 
 JVM can access the main method directly without need to creating instance of main class from anywhere. for example:
@@ -744,7 +737,6 @@ public class Person {
 - if the above main method had no static keyword then we would have to do:
 
 ```java
-```java
 package com.nayemtech;
 
 import java.util.Arrays;
@@ -770,7 +762,7 @@ public class Person {
 }
 ```
 
-```
+```java
 39. # Question: when should you static and when not?
 - when you don't need an instance for using a particular method, you should use static. for example: 
 
