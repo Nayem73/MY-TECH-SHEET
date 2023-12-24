@@ -700,7 +700,6 @@ public String getName() {
       this.age = age;
   }
   }
-   
   ```
 
 ```java
@@ -708,7 +707,6 @@ public String getName() {
 
 JVM can access the main method directly without need to creating instance of main class from anywhere. for example:
 
-```java
 package com.nayemtech;
 
 import java.util.Arrays;
@@ -763,10 +761,9 @@ public class Person {
 ```
 
 ```java
-39. # Question: when should you static and when not?
+39. # Question: when should you use static and when not?
 - when you don't need an instance for using a particular method, you should use static. for example: 
 
-```java
 Math.pi
 Integer.parseInt()
 .. etc are static methods where you don't need to create instances to use that method.
@@ -793,4 +790,85 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
 
 42. would you look at this! if I didn't add toString() to Car class then it wouldn't show the cars when I added `System.out.println(alex);` So I need toString() in all classes which are being used to construct alex (an instance of person class)
 
-43. 
+----
+
+# Access Modifiers:
+
+1. Protected: can be used for the class itself(Super class) as well as it's subclasses. (Within the same package too?)
+
+-----
+
+# Encapsulation
+
+1. <u>*Encapsulation in Java is the process by which data (variables) and the code that acts upon them (methods) are integrated as a <mark>single unit</mark>. By encapsulating a class's variables, other classes cannot access them, and only the methods of the class can access them.*</u>
+* ekta class e jevabe amra field declare kori and pore method toiri kore oi field gulo use kori .... ei jinisgulo je ekta class er vitor e ase .. eitai Encapsulation.
+
+* Encapsulation in Java is a powerful mechanism for storing the data members and data methods of a class together. It is done in the form of a secure field accessible by only the members of the same class.
+
+* Through Encapsulation we can <mark>*hide*</mark> data
+2. * In the amigos example, if we don't use private in the BankAccount class, then we can access the amount from outside of that class. So by using private, we won't be able to access amount from outside of that class. Then we use getters and setters to access it but the main advantage here is: by using getters or setters, we can implement logic *<mark> inside the setter method</mark>* for setting the amount. This way, we have full control.
+
+# Inheritance
+
+1. Inheritance allows us to create a class based of an existing class. In below example, Programmer and Manager class are created based on Employee class (Inheriting the fields and methods from the Employee class)
+
+2. Benefit of Inheritance is that we can remove duplicate codes:
+   ![](assets/2023-12-24-10-44-15-image.png)
+   
+   here, Programmer class and Manager class both inherits  Employee class. If not, then both the programmer class and manager class would need to have the same fields(fileds in Employee class) in both of them classes.
+
+
+
+## Multi level Inheritance
+
+
+
+# Abstract Keyword
+
+1. It does not make sense to create an(instance of) Animal on it's own. Because we have Cat (class) and Dog (class) which inherits Animal class. So it does not make sense to create an instance of Animal class and we name it dog, because we already have Dog class which inherits Animal class.
+
+2. ```java
+   
+   abstract public class Animal {
+   
+       private String name;
+   
+   }
+   
+   
+   
+   //inside main method
+   Dog dog = new Dog("Foo")
+   Animal dog = new Dog("Foo")
+   ```
+* Abstract keyword before a class or method means that class can not be instantiated.
+3. Abstract keyword in a mehtod means, that method must be overridden by any subclass.
+
+4. Abstract methods should only exist within abstract classes or interfaces. Abstract methods have no method body. A huge advantage of Abstract method is that, when declared in super class, all the subclasses can use that method in terms of their own variations.
+
+5. ![](assets/2023-12-24-14-10-28-image.png)
+
+6. Solid Principles: A class should be closed for modification but open for extension. <mark>an Abstract class helps in this regard</mark> because it helps avoid code duplication and increase reusability. The purpose is, we can have the class to act as a base for the subclasses. And then we can Encapsulate some common functionalities in one place and let the sub classes implement differences. <mark>This is Solid in action</mark>
+
+
+
+# Interface
+
+1. interface allows us to achieve polymorphism.
+
+2. polymorphism = many forms
+
+3. Interfaces is really useful to achieve polymorphic code. And also, when you want to test your application, Interfaces is useful.
+
+4. an interface can contain these 3 things:
+   ![](assets/2023-12-24-19-05-02-image.png)
+   
+   ```java
+   public interface vehicle {
+       public void foo(); //won't work because it is not from any of the 3 that is perssible for interfaces
+       public abstract void foo(); //will work but there's no need to write abstract cz interface will autamitcally see/convert it as abstract
+       void foo(); // correct. public by default and abstract by default
+   }
+   ```
+
+5. Car, electricScooter and Bicycle < they are a Vehicle and interfaces allows us to remove all of these complexity in here and write better code.

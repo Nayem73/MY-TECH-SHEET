@@ -57,3 +57,13 @@ public class Main {
 # 2. Map
 
  In Java, you can’t use primitive types as generic arguments So, instead of `Map<int, int>`, you should use `Map<Integer, Integer>`.
+
+
+
+# *. Print paragraphs which includes newline:
+
+![](assets/2023-12-24-11-26-49-image.png)
+
+
+
+# 3. Set

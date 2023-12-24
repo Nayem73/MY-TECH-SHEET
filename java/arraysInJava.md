@@ -96,11 +96,7 @@ javaCopy code
 
 So, in summary, the main difference is the shorthand initialization syntax for arrays with specific values in the case of `int[] a2 = {5, 6};`, making the code more concise and readable when you know the values at the time of declaration.
 
-
-
 ---------------------------------------------------------------------
-
-
 
 cauliflower e effiecient net use kore transfer laerning in
 
