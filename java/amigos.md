@@ -817,40 +817,32 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
    
    here, Programmer class and Manager class both inherits  Employee class. If not, then both the programmer class and manager class would need to have the same fields(fileds in Employee class) in both of them classes.
 
-
-
 ## Multi level Inheritance
-
-
 
 # Abstract Keyword
 
 1. It does not make sense to create an(instance of) Animal on it's own. Because we have Cat (class) and Dog (class) which inherits Animal class. So it does not make sense to create an instance of Animal class and we name it dog, because we already have Dog class which inherits Animal class.
 
-2. ```java
-   
+1. ```java
    abstract public class Animal {
    
        private String name;
    
    }
-   
-   
-   
-   //inside main method
+   ```
+
+  //inside main method
    Dog dog = new Dog("Foo")
    Animal dog = new Dog("Foo")
-   ```
-* Abstract keyword before a class or method means that class can not be instantiated.
+
+- Abstract keyword before a class or method means that class can not be instantiated.
 3. Abstract keyword in a mehtod means, that method must be overridden by any subclass.
 
 4. Abstract methods should only exist within abstract classes or interfaces. Abstract methods have no method body. A huge advantage of Abstract method is that, when declared in super class, all the subclasses can use that method in terms of their own variations.
 
 5. ![](assets/2023-12-24-14-10-28-image.png)
 
-6. Solid Principles: A class should be closed for modification but open for extension. <mark>an Abstract class helps in this regard</mark> because it helps avoid code duplication and increase reusability. The purpose is, we can have the class to act as a base for the subclasses. And then we can Encapsulate some common functionalities in one place and let the sub classes implement differences. <mark>This is Solid in action</mark>
-
-
+6. Solid Principles: A class should be closed for modification but open for extension. an Abstract class helps in this regard because it helps avoid code duplication and increase reusability. The purpose is, we can have the class to act as a base for the subclasses. And then we can Encapsulate some common functionalities in one place and let the sub classes implement differences. This is Solid in action
 
 # Interface
 
@@ -860,15 +852,35 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
 
 3. Interfaces is really useful to achieve polymorphic code. And also, when you want to test your application, Interfaces is useful.
 
-4. an interface can contain these 3 things:
-   ![](assets/2023-12-24-19-05-02-image.png)
-   
-   ```java
-   public interface vehicle {
-       public void foo(); //won't work because it is not from any of the 3 that is perssible for interfaces
-       public abstract void foo(); //will work but there's no need to write abstract cz interface will autamitcally see/convert it as abstract
-       void foo(); // correct. public by default and abstract by default
-   }
-   ```
+4. an interface can contain these 4 things: (only public is allowed in interface. No private or anything is allowed.) ![](assets/2023-12-24-19-05-02-image.png)
+
+also 4. static methods is allowed inside an interface
+
+```java
+package com.amigoscode;
+
+public interface Vehicle {
+    //constants
+    //abstract methods
+    //default methods
+    //static methods
+}
+```
+
+```java
+public interface vehicle {
+    public void foo(); //won't work because it is not from any of the 3 that is perssible for interfaces
+    public abstract void foo(); //will work but there's no need to write abstract cz interface will autamitcally see/convert it as abstract
+    void foo(); // correct. public by default and abstract by default
+}
+```
 
 5. Car, electricScooter and Bicycle < they are a Vehicle and interfaces allows us to remove all of these complexity in here and write better code.
+
+6. age Person class e Car, electricScooter, Bicycle field toiri kora lagtesilo but now with Interface, we will write
+
+7. ```java
+   private Vehicle[] vehicles;
+   ```
+
+8. default keyword in interface. If used, then all the implements will be able to use it as default.
