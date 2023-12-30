@@ -36,15 +36,15 @@ sim dor(const c&) { ris; }
 #define endl '\n'
 
 struct Node {
-	int val;
-	Node* next;
+    int val;
+    Node* next;
 };
 
 Node* create_node(int val) {
-	Node* new_node = new Node();
-	new_node->val = val;
-	new_node->next = NULL;
-	return new_node;
+    Node* new_node = new Node();
+    new_node->val = val;
+    new_node->next = NULL;
+    return new_node;
 }
 
 int main() {
@@ -54,38 +54,36 @@ freopen("in1", "r", stdin);
 freopen("out1", "w", stdout);
 #endif
 fast_io;
-//-------------------------------	
-	//SUBHANALLAH//
+//-------------------------------    
+    //SUBHANALLAH//
 //-------------------------------
-	Node *n1, *n2, *head, *n3;
+    Node *n1, *n2, *head, *n3;
 
-	head = new Node();
-	head->val = 10;
-	head->next = NULL;
+    head = new Node();
+    head->val = 10;
+    head->next = NULL;
 
-	n1 = new Node();
-	n1->val = 20;
-	if (n1->next == NULL) {
-		cerr << "NULL";
-	}
+    n1 = new Node();
+    n1->val = 20;
+    if (n1->next == NULL) {
+        cerr << "NULL";
+    }
 
-	n2 = create_node(30);
-	n3 = create_node(40);
+    n2 = create_node(30);
+    n3 = create_node(40);
 
-	head->next = n1;
-	n1->next = n2;
-	n2->next = n3;
+    head->next = n1;
+    n1->next = n2;
+    n2->next = n3;
 
-	Node* curNode = head;
-	while (curNode != NULL) {
-		cout << curNode->val << ' ';
-		curNode = curNode->next;
-	}
+    Node* curNode = head;
+    while (curNode != NULL) {
+        cout << curNode->val << ' ';
+        curNode = curNode->next;
+    }
 
 
 }
 ```
-
-
 
 # Reverse a singly(one directional) linkList

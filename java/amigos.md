@@ -45,17 +45,96 @@ into play.
 
 12. for primitives, default values are 0 and for Reference types, default value is null  
 
-13. static keyword before any method or attribute means it belongs to the class and not the instance itself.  
+13. # Static keyword
+* Static keyword indicates that either a property(attribute) or method belongs to the class itself rather than the instance. for example, all the fields in the Person class belongs to alex, which is an instance of class Person. These fields does not belong to the class itself.
 
-14. static means no need to create an instance of that class. the static method can be invoked directly.  
+```java
+public class Main {
+    public static void main(String[] args) {
+        Person alex = new Person("Alex", "vai", "male");
+        Person karim = new Person("Karim", "vai", "male");
+    }
+}
 
-15. 
 
-16. enums in java:  
-    enum Gender {  
-    MALE,  
-    FEMALE  
-    }  
+public class Person {
+    private String firstName;
+    private String lastName;
+    private String gender; 
+}
+```
+
+* lets say, we need to track the number of people that gets instantiated from this class Person.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Person alex = new Person("Alex", "vai", "male");
+        Person karim = new Person("Karim", "vai", "male");
+    }
+}
+
+
+public class Person {
+    public static int count = 0;
+    private String firstName;
+    private String lastName;
+    private String gender; 
+
+    public Person(Sring firstName, String lastName, String gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        count++;
+    }
+}
+```
+
+* in above code, `public static int count = 0` is a static property and it does not belong to alex nor karim . It belongs to the Person class itself. So for above code, If I go to main method and if I want to print that count, I don't have to say `alex.count` because count belongs to the class because it's static. So how should I access count is this: `Person.count`
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Person alex = new Person("Alex", "vai", "male");
+        Person karim = new Person("Karim", "vai", "male");
+
+        System.out.println(Person.count);
+    }
+}
+
+
+public class Person {
+    public static int count = 0;
+    private String firstName;
+    private String lastName;
+    private String gender; 
+
+    public Person(Sring firstName, String lastName, String gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        count++;
+    }
+}
+```
+
+# public static void main
+
+*<u>the reason why the main method is static is that JVM doesn't need to create a new instance of Main class in order to invoke the main method.</u>*
+
+main method is under a class right? often times we call it the Main class. So in order to access the method, you need to create an instance of that class and call the method by the created instance. But to avoid it, static keyword is used before main method because we know, static keyword means the method will belong to the class itself and hence, from any other class, we can call it direclty by Main.main(String[] args) . So that we can invoke or run the program from any other class. That's why the JVM needs the main method to be static.
+
+If static keyword was not used before main method, then every time we need to invoke the main method to run the code, every time we would need to create an instance of the Main class.  But at the point JVM runs, there's no object/instance available. So, by using static keyword, JVM can invoke the main method without needing to create an instance of the Main class
+
+# When to use static keyword
+
+3 million of countv variable would be creatd but if used static then just one instance of count
+
+1. enums in java:  
+   enum Gender {  
+   MALE,  
+   FEMALE  
+   }  
 
 ** Also just like creating class, in intellij you get to select enums:  
 public enum Gender {  
@@ -794,6 +873,8 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
 
 # Access Modifiers:
 
+![](assets/2023-12-26-17-15-51-image.png)
+
 1. Protected: can be used for the class itself(Super class) as well as it's subclasses. (Within the same package too?)
 
 -----
@@ -821,21 +902,22 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
 
 # Abstract Keyword
 
-1. It does not make sense to create an(instance of) Animal on it's own. Because we have Cat (class) and Dog (class) which inherits Animal class. So it does not make sense to create an instance of Animal class and we name it dog, because we already have Dog class which inherits Animal class.
+1. If we use Abstract keyword on a class, we can not instantiate that class, we then use it through Inheritance.
 
-1. ```java
+2. It does not make sense to create an(instance of) Animal on it's own. Because we have Cat (class) and Dog (class) which inherits Animal class. So it does not make sense to create an instance of Animal class and we name it dog, because we already have Dog class which inherits Animal class.
+
+3. ```java
    abstract public class Animal {
    
        private String name;
    
    }
    ```
-
-  //inside main method
+   
+   //inside main method
    Dog dog = new Dog("Foo")
    Animal dog = new Dog("Foo")
-
-- Abstract keyword before a class or method means that class can not be instantiated.
+- Abstract keyword before a class means that class can not be instantiated.
 3. Abstract keyword in a mehtod means, that method must be overridden by any subclass.
 
 4. Abstract methods should only exist within abstract classes or interfaces. Abstract methods have no method body. A huge advantage of Abstract method is that, when declared in super class, all the subclasses can use that method in terms of their own variations.
