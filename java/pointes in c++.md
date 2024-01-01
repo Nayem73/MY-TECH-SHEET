@@ -86,4 +86,31 @@ fast_io;
 }
 ```
 
+# Better way to represent LinkedList than above code:
+
+```c
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int X) : val(X), next(NULL) {}
+}; 
+
+
+int main() {
+    ListNode *headA, *headA1;
+    headA = new ListNode(5);
+    headA1 = new ListNode(4);
+    ListNode *headA2 = new ListNode(3);
+
+    headA->next = headA1;
+    headA1->next = headA2;
+
+    ListNode *curNode = headA;
+    while (curNode != NULL) {
+        cout << curNode->val << endl;
+        curNode = curNode->next;
+    }
+}
+```
+
 # Reverse a singly(one directional) linkList

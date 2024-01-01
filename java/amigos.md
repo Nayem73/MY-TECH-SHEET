@@ -966,3 +966,386 @@ public interface vehicle {
    ```
 
 8. default keyword in interface. If used, then all the implements will be able to use it as default.
+
+----------
+
+# SOLID
+
+* SOLID is an acronym for the first 5 object oriented design priciples. It helps us write clean and better code specially on a large code base.
+
+Assalamualaikum vai kemon asen? Ami Nayem Mehedi from Pabna University of Science and Technology. ami Therap Javafest 2023 er ekjon Finalist chilam and okhane amader direct interview er ekta offer dewa hoyechilo after graduation. ami just Thesis complete kore Interview er jonno preparation nissi, do you have any advice for me vai that I must know? about the company projects and interview etc.
+
+------------------
+
+-------
+
+# 1. Null Pointer Exception
+
+* very common in java
+* 3 ways to solve:
+
+```java
+1. if (s == NULL)
+2. try catch
+3. optional<>
+```
+
+# Data structures
+
+* Data structures allows us to store, organize and manipulate data.
+
+# 1. Array and String
+
+# Comparison Array with C++
+
+Certainly! Let's go through some examples of working with 1D arrays in Java and C++.
+
+### 1. 1D Array Declaration:
+
+#### Java:
+
+```java
+int[] arrayJava = {1, 2, 3, 4, 5};
+```
+
+#### C++:
+
+```cpp
+#include <vector>
+std::vector<int> arrayCpp = {1, 2, 3, 4, 5};
+```
+
+### 2. Accessing Elements:
+
+#### Java:
+
+```java
+int elementJava = arrayJava[2]; // Accessing element at index 2
+```
+
+#### C++:
+
+```cpp
+#include <iostream>
+int elementCpp = arrayCpp[2]; // Accessing element at index 2
+```
+
+### 3. Iterating Through 1D Array:
+
+#### Java:
+
+```java
+for (int i = 0; i < arrayJava.length; i++) {
+    System.out.print(arrayJava[i] + " ");
+}
+```
+
+#### C++:
+
+```cpp
+#include <iostream>
+for (int i = 0; i < arrayCpp.size(); i++) {
+    std::cout << arrayCpp[i] << " ";
+}
+```
+
+### 4. Initializing 1D Array:
+
+#### Java:
+
+```java
+int[] initializedArrayJava = new int[5]; // Creates an array of size 5
+```
+
+#### C++:
+
+```cpp
+#include <vector>
+std::vector<int> initializedArrayCpp(5); // Creates a vector of size 5
+```
+
+### 5. Dynamic 1D Array:
+
+#### Java:
+
+```java
+int[] dynamicArrayJava = new int[]{1, 2, 3}; // Creates an array with specified values
+```
+
+#### C++:
+
+```cpp
+#include <vector>
+std::vector<int> dynamicArrayCpp = {1, 2, 3}; // Creates a vector with specified values
+```
+
+These examples illustrate the basic operations for working with 1D arrays in Java and C++. Keep in mind that Java uses arrays, and C++ can use vectors for dynamic 1D arrays, providing flexibility in managing memory.
+
+
+
+# Comparison 2d Array with C++
+
+Certainly! Let's go through some examples of working with 2D arrays in Java and C++.
+
+### 1. 2D Array Declaration:
+
+#### Java:
+
+```java
+int[][] matrix = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+```
+
+#### C++:
+
+```cpp
+#include <vector>
+std::vector<std::vector<int>> matrix = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+```
+
+### 2. Accessing Elements:
+
+#### Java:
+
+```java
+int element = matrix[1][2]; // Accessing element at row 1, column 2
+```
+
+#### C++:
+
+```cpp
+#include <iostream>
+int element = matrix[1][2]; // Accessing element at row 1, column 2
+```
+
+### 3. Iterating Through 2D Array:
+
+#### Java:
+
+```java
+for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[i].length; j++) {
+        System.out.print(matrix[i][j] + " ");
+    }
+    System.out.println();
+}
+```
+
+#### C++:
+
+```cpp
+#include <iostream>
+for (int i = 0; i < matrix.size(); i++) {
+    for (int j = 0; j < matrix[i].size(); j++) {
+        std::cout << matrix[i][j] << " ";
+    }
+    std::cout << std::endl;
+}
+```
+
+### 4. Initializing 2D Array:
+
+#### Java:
+
+```java
+int[][] initializedMatrix = new int[3][2]; // Creates a 3x2 array
+```
+
+#### C++:
+
+```cpp
+#include <vector>
+std::vector<std::vector<int>> initializedMatrix(3, std::vector<int>(2)); // Creates a 3x2 vector
+```
+
+### 5. Dynamic 2D Array:
+
+#### Java:
+
+```java
+int[][] dynamicMatrix = new int[3][];
+dynamicMatrix[0] = new int[2];
+dynamicMatrix[1] = new int[3];
+dynamicMatrix[2] = new int[1];
+```
+
+#### C++:
+
+```cpp
+#include <vector>
+std::vector<std::vector<int>> dynamicMatrix = {
+    {1, 2},
+    {3, 4, 5},
+    {6}
+};
+```
+
+These examples illustrate the basic operations for working with 2D arrays in Java and C++. Keep in mind that Java uses arrays, and C++ can use vectors of vectors for dynamic 2D arrays, providing flexibility in managing memory.
+
+
+
+# Comparison String with C++
+
+* ***<u>In Java, strings are immutable, meaning once a string is created, its value cannot be changed.</u>***
+
+* 
+
+```java
+String immutableStr = "Immutable";
+immutableStr = immutableStr + " String"; // Creates a new string object
+// but in C++, // Modifies the existing string, not creates a new one.
+
+
+//java
+boolean areEqual = str1.equals(str2); // Use equals() for content comparison
+//C++
+bool areEqual = (str1 == str2); // Use == for content comparison
+
+
+//java
+char firstChar = str.charAt(0); // Use charAt() to access individual characters
+//C++
+char firstChar = str[0]; // Use array indexing to access individual characters
+
+//java
+String str = "Substring";
+String sub = str.substring(3, 7); // Retrieves substring from index 3 to 6
+//C++
+str.substr()
+
+
+
+
+```
+
+# Comparison with 2d String
+
+In Java, a 2D array of strings is essentially an array of arrays. Let's go through the differences and provide examples for working with 2D strings in Java compared to C++.
+
+### 1. 2D String Declaration:
+
+#### Java:
+
+```java
+String[][] matrix = {
+    {"Java", "is", "awesome"},
+    {"2D", "Array", "Example"}
+};
+```
+
+#### C++:
+
+```c
+#include <vector>
+#include <string>
+std::vector<std::vector<std::string>> matrix = {
+    {"C++", "is", "awesome"},
+    {"2D", "Vector", "Example"}
+};
+```
+
+### 2. Accessing Elements:
+
+#### Java:
+
+```java
+String element = matrix[0][1]; // Accessing element at row 0, column 1
+```
+
+#### C++:
+
+```c
+#include <iostream>
+std::string element = matrix[0][1]; // Accessing element at row 0, column 1
+```
+
+### 3. Iterating Through 2D String Array:
+
+#### Java:
+
+```java
+for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[i].length; j++) {
+        System.out.print(matrix[i][j] + " ");
+    }
+    System.out.println();
+}
+```
+
+#### C++:
+
+```c
+#include <iostream>
+for (int i = 0; i < matrix.size(); i++) {
+    for (int j = 0; j < matrix[i].size(); j++) {
+        std::cout << matrix[i][j] << " ";
+    }
+    std::cout << std::endl;
+}
+```
+
+### 4. Initializing 2D String Array:
+
+#### Java:
+
+```java
+String[][] initializedMatrix = new String[3][2]; // Creates a 3x2 array
+```
+
+#### C++:
+
+```c
+#include <vector>
+#include <string>
+std::vector<std::vector<std::string>> initializedMatrix(3, std::vector<std::string>(2)); // Creates a 3x2 vector
+```
+
+### 5. Dynamic 2D String Array:
+
+#### Java:
+
+```java
+String[][] dynamicMatrix = new String[3][]; // Creates an array of arrays
+dynamicMatrix[0] = new String[2];
+dynamicMatrix[1] = new String[3];
+dynamicMatrix[2] = new String[1];
+```
+
+#### C++:
+
+```c
+#include <vector>
+#include <string>
+std::vector<std::vector<std::string>> dynamicMatrix = {
+    {"C++", "Array"},
+    {"of", "Vectors", "Example"},
+    {"Dynamic"}
+};
+```
+
+These examples illustrate the basic operations for working with 2D arrays of strings in Java and C++. Keep in mind that Java uses arrays and C++ can use vectors of vectors for dynamic 2D arrays, providing flexibility in managing memory.
+
+
+
+### Now try out myself Alhamdulillah
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int[] v = new int[5];
+        v[0] = 3;
+        System.out.println(Arrays.toString(v));
+
+        String[] s = new String[5];
+        s[2] = "ok from string Alhamdulillah";
+        System.out.println(Arrays.toString(s));
+    }
+}
+```
