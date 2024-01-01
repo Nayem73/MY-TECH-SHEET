@@ -1194,8 +1194,8 @@ These examples illustrate the basic operations for working with 2D arrays in Jav
 # Comparison String with C++
 
 * ***<u>In Java, strings are immutable, meaning once a string is created, its value cannot be changed.</u>***
-
-* 
+  
+  
 
 ```java
 String immutableStr = "Immutable";
@@ -1331,6 +1331,318 @@ std::vector<std::vector<std::string>> dynamicMatrix = {
 ```
 
 These examples illustrate the basic operations for working with 2D arrays of strings in Java and C++. Keep in mind that Java uses arrays and C++ can use vectors of vectors for dynamic 2D arrays, providing flexibility in managing memory.
+
+
+
+# Map
+
+Certainly! Let's explore examples of working with maps in Java and C++.
+
+### 1. Map Declaration:
+
+#### Java:
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+Map<String, Integer> mapJava = new HashMap<>();
+mapJava.put("One", 1);
+mapJava.put("Two", 2);
+mapJava.put("Three", 3);
+```
+
+#### C++:
+
+```cpp
+#include <unordered_map>
+#include <iostream>
+
+std::unordered_map<std::string, int> mapCpp = {
+    {"One", 1},
+    {"Two", 2},
+    {"Three", 3}
+};
+```
+
+### 2. Accessing Elements:
+
+#### Java:
+
+```java
+int valueJava = mapJava.get("Two"); // Accessing value by key
+```
+
+#### C++:
+
+```cpp
+#include <iostream>
+int valueCpp = mapCpp["Two"]; // Accessing value by key
+```
+
+### 3. Iterating Through Map:
+
+#### Java:
+
+```java
+for (Map.Entry<String, Integer> entry : mapJava.entrySet()) {
+    System.out.println(entry.getKey() + ": " + entry.getValue());
+}
+```
+
+#### C++:
+
+```cpp
+for (const auto& entry : mapCpp) {
+    std::cout << entry.first << ": " << entry.second << std::endl;
+}
+```
+
+### 4. Checking if Key Exists:
+
+#### Java:
+
+```java
+boolean containsKeyJava = mapJava.containsKey("Two");
+```
+
+#### C++:
+
+```cpp
+bool containsKeyCpp = (mapCpp.find("Two") != mapCpp.end());
+```
+
+### 5. Modifying Map:
+
+#### Java:
+
+```java
+mapJava.put("Four", 4); // Adding a new key-value pair
+mapJava.replace("Three", 33); // Replacing the value for an existing key
+```
+
+#### C++:
+
+```cpp
+mapCpp["Four"] = 4; // Adding a new key-value pair
+mapCpp["Three"] = 33; // Replacing the value for an existing key
+```
+
+These examples illustrate basic operations for working with maps in Java and C++. Keep in mind that Java uses the `Map` interface with implementations like `HashMap`, while C++ has `std::unordered_map` for hash maps. The syntax and methods may vary, so it's essential to refer to the specific documentation for each language.
+
+
+
+# Set
+
+Certainly! Let's explore examples of working with sets in Java and C++.
+
+### 1. Set Declaration:
+
+#### Java:
+
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+Set<String> setJava = new HashSet<>();
+setJava.add("Apple");
+setJava.add("Banana");
+setJava.add("Orange");
+```
+
+#### C++:
+
+```cpp
+#include <unordered_set>
+#include <iostream>
+
+std::unordered_set<std::string> setCpp = {"Apple", "Banana", "Orange"};
+```
+
+### 2. Accessing Elements:
+
+#### Java:
+
+```java
+boolean containsJava = setJava.contains("Banana");
+```
+
+#### C++:
+
+```cpp
+#include <iostream>
+bool containsCpp = (setCpp.find("Banana") != setCpp.end());
+```
+
+### 3. Iterating Through Set:
+
+#### Java:
+
+```java
+for (String element : setJava) {
+    System.out.println(element);
+}
+```
+
+#### C++:
+
+```cpp
+for (const auto& element : setCpp) {
+    std::cout << element << std::endl;
+}
+```
+
+### 4. Modifying Set:
+
+#### Java:
+
+```java
+setJava.add("Grapes");
+setJava.remove("Banana");
+```
+
+#### C++:
+
+```cpp
+setCpp.insert("Grapes");
+setCpp.erase("Banana");
+```
+
+### 5. Set Operations:
+
+#### Java:
+
+```java
+Set<String> setA = new HashSet<>(Set.of("Apple", "Banana", "Orange"));
+Set<String> setB = new HashSet<>(Set.of("Banana", "Grapes", "Watermelon"));
+
+Set<String> unionSet = new HashSet<>(setA);
+unionSet.addAll(setB);
+
+Set<String> intersectionSet = new HashSet<>(setA);
+intersectionSet.retainAll(setB);
+
+Set<String> differenceSet = new HashSet<>(setA);
+differenceSet.removeAll(setB);
+```
+
+#### C++:
+
+```cpp
+#include <unordered_set>
+#include <iostream>
+
+std::unordered_set<std::string> setA = {"Apple", "Banana", "Orange"};
+std::unordered_set<std::string> setB = {"Banana", "Grapes", "Watermelon"};
+
+std::unordered_set<std::string> unionSet(setA.begin(), setA.end());
+unionSet.insert(setB.begin(), setB.end());
+
+std::unordered_set<std::string> intersectionSet;
+for (const auto& element : setA) {
+    if (setB.count(element) > 0) {
+        intersectionSet.insert(element);
+    }
+}
+
+std::unordered_set<std::string> differenceSet(setA.begin(), setA.end());
+for (const auto& element : setB) {
+    differenceSet.erase(element);
+}
+```
+
+These examples illustrate basic operations for working with sets in Java and C++. Keep in mind that Java uses the `Set` interface with implementations like `HashSet`, while C++ has `std::unordered_set` for hash sets. The syntax and methods may vary, so it's essential to refer to the specific documentation for each language.
+
+
+
+# Pair
+
+In C++, a `vector<pair<int, int>>` is commonly used to store pairs of integers in a dynamic array. In Java, a similar structure can be achieved using the `ArrayList` class along with the `Pair` class from the `org.apache.commons.lang3.tuple` package or by creating a custom class to represent pairs.
+
+### C++ Code:
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <utility>
+
+int main() {
+    std::vector<std::pair<int, int>> vectorOfPairs;
+
+    vectorOfPairs.push_back({1, 2});
+    vectorOfPairs.push_back({3, 4});
+    vectorOfPairs.push_back({5, 6});
+
+    for (const auto& pair : vectorOfPairs) {
+        std::cout << "(" << pair.first << ", " << pair.second << ")" << std::endl;
+    }
+
+    return 0;
+}
+```
+
+### Java Code:
+
+```java
+import org.apache.commons.lang3.tuple.Pair;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Pair<Integer, Integer>> listOfPairs = new ArrayList<>();
+
+        listOfPairs.add(Pair.of(1, 2));
+        listOfPairs.add(Pair.of(3, 4));
+        listOfPairs.add(Pair.of(5, 6));
+
+        for (Pair<Integer, Integer> pair : listOfPairs) {
+            System.out.println("(" + pair.getLeft() + ", " + pair.getRight() + ")");
+        }
+    }
+}
+```
+
+Note: In the Java code above, the `Pair` class is from the Apache Commons Lang library (`org.apache.commons.lang3.tuple`). If you don't have this library, you need to download it and add it to your project. Alternatively, you can create a custom class to represent pairs in Java.
+
+### Custom Pair Class in Java:
+
+```java
+import java.util.ArrayList;
+
+class Pair<K, V> {
+    private K first;
+    private V second;
+
+    public Pair(K first, V second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public K getFirst() {
+        return first;
+    }
+
+    public V getSecond() {
+        return second;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Pair<Integer, Integer>> listOfPairs = new ArrayList<>();
+
+        listOfPairs.add(new Pair<>(1, 2));
+        listOfPairs.add(new Pair<>(3, 4));
+        listOfPairs.add(new Pair<>(5, 6));
+
+        for (Pair<Integer, Integer> pair : listOfPairs) {
+            System.out.println("(" + pair.getFirst() + ", " + pair.getSecond() + ")");
+        }
+    }
+}
+```
+
+This custom `Pair` class provides a simple way to represent pairs in Java without the need for an external library.
 
 
 
