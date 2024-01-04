@@ -1081,8 +1081,6 @@ std::vector<int> dynamicArrayCpp = {1, 2, 3}; // Creates a vector with specified
 
 These examples illustrate the basic operations for working with 1D arrays in Java and C++. Keep in mind that Java uses arrays, and C++ can use vectors for dynamic 1D arrays, providing flexibility in managing memory.
 
-
-
 # Comparison 2d Array with C++
 
 Certainly! Let's go through some examples of working with 2D arrays in Java and C++.
@@ -1189,13 +1187,9 @@ std::vector<std::vector<int>> dynamicMatrix = {
 
 These examples illustrate the basic operations for working with 2D arrays in Java and C++. Keep in mind that Java uses arrays, and C++ can use vectors of vectors for dynamic 2D arrays, providing flexibility in managing memory.
 
-
-
 # Comparison String with C++
 
 * ***<u>In Java, strings are immutable, meaning once a string is created, its value cannot be changed.</u>***
-  
-  
 
 ```java
 String immutableStr = "Immutable";
@@ -1219,10 +1213,6 @@ String str = "Substring";
 String sub = str.substring(3, 7); // Retrieves substring from index 3 to 6
 //C++
 str.substr()
-
-
-
-
 ```
 
 # Comparison with 2d String
@@ -1332,8 +1322,6 @@ std::vector<std::vector<std::string>> dynamicMatrix = {
 
 These examples illustrate the basic operations for working with 2D arrays of strings in Java and C++. Keep in mind that Java uses arrays and C++ can use vectors of vectors for dynamic 2D arrays, providing flexibility in managing memory.
 
-
-
 # Map
 
 Certainly! Let's explore examples of working with maps in Java and C++.
@@ -1429,8 +1417,6 @@ mapCpp["Three"] = 33; // Replacing the value for an existing key
 ```
 
 These examples illustrate basic operations for working with maps in Java and C++. Keep in mind that Java uses the `Map` interface with implementations like `HashMap`, while C++ has `std::unordered_map` for hash maps. The syntax and methods may vary, so it's essential to refer to the specific documentation for each language.
-
-
 
 # Set
 
@@ -1553,8 +1539,6 @@ for (const auto& element : setB) {
 
 These examples illustrate basic operations for working with sets in Java and C++. Keep in mind that Java uses the `Set` interface with implementations like `HashSet`, while C++ has `std::unordered_set` for hash sets. The syntax and methods may vary, so it's essential to refer to the specific documentation for each language.
 
-
-
 # Pair
 
 In C++, a `vector<pair<int, int>>` is commonly used to store pairs of integers in a dynamic array. In Java, a similar structure can be achieved using the `ArrayList` class along with the `Pair` class from the `org.apache.commons.lang3.tuple` package or by creating a custom class to represent pairs.
@@ -1644,20 +1628,339 @@ public class Main {
 
 This custom `Pair` class provides a simple way to represent pairs in Java without the need for an external library.
 
-
-
 ### Now try out myself Alhamdulillah
+
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int[] v = new int[5];
+        v[0] = 3;
+        System.out.println(Arrays.toString(v));
+        System.out.println(v[0] + " " + v[1]);
+
+        //1d String
+//        String s1 = new String(); // new String() is redundant. Replace with empty String
+        String s1 = "";
+        s1 += 'l';
+        s1 += "2345";
+        System.out.println(s1);
+
+        String s2 = "what country";
+        s2 += ' ';
+        s2 += "ABCD";
+        System.out.println(s2);
+        for (int i = 0; i < s2.length(); i++) {
+            System.out.print(s2.charAt(i)); // no s2[i] or s2.get(i) for String
+        }
+        System.out.println();
+
+
+        //array of String
+        String[] s = new String[5];
+        s[2] = "ok from string Alhamdulillah";
+
+        System.out.println(Arrays.toString(s));
+
+        for (int i = 0; i < s.length; i++) { // no s.length() with brackets for this array of string string
+            System.out.print(s[i]);
+        }
+        System.out.println();
+
+        for (String string : s) {
+            System.out.print(string);
+        }
+        System.out.println();
+
+        //2d string
+        String[][] grid = {
+                {"x", "o", "x"},
+                {"o", "x", "o"}
+        };
+
+        for (int i = 0; i < grid.length; i++){
+            for (int j = 0; j < grid[i].length; j++) {
+                System.out.print(grid[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println(Arrays.deepToString(grid));
+    }
+
+}
+```
+
+-----------------
+
+-----------
+
+* Stack Extends Vector and Vector implements List
+
+![](assets/2024-01-01-10-22-00-image.png)
+
+# List
+
+```java
+ //List without any parameterized class
+        List colors = new ArrayList();
+        colors.add("blue");
+        colors.add(7);
+        colors.add(new Object());
+        for (var X: colors) {
+            System.out.println(X);
+        }
+
+        //List with specific data type 
+        List<String> stringList = new ArrayList<>();
+        stringList.add("Apple");
+        for (String X: stringList) {
+            System.out.println(X);
+        }
+
+         System.out.println(stringList);
+
+        System.out.println(stringList.size());
+        boolean flg = false;
+        for (int i = 0; i < stringList.size(); i++) {
+            if (stringList.get(i).equals("Banana")) {
+                flg = true;
+                System.out.println("contains Banana");
+            }
+        }
+        if (!flg) {
+            System.out.println("does not contain Banana");
+        }
+```
+
+* We can not modify below List because it is immutable. to make it work, we need to wrap it with ArrayList
+
+```java
+        List<String> listUnmodifiable = List.of("Banana", "Mango");
+        System.out.println(listUnmodifiable);
+
+        listUnmodifiable.add("Jackfruit"); // compilaion fail because listUnmodifiable is immutable
+```
+
+* after wrapping with ArrayList will work
+
+```java
+        List<String> listUnmodifiable = new ArrayList<>(List.of("Banana", "Mango"));
+        System.out.println(listUnmodifiable);
+
+        listUnmodifiable.add("Jackfruit"); // compilaion fail because listUnmodifiable is immutable
+```
+
+# Stack
+
+* Stack Extends Vector and Vector implements List
+
+* in Stack, type argument cannot be of primitive type. it should be Integer instead of int
+
+```java
+// Creating a stack of integers
+        Stack<Integer> intStack = new Stack<>();
+
+        // Pushing elements onto the stack
+        intStack.push(1);
+        intStack.push(2);
+        intStack.push(3);
+
+        // Accessing the top element
+        int topElement = intStack.peek();
+        System.out.println("Top element: " + topElement);
+
+        // Popping elements from the stack
+        intStack.pop();
+
+        // Checking if the stack is empty
+        boolean isEmpty = intStack.isEmpty();
+        System.out.println("Is the stack empty? " + (isEmpty ? "Yes" : "No"));
+
+        // Size of the stack
+        System.out.println("Size of the stack: " + intStack.size());
+
+        // Iterating through the stack
+        System.out.print("Elements in the stack: ");
+        while (!intStack.isEmpty()) {
+            System.out.print(intStack.peek() + " ");
+            intStack.pop();
+        }
+```
+
+# Vector
+
+* `Vector` is synchronized. If thread safety is not a concern and performance is critical, `ArrayList` is generally preferred. (it uses synchronized methods internally.)
+
+# Record in java with Queue
+
+```java
+public record Person(String name, int age) {}
+    //inside method body, No need for explicit fields, getters, equals, hashCode, or toString
+```
+
+In this example:
+
+- `Person` is the name of the record.
+- `String name` and `int age` are the components of the record. These components act as final fields and are automatically initialized through the constructor.
+- The record implicitly generates the following methods:
+  - A constructor that initializes the fields.
+  - Getter methods for each component.
+  - `equals` and `hashCode` methods based on the components.
+  - A `toString` method that provides a human-readable string representation.
+
+# Queue
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        int[] v = new int[5];
-        v[0] = 3;
-        System.out.println(Arrays.toString(v));
+        Queue<Person> superMarket = new LinkedList<>();
+        //or Queue<Person> superMarket = new PriorityQueue<>();
 
-        String[] s = new String[5];
-        s[2] = "ok from string Alhamdulillah";
-        System.out.println(Arrays.toString(s));
+        Person person1 = new Person("Rahim", 33);
+        Person person2 = new Person("Karim", 26);
+
+        superMarket.add(person1);
+        superMarket.add(person2);
+        superMarket.add(person1);  
+        //superMarket.offer(person1); //it works too//it adds element;
+        //superMarket.poll(); //it removes element
+
+        while (!superMarket.isEmpty()) {
+            System.out.println(superMarket.peek());
+            superMarket.remove();
+            //superMarket.poll();//this removes too
+        }
+
     }
+
+    public static record Person(String name, int age) {}
 }
 ```
+
+# LinkedList
+
+* LInkedList need extra space in memory becaue they need to store the next node and prev node address for doubly linked list
+
+* internally Java uses doubly linked list
+
+# Set
+
+* set is a collection that contains no duplicates.
+
+# Map
+
+![](assets/2024-01-01-16-54-01-image.png)
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Map<Integer, Person> mp = new HashMap<>();
+        mp.put(2, new Person("Karim", 23));
+        mp.put(1, new Person("Rahim", 23));
+        mp.put(2, new Person("Karim", 23));
+        mp.put(2, new Person("Karim", 24));
+
+        System.out.println(mp);
+        System.out.println(mp.size());
+        System.out.println(mp.get(2));
+        System.out.println(mp.get(9));
+        System.out.println(mp.containsKey(4));
+        System.out.println(mp.keySet()); //provides the list of keys
+        System.out.println(mp.values()); //provides the list of values
+        System.out.println(mp.entrySet()); //provides the list of key=value entries
+
+        mp.remove(2);
+
+        // Loop through and print key-value pairs
+        for (Map.Entry<Integer, Person> entry : mp.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+
+        System.out.println(mp.getOrDefault(5, new Person("Muhammad", 22))); //if 5 exists then 5 else create new person and print
+
+    }
+
+    public static record Person(String name, int age) {}
+}
+```
+
+### Hashcode
+
+![](assets/2024-01-01-17-19-45-image.png)
+
+* when I say map.put(1, "Hello") then it goes through a hash function and creates hashcode. the same object will always create the same hascode.
+
+-------
+
+---------
+
+# Generics
+
+* Generics allows us to write better code. It's mainly used for to be able to compile our code, making sure we work with the correct type.
+
+### Example on why generics was introduced:
+
+# Testing
+
+* Junit
+
+# Spring Boot
+
+* A set of tools that helps to write java much faster.
+
+* each spring boot application includes an embedded web server
+
+* from spring.io: with Spring Boot, we can build microservices, Reactive, you can write code for any cloud
+
+* In order for a java code to become spring boot, we need to add `@SpringBootApplication` and inside the main method, we have to say `SpringAppliation.run(javamasterclassApplication.class, args);`
+  
+  (I named Main class as `javamasterclassApplication`)
+
+### Tomcat started on port 8080 but what is Tomcat?
+
+* anyone can send request on a given port, which the servlet container is listening on(in our case 8080) , and then we process the request and then send the response to any given client.
+
+* our embedded webserver, tomcat is listening on port 8080 - what does it mean?
+
+* why use port names as 8080 or 3000 etc?
+
+* Tomcat is one of many embedded web servers. there are others: jetty
+
+* so Now we know about: embedded web servers, tomcat and how to configure it properly.
+
+![](assets/2024-01-02-14-46-59-image.png)
+
+* Let's build a simple API with spring boot. Let's create a method in our Main class.
+
+```java
+    @GetMapping("/")
+    public String greet() {
+        return "Hello";
+    }
+```
+
+Now, in order to expose this method as a rest endpoint for clients to use as Get requests, we have to use `@GetMapping`. Now. for this to work, we also need this `@RestController` - which means that any method within the class, that has any of these annotations(Get, Post, Put, etc.) , those methods will be exposed as Rest endpoints to create API's that clients can call.
+
+* `@SpringBootApplication`: it's a wrapper for encapsulating @Configuration, @EnableAutoConfiguration, @ComponentScan
+
+* `@RestController`, `@GetMapping`: These are annotations, part of the Spring Web MVC(Model view controller). MVC is a framework that provides a very easy way of implementing MVC architecture in our web applications. Spring MVC abstracts away a lot of messy details you would've to understand and manage yourself if writing servlets manually. Then it allows us to create RESTful services very easily. Annotations of spring web mvc: @Controller, @RestController, @ResponseBody
+
+* Servlet: A process which handles HTTP Requests. A client sends a request and also gets a response.
+
+* `@RestController` is the `@Controller` with `@ResponseBody`. Together this indicates that, the class is Controller class, and all the methods inside the @RestController marked class, will return a JSON response.
+
+* `@ResponseBody`, `@RequestBody`:
+
+![](assets/2024-01-02-15-57-43-image.png)
+
+* `@RequestMapping`, `@GetMapping`, `@PostMapping` ........ etc.: 
+
+![](assets/2024-01-02-15-59-25-image.png)
+
+![](assets/2024-01-02-16-01-00-image.png)

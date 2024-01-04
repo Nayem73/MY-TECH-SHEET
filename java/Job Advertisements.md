@@ -4,4 +4,6 @@
 
 3. hrd@rokomari.com
 
-4. 
+4. bjit academy - 4 month unpaid training
+
+5. 

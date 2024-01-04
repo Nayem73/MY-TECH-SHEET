@@ -35,10 +35,7 @@
            }
        }
    }
-   
    ```
-
-
 
 ```java
 import java.util.ArrayList;
@@ -493,3 +490,189 @@ orthat, kono method/attribute er functionality jodi oi class er shokol instance 
   - There are modern alternatives available that encourage better practices (e.g., using the `java.time` package for date and time operations).
 
 Java's standard libraries demonstrate a balance between static and non-static methods based on the intended use cases and design principles.
+
+---
+
+----
+
+# Java List
+
+Certainly! The `List` interface in Java is part of the Java Collections Framework and provides an ordered collection. Here are various examples demonstrating the usage of `List` in Java:
+
+### 1. Creating a List:
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+// Creating an ArrayList
+List<String> stringList = new ArrayList<>();
+```
+
+### 2. Adding Elements to a List:
+
+```java
+stringList.add("Apple");
+stringList.add("Banana");
+stringList.add("Orange");
+```
+
+### 3. Iterating Through a List:
+
+```java
+for (String fruit : stringList) {
+    System.out.println(fruit);
+}
+```
+
+### 4. Accessing Elements by Index:
+
+```java
+String firstFruit = stringList.get(0);
+System.out.println("First fruit: " + firstFruit);
+```
+
+### 5. Removing Elements from a List:
+
+```java
+stringList.remove("Banana");
+```
+
+### 6. Checking if an Element Exists in the List:
+
+```java
+boolean containsOrange = stringList.contains("Orange");
+System.out.println("Contains Orange: " + containsOrange);
+```
+
+### 7. Size of the List:
+
+```java
+int size = stringList.size();
+System.out.println("Size of the list: " + size);
+```
+
+### 8. Clearing the List:
+
+```java
+stringList.clear();
+```
+
+### 9. Creating a List with Initial Values:
+
+```java
+List<Integer> integerList = List.of(1, 2, 3, 4, 5);
+```
+
+### 10. Copying One List to Another:
+
+```java
+List<String> copyList = new ArrayList<>(stringList);
+```
+
+### 11. Sorting a List:
+
+```java
+import java.util.Collections;
+
+Collections.sort(stringList);
+```
+
+### 12. Checking if a List is Empty:
+
+```java
+boolean isEmpty = stringList.isEmpty();
+System.out.println("Is the list empty? " + isEmpty);
+```
+
+### 13. Sublist Operations:
+
+```java
+List<String> sublist = stringList.subList(0, 2);
+```
+
+### 14. Using List Iterator:
+
+```java
+import java.util.ListIterator;
+
+ListIterator<String> listIterator = stringList.listIterator();
+while (listIterator.hasNext()) {
+    System.out.println(listIterator.next());
+}
+```
+
+These examples cover a range of common operations you can perform with a `List` in Java. Keep in mind that there are multiple implementations of the `List` interface in Java, such as `ArrayList`, `LinkedList`, and `Vector`. The choice of implementation depends on the specific requirements of your application.
+
+# Pair
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Map.Entry<Integer, Integer>> vp = new ArrayList<>();
+        vp.add(Map.entry(3, 4));
+        vp.add(Map.entry(9, 12));
+
+        for (Map.Entry<Integer, Integer> entry : vp) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+    }
+}
+```
+
+* Pair custom implementation - Easier Alhamdulillah
+
+In Java, there isn't a built-in `Pair` class like in C++. One common approach is to use the `Map.Entry` interface provided by the `Map` interface to represent key-value pairs. This is what was demonstrated in the previous Java code.
+
+However, if you want a custom implementation similar to C++'s `pair`, you can create a simple class to represent a pair of elements. Here's an example:
+
+```java
+public class Pair<K, V> {
+    private final K first;
+    private final V second;
+
+    public Pair(K first, V second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public K getFirst() {
+        return first;
+    }
+
+    public V getSecond() {
+        return second;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + first + ", " + second + ")";
+    }
+}
+```
+
+Then, you can use this `Pair` class in your code:
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Pair<Integer, Integer>> pairs = new ArrayList<>();
+        pairs.add(new Pair<>(3, 4));
+        pairs.add(new Pair<>(9, 12));
+
+        for (Pair<Integer, Integer> pair : pairs) {
+            System.out.println(pair.getFirst() + " " + pair.getSecond());
+        }
+    }
+}
+```
+
+This custom `Pair` class provides a more explicit way to represent pairs in Java, similar to C++.

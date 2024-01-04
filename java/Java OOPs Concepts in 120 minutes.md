@@ -1,9 +1,29 @@
-* Class Initialize korar jonno oi class er constructor call kora lage. for example:
-  
-  * ```java
-    Car car = new Car(); //init by empty constructor
-    Animal animal = new Animal("Dog", "brown", 2); //init by constructor with parameters
-    ```
+What is OOP
+
+Object-Oriented Programming (OOP) is a programming method that uses the concept of “objects” to design software. Objects are instances of classes, which are like blueprints. [Each object can have unique values for the properties defined in the class](https://www.educative.io/blog/object-oriented-programming)[1](https://www.educative.io/blog/object-oriented-programming)[2](https://en.wikipedia.org/wiki/Object-oriented_programming). Here are some key points you can mention during an interview:
+
+1. **Definition**: OOP is a paradigm where the complete software operates as a bunch of objects talking to each other. [An object is a collection of data and the methods which operate on that data](https://www.geeksforgeeks.org/oops-interview-questions/)[3](https://www.geeksforgeeks.org/oops-interview-questions/).
+
+2. **Advantages**: OOP provides better manageable code. It increases the overall understanding of the software as the distance between the language spoken by developers and that spoken by users is reduced. [It also eases maintenance by the use of encapsulation](https://www.educative.io/blog/object-oriented-programming)[3](https://www.geeksforgeeks.org/oops-interview-questions/).
+
+3. **Class**: A class is a user-defined data type that contains the data members and member functions that operate on the data members. [It is like a blueprint or template of objects having common properties and methods](https://www.geeksforgeeks.org/oops-interview-questions/)[3](https://www.geeksforgeeks.org/oops-interview-questions/).
+
+4. **Object**: An object is an instance of a class. Data members and methods of a class cannot be used directly. [We need to create an object (or instance) of the class to use them](https://www.educative.io/blog/object-oriented-programming)[3](https://www.geeksforgeeks.org/oops-interview-questions/).
+
+5. [**Main Features**: The four main concepts or principles of OOPs are Encapsulation, Data Abstraction, Polymorphism, and Inheritance](https://www.geeksforgeeks.org/oops-interview-questions/)[3](https://www.geeksforgeeks.org/oops-interview-questions/).
+
+Remember, it’s important to provide examples when explaining these concepts to demonstrate your practical understanding of OOP. Good luck with your interview! 😊
+
+<u><strong>by Me:</strong></u> Object-Oriented Programming (OOP) is a programming method that uses the concept of “objects”. Now, what is object? Objects are instances of classes, We know classes as the blueprints from which we can create multiple objects.
+
+# why do we need class?
+
+# Class Initialize korar jonno oi class er constructor call kora lage. for example:
+
+* ```java
+  Car car = new Car(); //init by empty constructor
+  Animal animal = new Animal("Dog", "brown", 2); //init by constructor with parameters
+  ```
 
 ## java will force you to find entities which will have attributes and behaviours. That entity will be a java class.
 
@@ -73,6 +93,7 @@ Access modifiers are used to only expose the attributes, methods and classes whi
 
 # Abstraction
 
+* Abstraction is a concept of (OOP) that hides the implementation details and shows only the essential features. We achieve it by using abstract classes, abstract methods and interfaces.
 * With abstraction, we can avoid duplicate codes and write better code. Let's say we have a parent class and we have multiple subclasses that extends from the parent class. All of these subclasses overrides the same method of the parent class and implements their own functionalities. Now, if that method in the parent class had any implemented code in it's method body, it would be wasted code since all the subclasses overrides it to implement their own functionalities. So we need to make that method an abstract method to avoid duplicates or unnecessary codes. Now, to make that method as an abstract method, we need to make that parent class abstract as well, which means we can not create any instance of the parent class, which is fine anyway and even better, because we are using it as a blueprint for the subclasses to organize the subclasses and we only need instance of the subclasses.
 * abstract classes cannot be instantiated explicitly. They can only be instantiated by the child classes through the internal mechanisms of java itself (inheritance)
 * Abstraction is necessary when we want subclasses to inherit from a super class and when we only need the objects of those subclasses. For example, we make a generic class for all type of Vehicles as Vehicle and Car, Bike, CNG etc. will extend from that class and in such cases we will only work with these subclasses. So we make Vehicle as an abstract class.
@@ -96,8 +117,6 @@ Absolutely, abstraction in programming has several other important functionaliti
 6. **Understanding and Using Libraries/Frameworks**: You don’t need to know the inner workings of a function or framework in programming to use it. [But knowing how those things work can make you a better programmer](https://www.freecodecamp.org/news/what-is-abstraction-in-programming/)[1](https://www.freecodecamp.org/news/what-is-abstraction-in-programming/).
 
 Remember, the goal of abstraction is to reduce complexity by breaking down problems into more manageable parts. It’s a fundamental concept in programming and is key to writing efficient, maintainable code.
-
-
 
 **<u>Examples for these 6 functionalities:</u>**
 
@@ -174,8 +193,6 @@ In this example, the `name` field is private and can only be accessed through th
 6. **Understanding and Using Libraries/Frameworks**: You don’t need to know the inner workings of a function or framework in programming to use it. But knowing how those things work can make you a better programmer. For example, when using a library or framework in Java, you often use methods without needing to understand their internal implementation. This is possible because of abstraction.
 
 Remember, the goal of abstraction is to reduce complexity by breaking down problems into more manageable parts. It’s a fundamental concept in programming and is key to writing efficient, maintainable code. 
-
-
 
 **<u>By chatGPT</u>**
 
@@ -496,3 +513,72 @@ public class Fish implements Prey,Predator{
 4. **When Abstract Class:** When we have lots of subclasses having the same functionalities and same types of fields. (having "is a" relationship)
 
 5. **When Interface:** When we have lots of unrelated classes want to do a certain thing, we can declare that method in an interface and these classes can then implement the interface to override that method to do that certain thing.
+
+-------------
+
+-------------
+
+# Example of a class which implements multiple interface and extends from a super class
+
+```java
+// Superclass
+class Animal {
+    void makeSound() {
+        System.out.println("Some generic animal sound");
+    }
+}
+
+// First interface
+interface Walks {
+    void walk();
+}
+
+// Second interface
+interface Swims {
+    void swim();
+}
+
+// Class implementing multiple interfaces and extending a superclass
+class Dog extends Animal implements Walks, Swims {
+    @Override
+    void makeSound() {
+        System.out.println("Bark! Bark!");
+    }
+
+    @Override
+    public void walk() {
+        System.out.println("Dog is walking");
+    }
+
+    @Override
+    public void swim() {
+        System.out.println("Dog is swimming");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance of Dog
+        Dog myDog = new Dog();
+
+        // Call methods from the superclass and interfaces
+        myDog.makeSound();
+        myDog.walk();
+        myDog.swim();
+    }
+}
+```
+
+# Spring Boot
+
+* API
+
+* REST API
+
+* RESTful services
+
+* different Annotations
+
+* difference between patch and put
+
+* 
