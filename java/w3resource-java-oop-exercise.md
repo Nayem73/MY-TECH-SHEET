@@ -721,3 +721,49 @@ class DepositOperation implements AccountOperation {
 Both approaches are valid, and the choice depends on the specific requirements and design goals of your application. If you anticipate having various operations that involve different objects, the modified code's approach might offer more flexibility and scalability. If your operations are more tightly coupled to specific objects, the approach in your code may be appropriate.
 
 ------
+
+# Q.9: Write a Java program to create a class called "Employee" with a name, salary, and hire date attributes, and a method to calculate years of service.
+
+```java
+package com.nayemtech;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        LocalDateTime hireDate = LocalDateTime.of(2017, 12, 30, 2, 30);
+        Employee Karim = new Employee("Karim", 50000, hireDate);
+        System.out.println(Karim.calculateYearsOfService());
+    }
+} 
+
+package com.nayemtech;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
+
+public class Employee {
+    private String name;
+    private double salary;
+    private LocalDateTime hireDate;
+
+    public Employee(String name, double salary, LocalDateTime hireDate) {
+        this.name = name;
+        this.salary = salary;
+        this.hireDate = hireDate;
+    }
+    public long calculateYearsOfService() {
+        LocalDateTime curTime = LocalDateTime.now();
+        Duration duration = Duration.between(hireDate, curTime);
+        return duration.toDays()/365;
+    }
+}
+
+```
+
+--------

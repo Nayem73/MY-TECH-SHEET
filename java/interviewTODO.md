@@ -227,4 +227,14 @@ public class Main {
 * Inner classes are not visible outside of their containing class, which can limit their reuse in other parts of the code.
 36. Tightly coupled vs losely coupled. When is a code tightly coupled? What happens when tightly coupled? ************
 
-37. 
+37. Palindrome problems
+
+38. # Validating Indian vehicle number plate using Regular Expression
+
+39. Design database schema like japanese e commerce ******
+
+40. nested class nie ektu interview question ghataghati kora lagbe ****
+
+41. nested method? ****
+
+42. 
