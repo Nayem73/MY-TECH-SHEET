@@ -75,6 +75,7 @@
 ![](assets/2024-01-05-18-43-48-image.png)
 
 8. [In Java, there are three main types of variables: instance variables, local variables, and static variables](https://learnjava.co.in/what-is-the-difference-between-a-local-instance-and-static-variable-in-java/)[1](https://learnjava.co.in/what-is-the-difference-between-a-local-instance-and-static-variable-in-java/)[2](https://www.geeksforgeeks.org/difference-between-instance-variable-and-local-variable/)[3](https://stackoverflow.com/questions/21204589/static-vs-instance-variables-difference)[4](https://www.javatpoint.com/java-variables)[5](https://www.onlinetutorialspoint.com/java/java-variable-types.html).
+   
    1. [**Instance Variables**: These are declared within a class but outside any method, constructor, or block](https://www.geeksforgeeks.org/difference-between-instance-variable-and-local-variable/)[2](https://www.geeksforgeeks.org/difference-between-instance-variable-and-local-variable/). [They are created when an object is instantiated and are accessible to all constructors, methods, or blocks in the class](https://www.geeksforgeeks.org/difference-between-instance-variable-and-local-variable/)[2](https://www.geeksforgeeks.org/difference-between-instance-variable-and-local-variable/). [Each object will have its own copy of the instance variable](https://www.geeksforgeeks.org/difference-between-instance-variable-and-local-variable/)[2](https://www.geeksforgeeks.org/difference-between-instance-variable-and-local-variable/). [If not initialized, they are given a default value based on their data type](https://learnjava.co.in/what-is-the-difference-between-a-local-instance-and-static-variable-in-java/)[2](https://www.geeksforgeeks.org/difference-between-instance-variable-and-local-variable/).
    
    ```java
@@ -98,5 +99,37 @@
        static int carCount; // Static variable
    }
    ```
-   
-   [In summary, instance variables are tied to specific instances of a class, local variables are tied to the execution of a method, and static variables are tied to the class itself](https://learnjava.co.in/what-is-the-difference-between-a-local-instance-and-static-variable-in-java/)[1](https://learnjava.co.in/what-is-the-difference-between-a-local-instance-and-static-variable-in-java/)[2](https://www.geeksforgeeks.org/difference-between-instance-variable-and-local-variable/)[3](https://stackoverflow.com/questions/21204589/static-vs-instance-variables-difference)[4](https://www.javatpoint.com/java-variables)[5](https://www.onlinetutorialspoint.com/java/java-variable-types.html).
+
+9. Can we declare `final` variable without initialization?
+
+10. **instance block:** whenever an object is created, the instance block also gets executed. you declare final variable like this. you must instantiate it by an instance block or constructor.
+* ![](assets/2024-01-05-19-17-30-image.png)
+11. **static block:** ![](assets/2024-01-05-19-21-30-image.png)
+
+12. ![](assets/2024-01-05-20-18-16-image.png)
+
+13. ![](assets/2024-01-05-20-21-14-image.png)
+
+14. Constructors can be private!!!
+    
+    * ![](assets/2024-01-05-20-24-26-image.png)
+    
+    * so, if we define constructor as private and we want to create objects, the only way we can do that is create a method inside that class itself and call that method to creat objects from outside world.
+
+15. ![](assets/2024-01-05-20-30-15-image.png)
+
+16. ![](assets/2024-01-05-20-32-02-image.png)
+    
+    * Here, Addition is the Class name and that's how we call the get static method directly by the Class name itself.
+
+17. ![](assets/2024-01-05-20-34-25-image.png)
+
+18. ![](assets/2024-01-05-20-35-32-image.png)
+
+19. ![](assets/2024-01-05-20-37-14-image.png)
+    
+    -------
+    
+    -------
+
+20. 

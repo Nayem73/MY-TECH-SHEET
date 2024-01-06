@@ -314,6 +314,8 @@ This Java example mirrors the Python example but provides a more detailed explan
 
 # Interface
 
+![](assets/2024-01-05-20-37-37-image.png)
+
 - Interface defines the specifications or contract on how a class should act.
 
 - A subclass can not have two superclasses in java. It can only be done through interface. 
