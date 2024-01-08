@@ -53,9 +53,212 @@ public class Main {
 }
 ```
 
-# 2. Map
+# 
+
+# 2. Set
+
+Sure, here is the equivalent Java code for your C++ code:
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        TreeSet<Integer> st = new TreeSet<>();
+        st.add(5);
+        st.add(3);
+        st.add(5);
+        st.add(2);
+
+        for (Integer X : st) {
+            System.out.println(X);
+        }
+
+        System.out.println();
+
+        if (st.contains(3)) {
+            st.remove(3);
+        }
+
+        for (Integer X : st) {
+            System.out.println(X);
+        }
+        System.out.println();
+
+        Integer it = st.ceiling(3);
+        if (it != null) {
+            System.out.println(it);
+        }
+
+        it = st.higher(2);
+        if (it != null) {
+            System.out.println(it);
+        }
+
+        it = st.higher(it);
+        if (it != null) {
+            System.out.println(it);
+        }
+    }
+}
+```
+
+This Java code does the same thing as your C++ code. It creates a `TreeSet`, adds elements to it, and then iterates over the set, printing each element. If the element `3` exists in the set, it removes it. Then it prints the remaining elements in the set. It then finds and prints the smallest element in the set that is greater than or equal to `3`, the smallest element that is strictly greater than `2`, and the next smallest element after that. Note that unlike C++, Java uses `System.out.println` for console output. Also, Java doesn’t have an equivalent to C++'s `set`, so we use a `TreeSet` instead. The `add` method is used to add an element to the set. In Java, sets automatically remove duplicate elements, so adding `5` twice only adds one element to the set. This is the same behavior as in C++. The `TreeSet` class in Java ensures that the elements in the set are sorted, which is also the default behavior of `set` in C++. The `for` loop in Java is equivalent to the range-based `for` loop in C++. The `:` operator in Java is equivalent to the `:` operator in C++, and is used to iterate over each element in a collection. The `contains` method is used to check if an element exists in the set, and the `remove` method is used to remove an element from the set. The `ceiling` method is used to find the smallest element in the set that is greater than or equal to a given element, and the `higher` method is used to find the smallest element in the set that is strictly greater than a given element.
+
+
+
+# 3. Multiset
+
+Sure, here is the equivalent Java code for your C++ code:
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        TreeMap<Integer, Integer> st = new TreeMap<>();
+        st.put(5, st.getOrDefault(5, 0) + 1);
+        st.put(3, st.getOrDefault(3, 0) + 1);
+        st.put(5, st.getOrDefault(5, 0) + 1);
+        st.put(2, st.getOrDefault(2, 0) + 1);
+
+        for (Map.Entry<Integer, Integer> X : st.entrySet()) {
+            for (int i = 0; i < X.getValue(); i++) {
+                System.out.println(X.getKey());
+            }
+        }
+
+        System.out.println();
+
+        if (st.containsKey(3)) {
+            int count = st.get(3);
+            if (count > 1) {
+                st.put(3, count - 1);
+            } else {
+                st.remove(3);
+            }
+        }
+
+        for (Map.Entry<Integer, Integer> X : st.entrySet()) {
+            for (int i = 0; i < X.getValue(); i++) {
+                System.out.println(X.getKey());
+            }
+        }
+        System.out.println();
+
+        Integer it = st.ceilingKey(3);
+        if (it != null) {
+            System.out.println(it);
+        }
+
+        it = st.higherKey(2);
+        if (it != null) {
+            System.out.println(it);
+        }
+
+        it = st.higherKey(it);
+        if (it != null) {
+            System.out.println(it);
+        }
+    }
+}
+```
+
+This Java code does the same thing as your C++ code. It creates a `TreeMap`, adds elements to it, and then iterates over the map, printing each key the number of times it appears in the map. If the key `3` exists in the map, it decreases its count by one or removes it if its count is one. Then it prints the remaining keys in the map the number of times they appear in the map. It then finds and prints the smallest key in the map that is greater than or equal to `3`, the smallest key that is strictly greater than `2`, and the next smallest key after that. Note that unlike C++, Java uses `System.out.println` for console output. Also, Java doesn’t have an equivalent to C++'s `multiset`, so we use a `TreeMap` where each key maps to its count. The `put` method is used to add a key to the map or update its count. The `getOrDefault` method is used to get the count of a key or a default value if the key does not exist in the map. The `containsKey` method is used to check if a key exists in the map, and the `remove` method is used to remove a key from the map. The `ceilingKey` method is used to find the smallest key in the map that is greater than or equal to a given key, and the `higherKey` method is used to find the smallest key in the map that is strictly greater than a given key.
+
+
+
+# 4. Map
 
  In Java, you can’t use primitive types as generic arguments So, instead of `Map<int, int>`, you should use `Map<Integer, Integer>`.
+
+
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Map<Integer, Integer> mp = new HashMap<>();
+        mp.put(3, 100);
+        mp.put(4, 200);
+
+        for (Map.Entry<Integer, Integer> X : mp.entrySet()) {
+            System.out.println(X.getKey() + " " + X.getValue());
+        }
+
+        if (mp.containsKey(4)) {
+            mp.remove(4);
+        }
+
+        System.out.println();
+        for (Map.Entry<Integer, Integer> X : mp.entrySet()) {
+            System.out.println(X.getKey() + " " + X.getValue());
+        }
+    }
+}
+
+```
+
+# 
+
+# 5. Multimap not available in Java
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        TreeMap<Integer, List<Integer>> mp = new TreeMap<>();
+        mp.putIfAbsent(3, new ArrayList<>());
+        mp.get(3).add(200);
+        mp.putIfAbsent(4, new ArrayList<>());
+        mp.get(4).add(200);
+        mp.putIfAbsent(0, new ArrayList<>());
+        mp.get(0).add(100);
+        mp.get(4).add(80);
+
+        for (Map.Entry<Integer, List<Integer>> X : mp.entrySet()) {
+            for (Integer value : X.getValue()) {
+                System.out.println(X.getKey() + " " + value);
+            }
+        }
+
+        if (mp.containsKey(4)) {
+            mp.remove(4);
+        }
+
+        System.out.println();
+        for (Map.Entry<Integer, List<Integer>> X : mp.entrySet()) {
+            for (Integer value : X.getValue()) {
+                System.out.println(X.getKey() + " " + value);
+            }
+        }
+    }
+}
+
+```
+
+
+
+------------------------
+
+-----------------------------
+
+# binary search in java
+
+```java
+ List<Integer> store = new ArrayList<>(Arrays.asList(3,1,-4,0,-9,4,3,9,-4,0,3,7,7,5,3,2,8));
+        Collections.sort(store);
+        System.out.println(store);
+
+        int startDistance = Collections.binarySearch(store, 3);
+        System.out.println("startDistance " + startDistance);
+```
+
+
+
+
 
 # *. Print paragraphs which includes newline:
 
@@ -604,7 +807,58 @@ while (listIterator.hasNext()) {
 
 These examples cover a range of common operations you can perform with a `List` in Java. Keep in mind that there are multiple implementations of the `List` interface in Java, such as `ArrayList`, `LinkedList`, and `Vector`. The choice of implementation depends on the specific requirements of your application.
 
-# Pair
+# Pair and custom sort with cmp
+
+Sure, here is the equivalent Java code for your C++ code:
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Pair> store = new ArrayList<>();
+        store.add(new Pair(2,1));
+        store.add(new Pair(22,11));
+        store.add(new Pair(19,12));
+        store.add(new Pair(13,122));
+        store.add(new Pair(211,-10));
+        store.add(new Pair(4,0));
+        store.add(new Pair(-4,9));
+
+        Collections.sort(store, new PairComparator());
+
+        for (Pair X: store) {
+            System.out.println(X.first + " " + X.second);
+        }
+    }
+}
+
+class Pair {
+    int first;
+    int second;
+
+    Pair(int first, int second) {
+        this.first = first;
+        this.second = second;
+    }
+}
+
+class PairComparator implements Comparator<Pair> {
+    public int compare(Pair a, Pair b) {
+        return b.second - a.second;
+    }
+}
+```
+
+In this Java code, I’ve created a `Pair` class to represent the `pair<int,int>` from your C++ code. The `PairComparator` class is used to sort the `Pair` objects in the `store` list based on their `second` values in descending order, which is equivalent to the `cmp` function in your C++ code. The `Collections.sort` method is used to sort the list. The `System.out.println` method is used to print the `first` and `second` values of each `Pair` in the list, which is equivalent to the `cout` statement in your C++ code. The `add` method is used to add `Pair` objects to the `store` list, which is equivalent to the `push_back` method in your C++ code. I hope this helps! Let me know if you have any other questions.
+
+
+
+-------
+
+-----
+
+
 
 ```java
 import java.util.ArrayList;

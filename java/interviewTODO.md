@@ -240,3 +240,5 @@ public class Main {
 42. review some spring boot interview questions.
 
 43. amar ideone er code gulo
+
+44. java literals

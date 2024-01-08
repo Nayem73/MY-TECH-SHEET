@@ -132,4 +132,77 @@
     
     -------
 
-20. 
+20. constructor calling must be the first statement inside the constructor/method.
+
+21. for example, `this()` calls the default constructor and `super()` calls the parent class of current subclass.
+
+22. below:
+
+```java
+package com.nayemtech;
+public class Main {
+    public static void main(String[] args) {
+        // Creating an instance of the Bird interface using an anonymous class
+        Bird bird = new Bird() {
+            @Override
+            public void chirp() {
+                System.out.println("This is from Bird interface");
+            }
+        };
+
+        bird.chirp(); // Calling the chirp method on the Bird instance
+
+        // Creating an instance of the Animal abstract class using an anonymous class
+        Animal animal = new Animal() {
+            @Override
+            public void roar() {
+                System.out.println("This is from Animal abstract class");
+            }
+
+            @Override
+            public void fly() { //must implement all the abstract methods
+
+            }
+        };
+
+        animal.roar(); // Calling the roar method on the Animal instance
+        System.out.println(animal.eat()); //wow works!!! eat() is not an abstract method and
+                //I did not override it intside the anonymous class above but it
+                //still can be invoked just like Animal being a normal class
+    }
+}
+
+
+
+package com.nayemtech;
+public interface Bird {
+    void chirp();
+}
+
+
+package com.nayemtech;
+public abstract class Animal {
+    private boolean isHunting;
+    private String name;
+
+    public abstract void roar();
+    public void notRoaring() {
+        System.out.println("Animals that don't roar!");
+    }
+    public abstract void fly();
+    public String eat() {
+        return "Grass";
+    }
+}
+```
+
+* Here, you are creating an instance of the `Bird` interface using the `new Bird() {...}` syntax. The code inside the curly braces represents the anonymous class that implements the `Bird` interface.
+23. if we extend an abstract class or implement an interface, we must either override the abstract methods or make the subclass also an abstract class or an interface that `extends` the parent interface. this is called **Layered Abstraction** . We need **Layered Abstraction** because, there can be a case : abstract bird lays eggs -> abstract eggs has protein -> abstract protein is good for health -> concrete class human eats it.
+
+24.    In Java, you cannot declare a field as `abstract`. The `abstract` keyword is used for methods and classes, not for fields.
+
+25. Association and it's forms -> Composition and segregation:
+
+26. compile time polymorphism or early binding = method overloading
+
+27. Runtime polymorphism or late binding = method overriding.
