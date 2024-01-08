@@ -30,4 +30,4 @@
     - a few basic questions on networking.
     - basics of operating systems.
 
-12. 
+12. detecting two different given format of telephone numbers.
