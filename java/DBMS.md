@@ -4,19 +4,13 @@
 
 ![](assets/2024-01-08-11-32-22-image.png)
 
-
-
 2. if somebody didn't enter a major, instead of that field being left as NULL, it will be filled `undecided` by default because of `default` keyword
 
 ![](assets/2024-01-08-11-36-38-image.png)
 
-
-
 3. Auto increment the primary key instead of manually putting it in everytime creating a row.
 
 ![](assets/2024-01-08-11-39-10-image.png)
-
-
 
 4. update a specific column with update keyword:
 
@@ -26,13 +20,9 @@
 
 ![](assets/2024-01-08-11-46-36-image.png)
 
-
-
 * If I don't use a condition whith `where` keyword, all the rows will be affected:
 
 ![](assets/2024-01-08-11-47-45-image.png)
-
-
 
 5. Delete Row
 
@@ -44,13 +34,11 @@
 
 ![](assets/2024-01-08-11-51-11-image.png)
 
-
-
 # Query
 
 1. ![](assets/2024-01-08-12-06-48-image.png)
 
-2.   ![](assets/2024-01-08-12-07-37-image.png)
+2. ![](assets/2024-01-08-12-07-37-image.png)
 
 3. ![](assets/2024-01-08-12-08-21-image.png)
 
@@ -75,8 +63,6 @@
 ![](assets/2024-01-08-12-13-44-image.png)
 
 ![](assets/2024-01-08-12-14-06-image.png)
-
-
 
 # Query with filtering
 
@@ -106,8 +92,6 @@
 
 ![](assets/2024-01-08-12-21-03-image.png)
 
-
-
 # Company database (Relational Database) :
 
 composite key: multiple primary key is necessary because. For example, only marks may not uniquely identify each row, you might need a username too.
@@ -115,8 +99,6 @@ composite key: multiple primary key is necessary because. For example, only mark
 or,
 
 emp_id sold 500,000 worth of product to client_id. in this case, we need emp_id and client_id both as primary key because both needs to match with each other for their sales info.(how much emp x sold to client y)
-
-
 
 1. ![](assets/2024-01-08-14-50-06-image.png)
 
@@ -136,10 +118,6 @@ emp_id sold 500,000 worth of product to client_id. in this case, we need emp_id 
 
 ![](assets/2024-01-08-14-57-33-image.png)
 
-
-
-
-
 # SQL Functions
 
 1. Count()
@@ -150,21 +128,15 @@ emp_id sold 500,000 worth of product to client_id. in this case, we need emp_id 
 
 ![](assets/2024-01-08-15-01-34-image.png)
 
-
-
 2. AVG()
 
 ![](assets/2024-01-08-15-03-06-image.png)
 
 ![](assets/2024-01-08-15-03-32-image.png)
 
-
-
 3. SUM()
 
 ![](assets/2024-01-08-15-04-15-image.png)
-
-
 
 # Aggregation:
 
@@ -178,13 +150,9 @@ emp_id sold 500,000 worth of product to client_id. in this case, we need emp_id 
 
 ![](assets/2024-01-08-15-08-50-image.png)
 
-
-
 * How much each client spent:
 
 ![](assets/2024-01-08-15-09-43-image.png)
-
-
 
 # WildCards
 
@@ -200,8 +168,69 @@ emp_id sold 500,000 worth of product to client_id. in this case, we need emp_id 
 
 ![](assets/2024-01-08-18-04-04-image.png)
 
-
-
 # Union
+
+rule 1: you need to have the same number of columns in each select statement for Union to work. in below example, we select one column from first select statment and also same for the second select statement
+
+![](assets/2024-01-09-15-17-20-image.png)
+
+* below code will show error because it does not satisfy rule 1 for UNION to work
+
+![](assets/2024-01-09-15-18-04-image.png)
+
+
+
+Rule 2: they need to have similar data types. in above example, first name from first select statement and branch name from second select statements are both strings so they work
+
+
+
+Example of 3 select statements with 2 unions:
+
+![](assets/2024-01-09-15-19-49-image.png)
+
+* the column name of all these union operations is showing as first_name but because that's the first select statment. so let's change it:
+
+![](assets/2024-01-09-15-21-26-image.png)
+
+Another Example:
+
+![](assets/2024-01-09-15-22-45-image.png)
+
+make it more readable by adding the prefix of table name in front:
+
+![](assets/2024-01-09-15-24-00-image.png)
+
+* another example:
+
+![](assets/2024-01-09-15-24-42-image.png)
+
+
+
+# Join
+
+* Join is used to combine rows from two or more tables, based on the related column.
+
+* for example, employee_id from Employee table and manager_id from Branch table.
+
+![](assets/2024-01-09-15-33-54-image.png)
+
+* There are 4 types of join: 
+1. Inner join: the one we performed above.
+
+2. Left Join: Includes all the fields from the left table even some of them are not present in the right table. (those not present in the right table will show null):
+
+![](assets/2024-01-09-15-37-51-image.png)
+
+3. Right join is opposite of Left join:
+
+![](assets/2024-01-09-15-39-58-image.png)
+
+4. Full join (no supported in mySQL): left join + right join
+
+![](https://learnsql.com/blog/learn-and-practice-sql-joins/2.png)
+
+
+
+# Nested Queries
 
 

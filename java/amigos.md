@@ -1964,3 +1964,205 @@ Now, in order to expose this method as a rest endpoint for clients to use as Get
 ![](assets/2024-01-02-15-59-25-image.png)
 
 ![](assets/2024-01-02-16-01-00-image.png)
+
+* So, when we mark a class with `@RestController`, then we'll be able to have methods within it, that we can expose as REST Endpoint to create API's
+
+* instead of Returning a String, return a class or something for it to be shown as JSON . Below code returns Json
+
+```java
+package com.nayemtech.javamasterclass;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@SpringBootApplication
+@RestController
+public class JavamasterclassApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(JavamasterclassApplication.class, args);
+	}
+
+	@GetMapping("/")
+	public Map<String, String> greet() {
+		Map<String, String> response = new HashMap<>();
+		 response.put("message", "Hello");
+		 return response;
+	}
+}
+
+
+```
+
+* Below Record also returns Json:
+
+```java
+package com.nayemtech.javamasterclass;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@SpringBootApplication
+@RestController
+public class JavamasterclassApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(JavamasterclassApplication.class, args);
+	}
+
+	@GetMapping("/")
+	public greetResponse greet() {
+		return new greetResponse("Hello from record greetResponse, return type = record name");
+	}
+	
+	public record greetResponse(String helloMessage) {}
+}
+
+```
+
+* Record in java:
+
+[A **Record** in Java is a special type of class introduced in Java 14 as a preview feature and finalized in Java 16](https://howtodoinjava.com/java/java-record-type/)[1](https://howtodoinjava.com/java/java-record-type/). [Its primary purpose is to act as a transparent carrier for immutable data](https://howtodoinjava.com/java/java-record-type/)[1](https://howtodoinjava.com/java/java-record-type/). [Records are intended to be used in places where a class is created only to act as a plain data carrier](https://howtodoinjava.com/java/java-record-type/)[1](https://howtodoinjava.com/java/java-record-type/).
+
+Here’s an example of a Record in Java:
+
+```java
+public record Employee(Long id, String firstName, String lastName, String email, int age) { }
+```
+
+[In the above example, `Employee` is a record type and is used to hold employee information](https://howtodoinjava.com/java/java-record-type/)[1](https://howtodoinjava.com/java/java-record-type/). When we create an `Employee` record, the compiler generates the following:
+
+1. An all-arguments constructor accepting all fields.
+2. The `toString()` method that prints the state/values of all fields in the record.
+3. The `equals()` and `hashCode()` methods using an invokedynamic based mechanism.
+4. Getter methods whose names are similar to field names without the usual POJO/JavaBean `get` prefix i.e. `id()`, `firstName()`, `lastName()`, `email()`, and `age()`.
+5. The class extends `java.lang.Record`, which is the base class for all records. [It means a record cannot extend other classes](https://howtodoinjava.com/java/java-record-type/)[1](https://howtodoinjava.com/java/java-record-type/).
+
+[The important difference between a class and a record is that a record aims to eliminate all the boilerplate code needed to set and get the data from the instance](https://howtodoinjava.com/java/java-record-type/)[1](https://howtodoinjava.com/java/java-record-type/). [Records transfer this responsibility to the Java compiler, which generates the constructor, field getters, `hashCode()`, `equals()`, and `toString()` methods](https://howtodoinjava.com/java/java-record-type/)[1](https://howtodoinjava.com/java/java-record-type/).
+
+[Records are a great way to reduce boilerplate code and make your Java applications more concise and efficient](https://howtodoinjava.com/java/java-record-type/)[2](https://medium.com/@dsforgood/exploring-the-java-records-with-example-237cff17873b).
+
+
+
+* If we were to create a class insteas of record in above example with same functionality: here, if we were to remove the getter method, we will see a whitelabel page error. So the getter Method is responsible for us to get the string greetMessage in order for us to get the value that we set within the constructor.
+
+```java
+package com.nayemtech.javamasterclass;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@SpringBootApplication
+@RestController
+public class JavamasterclassApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(JavamasterclassApplication.class, args);
+	}
+
+	@GetMapping("/")
+	public greetResponse greet() {
+		return new greetResponse("Hello from record greetResponse, return type = record name");
+	}
+
+	public class greetResponse {
+		private String greetMessage;
+
+		public greetResponse(String greetMessage) {
+			this.greetMessage = greetMessage;
+		}
+
+		public String getGreetMessage() {
+			return greetMessage;
+		}
+	}
+}
+
+```
+
+* The reason why we can get the Json response from above `greetResponse` class is because of a library called `jackson`. We can find it within the External Libraries dropdown list in intellij
+
+* jackson is known as json for java. In order know json serialization and deserialization visit their github and know more
+
+
+
+# Json:
+
+* Json = Javascript object Notation
+
+![](assets/2024-01-09-07-28-37-image.png)
+
+* How to denote various datatype in Json. inside square brackets are objects/strings. Third brackets are array.
+
+![](assets/2024-01-09-07-29-32-image.png)
+
+
+
+# two other dataTypes when taking your java objects to JSON.
+
+1. Object and Objects within Object
+
+2. Array
+
+
+
+
+
+# Http
+
+![](assets/2024-01-09-07-46-51-image.png)
+
+![](assets/2024-01-09-07-48-32-image.png)
+
+
+
+* in below diagram: W've got clients(with the mobile app or chrome browser) -> clients, they perform HTTP requests(Get, Post, Put, Delete) -> These HTTP requests go across the internet -> to the server -> the server process the request that comes from the client -> then it sends back the response (so the response is what exactly the client has requested.(pic/video/doc/webpage etc) -> then the picture(requested file) is viewed in the webpage
+
+
+
+* So, Http is basically the client-server communicating over the internet
+
+
+
+# http vs https
+
+* https means the connection between client and server is encrypted (handshake and stuff)
+
+
+
+# API vs REST API
+
+* An API is a set of rules for software interaction, while a REST API is a type of API that follows REST principles and is typically used for web services.
+
+* REST uses functions like GET, POST, PUT, DELETE
+
+* ![](assets/2024-01-09-08-33-07-image.png)
+
+* [“REST Principles” refer to the six guiding principles or constraints of the RESTful architecture](https://restfulapi.net/)[1](https://restfulapi.net/)[2](https://www.ibm.com/topics/rest-apis):
+  
+  1. [**Uniform Interface**: The interface must uniquely identify each resource involved in the interaction between the client and the server](https://restfulapi.net/)[1](https://restfulapi.net/). [It should have uniform representations in the server response](https://restfulapi.net/)[1](https://restfulapi.net/). [Each resource representation should carry enough information to describe how to process the message](https://restfulapi.net/)[1](https://restfulapi.net/).
+  2. [**Client-Server**: This design pattern enforces the separation of concerns, which helps the client and the server components evolve independently](https://restfulapi.net/)[1](https://restfulapi.net/).
+  3. [**Statelessness**: Each request from client to server must contain all the information needed to understand and process the request](https://restfulapi.net/)[1](https://restfulapi.net/)[2](https://www.ibm.com/topics/rest-apis). [It means that the server does not store any data related to a client request](https://www.ibm.com/topics/rest-apis)[2](https://www.ibm.com/topics/rest-apis).
+  4. [**Cacheable**: Resources should be cacheable on the client or server side](https://www.ibm.com/topics/rest-apis)[2](https://www.ibm.com/topics/rest-apis). [Server responses also need to contain information about whether caching is allowed for the delivered resource](https://www.ibm.com/topics/rest-apis)[2](https://www.ibm.com/topics/rest-apis).
+  5. [**Layered System**: The calls and responses go through different layers](https://www.ibm.com/topics/rest-apis)[2](https://www.ibm.com/topics/rest-apis). [Neither the client nor the server can tell whether it communicates with the end application or an intermediary](https://www.ibm.com/topics/rest-apis)[2](https://www.ibm.com/topics/rest-apis).
+  6. [**Code on Demand**: In certain cases, responses can also contain executable code](https://www.ibm.com/topics/rest-apis)[2](https://www.ibm.com/topics/rest-apis).
+  
+  [These principles help you design and implement RESTful APIs](https://restfulapi.net/)[1](https://restfulapi.net/)[2](https://www.ibm.com/topics/rest-apis).

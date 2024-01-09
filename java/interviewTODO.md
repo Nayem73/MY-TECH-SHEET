@@ -2,31 +2,33 @@
 
 2. what is std:: in C++?
 
-3. I know stuff like static keyword, when to use and not to use, but I better learn some characteristics (for example, you can call that static method from any other class without creating any instance) - review such characteristics for other java and oop stuffs
+3. namespace n C++
 
-4. LinkedList
+4. I know stuff like static keyword, when to use and not to use, but I better learn some characteristics (for example, you can call that static method from any other class without creating any instance) - review such characteristics for other java and oop stuffs
 
-5. SDLC
+5. LinkedList
 
-6. bitwise operators
+6. SDLC
 
-7. Heap
+7. bitwise operators
 
-8. file read/write
+8. Heap
 
-9. why software engineer?
+9. file read/write
 
-10. what is backwards compatibility api or code? (amigoscode: interface with default keyword and then override the method of default keyword in the implemented classes if necessary)
+10. why software engineer?
 
-11. singly/ single directional linked list reverse order e print korte hobe konorokom data structure chara.
+11. what is backwards compatibility api or code? (amigoscode: interface with default keyword and then override the method of default keyword in the implemented classes if necessary)
 
-12. LinkedList **************
+12. singly/ single directional linked list reverse order e print korte hobe konorokom data structure chara.
 
-13. include namespace std; and :: operator
+13. LinkedList **************
 
-14. pass by reference and pass by value in both java and C++
+14. include namespace std; and :: operator
 
-15. OOP
+15. pass by reference and pass by value in both java and C++
+
+16. OOP
     
     * Difference Between Interface and class?
     
@@ -38,23 +40,23 @@
     
     * polymorphism er ekta practical example deo.
 
-16. Backend developer er ekta API call er whole lifecycle ta jana uchit. serokom ekta frontend/js developer er bolte hobe, js browser e kivabe run hoy? process ta ki?
+17. Backend developer er ekta API call er whole lifecycle ta jana uchit. serokom ekta frontend/js developer er bolte hobe, js browser e kivabe run hoy? process ta ki?
 
-17. probability
+18. probability
 
-18. world e jokhon kono technology ashe, kono kisu solve korar jonnoi. so what problem react solved after it arrived?
+19. world e jokhon kono technology ashe, kono kisu solve korar jonnoi. so what problem react solved after it arrived?
 
-19. why java then why spring boot?
+20. why java then why spring boot?
 
-20. why backend web development? why not mobile app or frontend or database etc.
+21. why backend web development? why not mobile app or frontend or database etc.
 
-21. company somporke search, company'r product somporke jana and linkedin e employee background check and kaoke jigges kora and reference if possible... company'r culture and company'r future nie idea.
+22. company somporke search, company'r product somporke jana and linkedin e employee background check and kaoke jigges kora and reference if possible... company'r culture and company'r future nie idea.
 
-22. sdlc ta rakute e kivabe manage korba? --- rakuten e waterfall follow kore.
+23. sdlc ta rakute e kivabe manage korba? --- rakuten e waterfall follow kore.
 
-23. put and patch er difference ki! put/patch etc er request status code, 
+24. put and patch er difference ki! put/patch etc er request status code, 
 
-24. implement that list from this video https://youtu.be/Af3s3KsxStY?list=PL_c9BZzLwBRLW7Kw8bqc_PJqAnjCJI63P
+25. implement that list from this video https://youtu.be/Af3s3KsxStY?list=PL_c9BZzLwBRLW7Kw8bqc_PJqAnjCJI63P
 
 ```java
 ArrayList<User> users = new ArrayList<User>();
@@ -242,3 +244,5 @@ public class Main {
 43. amar ideone er code gulo
 
 44. java literals
+
+45. sort a linked list
