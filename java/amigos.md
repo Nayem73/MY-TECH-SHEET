@@ -118,6 +118,14 @@ public class Person {
 }
 ```
 
+# Use cases of Static:
+
+1. count number of objects crated through constructor.
+
+2. declare constants/final variables as static as constans will remain the same throughout all the instances created of that class.
+
+3. some characteristics that is same for all the instances of the class, for example, mathematical operations, like the Math.pi, Math.Pow, Math.Max etc.
+
 # public static void main
 
 *<u>the reason why the main method is static is that JVM doesn't need to create a new instance of Main class in order to invoke the main method.</u>*
@@ -926,6 +934,60 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
 
 6. Solid Principles: A class should be closed for modification but open for extension. an Abstract class helps in this regard because it helps avoid code duplication and increase reusability. The purpose is, we can have the class to act as a base for the subclasses. And then we can Encapsulate some common functionalities in one place and let the sub classes implement differences. This is Solid in action
 
+# SOLID principles
+
+3. Liskov Substitution Principle: Liskov’s Substitution Principle prescribes that you can replace an object with an instance of its subtype without corrupting the program. Practically, you can replace a class with its subclass and Java’s inheritance mechanism follows this principle
+
+Sure, let’s consider an example to illustrate the Liskov Substitution Principle (LSP):
+
+Suppose we have a superclass `Bird` and two subclasses `Duck` and `Ostrich`. According to LSP, wherever a `Bird` object is expected, we should be able to use an object of either `Duck` or `Ostrich` without any issues.
+
+```java
+class Bird {
+    void fly() {
+        System.out.println("I can fly");
+    }
+}
+
+class Duck extends Bird {
+    // Duck can also fly, so no issues here
+}
+
+class Ostrich extends Bird {
+    // Ostrich can't fly, so we have to override the fly method
+    @Override
+    void fly() {
+        throw new UnsupportedOperationException("Can't fly");
+    }
+}
+```
+
+In this case, if we have a method that takes a `Bird` object and calls its `fly` method, it will work fine with a `Duck` object but will fail with an `Ostrich` object. This violates the Liskov Substitution Principle because we can’t substitute a `Bird` object with an `Ostrich` object without altering the correctness of the program.
+
+To correct this, we could refactor our classes to ensure that we’re not making assumptions about behavior that isn’t guaranteed by the superclass.
+
+```java
+class Bird {
+    // No assumptions about flying here
+}
+
+class FlyingBird extends Bird {
+    void fly() {
+        System.out.println("I can fly");
+    }
+}
+
+class Duck extends FlyingBird {
+    // Duck can fly, so it extends FlyingBird
+}
+
+class Ostrich extends Bird {
+    // Ostrich can't fly, so it extends Bird
+}
+```
+
+Now, wherever a `FlyingBird` is expected, we can substitute it with a `Duck`, and wherever a `Bird` is expected, we can substitute it with an `Ostrich` or a `Duck`. This adheres to the Liskov Substitution Principle.
+
 # Interface
 
 1. interface allows us to achieve polymorphism.
@@ -993,6 +1055,10 @@ Assalamualaikum vai kemon asen? Ami Nayem Mehedi from Pabna University of Scienc
 # Data structures
 
 * Data structures allows us to store, organize and manipulate data.
+
+![](assets/2024-01-10-09-01-07-image.png)
+
+![](assets/2024-01-10-09-31-14-image.png)
 
 # 1. Array and String
 
@@ -1985,19 +2051,17 @@ import java.util.Map;
 @RestController
 public class JavamasterclassApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavamasterclassApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(JavamasterclassApplication.class, args);
+    }
 
-	@GetMapping("/")
-	public Map<String, String> greet() {
-		Map<String, String> response = new HashMap<>();
-		 response.put("message", "Hello");
-		 return response;
-	}
+    @GetMapping("/")
+    public Map<String, String> greet() {
+        Map<String, String> response = new HashMap<>();
+         response.put("message", "Hello");
+         return response;
+    }
 }
-
-
 ```
 
 * Below Record also returns Json:
@@ -2018,18 +2082,17 @@ import java.util.Map;
 @RestController
 public class JavamasterclassApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavamasterclassApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(JavamasterclassApplication.class, args);
+    }
 
-	@GetMapping("/")
-	public greetResponse greet() {
-		return new greetResponse("Hello from record greetResponse, return type = record name");
-	}
-	
-	public record greetResponse(String helloMessage) {}
+    @GetMapping("/")
+    public greetResponse greet() {
+        return new greetResponse("Hello from record greetResponse, return type = record name");
+    }
+
+    public record greetResponse(String helloMessage) {}
 }
-
 ```
 
 * Record in java:
@@ -2054,8 +2117,6 @@ public record Employee(Long id, String firstName, String lastName, String email,
 
 [Records are a great way to reduce boilerplate code and make your Java applications more concise and efficient](https://howtodoinjava.com/java/java-record-type/)[2](https://medium.com/@dsforgood/exploring-the-java-records-with-example-237cff17873b).
 
-
-
 * If we were to create a class insteas of record in above example with same functionality: here, if we were to remove the getter method, we will see a whitelabel page error. So the getter Method is responsible for us to get the string greetMessage in order for us to get the value that we set within the constructor.
 
 ```java
@@ -2074,35 +2135,32 @@ import java.util.Map;
 @RestController
 public class JavamasterclassApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JavamasterclassApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(JavamasterclassApplication.class, args);
+    }
 
-	@GetMapping("/")
-	public greetResponse greet() {
-		return new greetResponse("Hello from record greetResponse, return type = record name");
-	}
+    @GetMapping("/")
+    public greetResponse greet() {
+        return new greetResponse("Hello from record greetResponse, return type = record name");
+    }
 
-	public class greetResponse {
-		private String greetMessage;
+    public class greetResponse {
+        private String greetMessage;
 
-		public greetResponse(String greetMessage) {
-			this.greetMessage = greetMessage;
-		}
+        public greetResponse(String greetMessage) {
+            this.greetMessage = greetMessage;
+        }
 
-		public String getGreetMessage() {
-			return greetMessage;
-		}
-	}
+        public String getGreetMessage() {
+            return greetMessage;
+        }
+    }
 }
-
 ```
 
 * The reason why we can get the Json response from above `greetResponse` class is because of a library called `jackson`. We can find it within the External Libraries dropdown list in intellij
 
 * jackson is known as json for java. In order know json serialization and deserialization visit their github and know more
-
-
 
 # Json:
 
@@ -2114,17 +2172,11 @@ public class JavamasterclassApplication {
 
 ![](assets/2024-01-09-07-29-32-image.png)
 
-
-
 # two other dataTypes when taking your java objects to JSON.
 
 1. Object and Objects within Object
 
 2. Array
-
-
-
-
 
 # Http
 
@@ -2132,21 +2184,29 @@ public class JavamasterclassApplication {
 
 ![](assets/2024-01-09-07-48-32-image.png)
 
-
-
 * in below diagram: W've got clients(with the mobile app or chrome browser) -> clients, they perform HTTP requests(Get, Post, Put, Delete) -> These HTTP requests go across the internet -> to the server -> the server process the request that comes from the client -> then it sends back the response (so the response is what exactly the client has requested.(pic/video/doc/webpage etc) -> then the picture(requested file) is viewed in the webpage
-
-
 
 * So, Http is basically the client-server communicating over the internet
 
+![](assets/2024-01-10-17-25-59-image.png)
 
+# URL
+
+* URL = universal Resource Locator
 
 # http vs https
 
 * https means the connection between client and server is encrypted (handshake and stuff)
 
+# API
 
+![](assets/2024-01-10-17-31-43-image.png)
+
+* API is a way for two programs to talk to each other! 
+
+* API is a set of programming instructions that allow software to interact with other software.
+
+* When we talk about API we generally mean - A webservice that can handle HTTP Requests that are sent to it, Do some work and then return a response. These webservices are called REST services or RESTful services.
 
 # API vs REST API
 
@@ -2166,3 +2226,109 @@ public class JavamasterclassApplication {
   6. [**Code on Demand**: In certain cases, responses can also contain executable code](https://www.ibm.com/topics/rest-apis)[2](https://www.ibm.com/topics/rest-apis).
   
   [These principles help you design and implement RESTful APIs](https://restfulapi.net/)[1](https://restfulapi.net/)[2](https://www.ibm.com/topics/rest-apis).
+
+--------------------
+
+---------------------
+
+# Postman
+
+* why use postman? because we can't perform post, put or delete request from our browser
+
+# How we are going to start building our API
+
+-----
+
+# Dependency injection:
+
+* If we want our classes(Model, service, controller, Repository/Dao) to be instantiated without using the new keyword to create objects and instantiate by this way, we need to use special annotations.
+
+* in our controller class, we use @RestController and Spring will intantiate this class by craeting new instance of our controller class, which is known as bean that we can access throughout our entire application.
+
+* @Service, @Repository is an alias for @component both will work. We use @Service for specifying it as  a service class where we perform business logic.
+
+* So, Spring uses these annotations(@Component, @Service, @Repository, @Controller) and creates new instances of these classes automatically and we can inject them to other classes(who needs(depends on) those classes) through constructor which is called dependency injection. So where are these class stored? They are stored within an object called `Application Context`.
+
+* Application Context provides basic functionalities for managing Beans.
+
+![](assets/2024-01-10-20-38-52-image.png)
+
+* `So, Application Context provides basic functionalities for managing Beans. That's all! So when we add those annotations stated above, Spring initializes those objects for us and then they get stored within the Application Context.`
+
+* Now, if we want to use these beans( objects within the circle of above picture) within our application, we can just use `dependency injection` and we can use the beans.
+
+* Now If we have a CustomerController class and CustomerController says, "hey I need an instance of CustomerService" and then Spring says, "okay, cool, within the Application Context, I've got CustomerService, let me give it to you." [[CustomerService is available inside Application Context because we used @Service annotation in CustomerService class]]
+
+![](assets/2024-01-10-20-54-15-image.png)
+
+* Similarly, If we had another class called FraudService that needs an instance of CustomerService, it doesn't need to create the instance of CustomerService again because it's managed for us - it can get it from within the Application Context. `So this is what's happening within the constructor`.
+
+![](assets/2024-01-10-20-54-57-image.png)
+
+* So, abive operation is happening within the constructor. In the below constructor, the parameter `CustomerService customerService` comes from the `ApplicationContext`, which is injected for us automatically and then it gets assigned to instance field `private final CustomerService customerService`.
+
+![](assets/2024-01-10-20-57-40-image.png)
+
+* Before in old versions of Spring, we had to say `@Autowired` above the constructor. and adding `@Autowired` above the constructor meant: please go and find `CustomerService customerService` bean for us and inject it. So meaning, take the customerService bean from the ApplicationContext and assign it to customerService instance field when we said `this.customerService = customerService` inside the constructor.
+
+# IOC (Inversion of Control)
+
+* BeanFactory is an interface and it *<u>represents</u>* the Spring Inversion of Control (IoC), which is implemented by dependency injection. So, dependency injection is a way for achieving Inversion of Control.
+
+* interface ApplicationContext extends BeanFactory
+
+# Viewing beans
+
+* inside Main class write, we can print beans with `ConfigurableApplicationContext`
+
+![](assets/2024-01-10-21-42-53-image.png)
+
+* there's another way to view the beans using Spring Actuator.
+
+# Bean Scopes
+
+* Bean Scopes is the `Visibility` and `LifeCycle` of the bean throughout the application lifecycle.
+
+* Singleton Scope is default.
+
+![](assets/2024-01-10-22-23-02-image.png)
+
+- you can change the scope of your bean with `@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON`.
+
+# Bean
+
+* Bean is an object that the Spring container instantiates, assembles and manages the entire lifecycle for us.
+
+* Now, if we want to use the beans within our application, we can just use `dependency injection` and we can use the beans.
+
+* So, we create beans by using these annotations @RestController, @Service, @Repository etc.
+
+* There are times when we need to create our own beans instead of using above annotations:
+
+* At this point, below foo object is outside of our ApplicationContext and is not managed for us, so foo is not currently a bean. 
+
+![](assets/2024-01-10-22-31-35-image.png)
+
+![](assets/2024-01-10-22-37-01-image.png)
+
+* So, if we want it to be managed by Spring, we need `@Bean` annotation.
+
+![](assets/2024-01-10-22-36-15-image.png)
+
+- So now this becomes a bean, which means, instead of being managed by us, it's put inside the ApplicationContext. Now foo is managed by Spring.
+
+![](assets/2024-01-10-22-37-36-image.png)
+
+- **<u>Now lets use this bean that we created:</u>**
+
+![](assets/2024-01-10-22-46-27-image.png)
+
+![](assets/2024-01-10-22-46-47-image.png)
+
+Question: Do you need to add @Service for FooService? this means this will create the FooService class bean but we need bean for foo which we got by declaring @Bean above Foo class object.
+
+# Spring data JPA
+
+* Java/jakarta persistance API
+
+* JPA allows us to map java classes to database tables and we can use Entity classes to directly interact with database tables without needing us to write specific SQL queries to create tables.

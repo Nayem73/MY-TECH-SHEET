@@ -1,5 +1,21 @@
 # SQL
 
+1. ![](assets/2024-01-09-17-04-31-image.png)
+
+2. ![](assets/2024-01-09-17-05-30-image.png)
+
+3. Add Column
+
+![](assets/2024-01-09-17-06-20-image.png)
+
+4. Delete Column
+
+ ![](assets/2024-01-09-17-07-20-image.png)
+
+------
+
+--------
+
 1. Primary key = Not NULL + UNIQUE
 
 ![](assets/2024-01-08-11-32-22-image.png)
@@ -233,4 +249,16 @@ make it more readable by adding the prefix of table name in front:
 
 # Nested Queries
 
+* Nested Query is something where we use multiple select statements in order to get specific information from the database where we need to use the results of one select statement to inform another select statements to perform queries.
 
+![](assets/2024-01-09-16-42-17-image.png)
+
+![](assets/2024-01-09-16-50-36-image.png)
+
+
+
+# View
+
+when we run select statement in sql, we can save the results with view:
+
+![](assets/2024-01-09-17-01-16-image.png)

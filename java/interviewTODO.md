@@ -246,3 +246,30 @@ public class Main {
 44. java literals
 
 45. sort a linked list
+
+46. Therap (BD) Ltd. [is a US-based software company that has been registered in Bangladesh](https://therapbd.com/)[1](https://therapbd.com/). Here are some key points about the company:
+    
+    - **Established in 2004**, Therap (BD) Ltd. [has been operating for nearly two decades](https://www.glassdoor.co.uk/Overview/Working-at-Therap-BD-EI_IE2085669.11,20.htm)[2](https://www.glassdoor.co.uk/Overview/Working-at-Therap-BD-EI_IE2085669.11,20.htm).
+    - [The company provides **Software as a Service (SaaS)** to government and private organizations globally](https://www.glassdoor.co.uk/Overview/Working-at-Therap-BD-EI_IE2085669.11,20.htm)[2](https://www.glassdoor.co.uk/Overview/Working-at-Therap-BD-EI_IE2085669.11,20.htm).
+    - [Their primary focus is on supporting people with developmental disabilities](https://therapbd.com/)[1](https://therapbd.com/).
+    - [They have built an **Internet-scale application using Java EE technologies**](https://therapbd.com/)[1](https://therapbd.com/).
+    - [The company has its office in Dhaka, Bangladesh, and affiliate offices in the USA and Canada](https://www.glassdoor.co.uk/Overview/Working-at-Therap-BD-EI_IE2085669.11,20.htm)[2](https://www.glassdoor.co.uk/Overview/Working-at-Therap-BD-EI_IE2085669.11,20.htm).
+    - [Therap is a global team of professionals with diverse expertise working together across the USA and Bangladesh](https://www.addressschool.com/company/3644/therap-bd-ltd)[3](https://www.addressschool.com/company/3644/therap-bd-ltd).
+    
+    It’s important to understand the company’s mission, values, and the technologies they use. You might also want to familiarize yourself with Java EE technologies, as they are a key part of their software development.
+
+47. search for java default class examples for all oop concepts jut like Map is an interface
+
+48. optionals in java
+
+49. controller vs restcontroller
+
+50. serialization and deserialization ******
+
+51. Spring Actuator
+
+52. Java EE/J2EE  -- Java SE/J2SE -- Java ME/J2ME
+
+53. what is maven? why do we need it? ****
+
+54. 

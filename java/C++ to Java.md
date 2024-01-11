@@ -1,5 +1,36 @@
 # 1. Vector in C++ to Java
 
+```java
+package com.nayemtech;
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> tmpStore = List.of(3,4,1, -2, 0, 6);
+        tmpStore.add(4); //Error because it is currently immutable
+        System.out.println(tmpStore);
+
+        List<Integer> tmpStore2 = Arrays.asList(3,4,1, -2, 0, 6);
+        tmpStore.add(4); //Error because it is currently immutable
+        System.out.println(tmpStore2);
+
+        //so do the following
+
+
+        List<Integer> store = new ArrayList<>(List.of(3,4,1, -2, 0, 6));
+        store.add(4);
+        System.out.println(store); 
+
+        //Or
+        List<Integer> store2 = new ArrayList<>(Arrays.asList(3,4,1, -2, 0, 6));
+        store2.add(4);
+        System.out.println(store2);
+
+    }
+}
+```
+
 1. convert below C++ code to Java:
    
    ```c
@@ -12,6 +43,9 @@
        v.push_back(34);
        v.pop_back();
        v.push_back(46);
+   
+       v[0] = 33;
+       cout << v[0] << endl;
    
        for (auto X: v) cout << X << ' ';
    }
@@ -30,6 +64,9 @@
            v.remove(0); // Remove the first index element
            v.add(46);
    
+           v.set(0, 33); // you can't directly access element with square brackets
+           System.out.println(store.get(0)); // can't access with square bracket
+   
            for (int X : v) {
                System.out.print(X + " ");
            }
@@ -42,7 +79,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> v = new ArrayList<Integer>();
+        ArrayList<Integer> v = new ArrayList<>();
         v.add(45);
         v.add(34);
         v.remove(v.size() - 1); //last index
@@ -65,6 +102,10 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         TreeSet<Integer> st = new TreeSet<>();
+
+        Set<Integer> st = new HashSet<>(); //no order
+        Set<Integer> st = new LinkedHashSet<>(); //order of entering
+        Set<Integer> st = new TreeSet<>(); //sorts
         st.add(5);
         st.add(3);
         st.add(5);
@@ -105,7 +146,27 @@ public class Main {
 
 This Java code does the same thing as your C++ code. It creates a `TreeSet`, adds elements to it, and then iterates over the set, printing each element. If the element `3` exists in the set, it removes it. Then it prints the remaining elements in the set. It then finds and prints the smallest element in the set that is greater than or equal to `3`, the smallest element that is strictly greater than `2`, and the next smallest element after that. Note that unlike C++, Java uses `System.out.println` for console output. Also, Java doesn’t have an equivalent to C++'s `set`, so we use a `TreeSet` instead. The `add` method is used to add an element to the set. In Java, sets automatically remove duplicate elements, so adding `5` twice only adds one element to the set. This is the same behavior as in C++. The `TreeSet` class in Java ensures that the elements in the set are sorted, which is also the default behavior of `set` in C++. The `for` loop in Java is equivalent to the range-based `for` loop in C++. The `:` operator in Java is equivalent to the `:` operator in C++, and is used to iterate over each element in a collection. The `contains` method is used to check if an element exists in the set, and the `remove` method is used to remove an element from the set. The `ceiling` method is used to find the smallest element in the set that is greater than or equal to a given element, and the `higher` method is used to find the smallest element in the set that is strictly greater than a given element.
 
+# Time complexity of Sets in java
 
+Certainly! Here's a table that outlines average case and worst-case time complexities for common set operations in different types of sets in Java:
+
+| Operation    | HashSet               | TreeSet            | LinkedHashSet         |
+| ------------ | --------------------- | ------------------ | --------------------- |
+| `add()`      | O(1) (average) / O(n) | O(log n)           | O(1) (average) / O(n) |
+| `remove()`   | O(1) (average) / O(n) | O(log n)           | O(1) (average) / O(n) |
+| `contains()` | O(1) (average) / O(n) | O(log n)           | O(1) (average) / O(n) |
+| `size()`     | O(1)                  | O(1)               | O(1)                  |
+| `iterator()` | O(h + k) (average)    | O(h + k) (average) | O(h + k) (average)    |
+
+- `h` is the number of elements in the set.
+- `k` is the capacity of the set.
+
+Notes:
+
+- For `add()`, `remove()`, and `contains()` operations, the average-case time complexity is O(1), but the worst-case time complexity is O(n) due to hash collisions.
+- `TreeSet` provides O(log n) time complexity for `add()`, `remove()`, and `contains()` operations in both average and worst cases.
+- `LinkedHashSet` behaves similarly to `HashSet` but maintains the order of elements. The time complexity is still O(1) on average and O(n) in the worst case for `add()`, `remove()`, and `contains()` operations.
+- `iterator()` provides O(h + k) average case time complexity for all three types of sets, where `h` is the number of elements and `k` is the capacity.
 
 # 3. Multiset
 
@@ -166,25 +227,29 @@ public class Main {
 
 This Java code does the same thing as your C++ code. It creates a `TreeMap`, adds elements to it, and then iterates over the map, printing each key the number of times it appears in the map. If the key `3` exists in the map, it decreases its count by one or removes it if its count is one. Then it prints the remaining keys in the map the number of times they appear in the map. It then finds and prints the smallest key in the map that is greater than or equal to `3`, the smallest key that is strictly greater than `2`, and the next smallest key after that. Note that unlike C++, Java uses `System.out.println` for console output. Also, Java doesn’t have an equivalent to C++'s `multiset`, so we use a `TreeMap` where each key maps to its count. The `put` method is used to add a key to the map or update its count. The `getOrDefault` method is used to get the count of a key or a default value if the key does not exist in the map. The `containsKey` method is used to check if a key exists in the map, and the `remove` method is used to remove a key from the map. The `ceilingKey` method is used to find the smallest key in the map that is greater than or equal to a given key, and the `higherKey` method is used to find the smallest key in the map that is strictly greater than a given key.
 
-
-
 # 4. Map
 
  In Java, you can’t use primitive types as generic arguments So, instead of `Map<int, int>`, you should use `Map<Integer, Integer>`.
-
-
 
 ```java
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Map<Integer, Integer> mp = new HashMap<>();
+        Map<Integer, Integer> mp = new HashMap<>();//no order
+        Map<Integer, Integer> mp = new LinkedHashMap<>(); //order by add time
+        Map<Integer, Integer> mp = new TreeMap<>(); //sorts
         mp.put(3, 100);
         mp.put(4, 200);
 
         for (Map.Entry<Integer, Integer> X : mp.entrySet()) {
             System.out.println(X.getKey() + " " + X.getValue());
+        }
+
+        System.out.println(mp.containsValue(777));
+
+        if (mp.containsKey(2)) {
+            System.out.println(mp.get(2));
         }
 
         if (mp.containsKey(4)) {
@@ -197,8 +262,27 @@ public class Main {
         }
     }
 }
-
 ```
+
+# Time complexity table Maps in java:
+
+Certainly, here's the updated table with both average case and worst-case time complexities:
+
+| Operation         | HashMap               | TreeMap  | LinkedHashMap         |
+| ----------------- | --------------------- | -------- | --------------------- |
+| `get()`           | O(1) (average) / O(n) | O(log n) | O(1) (average) / O(n) |
+| `put()`           | O(1) (average) / O(n) | O(log n) | O(1) (average) / O(n) |
+| `remove()`        | O(1) (average) / O(n) | O(log n) | O(1) (average) / O(n) |
+| `containsKey()`   | O(1) (average) / O(n) | O(log n) | O(1) (average) / O(n) |
+| `containsValue()` | O(n)                  | O(n)     | O(n)                  |
+| `size()`          | O(1)                  | O(1)     | O(1)                  |
+| `values()`        | O(n)                  | O(n)     | O(n)                  |
+
+Note:
+
+- For `get()`, `put()`, `remove()`, and `containsKey()` in HashMap and LinkedHashMap, the average-case time complexity is O(1), but the worst-case time complexity is O(n) due to hash collisions.
+- TreeMap provides O(log n) time complexity for `get()`, `put()`, `remove()`, and `containsKey()` in both average and worst cases.
+- The time complexity for `containsValue()` and `values()` is O(n) in both average and worst cases for all three data structures.
 
 # 
 
@@ -236,10 +320,7 @@ public class Main {
         }
     }
 }
-
 ```
-
-
 
 ------------------------
 
@@ -255,10 +336,6 @@ public class Main {
         int startDistance = Collections.binarySearch(store, 3);
         System.out.println("startDistance " + startDistance);
 ```
-
-
-
-
 
 # *. Print paragraphs which includes newline:
 
@@ -807,7 +884,7 @@ while (listIterator.hasNext()) {
 
 These examples cover a range of common operations you can perform with a `List` in Java. Keep in mind that there are multiple implementations of the `List` interface in Java, such as `ArrayList`, `LinkedList`, and `Vector`. The choice of implementation depends on the specific requirements of your application.
 
-# Pair and custom sort with cmp
+# Pair and custom sort with cmp (comparator function)
 
 Sure, here is the equivalent Java code for your C++ code:
 
@@ -854,11 +931,62 @@ In this Java code, I’ve created a `Pair` class to represent the `pair<int,int>
 
 
 
+
+
+# cmp for String:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        List<Pair> store = new ArrayList<>();
+        store.add(new Pair("2","1"));
+        store.add(new Pair("22","11"));
+        store.add(new Pair("19","12"));
+        store.add(new Pair("13","122"));
+        store.add(new Pair("211","-10"));
+        store.add(new Pair("4","0"));
+        store.add(new Pair("-4","9"));
+
+        Collections.sort(store, new PairComparator());
+
+        for (Pair X: store) {
+            System.out.println(X.first + " " + X.second);
+        }
+    }
+}
+
+class Pair {
+    String first;
+    String second;
+
+    Pair(String first, String second) {
+        this.first = first;
+        this.second = second;
+    }
+}
+
+class PairComparator implements Comparator<Pair> {
+    public int compare(Pair a, Pair b) {
+        return b.second.compareTo(a.second);
+    }
+}
+
+```
+
+The line `return b.second.compareTo(a.second);` in the `compare` method of the `PairComparator` class is used to sort the `Pair` objects in descending order based on their `second` values.
+
+Here’s how it works:
+
+- `compareTo` is a method in the `String` class that compares two strings lexicographically (i.e., dictionary order). It returns a negative integer, zero, or a positive integer if the first string is less than, equal to, or greater than the second string, respectively.
+- `b.second.compareTo(a.second)` compares the `second` value of the `Pair` object `b` with the `second` value of the `Pair` object `a`. If `b.second` is greater than `a.second`, it returns a positive integer; if `b.second` is less than `a.second`, it returns a negative integer; if `b.second` is equal to `a.second`, it returns zero.
+- The `compare` method of a `Comparator` is used by sorting methods like `Collections.sort()` to determine the order of the elements. If `compare` returns a positive integer, `b` is considered greater than `a` and is placed after `a` in the sorted list; if `compare` returns a negative integer, `b` is considered less than `a` and is placed before `a` in the sorted list; if `compare` returns zero, `b` and `a` are considered equal and their order is not changed.
+- Therefore, `return b.second.compareTo(a.second);` sorts the `Pair` objects in descending order based on their `second` values.
+
+
+
 -------
 
 -----
-
-
 
 ```java
 import java.util.ArrayList;

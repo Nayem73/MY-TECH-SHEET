@@ -324,6 +324,48 @@ This Java example mirrors the Python example but provides a more detailed explan
 
 - To solve it, we need interfaces.
 
+# Interface - why?: Java has Map interface
+
+- For example, in Java we have Map or Set as interface, why? in order to enforce or ensure that the implemented classes must follow the same structure defined in the interface. So, the HashSet, LinkedHashSet or TreeSet, these classes that implements the Set interface, must follow the structure and need to have the functionalities defined in the Set interface.
+
+# why Java chose to use interface instead of abstract classes for Map or Set
+
+Great question! The choice between using an interface or an abstract class in Java depends on the design requirements. Here are some reasons why `Map` and `Set` are interfaces instead of abstract classes:
+
+1. **Multiple Inheritance**: Java does not support multiple inheritance of classes, which means a class can only extend one other class. However, a class can implement multiple interfaces. If `Map` and `Set` were abstract classes, a class like `HashMap` or `HashSet` wouldn’t be able to extend any other class.
+
+2. **Flexibility**: Interfaces are more flexible because they allow classes to implement the methods in any way they choose, as long as they adhere to the method signatures. Abstract classes can provide a default implementation that may not be suitable for all subclasses.
+
+3. **Design Principle**: Interfaces are a key part of the design principle “program to an interface, not an implementation.” This principle encourages you to write code that depends on abstract types (interfaces), not concrete types (classes). This makes your code more flexible and easier to change.
+
+Here’s an example to illustrate these points:
+
+```java
+interface Flyable {
+    void fly();
+}
+
+interface Eatable {
+    void eat();
+}
+
+// A class can implement multiple interfaces
+class Bird implements Flyable, Eatable {
+    public void fly() {
+        System.out.println("Bird is flying");
+    }
+
+    public void eat() {
+        System.out.println("Bird is eating");
+    }
+}
+
+// If Flyable and Eatable were abstract classes, this wouldn't be possible
+// because a class can only extend one other class in Java.
+```
+
+In this example, `Bird` can implement both `Flyable` and `Eatable` because they are interfaces. If they were abstract classes, `Bird` could only extend one of them.
+
 # Polymorphism
 
 * Interface allows us to achieve Polymorphism.
