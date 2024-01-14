@@ -1968,9 +1968,377 @@ public class Main {
 
 # Generics
 
-* Generics allows us to write better code. It's mainly used for to be able to compile our code, making sure we work with the correct type.
+* Generics allows us to write better code. It's mainly used for to be able to compile our code, making sure we work with the correct types.
 
-### Example on why generics was introduced:
+### Example on why generics was introduced by giving an example of compile time checking as well as the ClassCastException error:
+
+* currently I don't have any error except a few warnings(Raw use of parameterized class List):
+
+```java
+    public static void main(String[] args) {
+       List numbers = new ArrayList(); // we will get a warning here:
+                                //Raw use of parameterized class 'List'
+                                //Raw use of parameterized class 'ArrayList'
+
+        numbers.add(1); // a primitive
+        numbers.add("2"); // a string
+
+        for (Object X : numbers) {
+            System.out.println(X);
+        }
+    }
+```
+
+* Now, If I try to cast, I wll receive an error (ClassCastException):
+
+```java
+public static void main(String[] args) {
+       List numbers = new ArrayList(); // we will get a warning here:
+                                //Raw use of parameterized class 'List'
+                                //Raw use of parameterized class 'ArrayList'
+
+        numbers.add(1);
+        numbers.add("2");
+
+        for (Object X : numbers) {
+            System.out.println((String)X); //Casting a primtive to a String or vice versa will result in Error
+        }
+    }
+```
+
+* So, wee need generics to help us by forcing the type of the List. Because we don't know whether this will throw an error until we run the code. Because we want to catch these errors at compile time .. Not at runtime.
+
+* So to fix this, we can add generics to List and define a type. Let's say Integer, then this list will only take Integer numbers:
+
+```java
+public static void main(String[] args) {
+       List<Integer> numbers = new ArrayList(); // we will get a warning here:
+                                //Raw use of parameterized class 'List'
+                                //Raw use of parameterized class 'ArrayList'
+
+        numbers.add(1);
+        numbers.add("2");
+
+        for (Object X : numbers) {
+            System.out.println((String)X); //Casting a primtive to a String or vice versa will result in Error
+        }
+    }
+```
+
+* Now We get an error incompatible types. This is exactly what we want! Because This is a compile error. We can see `numbers.add("2")` is giveing us an error.
+
+* So this is how generics is preventing errors from happening during runtime. 
+
+* Let's check out another example: we don't have any error except a few warnings(Raw use of parameterized class 'Comparable' ):
+
+```java
+public static void main(String[] args) {
+       Comparable number = 10;// warning: Raw use of parameterized class 'Comparable' 
+       number.compareTo(20);
+}
+```
+
+* But if I do it like below, I will get yet again a `ClassCastException`. 
+
+```java
+public static void main(String[] args) {
+       Comparable number = 10;// warning: Raw use of parameterized class 'Comparable' 
+       number.compareTo("20"); // Error! ClassCastException
+}
+```
+
+* So let's use generics to catch this error, at compiletime and not runtime.
+
+```java
+    public static void main(String[] args) {
+       Comparable<Integer> number = 10; //Now the warning goes away
+       number.compareTo("20"); // but now we get a compile error here
+                                  //change number to String
+    }
+```
+
+
+
+* So, the reason we use generics because, it provides compile time checking and it removes the risk of ClassCastException.
+
+# Using generics in java:
+
+* With generics, we have diamond sign<> and inside the diamond sign, we can place any data type. For example `List<String> names`
+
+* When we specify the data type inside the diamond sign<> then it means that class/interface can only work with the datatype that is specified withing <> in above example `List<String> names` , class `List` can only work with String datatype. If we add anything other than String, we will get compiletime error.
+
+```java
+List<String> names = new ArrayList<String>();
+names.add(2); //Compile error
+```
+
+
+
+# Naming Convention in generics:
+
+* `List<E>` E=Element
+
+* `Map<K,V>` K=Key, V=Value
+
+![](assets/2024-01-14-18-45-16-image.png)
+
+* <u>*Type Parameter:*</u>  `List<E>` : Here, E is a placeholder and it is called Type Parameter
+
+* <u>*Type Argument:*</u>  `List<String>` : Here, when we say String, this is the Type Argument
+
+
+
+
+
+# We can use generics with classes, methods and interfaces:
+
+
+
+* Let's say we have a class `Box`. Now, I want to put any datatype inside of this `Box` class. Now, the syntax for generics when working with classes is a diamond<> write after the class name. we put T (Type) inside the diamond.
+
+```java
+package com.nayemtech;
+
+public class Box<T> {
+    private T t;
+
+    public T getT() {
+        return t;
+    }
+
+    public void setT(T t) {
+        this.t = t;
+    }
+}
+
+```
+
+
+
+* Now let's create other classes that we can store inside our Box class. 
+
+```java
+    public static void main(String[] args) {
+       Box box = new Box<>(); //if we do this, we get the same warning
+                    //Raw use of parameterized class 'Box'
+       box.setT("123");
+       box.setT(456);
+    }
+```
+
+* So let's pay attention to the warning let's let's define the type parameter with box:
+
+```java
+package com.nayemtech;
+
+public class Main {
+    public static void main(String[] args) {
+       Box<Phone> box = new Box<>();
+       box.setT(new Phone("Realme"));
+       System.out.println(box.getT());
+    }
+} 
+
+ 
+package com.nayemtech;
+public class Box<T> {
+    private T t;
+
+    public T getT() {
+        return t;
+    }
+
+    public void setT(T t) {
+        this.t = t;
+    }
+} 
+ 
+package com.nayemtech;
+public class Phone {
+    private final String brand;
+
+    public Phone(String brand) {
+        this.brand = brand;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+}
+ 
+package com.nayemtech;
+import java.time.LocalDateTime;
+public class Letter {
+    private String sender;
+    private LocalDateTime date;
+    private int age;
+
+    public Letter(String sender, LocalDateTime date, int age) {
+        this.sender = sender;
+        this.date = date;
+        this.age = age;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+
+
+
+```
+
+* So, we get the output of above code `com.nayemtech.Phone@eed1f14`
+
+* Let's add the toString() method that will print the instance variables of our Box class
+
+```java
+package com.nayemtech;
+
+public class Box<T> {
+    private T t;
+
+    public T getT() {
+        return t;
+    }
+
+    public void setT(T t) {
+        this.t = t;
+    }
+
+    @Override
+    public String toString() {//Added toString()
+        return "Box{" +
+                "t=" + t +
+                '}';
+    }
+}
+
+
+```
+
+- But! we get the same output `com.nayemtech.Phone@eed1f14`
+
+- We need to add toString to the Phone class too! Because ultimately I want to print the Realme brand name which is the instance variable of Phone class.
+
+```java
+package com.nayemtech;
+public class Box<T> {
+    private T t;
+
+    public T getT() {
+        return t;
+    }
+
+    public void setT(T t) {
+        this.t = t;
+    }
+
+    @Override
+    public String toString() { //added toString() to Box as well as Phone
+        return "Box{" +
+                "t=" + t +
+                '}';
+    }
+} 
+
+package com.nayemtech;
+public class Phone {
+    private final String brand;
+
+    public Phone(String brand) {
+        this.brand = brand;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    @Override
+    public String toString() { //Added toString to Box and Phone
+        return "Phone{" +
+                "brand='" + brand + '\'' +
+                '}';
+    }
+}
+
+
+
+```
+
+- Now we get the desired output: `Phone{brand='Realme'}`
+
+- Now let's also add the other class Letter to our Box class (add toString() first):
+
+```java
+package com.nayemtech;
+
+import java.time.LocalDateTime;
+
+public class Letter {
+    private String sender;
+    private LocalDateTime date;
+    private int age;
+
+    public Letter(String sender, LocalDateTime date, int age) {
+        this.sender = sender;
+        this.date = date;
+        this.age = age;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+```
+
+- we get output: 
+  `Phone{brand='Realme'}
+  Letter{sender='Karim vai', date=2024-01-14T19:28:29.429963200, age=46}`
+
+- 
 
 # Testing
 
