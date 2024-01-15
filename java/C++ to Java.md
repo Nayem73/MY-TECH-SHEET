@@ -929,10 +929,6 @@ class PairComparator implements Comparator<Pair> {
 
 In this Java code, I’ve created a `Pair` class to represent the `pair<int,int>` from your C++ code. The `PairComparator` class is used to sort the `Pair` objects in the `store` list based on their `second` values in descending order, which is equivalent to the `cmp` function in your C++ code. The `Collections.sort` method is used to sort the list. The `System.out.println` method is used to print the `first` and `second` values of each `Pair` in the list, which is equivalent to the `cout` statement in your C++ code. The `add` method is used to add `Pair` objects to the `store` list, which is equivalent to the `push_back` method in your C++ code. I hope this helps! Let me know if you have any other questions.
 
-
-
-
-
 # cmp for String:
 
 ```java
@@ -970,7 +966,6 @@ class PairComparator implements Comparator<Pair> {
         return b.second.compareTo(a.second);
     }
 }
-
 ```
 
 The line `return b.second.compareTo(a.second);` in the `compare` method of the `PairComparator` class is used to sort the `Pair` objects in descending order based on their `second` values.
@@ -981,8 +976,6 @@ Here’s how it works:
 - `b.second.compareTo(a.second)` compares the `second` value of the `Pair` object `b` with the `second` value of the `Pair` object `a`. If `b.second` is greater than `a.second`, it returns a positive integer; if `b.second` is less than `a.second`, it returns a negative integer; if `b.second` is equal to `a.second`, it returns zero.
 - The `compare` method of a `Comparator` is used by sorting methods like `Collections.sort()` to determine the order of the elements. If `compare` returns a positive integer, `b` is considered greater than `a` and is placed after `a` in the sorted list; if `compare` returns a negative integer, `b` is considered less than `a` and is placed before `a` in the sorted list; if `compare` returns zero, `b` and `a` are considered equal and their order is not changed.
 - Therefore, `return b.second.compareTo(a.second);` sorts the `Pair` objects in descending order based on their `second` values.
-
-
 
 -------
 
@@ -1058,3 +1051,120 @@ public class Main {
 ```
 
 This custom `Pair` class provides a more explicit way to represent pairs in Java, similar to C++.
+
+# 2D array
+
+* Convert below C++ code to Java:
+
+```c
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, m; cin >> n >> m;
+    vector<vector<int>> arr1(n, vector<int>(m));
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << arr1[i][j] << ' ';
+        }
+        cout << endl;
+    }
+    cout << endl << endl;
+
+    vector<int> arr2[10];
+    arr2[3].push_back(100);
+    arr2[3].push_back(101);
+    arr2[3].push_back(102);
+
+    arr2[7].push_back(700);
+    arr2[7].push_back(701);
+    arr2[7].push_back(702);
+    arr2[7].push_back(703);
+    arr2[7].push_back(704);
+
+    for (int i = 0; i < 10; i++) {
+        if (!arr2[i].size()) continue;
+        cout << i << ": ";
+        for (int X: arr2[i]) {
+            cout << X << ' ';
+        }
+        cout << endl;
+    }
+}
+```
+
+* converted java code:
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        ArrayList<ArrayList<Integer>> arr1 = new ArrayList<>();
+
+        // Initialize the 2D ArrayList
+        for (int i = 0; i < n; i++) {
+            arr1.add(new ArrayList<>());
+            for (int j = 0; j < m; j++) {
+                arr1.get(i).add(0);
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(arr1.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        ArrayList<Integer>[] arr2 = new ArrayList[10];
+        for (int i = 0; i < 10; i++) {
+            arr2[i] = new ArrayList<>();
+        }
+
+        arr2[3].add(100);
+        arr2[3].add(101);
+        arr2[3].add(102);
+
+        arr2[7].add(700);
+        arr2[7].add(701);
+        arr2[7].add(702);
+        arr2[7].add(703);
+        arr2[7].add(704);
+
+        for (int i = 0; i < 10; i++) {
+            if (arr2[i].size() == 0) continue;
+            System.out.print(i + ": ");
+            for (int X : arr2[i]) {
+                System.out.print(X + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+* non-dynamic 2d array in java:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        int[][] arr1 = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(arr1[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```

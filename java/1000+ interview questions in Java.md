@@ -206,3 +206,5 @@ public abstract class Animal {
 26. compile time polymorphism or early binding = method overloading
 
 27. Runtime polymorphism or late binding = method overriding.
+
+28. In Java, local variables (variables declared within methods, constructors, or blocks) cannot have access modifiers like `public`, `private`, or `protected`. Only class-level variables (fields) can have access modifiers.

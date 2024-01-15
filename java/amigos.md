@@ -2057,8 +2057,6 @@ public static void main(String[] args) {
     }
 ```
 
-
-
 * So, the reason we use generics because, it provides compile time checking and it removes the risk of ClassCastException.
 
 # Using generics in java:
@@ -2072,8 +2070,6 @@ List<String> names = new ArrayList<String>();
 names.add(2); //Compile error
 ```
 
-
-
 # Naming Convention in generics:
 
 * `List<E>` E=Element
@@ -2086,13 +2082,9 @@ names.add(2); //Compile error
 
 * <u>*Type Argument:*</u>  `List<String>` : Here, when we say String, this is the Type Argument
 
+* <u>*We can use generics with classes, methods and interfaces*</u>
 
-
-
-
-# We can use generics with classes, methods and interfaces:
-
-
+# Generics with classes:
 
 * Let's say we have a class `Box`. Now, I want to put any datatype inside of this `Box` class. Now, the syntax for generics when working with classes is a diamond<> write after the class name. we put T (Type) inside the diamond.
 
@@ -2110,10 +2102,7 @@ public class Box<T> {
         this.t = t;
     }
 }
-
 ```
-
-
 
 * Now let's create other classes that we can store inside our Box class. 
 
@@ -2139,7 +2128,7 @@ public class Main {
     }
 } 
 
- 
+
 package com.nayemtech;
 public class Box<T> {
     private T t;
@@ -2152,7 +2141,7 @@ public class Box<T> {
         this.t = t;
     }
 } 
- 
+
 package com.nayemtech;
 public class Phone {
     private final String brand;
@@ -2165,7 +2154,7 @@ public class Phone {
         return brand;
     }
 }
- 
+
 package com.nayemtech;
 import java.time.LocalDateTime;
 public class Letter {
@@ -2203,10 +2192,6 @@ public class Letter {
         this.age = age;
     }
 }
-
-
-
-
 ```
 
 * So, we get the output of above code `com.nayemtech.Phone@eed1f14`
@@ -2234,8 +2219,6 @@ public class Box<T> {
                 '}';
     }
 }
-
-
 ```
 
 - But! we get the same output `com.nayemtech.Phone@eed1f14`
@@ -2282,9 +2265,6 @@ public class Phone {
                 '}';
     }
 }
-
-
-
 ```
 
 - Now we get the desired output: `Phone{brand='Realme'}`
@@ -2331,14 +2311,441 @@ public class Letter {
         this.age = age;
     }
 }
-
 ```
 
 - we get output: 
   `Phone{brand='Realme'}
   Letter{sender='Karim vai', date=2024-01-14T19:28:29.429963200, age=46}`
 
-- 
+# We can add as many generics type variable as we want:
+
+![](assets/2024-01-14-19-59-29-image.png)
+
+# Generics with methods
+
+- In below code, we will get compile type error because we are passing Character parameter argument to String type. So we need generics to solve it.
+
+```java
+package com.nayemtech;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+       List<String> store = new ArrayList<>(List.of("Rahim", "Karim"));
+       print(store);
+
+       List<Character> store2 = new ArrayList<>(List.of('A', 'B', 'c', 'd'));
+       print(store2);
+    }
+
+    public static void print(List<String> store) {
+        for (String X : store) {
+            System.out.println(X.getClass() + " - " + X);
+        }
+    }
+}
+```
+
+* Now lets use generics:
+
+```java
+package com.nayemtech;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+       List<String> store = new ArrayList<>(List.of("Rahim", "Karim"));
+       print(store);
+
+       List<Character> store2 = new ArrayList<>(List.of('A', 'd'));
+       print(store2);
+
+       List<Integer> store3 = new ArrayList<>(List.of(2,3,5));
+       print(store3);
+
+    }
+
+    public static <T> void print(List<T> store) {
+        for (T X : store) {
+            System.out.println(X.getClass() + " - " + X);
+        }
+    }
+}
+```
+
+* We can also do this - our return type is `T` instead of `void`:
+
+```java
+    public static <T> T print(List<T> store) {
+        for (T X : store) {
+            System.out.println(X.getClass() + " - " + X);
+        }
+    }
+```
+
+# Bounded type parameters:
+
+- Let's count how many numbers in an array are bigger than a certain number in another method:
+
+```java
+package com.nayemtech;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+       List<Integer> numbers = new ArrayList<>(List.of(2,3,1));
+       System.out.println(countGreaterThan(numbers, 1));
+
+    }
+
+    public static int countGreaterThan(List<Integer> numbers, Integer number) {
+        int count = 0;
+        for (int X: numbers) {
+            if (X > number) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+```
+
+- But if we were to do this, `List<Double> numbers = new ArrayList<>(List.of(2.0,3.339,1.205));` It won't work anymore because the `countGreaterThan` method receives a list of Integers. So let's make our method a generic. We want to make this generic method so that it can work with numbers (both Integer and Double). 
+
+```java
+package com.nayemtech;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+       List<Double> numbers = new ArrayList<>(List.of(2.0,3.339,1.205));
+       System.out.println(countGreaterThan(numbers, 1));
+
+    }
+
+    public static <> int countGreaterThan(List<T> numbers, T number) {
+        int count = 0;
+        for (T X: numbers) {
+            if (X > number) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+```
+
+- But during comparison `if (X > number)` we get an compile time error: `Operator > can not be applied to T, T`
+
+- But we can use > sign for any type of numbers, but the problem is we are not telling this generic method that we are working with numbers, that `T` should be a datatype of numbers. Bounded type parameters comes for solution here.
+
+- Bounded type parameter allows us to create more generic algorithms. It allows us to be more restrict on the types that we want our methods to work with. So let's use bounded type parameter in below code:
+
+```java
+package com.nayemtech;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+       List<Double> numbers = new ArrayList<>(List.of(2.0,3.339,1.205));
+       System.out.println(countGreaterThan(numbers, 1));
+
+    }
+
+    public static <T extends Comparable<T>> int countGreaterThan(List<T> numbers, T number) {
+        int count = 0;
+        for (T X: numbers) {
+            if (X.compareTo(number) > 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+```
+
+- anything that extends Comparable interface can use the compareTo method which will return 0 if equal, >0 if greater or <0
+
+- But we got a slight problem in here `System.out.println(countGreaterThan(numbers, 1));` in this line, we should pass `1.0` instead of `1` because:
+  
+  - In Java, generics are a way to provide stronger type checks at compile time. The generic type `T` in your method signature is a placeholder that will be replaced with a real type when the method is invoked.
+    
+    In your case, when you’re calling the `countGreaterThan` method with a `List<Double>` and an `Integer`, the compiler tries to infer the type `T` based on the types of the arguments you’re passing. It sees a `List<Double>` and an `Integer`, and it can’t find a single type that would work for both `Double` and `Integer` (since `Double` and `Integer` are siblings in the class hierarchy with a common parent of `Number`). This is why you’re getting a compile-time error.
+    
+    When you’re working with generics, it’s important to ensure that the types of all arguments match the generic type. So, if you’re passing a `List<Double>`, you should also pass a `Double` as the second argument to match the generic type `T`.
+  
+  - But! since Double and Integer are siblings in the class hierarchy with a common parent of Number, shouldn't it work when I pass an Integer?
+    
+    - While it’s true that `Double` and `Integer` are both subclasses of `Number` in Java, the issue here is related to how generics work in Java.
+      
+      When you define a method with a generic type `<T extends Comparable<T>>`, it means that the type `T` must implement the `Comparable<T>` interface. This interface has a method `compareTo(T o)` which compares the current object with the object `o` of type `T`.
+      
+      In your case, when you call the method `countGreaterThan(numbers, 1)`, where `numbers` is a `List<Double>`, the compiler tries to infer the type `T` based on the types of the arguments you’re passing. It sees a `List<Double>` and an `Integer`, and it can’t find a single type that would work for both `Double` and `Integer`.
+      
+      This is because generics in Java are invariant, meaning that even though `Integer` and `Double` are subclasses of `Number`, a `List<Integer>` is not a subtype of `List<Number>`, and a `List<Double>` is not a subtype of `List<Number>`.
+      
+      So, in the context of generics, `Double` and `Integer` are considered as two completely different types. Therefore, you can’t pass an `Integer` where a `Double` is expected, or vice versa.
+* So, from above analysis what we got is: there's two issues why we must pass `1.0` instead of `1` when we passed a double type `List`: 
+  
+  * first issue: generic type `T` in your method signature is a placeholder that will be replaced with a real type when the method is invoked.
+  
+  * second issue: If anything extends `Comparable` interface, it must follow the method defined within the Comparable interface: `compareTo(T o)` which compares the current object with the object `o` of type `T`. So, both type must be same for them to be compared. In our case, both numbers List and number variable must be double for them to be compared.
+
+* So now it works!:
+
+```java
+package com.nayemtech;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+       List<Double> numbers = new ArrayList<>(List.of(2.0,3.339,1.205));
+       System.out.println(countGreaterThan(numbers, 1.0));
+
+       List<Integer> numbers2 = new ArrayList<>(List.of(2,3,1));
+        System.out.println(countGreaterThan(numbers2, 1));
+
+    }
+
+    public static <T extends Comparable<T>> int countGreaterThan(List<T> numbers, T number) {
+        int count = 0;
+        for (T X: numbers) {
+            if (X.compareTo(number) > 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+```
+
+* We can use bounded type parameters to classes, interfaces and methods. In previous example of our `Box` class, lets use bounded type parameters:
+
+```java
+public class Box<T extends Comparable<T>> {
+    private T t;
+
+    public T getT() {
+        return t;
+    }
+
+    public void setT(T t) {
+        this.t = t;
+    }
+}
+```
+
+* We can use any custom classes or any other classes in the bounded type parameter. in above example, we used the Comparable interface.
+
+# Multiple types in the bounded type parameters
+
+- In below code, we extend multiple interfaces and a default java class Number but there's a rule: if you use classes and interfaces together, class must be at the beginning of the parameter, ahead of any interface. So below code shows error and we need to fix it.
+
+```java
+    public interface A{}
+    public interface B{}
+
+    public static <T extends Comparable<T> & A & B & Number> int countGreaterThan(List<T> numbers, T number) {
+        int count = 0;
+        for (T X: numbers) {
+            if (X.compareTo(number) > 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+```
+
+- Now it works:
+
+```java
+    public interface A{}
+    public interface B{}
+
+    public static <T extends Number & Comparable<T> & A & B> int countGreaterThan(List<T> numbers, T number) {
+        int count = 0;
+        for (T X: numbers) {
+            if (X.compareTo(number) > 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+```
+
+* another rule: you can not extend multiple classes. Because Multiple inheritance is not possible in java.
+
+# WildCards
+
+* `?` represents an unknow type. It is called wildcard.
+
+* wildcard 3 types:
+  
+  * unbounded wildcards
+  
+  * upperbounded wildcards
+  
+  * lowerbounded wildcards
+
+### Unbounded WildCards (normal wildcards with just ?)
+
+* Below code works because in the print method, we receive a wildcard type of List, So any type of list that we pass to this method will work. In our case, we passed list of type Object and Integer .. and both works.
+
+```java
+package com.nayemtech;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Object> list = new ArrayList<>(List.of(3,4, new Letter(), "string too", 499.3328, new BigDecimal("4444444932")));
+        List<Integer> list2 = new ArrayList<>(List.of(4,2,1));
+
+        print(list);
+        print(list2);
+    }
+
+    public static void print(List<?> list) { // Unbounded wildcard (these are normal wildcards with just ?)
+        for (var X : list) {
+            System.out.println(X);
+        }
+    }
+}
+```
+
+
+
+### Upperbounded wildcards (upper bound kora mane upper(super classes) thakte parbe na)
+
+- we can restrict the types that go inside the upperbounded wildcards.
+
+- Lets say, we want to be able to work with numbers only. So just like the bounded type parameters in generics, we can do this:
+
+```java
+package com.nayemtech;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<BigDecimal> list = new ArrayList<>(List.of( new BigDecimal("4444444932"))); //class BigDecimal extends abstract class Number
+        List<Integer> list2 = new ArrayList<>(List.of(4,2,1)); // class Integer extends abstract class Number
+        List<Number> list3 = new ArrayList<>();
+
+        print(list);
+        print(list2);
+        print(list3);
+    }
+
+    public static void print(List<? extends Number> list) {
+        for (var X : list) {
+            System.out.println(X);
+        }
+    }
+}
+```
+
+* `<? extends Number>` means: *<u>anything that is of type Number and it's child classes</u>*
+
+
+
+### Lowerbounded wildcards (lower bound kora mane lower(child classes) thakte parbe na)
+
+* opposite of upperbounded wildcards. for above example, lowerbounded wildcards would be : <u>*anything that is of type Number and it's super classes*</u>
+
+
+
+* so for above example, BigDecimal, Integer, Double etc won't work because they are child of Number(as we are extending Number in the print method so it's based on Number class).
+
+* Number implements Serializable.
+
+* we can code like this for lowerbounded wildcards:
+
+```java
+package com.nayemtech;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+//        List<BigDecimal> list = new ArrayList<>(List.of( new BigDecimal("4444444932"))); //class BigDecimal extends abstract class Number
+        List<Integer> list2 = new ArrayList<>(List.of(4,2,1)); // class Integer extends abstract class Number
+        List<Number> list3 = new ArrayList<>();
+
+//        print(list);
+        print(list2);
+        print(list3);
+    }
+
+    public static void print(List<? super Integer> list) {
+        for (var X : list) {
+            System.out.println(X);
+        }
+    }
+}
+```
+
+* here, `<? super Integer>` means: <u><em>anything that is of type Integer and it's super classes</em></u>
+
+* so, BigDecimal list won't work cz it's not a super class of Integer.
+
+
+
+
+
+# Bounded type parameters vs WildCards
+
+![](assets/2024-01-15-09-33-52-image.png)
+
+1. Wildcards can only have one bound. With bounded type parameters we can have Multiple types in the bounded type parameter.
+   
+   * Below screensot shows Wildcards can't have multiple type, it shows error:
+
+![](assets/2024-01-15-09-36-49-image.png)
+
+2. Bound type parameters don't have upper or lower bounds.
+
+3. Bounded type parameters allows us to reference the parameter that we use in the bounds throughout that entire class or method. in below screenshot we can see type `T` can be refernced and used throughout the method, whereas wildcards we can't do that because with wildcards we use `?` instead of a specific type(for example `T` in our example).
+
+![](assets/2024-01-15-09-40-42-image.png)
+
+
+
+# TypeErasure
+
+* We know that, the reason we use generics, is because the provide strong compile time checking which reduces the risk of ClassCastException and the explicit casting of objects.
+
+* So the compiler uses `TypeErasure` , which is a feature that removes all generic type code in the java bytecode and adds casting if necessary.
+
+* TypeErasure is used for better compilation. When the JVM runs the code that includes generics, the java compiler removes the generics part and adds casting if necessary.
+
+* as an example, in below code, the marked are generics and will be removed:
+
+![](assets/2024-01-15-09-50-48-image.png)
+
+* and they will be casted/transformed by the compiler like below:
+
+![](assets/2024-01-15-09-51-50-image.png)
+
+
 
 # Testing
 
