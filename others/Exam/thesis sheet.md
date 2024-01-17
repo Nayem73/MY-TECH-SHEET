@@ -1,7 +1,3 @@
-
-
-
-
 I need to write a thesis paper titled "A hybrid model for large scale remote sensing image classification". I collected four datasets (EuroSAT Dataset, UCMerced Dataset - Land-Use Scene Classification, NWPU-RESISC45 Dataset, PatternNet Dataset) and I merged all the datasets and got a total 64 different class (for example: residential area, river, forest, highway, industrial area etc.). These total of 64 classes include a total of 99400 images. Now, I developed a hybrid model for accurately classifying these 64 classes. 
 
 This is the Abstract I've written for my thesis paper:
@@ -140,8 +136,6 @@ reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
 model.evaluate(train_data), model.evaluate(test_data)
 2485/2485 [==============================] - 167s 67ms/step - loss: 0.0857 - accuracy: 0.9731
 622/622 [==============================] - 41s 66ms/step - loss: 0.2039 - accuracy: 0.9487
-
-
 
 ------------
 
@@ -390,9 +384,6 @@ Comparative analysis against existing benchmarks demonstrates the superiority of
 
 write about fine tuning my model:
 
-
-
-
 **SoftMax Activation Function**
 
 In multi-class classification problems, the SoftMax activation function is With fine-tuning methods, DCNNs can now perform specific 
@@ -406,8 +397,6 @@ DCNN models to perform the task of malaria parasite detection. Therefore, in our
 focused on employing these methods to recent DCNNs for malaria parasite detection in blood 
 smears to yield new findings and conclusions that may establish a new perspective for future 
 researchers that may also tackle such a difficult task.
-
-
 
 --------------
 
@@ -441,8 +430,6 @@ researchers that may also tackle such a difficult task.
 | Dense (64 neurons, softmax activation)            |
 | (predicts class & assigns probabilities)          |
 +--------------------------+-----------------------+
-
-
 
 ----
 
@@ -515,3 +502,57 @@ researchers that may also tackle such a difficult task.
 | Accuracy                   |           |        | 0.95     | 19880   |
 | Macro Avg                  | 0.94      | 0.94   | 0.94     | 19880   |
 | Weighted Avg               | 0.96      | 0.95   | 0.95     | 19880   |
+
+------------
+
+---------------
+
+
+
+
+
+# Final Defense
+
+Sure, here are some popular image classification models along with their number of layers:
+
+![](assets/2024-01-15-18-29-52-image.png)
+
+| Model                    | Number of Layers                                                                                                                                                                                                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| VGG16                    | [16](https://datagen.tech/guides/computer-vision/vgg16/)[1](https://datagen.tech/guides/computer-vision/vgg16/)                                                                                                                                                          |
+| VGG19                    | [19](https://iq.opengenus.org/vgg19-architecture/)[2](https://iq.opengenus.org/vgg19-architecture/)                                                                                                                                                                      |
+| EfficientNetB0           | [237](https://datagen.tech/guides/computer-vision/vgg16/)[3](https://stackoverflow.com/questions/70554242/what-is-the-number-of-layers-in-efficientnetb2)                                                                                                                |
+| ResNet50                 | [50](https://datagen.tech/guides/computer-vision/vgg16/)[4](https://datagen.tech/guides/computer-vision/resnet-50/)                                                                                                                                                      |
+| MobileNetV2              | [53](https://datagen.tech/guides/computer-vision/vgg16/)[5](https://www.mathworks.com/help/deeplearning/ref/mobilenetv2.html)                                                                                                                                            |
+| DenseNet121              | [121](https://datagen.tech/guides/computer-vision/vgg16/)[6](https://iq.opengenus.org/architecture-of-densenet121/)                                                                                                                                                      |
+| AlexNet                  | [8](https://datagen.tech/guides/computer-vision/vgg16/)[](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)                                                                                     |
+| ZFNet                    | [Not specified](https://datagen.tech/guides/computer-vision/vgg16/)[7](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)                                                                        |
+| Inception V1 (GoogLeNet) | [22](https://datagen.tech/guides/computer-vision/vgg16/)[7](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)                                                                                   |
+| ResNeXt-10               | [Not specified](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[7](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/) |
+| PNASNet-5                | [Not specified](https://datagen.tech/guides/computer-vision/vgg16/)[7](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)                                                                        |
+
+Please note that the number of layers can vary depending on the specific implementation and configuration of the model. The numbers provided here are based on common implementations and configurations. Also, the number of layers typically refers to the layers with learnable parameters (i.e., convolutional and fully connected layers), but it may also include other types of layers in some contexts.
+
+
+
+### Inception v1
+
+[Inception V1, also known as GoogLeNet, is indeed a popular model for image classification](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[2](https://medium.com/that-feeling-when-it-is-compiler-fault/using-modified-inception-v3-cnn-for-video-processing-and-video-classification-b0c145baa1fc). [It won the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) in 2014 with a top-5 error rate of 6.67%](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/). [However, whether it is the “most” popular can depend on various factors such as the specific task, computational resources, and the amount of data available](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/).
+
+Since its inception, there have been several other models that have also gained popularity in the field of image classification. [For instance, AlexNet, VGGNet, ResNet, and DenseNet are all widely used and have achieved state-of-the-art performance on various datasets](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[3](https://jonascleveland.com/best-image-classification-models/). [More recent models like EfficientNet and MobileNetV2 are also gaining traction due to their efficiency and performance](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[3](https://jonascleveland.com/best-image-classification-models/).
+
+[Therefore, while Inception V1 is a popular and influential model in the field of image classification, it’s hard to definitively say if it’s the “most” popular given the wide variety of models available and the specific needs of different tasks](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[3](https://jonascleveland.com/best-image-classification-models/). [It’s always a good idea to experiment with different models and choose the one that best suits your needs](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[3](https://jonascleveland.com/best-image-classification-models/). Let me know if you have any other questions! 😊
+
+
+
+### Inception v3
+
+[Yes, there are several versions of the Inception model, each with iterative improvements over the previous one](https://iq.opengenus.org/inception-pre-trained-cnn-model/)[1](https://iq.opengenus.org/inception-pre-trained-cnn-model/). Here are some of them:
+
+1. [**Inception V1 (GoogLeNet)**: This was the state-of-the-art architecture at ILSRVRC 2014](https://www.geeksforgeeks.org/inception-v2-and-v3-inception-network-versions/)[2](https://www.geeksforgeeks.org/inception-v2-and-v3-inception-network-versions/).
+2. [**Inception V2 & V3**: These versions introduced several improvements to increase accuracy and decrease the complexity of the model](https://www.geeksforgeeks.org/inception-v2-and-v3-inception-network-versions/)[2](https://www.geeksforgeeks.org/inception-v2-and-v3-inception-network-versions/).
+3. [**Inception V4 and Inception-ResNet**: These versions further improved the performance](https://iq.opengenus.org/inception-pre-trained-cnn-model/)[1](https://iq.opengenus.org/inception-pre-trained-cnn-model/).
+
+As for which version is the most popular for image classification, it can depend on various factors such as the specific task, computational resources, and the amount of data available. [However, Inception V3 is widely used for image classification with a pre-trained deep neural network](https://medium.com/that-feeling-when-it-is-compiler-fault/using-modified-inception-v3-cnn-for-video-processing-and-video-classification-b0c145baa1fc)[3](https://medium.com/that-feeling-when-it-is-compiler-fault/using-modified-inception-v3-cnn-for-video-processing-and-video-classification-b0c145baa1fc). [It has been shown to attain greater than 78.1% accuracy on the ImageNet dataset](https://iq.opengenus.org/inception-pre-trained-cnn-model/)[4](https://cloud.google.com/tpu/docs/inception-v3-advanced)[5](https://itsmayankshrivastava.medium.com/image-classification-using-pretrained-inception-v3-model-50a8d4f89ff2).
+
+Remember, the “best” or “most popular” model can vary depending on the specific needs of different tasks. [It’s always a good idea to experiment with different models and choose the one that best suits your needs](https://iq.opengenus.org/inception-pre-trained-cnn-model/)[2](https://www.geeksforgeeks.org/inception-v2-and-v3-inception-network-versions/)[6](https://iq.opengenus.org/inception-v3-model-architecture/)[1](https://iq.opengenus.org/inception-pre-trained-cnn-model/)[4](https://cloud.google.com/tpu/docs/inception-v3-advanced)[7](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[8](https://www.analyticsvidhya.com/blog/2020/08/top-4-pre-trained-models-for-image-classification-with-python-code/)[3](https://medium.com/that-feeling-when-it-is-compiler-fault/using-modified-inception-v3-cnn-for-video-processing-and-video-classification-b0c145baa1fc)[5](https://itsmayankshrivastava.medium.com/image-classification-using-pretrained-inception-v3-model-50a8d4f89ff2). Let me know if you have any other questions! 😊
