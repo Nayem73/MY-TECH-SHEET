@@ -273,3 +273,7 @@ public class Main {
 53. what is maven? why do we need it? ****
 
 54. HashTable
+
+55. tight coupling and lose coupling in spring boot and java.
+
+56. sdlc, solid, acid, git, Docker

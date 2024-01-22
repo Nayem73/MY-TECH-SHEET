@@ -507,10 +507,6 @@ researchers that may also tackle such a difficult task.
 
 ---------------
 
-
-
-
-
 # Final Defense
 
 Sure, here are some popular image classification models along with their number of layers:
@@ -533,8 +529,6 @@ Sure, here are some popular image classification models along with their number 
 
 Please note that the number of layers can vary depending on the specific implementation and configuration of the model. The numbers provided here are based on common implementations and configurations. Also, the number of layers typically refers to the layers with learnable parameters (i.e., convolutional and fully connected layers), but it may also include other types of layers in some contexts.
 
-
-
 ### Inception v1
 
 [Inception V1, also known as GoogLeNet, is indeed a popular model for image classification](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[2](https://medium.com/that-feeling-when-it-is-compiler-fault/using-modified-inception-v3-cnn-for-video-processing-and-video-classification-b0c145baa1fc). [It won the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) in 2014 with a top-5 error rate of 6.67%](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/). [However, whether it is the “most” popular can depend on various factors such as the specific task, computational resources, and the amount of data available](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/).
@@ -542,8 +536,6 @@ Please note that the number of layers can vary depending on the specific impleme
 Since its inception, there have been several other models that have also gained popularity in the field of image classification. [For instance, AlexNet, VGGNet, ResNet, and DenseNet are all widely used and have achieved state-of-the-art performance on various datasets](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[3](https://jonascleveland.com/best-image-classification-models/). [More recent models like EfficientNet and MobileNetV2 are also gaining traction due to their efficiency and performance](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[3](https://jonascleveland.com/best-image-classification-models/).
 
 [Therefore, while Inception V1 is a popular and influential model in the field of image classification, it’s hard to definitively say if it’s the “most” popular given the wide variety of models available and the specific needs of different tasks](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[3](https://jonascleveland.com/best-image-classification-models/). [It’s always a good idea to experiment with different models and choose the one that best suits your needs](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[1](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[3](https://jonascleveland.com/best-image-classification-models/). Let me know if you have any other questions! 😊
-
-
 
 ### Inception v3
 

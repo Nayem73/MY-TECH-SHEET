@@ -1,6 +1,6 @@
 What is OOP
 
-Object-Oriented Programming (OOP) is a programming method that uses the concept of “objects” to design software. Objects are instances of classes, which are like blueprints. [Each object can have unique values for the properties defined in the class](https://www.educative.io/blog/object-oriented-programming)[1](https://www.educative.io/blog/object-oriented-programming)[2](https://en.wikipedia.org/wiki/Object-oriented_programming). Here are some key points you can mention during an interview:
+Object-Oriented Programming (OOP) is a programming principle that uses the concept of “objects” to design software. Objects are instances of classes, which are like blueprints. [Each object can have unique values for the properties defined in the class](https://www.educative.io/blog/object-oriented-programming)[1](https://www.educative.io/blog/object-oriented-programming)[2](https://en.wikipedia.org/wiki/Object-oriented_programming). Here are some key points you can mention during an interview:
 
 1. **Definition**: OOP is a paradigm where the complete software operates as a bunch of objects talking to each other. [An object is a collection of data and the methods which operate on that data](https://www.geeksforgeeks.org/oops-interview-questions/)[3](https://www.geeksforgeeks.org/oops-interview-questions/).
 
@@ -67,6 +67,8 @@ Access modifiers are used to only expose the attributes, methods and classes whi
 
 # Inheritance
 
+* Inheritance is a key principle of Object-Oriented Programming (OOP) where one class acquires the properties (fields) and behaviors (methods) of another class
+
 * When we have multiple classes to share similar behaviour(mehtods) and attributes(fields)
 
 * For example, let's say we have banking system, we can have commercial account, personal account, loan account etc. In these classes, we have some common behavior but at the same time we also have some different behavior so whenever you have such scenario always think about applying the concept of inheritance.
@@ -81,7 +83,7 @@ Access modifiers are used to only expose the attributes, methods and classes whi
 
 # Encapsulation
 
-* Encapsulation is basically to combine methods and attributes in a single unit, which is a class and protect  the attributes/properties of the class to the outside world(package) Which allows us to have full contol on how the outside world can access or modify the attributes.
+* Encapsulation is basically to combine methods and attributes in a single unit which we know as a class and protect  the attributes/properties of the class to the outside world(package) by using different access modifiers Which allows us to have full contol on how the outside world can access or modify the attributes.
 
 * We have full control of the class:
   
@@ -94,6 +96,7 @@ Access modifiers are used to only expose the attributes, methods and classes whi
 # Abstraction
 
 * Abstraction is a concept of (OOP) that hides the implementation details and shows only the essential features. We achieve it by using abstract classes, abstract methods and interfaces.
+* Abstraction in object-oriented programming (OOP) is a process of hiding the implementation details from the user and providing only the functionality to the user.
 * With abstraction, we can avoid duplicate codes and write better code. Let's say we have a parent class and we have multiple subclasses that extends from the parent class. All of these subclasses overrides the same method of the parent class and implements their own functionalities. Now, if that method in the parent class had any implemented code in it's method body, it would be wasted code since all the subclasses overrides it to implement their own functionalities. So we need to make that method an abstract method to avoid duplicates or unnecessary codes. Now, to make that method as an abstract method, we need to make that parent class abstract as well, which means we can not create any instance of the parent class, which is fine anyway and even better, because we are using it as a blueprint for the subclasses to organize the subclasses and we only need instance of the subclasses.
 * abstract classes cannot be instantiated explicitly. They can only be instantiated by the child classes through the internal mechanisms of java itself (inheritance)
 * Abstraction is necessary when we want subclasses to inherit from a super class and when we only need the objects of those subclasses. For example, we make a generic class for all type of Vehicles as Vehicle and Car, Bike, CNG etc. will extend from that class and in such cases we will only work with these subclasses. So we make Vehicle as an abstract class.
@@ -612,6 +615,101 @@ public class Main {
     }
 }
 ```
+
+# Upcasting and Downcasting in java
+
+```java
+class Animal { }
+class Dog extends Animal { }
+
+// Upcasting
+Animal animal = new Dog();
+
+// Downcasting
+Dog dog = (Dog) animal; // Explicit downcasting (downcating the dog object)
+Dog dog = new Animal(); // Implicit downcasting generates compiler error!
+```
+
+### Upcasting
+
+- In below code, I can't use the Child class methods because the child class Manager is upcasted to Employee class:
+
+```java
+package com.nayemtech;
+
+public class Main {
+    public static void main(String[] args) {
+       Employee nazrul = new Manager(30);
+
+        System.out.println(nazrul.getAge()); //Error can not access getAge method of the child class Manager
+    }
+} 
+
+
+package com.nayemtech;
+
+public class Employee {
+    private String name;
+
+    public Employee() {
+    }
+
+    public Employee(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+} 
+
+package com.nayemtech;
+
+public class Manager extends Employee {
+    private int age;
+
+    public Manager(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+```
+
+### Donwcasting
+
+- and this is downcasting:
+
+```java
+package com.nayemtech;
+
+public class Main {
+    public static void main(String[] args) {
+       Employee employee = new Employee(); //need to declare it first then downcast the object employee, not the class
+
+        Employee nazrul = (Manager)employee; //implicit downcasting
+
+       System.out.println(nazrul.getName());
+
+    }
+}
+```
+
+# Serialization and Deserialization
+
+# Misc.
+
+![Collection Hierarchy in Java | Collections class - Scientech Easy](https://www.scientecheasy.com/wp-content/uploads/2018/09/java-collection-hierarchy.png?00901e&00901e)
 
 # Spring Boot
 

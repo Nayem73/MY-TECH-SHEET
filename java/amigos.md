@@ -34,18 +34,33 @@ into play.
 - Stack memory in java is used for static memory allocation and the execution of a thread LIFO.  
 
 - Frame (stack frame) contains all the data for one function call.  
+11. Yes, your understanding is correct. In Java:
+    
+    - The **Heap** is a region of memory used for dynamic memory allocation where the Java Runtime Environment (JRE) stores objects and JRE classes at runtime. New objects are always created in heap space.
+    
+    - The **Stack** is used for static memory allocation and contains method-specific values that are short-lived. It also contains references to objects in the heap.
+    
+    Here’s a bit more detail:
+    
+    - When a new object is created, it’s always stored in the Heap space and stack memory contains the reference to it. Stack memory only contains local primitive variables and reference variables to objects in heap space.
+    
+    - The Stack is thread-safe because each thread operates in its own stack. But, the Heap is not thread-safe and needs to be guarded by properly synchronizing the code.
+    
+    - The Stack space is always in a LIFO (Last In First Out) order. It’s a more restricted area compared to the Heap and as such, memory shortage problems like `StackOverFlowError` can happen if a program recurses too deeply.
+    
+    - On the other hand, the Heap is used when a variable is created using the `new` keyword. The Heap is more flexible when the memory needs to be allocated or deallocated. Memory shortage problems like `OutOfMemoryError` can happen if too many objects are created on the Heap.
+    
+    Remember, proper management of Heap and Stack memory is crucial for creating a performant and error-free application. 😊
 
-10.
-
-11. All the instruction 
+12. All the instruction 
     written in a Dockerfile are instructions to docker for setting up the 
-    image. Now keep in mind, the image is the template for the container. 
+    image. Now keep in mind, the image is the template/blueprint for the container. 
     The image is what you don't run in the end, You run a container based on
     a image.  
 
-12. for primitives, default values are 0 and for Reference types, default value is null  
+13. for primitives, default values are 0 and for Reference types, default value is null  
 
-13. # Static keyword
+14. # Static keyword
 * Static keyword indicates that either a property(attribute) or method belongs to the class itself rather than the instance. for example, all the fields in the Person class belongs to alex, which is an instance of class Person. These fields does not belong to the class itself.
 
 ```java
@@ -168,7 +183,7 @@ as object. (need to touch on generics in amigos video for more)
     formattedString = String.format("like printing Strings in C & extra 
     feature: numToString=%s, num=%s\n", numToString, num);  
 
-22. for money, never use double.  
+22. for money, never use double. Use BigDecimal instead.
 
 23. Throwable is a superclass of all types of Errors and Exceptions.  
 
@@ -296,9 +311,53 @@ public class Main {
 }
 ```
 
+### `finally` keyword
+
+* fnal block or the `finally` keyword will always execute regardless. 
+
+```java
+package com.nayemtech;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("before error");
+        try {
+            int y = 5/0;
+            System.out.println("After Error");
+        } catch (NumberFormatException | ArithmeticException e) {
+            System.out.println("Nayem printing the error message by e.getMessage(): " + e.getMessage());
+        } finally {
+            System.out.println("`finally block` always run.");
+        }
+    }
+}
+```
+
+- Whether there's an exception or not, `finally` always runs:
+
+```java
+package com.nayemtech;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("before error");
+        try {
+            int y = 5/0;
+            System.out.println("After Error");
+        } finally {
+            System.out.println("`finally block` always run.");
+        }
+    }
+}
+```
+
+* `finally` block is mainly used for cleanup purposes.
+
 ### 31. Difference Between Error and Exception ()
 
 ![](assets/2023-11-14-08-10-30-image.png)
+
+![](assets/2024-01-19-15-52-11-image.png)
 
 * *An error is a subclass of Throwable that indicates serious problems that a reasonable application should not try to catch*
 
@@ -2627,8 +2686,6 @@ public class Main {
 }
 ```
 
-
-
 ### Upperbounded wildcards (upper bound kora mane upper(super classes) thakte parbe na)
 
 - we can restrict the types that go inside the upperbounded wildcards.
@@ -2663,13 +2720,9 @@ public class Main {
 
 * `<? extends Number>` means: *<u>anything that is of type Number and it's child classes</u>*
 
-
-
 ### Lowerbounded wildcards (lower bound kora mane lower(child classes) thakte parbe na)
 
 * opposite of upperbounded wildcards. for above example, lowerbounded wildcards would be : <u>*anything that is of type Number and it's super classes*</u>
-
-
 
 * so for above example, BigDecimal, Integer, Double etc won't work because they are child of Number(as we are extending Number in the print method so it's based on Number class).
 
@@ -2707,10 +2760,6 @@ public class Main {
 
 * so, BigDecimal list won't work cz it's not a super class of Integer.
 
-
-
-
-
 # Bounded type parameters vs WildCards
 
 ![](assets/2024-01-15-09-33-52-image.png)
@@ -2727,8 +2776,6 @@ public class Main {
 
 ![](assets/2024-01-15-09-40-42-image.png)
 
-
-
 # TypeErasure
 
 * We know that, the reason we use generics, is because the provide strong compile time checking which reduces the risk of ClassCastException and the explicit casting of objects.
@@ -2744,8 +2791,6 @@ public class Main {
 * and they will be casted/transformed by the compiler like below:
 
 ![](assets/2024-01-15-09-51-50-image.png)
-
-
 
 # Testing
 
