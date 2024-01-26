@@ -1,0 +1,53 @@
+[1] Li H, Dou X, Tao C, Hou Z, Chen J, Peng J, Deng M, Zhao L. RSI-CB: A large scale remote sensing image classification benchmark via crowdsource data. arXiv preprint arXiv:1705.10450. 2017 May 30.
+[2] Neumann M, Pinto AS, Zhai X, Houlsby N. In-domain representation learning for remote sensing. arXiv preprint arXiv:1911.06721. 2019 Nov 15.
+[3] Cheng G, Xie X, Han J, Guo L, Xia GS. Remote sensing image scene classification meets deep learning: Challenges, methods, benchmarks, and opportunities. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing. 2020 Jun 29;13:3735-56.
+[4] Morales-Alvarez P, Pérez-Suay A, Molina R, Camps-Valls G. Remote sensing image classification with large-scale Gaussian processes. IEEE Transactions on Geoscience and Remote Sensing. 2017 Oct 24;56(2):1103-14.
+[5] Cheng G, Han J, Lu X. Remote sensing image scene classification: Benchmark and state of the art. Proceedings of the IEEE. 2017 Apr 3;105(10):1865-83.
+[6] Mehmood M, Shahzad A, Zafar B, Shabbir A, Ali N. Remote sensing image classification: A comprehensive review and applications. Mathematical Problems in Engineering. 2022 Aug 2;2022:1-24.
+[7] Tao C, Qi J, Lu W, Wang H, Li H. Remote sensing image scene classification with self-supervised paradigm under limited labeled samples. IEEE Geoscience and Remote Sensing Letters. 2020 Dec 7;19:1-5.
+[8] Maggiori E, Tarabalka Y, Charpiat G, Alliez P. Convolutional neural networks for large-scale remote-sensing image classification. IEEE Transactions on geoscience and remote sensing. 2016 Oct 19;55(2):645-57.
+[9] Jogin M, Madhulika MS, Divya GD, Meghana RK, Apoorva S. Feature extraction using convolution neural networks (CNN) and deep learning. In2018 3rd IEEE international conference on recent trends in electronics, information & communication technology (RTEICT) 2018 May 18 (pp. 2319-2323). IEEE.
+[10] Ma Y, Xu T, Han S, Kim K. Ensemble Learning of Multiple Deep CNNs using Accuracy-Based Weighted Voting for ASL Recognition. Applied Sciences. 2022 Nov 19;12(22):11766.
+[11] Amin H, Darwish A, Hassanien AE, Soliman M. End-to-end deep learning model for corn leaf disease classification. IEEE Access. 2022 Mar 14;10:31103-15.
+[12] Gao Y, Ma J, Zhao M, Liu W, Yuille AL. Nddr-cnn: Layerwise feature fusing in multi-task cnns by neural discriminative dimensionality reduction. InProceedings of the IEEE/CVF conference on computer vision and pattern recognition 2019 (pp. 3205-3214).
+[13] Ma C, Mu X, Sha D. Multi-layers feature fusion of convolutional neural network for scene classification of remote sensing. IEEE Access. 2019 Aug 19;7:121685-94.
+[14] Zhou W, Newsam S, Li C, Shao Z. PatternNet: A benchmark dataset for performance evaluation of remote sensing image retrieval. ISPRS journal of photogrammetry and remote sensing. 2018 Nov 1;145:197-209.
+[15] He K, Zhang X, Ren S, Sun J. Deep residual learning for image recognition. InProceedings of the IEEE conference on computer vision and pattern recognition 2016 (pp. 770-778).
+[16] Wang X, Xu M, Xiong X, Ning C. Remote sensing scene classification using heterogeneous feature extraction and multi-level fusion. IEEE Access. 2020 Dec 4;8:217628-41.
+[17] Montalbo FJ, Alon AS. Empirical analysis of a fine-tuned deep convolutional model in classifying and detecting malaria parasites from blood smears. KSII Transactions on Internet and Information Systems. 2021 Jan 1;15(1):2021.
+[18] Alhichri H, Alswayed AS, Bazi Y, Ammour N, Alajlan NA. Classification of remote sensing images using EfficientNet-B3 CNN model with attention. IEEE access. 2021 Jan 12;9:14078-94.
+[19] Rayan R, Hossain MS. Compression of Large-Scale Image Dataset using Principal Component Analysis and K-means Clustering. In2019 International Conference on Electrical, Computer and Communication Engineering (ECCE) 2019 Feb 7 (pp. 1-5). IEEE.
+[20] Lv C, Zhao Q. A universal PCA for image compression. InInternational Conference on Embedded and Ubiquitous Computing 2005 Dec 6 (pp. 910-919). Berlin, Heidelberg: Springer Berlin Heidelberg.
+[21] Su C, Wang W. Concrete cracks detection using convolutional neuralnetwork based on transfer learning. Mathematical Problems in Engineering. 2020 Oct 17;2020:1-0.
+[22] Karar ME, Hemdan EE, Shouman MA. Cascaded deep learning classifiers for computer-aided diagnosis of COVID-19 and pneumonia diseases in X-ray scans. Complex & Intelligent Systems. 2021 Feb;7:235-47.
+[23] El Gannour O, Hamida S, Cherradi B, Al-Sarem M, Raihani A, Saeed F, Hadwan M. Concatenation of pre-trained convolutional neural networks for enhanced covid-19 screening using transfer learning technique. Electronics. 2021 Dec 29;11(1):103.
+[24] Rahimzadeh M, Attar A. A modified deep convolutional neural network for detecting COVID-19 and pneumonia from chest X-ray images based on the concatenation of Xception and ResNet50V2. Informatics in medicine unlocked. 2020 Jan 1;19:100360.
+[25] Abdulhussien WR, El Abbadi NK, Gaber AM. Hybrid deep neural network for facial expressions recognition. Indonesian Journal of Electrical Engineering and Informatics (IJEEI). 2021 Dec 31;9(4):993-1007.
+[26] Cubuk ED, Zoph B, Mane D, Vasudevan V, Le QV. Autoaugment: Learning augmentation strategies from data. InProceedings of the IEEE/CVF conference on computer vision and pattern recognition 2019 (pp. 113-123).
+[27] Van Dyk DA, Meng XL. The art of data augmentation. Journal of Computational and Graphical Statistics. 2001 Mar 1;10(1):1-50.
+[28] Shorten C, Khoshgoftaar TM. A survey on image data augmentation for deep learning. Journal of big data. 2019 Dec;6(1):1-48.
+[29] Dhawan S. A review of image compression and comparison of its algorithms. International Journal of electronics & Communication technology. 2011 Mar;2(1):22-6.
+[30] Subramanya A. Image compression technique. IEEE potentials. 2001 Feb;20(1):19-23.
+[31] Ballé J, Laparra V, Simoncelli EP. End-to-end optimized image compression. arXiv preprint arXiv:1611.01704. 2016 Nov 5.
+[32] Hernandez W, Mendez A, Göksel T. Application of principal component analysis to image compression. Statistics-Growing Data Sets and Growing Demand for Statistics. 2018 Nov 7.
+[33] Dwivedi A, Tolambiya A, Kandula P, Bose NS, Kumar A, Kalra PK. Color image compression using 2-dimensional principal component analysis (2DPCA). A A. 2006;2:1.
+[34] Wang CW, Jeng JH. Image compression using PCA with clustering. In2012 International Symposium on Intelligent Signal Processing and Communications Systems 2012 Nov 4 (pp. 458-462). IEEE.
+[35] Omar HM, Morsli M, Yaichi S. Image compression using principal component analysis. In2020 2nd International Conference on Mathematics and Information Technology (ICMIT) 2020 Feb 18 (pp. 226-231). IEEE.
+[36] Helber P, Bischke B, Dengel A, Borth D. Eurosat: A novel dataset and deep learning benchmark for land use and land cover classification. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing. 2019 Jun 14;12(7):2217-26.
+[37] Yang Y, Newsam S. Bag-of-visual-words and spatial extensions for land-use classification. InProceedings of the 18th SIGSPATIAL international conference on advances in geographic information systems 2010 Nov 2 (pp. 270-279).
+[38] Xia GS, Hu J, Hu F, Shi B, Bai X, Zhong Y, Zhang L, Lu X. AID: A benchmark data set for performance evaluation of aerial scene classification. IEEE Transactions on Geoscience and Remote Sensing. 2017 Apr 24;55(7):3965-81.
+[39] Sheng G, Yang W, Xu T, Sun H. High-resolution satellite scene classification using a sparse coding based multiple feature combination. International journal of remote sensing. 2012 Apr 20;33(8):2395-412.
+[40] Zhu XX, Hu J, Qiu C, Shi Y, Kang J, Mou L, Bagheri H, Häberle M, Hua Y, Huang R, Hughes L. So2Sat LCZ42: A benchmark dataset for global local climate zones classification. arXiv preprint arXiv:1912.12171. 2019 Dec 19.
+
+
+
+--------
+my dataset
+[36] EuroSAT
+[37] UCMerced
+[5] RESISC45
+[14] PatternNet
+[38] AID
+[39] WHU-RS19
+[5]  RSSCN7
+[40] So2Sat

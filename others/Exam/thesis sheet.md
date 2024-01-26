@@ -1,279 +1,29 @@
-I need to write a thesis paper titled "A hybrid model for large scale remote sensing image classification". I collected four datasets (EuroSAT Dataset, UCMerced Dataset - Land-Use Scene Classification, NWPU-RESISC45 Dataset, PatternNet Dataset) and I merged all the datasets and got a total 64 different class (for example: residential area, river, forest, highway, industrial area etc.). These total of 64 classes include a total of 99400 images. Now, I developed a hybrid model for accurately classifying these 64 classes. 
-
-This is the Abstract I've written for my thesis paper:
-My previous Abstract: Remote sensing is a powerful technology that captures information about the Earth’s surface from a distance, enabling various applications such as environmental management, urban planning, and disaster response. However, classifying remote sensing images into meaningful categories is a challenging task, especially when dealing with large-scale and diverse datasets. This thesis proposes a novel hybrid model that leverages the strengths of two pre-trained deep convolutional neural networks (DCNNs): EfficientNetB0 and ResNet50, to achieve high performance in large-scale remote sensing image classification. The hybrid model uses a comprehensive dataset of 64 classes with a total of 99,400 images, created by combining four diverse datasets: EuroSAT, UCMerced, NWPU-RESISC45, and PatternNet. The model applies data augmentation techniques to handle variations in lighting, angle, and scale, enhancing the robustness of the model. The architecture involves fine-tuning the selected DCNNs and using a global average pooling layer for feature extraction. The hybrid model achieves promising results with a training accuracy of 98.49% and a testing accuracy of 96.09%. The model also incorporates early stopping and a learning rate schedule to improve its generalization and convergence. The model was implemented and tested on Google Colab using a T4 GPU, demonstrating its scalability and efficiency. Our work contributes to the field by presenting a scalable and accurate solution for large-scale remote sensing image classification, demonstrating the potential of deep learning models to identify diverse land cover and land use categories. We compare our hybrid model’s performance with existing benchmarks, showing its superiority in handling the combined dataset. This research advances the state-of-the-art in remote sensing image classification and provides insights into the transferability of deep learning models across diverse datasets. The implications of this work extend to applications where accurate and scalable image classification is crucial. Further exploration of transfer learning and model interpretability may yield additional improvements and insights into the proposed hybrid model’s capabilities.
-
-But I've found a paper and followed it's idea. Here's the abstract of that paper:
-ABSTRACT I followed: Plant diseases compose a great threat to global food security. However, the rapid identification
-of plant diseases remains challenging and time-consuming. It requires experts to accurately identify if the
-plant is healthy or not and identify the type of infection. Deep learning techniques have recently been used
-to identify and diagnose diseased plants from digital images to help automate plant disease diagnosis and
-help non-experts identify diseased plants. While many deep learning applications have been used to identify
-diseased plants and aims to increase the detection rate, the limitation of the large parameter size in the models
-persist. In this paper, an end-to-end deep learning model is developed to identify healthy and unhealthy corn
-plant leaves while taking into consideration the number of parameters of the model. The proposed model
-utilizes two pre-trained convolutional neural networks (CNNs), EfficientNetB0, and DenseNet121, to extract
-deep features from the corn plant images.The deep features extracted from each CNN are then fused using
-the concatenation technique to produce a more complex feature set from which the model can learn better
-about the dataset. In this paper, data augmentation techniques were used to add variations to the images in
-the dataset used to train the model, increasing the variety and number of the images and enabling the model
-to learn more complex cases of the data. The obtained result of this work is compared with other pre-trained
-CNN models, namely ResNet152 and InceptionV3, which have a larger number of parameters than the
-proposed model and require more processing power. The proposed model is able to achieve a classification
-accuracy of 98.56% which shows the superiority of the proposed model over ResNet152 and InceptionV3
-that achieved a classification accuracy of 98.37% and 96.26% respectively.
-
-Now, like the above paper I further experimented with fine tuned EfficientNetB0 having accuracy: 95.02%,  fine tuned ResNet50 having accuracy: 93.90%, fine tuned DenseNet121 having accuracy: 75.63%,  fine tuned MobileNetV2 having accuracy: 61.10%
-
-Next I experimented with 3 hybrid models:
-Concatenating EfficientNetB0 with ResNet50 having accuracy: 95.37%
-Concatenating EfficientNetB0 with MobileNetV2 having accuracy: 95.02%
-Concatenating EfficientNetB0 with DenseNet121 having accuracy: 94.87%
-
-and after computing and analyzing the train and test accuracy, computing, precision, recall, and f1-score values for their predictions on the test data I decided that Concatenating EfficientNetB0 with ResNet50 having accuracy: 95.37% is my proposed model
-
-Now follow the abstract that I followed and by following it's writing style, include and replace my work described above to my previous abstract I've given in the beginning for my thesis paper. Also here's my current code of my proposed model:
-
-datasets_dir =  "/content/FinalDirectory"
-IMG_SIZE = 128
-BATCH_SIZE = 32
-epochs = 20
-
-import tensorflow as tf
-tf.random.set_seed(42)
-train_data = tf.keras.preprocessing.image_dataset_from_directory(
-    directory = datasets_dir,
-    image_size = (IMG_SIZE, IMG_SIZE),
-    label_mode = 'categorical',
-    color_mode="rgb",
-    batch_size = BATCH_SIZE,
-    seed=42,
-    shuffle = True,
-    validation_split=0.2,
-    subset="training"
-).prefetch(buffer_size=tf.data.AUTOTUNE)
-test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
-    directory = datasets_dir,
-    image_size =  (IMG_SIZE, IMG_SIZE),
-    label_mode = 'categorical',
-    color_mode="rgb",
-    batch_size = BATCH_SIZE,
-    seed=42,
-    shuffle = True,
-    validation_split=0.2,
-    subset="validation"
-)
-class_names = test_dataset.class_names
-test_data = test_dataset.prefetch(buffer_size=tf.data.AUTOTUNE)
-
-import tensorflow as tf
-data_augmentation = tf.keras.Sequential([
-  tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal",input_shape=(IMG_SIZE, IMG_SIZE, 3)),
-  tf.keras.layers.experimental.preprocessing.RandomRotation(0.2),
-  tf.keras.layers.experimental.preprocessing.RandomZoom(0.2),
-  tf.keras.layers.experimental.preprocessing.RandomHeight(0.2),
-  tf.keras.layers.experimental.preprocessing.RandomWidth(0.2)
-], name ="data_augmentation")
-
-import tensorflow as tf
-
-# Setup the base models and freeze their layers (this will extract features)
-
-base_model1 = tf.keras.applications.EfficientNetB0(include_top=False)
-base_model2 = tf.keras.applications.DenseNet121(include_top=False)
-base_model1.trainable = True  # Enable fine-tuning
-base_model2.trainable = True  # Enable fine-tuning
-
-# Fine-tune only the last N layers
-
-fine_tune_at = 50
-for layer in base_model1.layers[:-fine_tune_at]:
-    layer.trainable = False
-
-fine_tune_at = 20
-for layer in base_model2.layers[:-fine_tune_at]:
-    layer.trainable = False
-
-# Setup model architecture with trainable top layers
-
-inputs = tf.keras.layers.Input(shape=(IMG_SIZE, IMG_SIZE, 3), name='input_layer')
-x = data_augmentation(inputs)
-x1 = base_model1(x, training=False)
-x2 = base_model2(x, training=False)
-x1 = tf.keras.layers.GlobalAveragePooling2D(name='global_avg_pooling_layer1')(x1)
-x2 = tf.keras.layers.GlobalAveragePooling2D(name='global_avg_pooling_layer2')(x2)
-x = tf.keras.layers.concatenate([x1, x2])
-x = tf.keras.layers.Dropout(0.5)(x)  # Add dropout for regularization
-outputs = tf.keras.layers.Dense(len(class_names), activation='softmax', name='output_layer')(x)
-model = tf.keras.Model(inputs, outputs)
-
-# Compile the model
-
-model.compile(
-    loss='categorical_crossentropy',
-    optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001),  # Adjust the learning rate
-    metrics=['accuracy']
-)
-
-# Early stopping callback
-
-early_stopping = tf.keras.callbacks.EarlyStopping(
-    monitor='val_accuracy',
-    patience=5,
-    restore_best_weights=True
-)
-
-# Learning rate schedule callback
-
-reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
-    monitor='val_loss',
-    factor=0.2,
-    patience=3,
-    min_lr=1e-7,
-    verbose=1
-)
-
-model.evaluate(train_data), model.evaluate(test_data)
-2485/2485 [==============================] - 167s 67ms/step - loss: 0.0857 - accuracy: 0.9731
-622/622 [==============================] - 41s 66ms/step - loss: 0.2039 - accuracy: 0.9487
-
-------------
-
-------------
-
-I need to write a thesis paper titled "A hybrid model for large scale remote sensing image classification". I collected four datasets (EuroSAT Dataset, UCMerced Dataset - Land-Use Scene Classification, NWPU-RESISC45 Dataset, PatternNet Dataset) and I merged all the datasets and got a total 64 different class (for example: residential area, river, forest, highway, industrial area etc.). These total of 64 classes include a total of 99400 images. Now, I developed a hybrid model for accurately classifying these 64 classes. Here's the model:
-
-IMG_SIZE = 128
-BATCH_SIZE = 32
-epochs = 30
-
-import tensorflow as tf
-tf.random.set_seed(42)
-
-train_data = tf.keras.preprocessing.image_dataset_from_directory(
- directory = datasets_dir,
- image_size = (IMG_SIZE, IMG_SIZE),
- label_mode = 'categorical',
- color_mode="rgb",
- batch_size = BATCH_SIZE,
- seed=42,
- shuffle = True,
- validation_split=0.2,
- subset="training"
-
-).prefetch(buffer_size=tf.data.AUTOTUNE)
-
-test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
- directory = datasets_dir,
- image_size = (IMG_SIZE, IMG_SIZE),
- label_mode = 'categorical',
- color_mode="rgb",
- batch_size = BATCH_SIZE,
- seed=42,
- shuffle = True,
- validation_split=0.2,
- subset="validation"
-
-)
-class_names = test_dataset.class_names
-test_data = test_dataset.prefetch(buffer_size=tf.data.AUTOTUNE)
-
-import tensorflow as tf
-
-data_augmentation = tf.keras.Sequential([
- tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal",input_shape=(IMG_SIZE, IMG_SIZE, 3)),
- tf.keras.layers.experimental.preprocessing.RandomRotation(0.2),
- tf.keras.layers.experimental.preprocessing.RandomZoom(0.2),
- tf.keras.layers.experimental.preprocessing.RandomHeight(0.2),
- tf.keras.layers.experimental.preprocessing.RandomWidth(0.2)
-], name ="data_augmentation")
-
-# Setup the base models and freeze their layers (this will extract features)
-
-base_model1 = tf.keras.applications.EfficientNetB0(include_top=False)
-base_model2 = tf.keras.applications.ResNet50(include_top=False)
-
-base_model1.trainable = True # Enable fine-tuning
-base_model2.trainable = True # Enable fine-tuning
-
-# Fine-tune only the last N layers
-
-fine_tune_at = 50
-for layer in base_model1.layers[:-fine_tune_at]:
- layer.trainable = False
-
-fine_tune_at = 20
-for layer in base_model2.layers[:-fine_tune_at]:
- layer.trainable = False
-
-# Setup model architecture with trainable top layers
-
-inputs = tf.keras.layers.Input(shape=(IMG_SIZE, IMG_SIZE, 3), name='input_layer')
-x = data_augmentation(inputs)
-x1 = base_model1(x, training=False)
-x2 = base_model2(x, training=False)
-x1 = tf.keras.layers.GlobalAveragePooling2D(name='global_avg_pooling_layer1')(x1)
-x2 = tf.keras.layers.GlobalAveragePooling2D(name='global_avg_pooling_layer2')(x2)
-x = tf.keras.layers.concatenate([x1, x2])
-x = tf.keras.layers.Dropout(0.5)(x) # Add dropout for regularization
-outputs = tf.keras.layers.Dense(len(class_names), activation='softmax', name='output_layer')(x)
-model = tf.keras.Model(inputs, outputs)
-
-# Compile the model
-
-model.compile(
- loss='categorical_crossentropy',
- optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001), # Adjust the learning rate
- metrics=['accuracy']
-)
-
-# Early stopping callback
-
-early_stopping = tf.keras.callbacks.EarlyStopping(
- monitor='val_accuracy',
- patience=10,
- restore_best_weights=True
-)
-
-# Learning rate schedule callback
-
-reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
- monitor='val_loss',
- factor=0.2,
- patience=3,
- min_lr=1e-7,
- verbose=1
-)
-
-# Train the model with the learning rate schedule
-
-history = model.fit(
- train_data,
- epochs=epochs,
- steps_per_epoch=len(train_data),
- validation_data=test_data,
- validation_steps=len(test_data),
- callbacks=[early_stopping, reduce_lr]
-)
-
-Training Accuracy: 0.9849094748497009
-Testing Accuracy: 0.9609155058860779
-
-Based on above information, write me an abstract for a thesis paper.
-
 # 
 
 # datasets:
 
 1. [EuroSat Dataset | Kaggle](https://www.kaggle.com/datasets/apollo2506/eurosat-dataset/data)
+- 10 meters per pixel. (spatial resolution)
+1. [UCMerced Dataset - Land-Use Scene Classification | Kaggle](https://www.kaggle.com/datasets/apollo2506/landuse-scene-classification/data)
+- 0.3 meters per pixel
+1. [NWPU-RESISC45 Dataset | Kaggle](https://www.kaggle.com/datasets/happyyang/nwpu-data-set)
+- 0.2 meters to 30 meters per pixel
+1. [So2Sat LCZ42 | TensorFlow Datasets](https://www.tensorflow.org/datasets/catalog/so2sat) 
 
-2. [UCMerced Dataset - Land-Use Scene Classification | Kaggle](https://www.kaggle.com/datasets/apollo2506/landuse-scene-classification/data)
+2. [PatternNet](https://sites.google.com/view/zhouwx/dataset?authuser=0)
+- 0.1 to 1.2 m
 
-3. [NWPU-RESISC45 Dataset | Kaggle](https://www.kaggle.com/datasets/happyyang/nwpu-data-set)
+------
 
-4. [So2Sat LCZ42 | TensorFlow Datasets](https://www.tensorflow.org/datasets/catalog/so2sat) 
+[In remote sensing, the terms “large scale” and “small scale” refer to the “map-to-ground ratio” of the images](https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/satellites-and-sensors/spatial-resolution-pixel-size-and-scale/9407)[1](https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/satellites-and-sensors/spatial-resolution-pixel-size-and-scale/9407).
 
-5. [PatternNet](https://sites.google.com/view/zhouwx/dataset?authuser=0)
+**Large-scale remote sensing images** have larger “map-to-ground ratios” (e.g., 1:5,000), meaning each pixel represents a small area on the ground. [For example, SPOT data, with a spatial resolution of 10m or 20m, is considered large scale](https://gisrsstudy.com/remote-sensing-resolution/)[2](https://gisrsstudy.com/remote-sensing-resolution/).
+
+On the other hand, **small-scale remote sensing images** have smaller “map-to-ground ratios” (e.g., 1:100,000), meaning each pixel represents a larger area on the ground. [An example of this is the Advanced Very High Resolution Radiometer (AVHRR) data, with a spatial resolution of 1.1 km](https://gisrsstudy.com/remote-sensing-resolution/)[2](https://gisrsstudy.com/remote-sensing-resolution/).
+
+[The **spatial resolution** of an image refers to the size of the smallest possible feature that can be detected](https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/satellites-and-sensors/spatial-resolution-pixel-size-and-scale/9407)[1](https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/satellites-and-sensors/spatial-resolution-pixel-size-and-scale/9407). [It’s the size of one pixel in terms of ground dimensions](https://www.amnh.org/content/download/74353/1391447/file/ScaleAndResolution_Final.pdf)[3](https://www.amnh.org/content/download/74353/1391447/file/ScaleAndResolution_Final.pdf). [For instance, if a sensor has a spatial resolution of 20 meters, each pixel represents an area of 20m x 20m on the ground](https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/satellites-and-sensors/spatial-resolution-pixel-size-and-scale/9407)[1](https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/satellites-and-sensors/spatial-resolution-pixel-size-and-scale/9407).
+
+[In summary, large-scale images have high spatial resolution and can detect smaller features, while small-scale images have low spatial resolution and represent larger areas but with less detail](https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/satellites-and-sensors/spatial-resolution-pixel-size-and-scale/9407)[1](https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/satellites-and-sensors/spatial-resolution-pixel-size-and-scale/9407)[2](https://gisrsstudy.com/remote-sensing-resolution/).
 
 -----
 
@@ -548,3 +298,324 @@ Since its inception, there have been several other models that have also gained 
 As for which version is the most popular for image classification, it can depend on various factors such as the specific task, computational resources, and the amount of data available. [However, Inception V3 is widely used for image classification with a pre-trained deep neural network](https://medium.com/that-feeling-when-it-is-compiler-fault/using-modified-inception-v3-cnn-for-video-processing-and-video-classification-b0c145baa1fc)[3](https://medium.com/that-feeling-when-it-is-compiler-fault/using-modified-inception-v3-cnn-for-video-processing-and-video-classification-b0c145baa1fc). [It has been shown to attain greater than 78.1% accuracy on the ImageNet dataset](https://iq.opengenus.org/inception-pre-trained-cnn-model/)[4](https://cloud.google.com/tpu/docs/inception-v3-advanced)[5](https://itsmayankshrivastava.medium.com/image-classification-using-pretrained-inception-v3-model-50a8d4f89ff2).
 
 Remember, the “best” or “most popular” model can vary depending on the specific needs of different tasks. [It’s always a good idea to experiment with different models and choose the one that best suits your needs](https://iq.opengenus.org/inception-pre-trained-cnn-model/)[2](https://www.geeksforgeeks.org/inception-v2-and-v3-inception-network-versions/)[6](https://iq.opengenus.org/inception-v3-model-architecture/)[1](https://iq.opengenus.org/inception-pre-trained-cnn-model/)[4](https://cloud.google.com/tpu/docs/inception-v3-advanced)[7](https://machinelearningknowledge.ai/popular-image-classification-models-in-imagenet-challenge-ilsvrc-competition-history/)[8](https://www.analyticsvidhya.com/blog/2020/08/top-4-pre-trained-models-for-image-classification-with-python-code/)[3](https://medium.com/that-feeling-when-it-is-compiler-fault/using-modified-inception-v3-cnn-for-video-processing-and-video-classification-b0c145baa1fc)[5](https://itsmayankshrivastava.medium.com/image-classification-using-pretrained-inception-v3-model-50a8d4f89ff2). Let me know if you have any other questions! 😊
+
+----
+
+I need to write a thesis paper titled "A hybrid model for large scale remote sensing image classification". I collected four datasets (EuroSAT Dataset, UCMerced Dataset - Land-Use Scene Classification, NWPU-RESISC45 Dataset, PatternNet Dataset) and I merged all the datasets and got a total 64 different class (for example: residential area, river, forest, highway, industrial area etc.). These total of 64 classes include a total of 99400 images. Now, I developed a hybrid model for accurately classifying these 64 classes.
+
+This is the Abstract I've written for my thesis paper:
+My previous Abstract: Remote sensing is a powerful technology that captures information about the Earth’s surface from a distance, enabling various applications such as environmental management, urban planning, and disaster response. However, classifying remote sensing images into meaningful categories is a challenging task, especially when dealing with large-scale and diverse datasets. This thesis proposes a novel hybrid model that leverages the strengths of two pre-trained deep convolutional neural networks (DCNNs): EfficientNetB0 and ResNet50, to achieve high performance in large-scale remote sensing image classification. The hybrid model uses a comprehensive dataset of 64 classes with a total of 99,400 images, created by combining four diverse datasets: EuroSAT, UCMerced, NWPU-RESISC45, and PatternNet. The model applies data augmentation techniques to handle variations in lighting, angle, and scale, enhancing the robustness of the model. The architecture involves fine-tuning the selected DCNNs and using a global average pooling layer for feature extraction. The hybrid model achieves promising results with a training accuracy of 98.49% and a testing accuracy of 96.09%. The model also incorporates early stopping and a learning rate schedule to improve its generalization and convergence. The model was implemented and tested on Google Colab using a T4 GPU, demonstrating its scalability and efficiency. Our work contributes to the field by presenting a scalable and accurate solution for large-scale remote sensing image classification, demonstrating the potential of deep learning models to identify diverse land cover and land use categories. We compare our hybrid model’s performance with existing benchmarks, showing its superiority in handling the combined dataset. This research advances the state-of-the-art in remote sensing image classification and provides insights into the transferability of deep learning models across diverse datasets. The implications of this work extend to applications where accurate and scalable image classification is crucial. Further exploration of transfer learning and model interpretability may yield additional improvements and insights into the proposed hybrid model’s capabilities.
+
+But I've found a paper and followed it's idea. Here's the abstract of that paper:
+ABSTRACT I followed: Plant diseases compose a great threat to global food security. However, the rapid identification
+of plant diseases remains challenging and time-consuming. It requires experts to accurately identify if the
+plant is healthy or not and identify the type of infection. Deep learning techniques have recently been used
+to identify and diagnose diseased plants from digital images to help automate plant disease diagnosis and
+help non-experts identify diseased plants. While many deep learning applications have been used to identify
+diseased plants and aims to increase the detection rate, the limitation of the large parameter size in the models
+persist. In this paper, an end-to-end deep learning model is developed to identify healthy and unhealthy corn
+plant leaves while taking into consideration the number of parameters of the model. The proposed model
+utilizes two pre-trained convolutional neural networks (CNNs), EfficientNetB0, and DenseNet121, to extract
+deep features from the corn plant images.The deep features extracted from each CNN are then fused using
+the concatenation technique to produce a more complex feature set from which the model can learn better
+about the dataset. In this paper, data augmentation techniques were used to add variations to the images in
+the dataset used to train the model, increasing the variety and number of the images and enabling the model
+to learn more complex cases of the data. The obtained result of this work is compared with other pre-trained
+CNN models, namely ResNet152 and InceptionV3, which have a larger number of parameters than the
+proposed model and require more processing power. The proposed model is able to achieve a classification
+accuracy of 98.56% which shows the superiority of the proposed model over ResNet152 and InceptionV3
+that achieved a classification accuracy of 98.37% and 96.26% respectively.
+
+Now, like the above paper I further experimented with fine tuned EfficientNetB0 having accuracy: 95.02%, fine tuned ResNet50 having accuracy: 93.90%, fine tuned DenseNet121 having accuracy: 75.63%, fine tuned MobileNetV2 having accuracy: 61.10%
+
+Next I experimented with 3 hybrid models:
+Concatenating EfficientNetB0 with ResNet50 having accuracy: 95.37%
+Concatenating EfficientNetB0 with MobileNetV2 having accuracy: 95.02%
+Concatenating EfficientNetB0 with DenseNet121 having accuracy: 94.87%
+
+and after computing and analyzing the train and test accuracy, computing, precision, recall, and f1-score values for their predictions on the test data I decided that Concatenating EfficientNetB0 with ResNet50 having accuracy: 95.37% is my proposed model
+
+Now follow the abstract that I followed and by following it's writing style, include and replace my work described above to my previous abstract I've given in the beginning for my thesis paper. Also here's my current code of my proposed model:
+
+datasets_dir = "/content/FinalDirectory"
+IMG_SIZE = 128
+BATCH_SIZE = 32
+epochs = 20
+
+import tensorflow as tf
+tf.random.set_seed(42)
+train_data = tf.keras.preprocessing.image_dataset_from_directory(
+ directory = datasets_dir,
+ image_size = (IMG_SIZE, IMG_SIZE),
+ label_mode = 'categorical',
+ color_mode="rgb",
+ batch_size = BATCH_SIZE,
+ seed=42,
+ shuffle = True,
+ validation_split=0.2,
+ subset="training"
+).prefetch(buffer_size=tf.data.AUTOTUNE)
+test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
+ directory = datasets_dir,
+ image_size = (IMG_SIZE, IMG_SIZE),
+ label_mode = 'categorical',
+ color_mode="rgb",
+ batch_size = BATCH_SIZE,
+ seed=42,
+ shuffle = True,
+ validation_split=0.2,
+ subset="validation"
+)
+class_names = test_dataset.class_names
+test_data = test_dataset.prefetch(buffer_size=tf.data.AUTOTUNE)
+
+import tensorflow as tf
+data_augmentation = tf.keras.Sequential([
+ tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal",input_shape=(IMG_SIZE, IMG_SIZE, 3)),
+ tf.keras.layers.experimental.preprocessing.RandomRotation(0.2),
+ tf.keras.layers.experimental.preprocessing.RandomZoom(0.2),
+ tf.keras.layers.experimental.preprocessing.RandomHeight(0.2),
+ tf.keras.layers.experimental.preprocessing.RandomWidth(0.2)
+], name ="data_augmentation")
+
+import tensorflow as tf
+
+# Setup the base models and freeze their layers (this will extract features)
+
+base_model1 = tf.keras.applications.EfficientNetB0(include_top=False)
+base_model2 = tf.keras.applications.DenseNet121(include_top=False)
+base_model1.trainable = True # Enable fine-tuning
+base_model2.trainable = True # Enable fine-tuning
+
+# Fine-tune only the last N layers
+
+fine_tune_at = 50
+for layer in base_model1.layers[:-fine_tune_at]:
+ layer.trainable = False
+
+fine_tune_at = 20
+for layer in base_model2.layers[:-fine_tune_at]:
+ layer.trainable = False
+
+# Setup model architecture with trainable top layers
+
+inputs = tf.keras.layers.Input(shape=(IMG_SIZE, IMG_SIZE, 3), name='input_layer')
+x = data_augmentation(inputs)
+x1 = base_model1(x, training=False)
+x2 = base_model2(x, training=False)
+x1 = tf.keras.layers.GlobalAveragePooling2D(name='global_avg_pooling_layer1')(x1)
+x2 = tf.keras.layers.GlobalAveragePooling2D(name='global_avg_pooling_layer2')(x2)
+x = tf.keras.layers.concatenate([x1, x2])
+x = tf.keras.layers.Dropout(0.5)(x) # Add dropout for regularization
+outputs = tf.keras.layers.Dense(len(class_names), activation='softmax', name='output_layer')(x)
+model = tf.keras.Model(inputs, outputs)
+
+# Compile the model
+
+model.compile(
+ loss='categorical_crossentropy',
+ optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001), # Adjust the learning rate
+ metrics=['accuracy']
+)
+
+# Early stopping callback
+
+early_stopping = tf.keras.callbacks.EarlyStopping(
+ monitor='val_accuracy',
+ patience=5,
+ restore_best_weights=True
+)
+
+# Learning rate schedule callback
+
+reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
+ monitor='val_loss',
+ factor=0.2,
+ patience=3,
+ min_lr=1e-7,
+ verbose=1
+)
+
+model.evaluate(train_data), model.evaluate(test_data)
+2485/2485 [==============================] - 167s 67ms/step - loss: 0.0857 - accuracy: 0.9731
+622/622 [==============================] - 41s 66ms/step - loss: 0.2039 - accuracy: 0.9487
+
+---
+
+---
+
+I need to write a thesis paper titled "A hybrid model for large scale remote sensing image classification". I collected four datasets (EuroSAT Dataset, UCMerced Dataset - Land-Use Scene Classification, NWPU-RESISC45 Dataset, PatternNet Dataset) and I merged all the datasets and got a total 64 different class (for example: residential area, river, forest, highway, industrial area etc.). These total of 64 classes include a total of 99400 images. Now, I developed a hybrid model for accurately classifying these 64 classes. Here's the model:
+
+IMG_SIZE = 128
+BATCH_SIZE = 32
+epochs = 30
+
+import tensorflow as tf
+tf.random.set_seed(42)
+
+train_data = tf.keras.preprocessing.image_dataset_from_directory(
+ directory = datasets_dir,
+ image_size = (IMG_SIZE, IMG_SIZE),
+ label_mode = 'categorical',
+ color_mode="rgb",
+ batch_size = BATCH_SIZE,
+ seed=42,
+ shuffle = True,
+ validation_split=0.2,
+ subset="training"
+
+).prefetch(buffer_size=tf.data.AUTOTUNE)
+
+test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
+ directory = datasets_dir,
+ image_size = (IMG_SIZE, IMG_SIZE),
+ label_mode = 'categorical',
+ color_mode="rgb",
+ batch_size = BATCH_SIZE,
+ seed=42,
+ shuffle = True,
+ validation_split=0.2,
+ subset="validation"
+
+)
+class_names = test_dataset.class_names
+test_data = test_dataset.prefetch(buffer_size=tf.data.AUTOTUNE)
+
+import tensorflow as tf
+
+data_augmentation = tf.keras.Sequential([
+ tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal",input_shape=(IMG_SIZE, IMG_SIZE, 3)),
+ tf.keras.layers.experimental.preprocessing.RandomRotation(0.2),
+ tf.keras.layers.experimental.preprocessing.RandomZoom(0.2),
+ tf.keras.layers.experimental.preprocessing.RandomHeight(0.2),
+ tf.keras.layers.experimental.preprocessing.RandomWidth(0.2)
+], name ="data_augmentation")
+
+# Setup the base models and freeze their layers (this will extract features)
+
+base_model1 = tf.keras.applications.EfficientNetB0(include_top=False)
+base_model2 = tf.keras.applications.ResNet50(include_top=False)
+
+base_model1.trainable = True # Enable fine-tuning
+base_model2.trainable = True # Enable fine-tuning
+
+# Fine-tune only the last N layers
+
+fine_tune_at = 50
+for layer in base_model1.layers[:-fine_tune_at]:
+ layer.trainable = False
+
+fine_tune_at = 20
+for layer in base_model2.layers[:-fine_tune_at]:
+ layer.trainable = False
+
+# Setup model architecture with trainable top layers
+
+inputs = tf.keras.layers.Input(shape=(IMG_SIZE, IMG_SIZE, 3), name='input_layer')
+x = data_augmentation(inputs)
+x1 = base_model1(x, training=False)
+x2 = base_model2(x, training=False)
+x1 = tf.keras.layers.GlobalAveragePooling2D(name='global_avg_pooling_layer1')(x1)
+x2 = tf.keras.layers.GlobalAveragePooling2D(name='global_avg_pooling_layer2')(x2)
+x = tf.keras.layers.concatenate([x1, x2])
+x = tf.keras.layers.Dropout(0.5)(x) # Add dropout for regularization
+outputs = tf.keras.layers.Dense(len(class_names), activation='softmax', name='output_layer')(x)
+model = tf.keras.Model(inputs, outputs)
+
+# Compile the model
+
+model.compile(
+ loss='categorical_crossentropy',
+ optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001), # Adjust the learning rate
+ metrics=['accuracy']
+)
+
+# Early stopping callback
+
+early_stopping = tf.keras.callbacks.EarlyStopping(
+ monitor='val_accuracy',
+ patience=10,
+ restore_best_weights=True
+)
+
+# Learning rate schedule callback
+
+reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
+ monitor='val_loss',
+ factor=0.2,
+ patience=3,
+ min_lr=1e-7,
+ verbose=1
+)
+
+# Train the model with the learning rate schedule
+
+history = model.fit(
+ train_data,
+ epochs=epochs,
+ steps_per_epoch=len(train_data),
+ validation_data=test_data,
+ validation_steps=len(test_data),
+ callbacks=[early_stopping, reduce_lr]
+)
+
+Training Accuracy: 0.9849094748497009
+Testing Accuracy: 0.9609155058860779
+
+Based on above information, write me an abstract for a thesis paper.
+
+------
+
+1. Image compression
+
+2. undersampling
+
+3. oversampling
+
+---------
+
+- dataset performance by spatial resolution
+
+- performance by undersampling
+
+- performance by oversampling
+
+- performance after compression
+
+- performance after resize to 64by64
+
+- -----
+
+so2sat, aid and others add.
+
+-------------------------
+
+------------
+
+- After using PCA and k=2, even after 50% reduction in image quality we still get almost the same performance by our model, just somehere 0.3% accuracy loss. So then we changed our image size from 128x128 to 64x64, Then we notice accuracy loss upto 7%
+
+## Impact of PCA and Image Resizing on Model Performance
+
+In our research, we applied Principal Component Analysis (PCA) with `k=2` to our image dataset for dimensionality reduction. This resulted in a 50% reduction in image quality. However, the performance of our model was almost unaffected, with only a minor accuracy loss of approximately 0.3%. This demonstrates the robustness of our model to variations in image quality, and the effectiveness of PCA as a dimensionality reduction technique.
+
+Subsequently, we experimented with reducing the image size from 128x128 to 64x64 pixels. This change led to a more significant impact on model performance, with an accuracy loss of up to 7%. This suggests that while our model can handle some level of reduction in image quality, it is more sensitive to changes in image resolution.
+
+These findings highlight the importance of considering the trade-off between computational efficiency (achieved through dimensionality reduction and image resizing) and model performance when working with image datasets. They also underscore the potential of techniques like PCA in maintaining model performance even when working with compressed or lower-quality images.
+
+--------
+
+- my model is a hybrid of EfficientNetB0 (last 50 trainable layers) and ResNet50 (last 20 trainable layers). why is my model more sensitive to 64x64 where i see upto 7% accuracy loss and why not sensitive to 128x128 compressed images by PCA approach?
+
+## Sensitivity of Hybrid Models to Image Size and Quality
+
+The sensitivity of your hybrid model, which combines the last 50 trainable layers of EfficientNetB0 and the last 20 trainable layers of ResNet50, to changes in image size and quality can be attributed to several factors:
+
+1. **Model Architecture**: Both EfficientNet and ResNet architectures have been designed and optimized for certain input image sizes. For instance, EfficientNetB0 and ResNet50 are typically used with input image sizes of 224x224 pixels. [When the input image size is reduced to 64x64 pixels, the model may lose important details that are critical for accurate classification](https://medium.com/neuronio/how-to-deal-with-image-resizing-in-deep-learning-e5177fad7d89)[1](https://medium.com/neuronio/how-to-deal-with-image-resizing-in-deep-learning-e5177fad7d89).
+
+2. **Feature Extraction**: The convolutional layers in these models extract features from the input images. [When the image size is reduced, some features may become less discernible, especially those that are related to the spatial relationships between pixels](https://medium.com/neuronio/how-to-deal-with-image-resizing-in-deep-learning-e5177fad7d89)[1](https://medium.com/neuronio/how-to-deal-with-image-resizing-in-deep-learning-e5177fad7d89).
+
+3. **PCA Compression**: When PCA is applied to the images, it reduces the dimensionality of the data by projecting it onto a lower-dimensional space. This process retains the directions (principal components) that capture the most variance in the data. As a result, even though the image quality is reduced, the most important features from the perspective of variance are preserved. [This is why your model does not show a significant drop in performance with PCA-compressed 128x128 images](https://link.springer.com/article/10.1007/s11063-021-10632-5)[2](https://link.springer.com/article/10.1007/s11063-021-10632-5)[3](https://ieeexplore.ieee.org/document/9297081/).
+
+4. **Training Data**: The models were likely trained on datasets consisting of higher resolution images. [When we reduce the resolution, the model is being asked to make predictions on data that is quite different from what it was trained on](https://blog.roboflow.com/you-might-be-resizing-your-images-incorrectly/)[4](https://blog.roboflow.com/you-might-be-resizing-your-images-incorrectly/).
+
+In conclusion, while PCA compression and reducing image size both serve to decrease computational load, their impact on model performance can vary. PCA, which prioritizes preservation of data variance, appears to have a lesser impact on model accuracy in this case compared to reducing image size, which may eliminate important features necessary for accurate classification.

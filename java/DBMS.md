@@ -9,8 +9,8 @@
 ![](assets/2024-01-09-17-06-20-image.png)
 
 4. Delete Column
-
- ![](assets/2024-01-09-17-07-20-image.png)
+   
+   ![](assets/2024-01-09-17-07-20-image.png)
 
 ------
 
@@ -156,6 +156,38 @@ emp_id sold 500,000 worth of product to client_id. in this case, we need emp_id 
 
 # Aggregation:
 
+[In MySQL, an aggregate function performs a calculation on multiple values and returns a single value](https://www.mysqltutorial.org/mysql-aggregate-functions/)[1](https://www.mysqltutorial.org/mysql-aggregate-functions/). [These functions are often used with the `GROUP BY` clause to calculate an aggregate value for each group](https://www.mysqltutorial.org/mysql-aggregate-functions/)[1](https://www.mysqltutorial.org/mysql-aggregate-functions/). Here are some commonly used aggregate functions in MySQL:
+
+- [`AVG()`: Returns the average value of the argument](https://www.mysqltutorial.org/mysql-aggregate-functions/)[2](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html).
+- [`COUNT()`: Returns a count of the number of rows returned](https://www.mysqltutorial.org/mysql-aggregate-functions/)[2](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html).
+- [`SUM()`: Returns the sum](https://www.mysqltutorial.org/mysql-aggregate-functions/)[2](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html).
+- [`MAX()`: Returns the maximum value](https://www.mysqltutorial.org/mysql-aggregate-functions/)[2](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html).
+- [`MIN()`: Returns the minimum value](https://www.mysqltutorial.org/mysql-aggregate-functions/)[2](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html).
+
+[The syntax of an aggregate function is as follows](https://www.mysqltutorial.org/mysql-aggregate-functions/)[1](https://www.mysqltutorial.org/mysql-aggregate-functions/):
+
+```sql
+function_name(DISTINCT | ALL expression)
+```
+
+In this syntax:
+
+- First, specify the name of the aggregate function (e.g., `AVG()`).
+- Second, use `DISTINCT` if you want to calculate based on distinct values or `ALL` in case you want to calculate all values including duplicates. The default is `ALL`.
+- [Third, specify an expression that can be a column or an expression that involves column and arithmetic operators](https://www.mysqltutorial.org/mysql-aggregate-functions/)[1](https://www.mysqltutorial.org/mysql-aggregate-functions/).
+
+[For example, you can use the `AVG()` function to calculate the average buy price of all products in the products table by using the following query](https://www.mysqltutorial.org/mysql-aggregate-functions/)[1](https://www.mysqltutorial.org/mysql-aggregate-functions/):
+
+```sql
+SELECT AVG(buy_price) FROM products;
+```
+
+[This will return the average `buy_price` of all products in the `products` table](https://www.mysqltutorial.org/mysql-aggregate-functions/)[1](https://www.mysqltutorial.org/mysql-aggregate-functions/).
+
+---------------------
+
+
+
 * And aggregation is basically where we can use the above functions and we can display the data that we get back in a more helpful way.
 
 ![](assets/2024-01-08-15-06-37-image.png)
@@ -194,11 +226,7 @@ rule 1: you need to have the same number of columns in each select statement for
 
 ![](assets/2024-01-09-15-18-04-image.png)
 
-
-
 Rule 2: they need to have similar data types. in above example, first name from first select statement and branch name from second select statements are both strings so they work
-
-
 
 Example of 3 select statements with 2 unions:
 
@@ -219,8 +247,6 @@ make it more readable by adding the prefix of table name in front:
 * another example:
 
 ![](assets/2024-01-09-15-24-42-image.png)
-
-
 
 # Join
 
@@ -245,8 +271,6 @@ make it more readable by adding the prefix of table name in front:
 
 ![](https://learnsql.com/blog/learn-and-practice-sql-joins/2.png)
 
-
-
 # Nested Queries
 
 * Nested Query is something where we use multiple select statements in order to get specific information from the database where we need to use the results of one select statement to inform another select statements to perform queries.
@@ -254,8 +278,6 @@ make it more readable by adding the prefix of table name in front:
 ![](assets/2024-01-09-16-42-17-image.png)
 
 ![](assets/2024-01-09-16-50-36-image.png)
-
-
 
 # View
 

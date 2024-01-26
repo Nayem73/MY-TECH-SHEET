@@ -2,10 +2,6 @@
 
 I={iijk​}where i∈[1,
 
-
-
-
-
 you did not complete above response:
 Sure, let's break down the mathematical representation of your model:
 
@@ -59,14 +55,22 @@ The model is trained using the Adam optimizer
 
 O(BN(FC(D(concatenate(GAP(EN(DA(I))), GAP(RS(DA(I)))))))) = \frac{e^{BN(FC(D(concatenate(GAP(EN(DA(I))), GAP(RS(DA(I))))))}}{\sum_{k=1}^{\text{len(class_names)}} e^{BN(FC(D(concatenate(GAP(EN(DA(I))), GAP(RS(DA(I))))))_k}}
 
-
-
 O(BN(FC(D(\text{concatenate}(GAP(EN(DA(I))), GAP(RS(DA(I))))))) = \frac{e^{BN(FC(D(\text{concatenate}(GAP(EN(DA(I))), GAP(RS(DA(I))))))}}{\sum_{k=1}^{\text{len}(\text{class\_names})} e^{BN(FC(D(\text{concatenate}(GAP(EN(DA(I))), GAP(RS(DA(I))))))_k}}
-
-
 
 $$
 O(BN(FC(D(\text{concatenate}(GAP(EN(DA(I))), GAP(RS(DA(I))))))) = \frac{e^{BN(FC(D(\text{concatenate}(GAP(EN(DA(I))), GAP(RS(DA(I))))))}}{\sum_{k=1}^{\text{len}(\text{class\_names})} e^{BN(FC(D(\text{concatenate}(GAP(EN(DA(I))), GAP(RS(DA(I))))))_k}}
 $$
 
+Dear Dr. Md. Rahedul Islam Sir,
 
+I hope this message finds you well. My name is Nayem Mehedi, and I am currently pursuing my studies in the Department of Computer Science and Engineering at Pabna University of Science and Technology. 
+
+I am writing to you regarding my ongoing thesis work, which involves the analysis and comparison of various Deep Learning Models. The aim of my research is to modify these models to enhance their accuracy in classifying Remote Sensing images. I have attached my current work for your review.  
+
+My honourable professor, Md. Shafiul Azam (Associate Professor, CSE, PUST), recommended that I reach out to you, given your expertise and ongoing research in the field of Remote Sensing. I believe your insights and guidance would be invaluable to my research.
+
+I would be immensely grateful if you could spare some time to review my work and provide your valuable advice. Thank you for considering my request. I look forward to the possibility of learning from your expertise.  
+
+Sincerely,
+
+Nayem Mehedi
