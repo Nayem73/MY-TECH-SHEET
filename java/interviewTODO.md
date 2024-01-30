@@ -277,3 +277,7 @@ public class Main {
 55. tight coupling and lose coupling in spring boot and java.
 
 56. sdlc, solid, acid, git, Docker
+
+57. Trie ****
+
+58. https://chat.openai.com/share/788f30ac-8458-4547-ba13-ddae1e5b7e12

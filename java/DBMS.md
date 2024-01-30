@@ -186,8 +186,6 @@ SELECT AVG(buy_price) FROM products;
 
 ---------------------
 
-
-
 * And aggregation is basically where we can use the above functions and we can display the data that we get back in a more helpful way.
 
 ![](assets/2024-01-08-15-06-37-image.png)

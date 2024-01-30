@@ -723,4 +723,54 @@ public class Main {
 
 * difference between patch and put
 
-* 
+------------
+
+----------
+
+Sure, here’s the full code with an anonymous class that overrides the `startEngine` method in the `Vehicle` abstract class:
+
+```java
+// Abstract class
+abstract class Vehicle {
+    // Abstract method (does not have a body)
+    public abstract void startEngine();
+}
+
+// Subclass for Car
+class Car extends Vehicle {
+    public void startEngine() {
+        System.out.println("The car's engine starts with a key.");
+    }
+}
+
+// Subclass for Motorcycle
+class Motorcycle extends Vehicle {
+    public void startEngine() {
+        System.out.println("The motorcycle's engine starts with a button.");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Create a Car object
+        Car myCar = new Car();
+        myCar.startEngine();  // Outputs "The car's engine starts with a key."
+
+        // Create a Motorcycle object
+        Motorcycle myMotorcycle = new Motorcycle();
+        myMotorcycle.startEngine();  // Outputs "The motorcycle's engine starts with a button."
+
+        // Create an anonymous class that overrides the startEngine method
+        Vehicle myVehicle = new Vehicle() {
+            @Override
+            public void startEngine() {
+                System.out.println("The vehicle starts with a remote control.");
+            }
+        };
+        myVehicle.startEngine();  // Outputs "The vehicle starts with a remote control."
+    }
+}
+```
+
+In this code, `myVehicle` is an instance of an anonymous subclass of `Vehicle`. The `startEngine` method is overridden in this anonymous subclass. When `myVehicle.startEngine()` is called, it will print “The vehicle starts with a remote control.” This demonstrates how you can use an anonymous class to override a method without explicitly declaring a new named subclass. Let me know if you have any other questions! 😊
