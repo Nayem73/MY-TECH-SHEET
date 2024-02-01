@@ -282,3 +282,69 @@ make it more readable by adding the prefix of table name in front:
 when we run select statement in sql, we can save the results with view:
 
 ![](assets/2024-01-09-17-01-16-image.png)
+
+-----------
+
+-----
+
+-----
+
+# [25 Advanced SQL Query Examples](https://learnsql.com/blog/25-advanced-sql-query-examples/)
+
+@@ Sure, I’d be happy to explain the ranking system used in the SQL query you provided.
+
+The `RANK()` function in SQL is a <mark>window function</mark> that assigns a unique rank to each row within the partition of a result set. The rank of a row is determined by one or more ordering expressions.
+
+Here’s how it works in the context of your query:
+
+```sql
+RANK() OVER (ORDER BY salary DESC) as ranking
+```
+
+This part of the query calculates a rank for each row (employee) based on their salary:
+
+- `RANK()`: This is the function that will generate the ranks.
+- `OVER (ORDER BY salary DESC)`: This is called a window clause. It defines the window or set of rows the function will operate on. In this case, it’s ordering the employees by their salary in descending order. So, the employee with the highest salary is first in the window.
+- `as ranking`: This simply renames the new column as “ranking”.
+
+The function operates as follows:
+
+1. It orders the employees by their salary in descending order.
+2. It then goes through the ordered list and assigns a rank to each row. The employee with the highest salary gets a rank of 1. The employee with the second highest salary gets a rank of 2, and so on.
+3. If two (or more) employees have the same salary, they get the same rank. The next salary down will skip a rank. For example, if two employees both have the highest salary, they both get a rank of 1, and the employee with the next highest salary gets a rank of 3.
+
+So, the `RANK()` function provides a way to rank each row within a result set based on specific criteria. In your case, it’s ranking employees based on their salary. The final result is a list of employees along with their salaries and their rank among all employees based on salary. I hope this helps! 😊
+
+@@ A window function in SQL is a type of function that performs a calculation across a set of rows that are related to the current row. This is called a “window”, hence the name “window function”. Unlike aggregate functions, which return a single result per group of rows, window functions return a single result for each row, based on the rows in its window.
+
+Here’s the basic syntax of a window function:
+
+```sql
+window_function_name (expression) OVER (
+  partition_clause
+  order_clause
+  frame_clause
+)
+```
+
+- `window_function_name`: The name of the window function, such as `ROW_NUMBER()`, `RANK()`, `SUM()`, etc.
+- `expression`: The column or expression that the window function will operate on.
+- `OVER`: This keyword begins the window specification.
+- `partition_clause`: This clause divides the rows into partitions or groups. The window function is applied separately to each partition.
+- `order_clause`: This clause orders the rows within each partition.
+- `frame_clause`: This clause further limits the rows within a partition to a certain range or “frame”. For example, you might want to include only the rows from the current row to the next 5 rows.
+
+Here’s an example of a window function in action:
+
+```sql
+SELECT 
+  first_name,  
+  last_name,  
+  salary, 
+  SUM(salary) OVER (PARTITION BY dept ORDER BY salary DESC) as sum_salary 
+FROM employees;
+```
+
+[In this query, the `SUM(salary) OVER (PARTITION BY dept ORDER BY salary DESC)` part is a window function that calculates the cumulative salary for each department (because we’re partitioning by `dept`), ordered by salary in descending order](https://www.sqltutorial.org/sql-window-functions/)[1](https://www.sqltutorial.org/sql-window-functions/)[2](https://learnsql.com/blog/sql-window-functions-examples/).
+
+I hope this helps! If you have any more questions, feel free to ask. 😊
