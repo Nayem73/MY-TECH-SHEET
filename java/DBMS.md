@@ -116,6 +116,8 @@ or,
 
 emp_id sold 500,000 worth of product to client_id. in this case, we need emp_id and client_id both as primary key because both needs to match with each other for their sales info.(how much emp x sold to client y)
 
+![](assets/2024-02-03-09-41-52-image.png)
+
 1. ![](assets/2024-01-08-14-50-06-image.png)
 
 2. ![](assets/2024-01-08-14-51-03-image.png)
@@ -215,6 +217,8 @@ SELECT AVG(buy_price) FROM products;
 ![](assets/2024-01-08-18-04-04-image.png)
 
 # Union
+
+- Union is used to combine the results of multiple select statements into one.
 
 rule 1: you need to have the same number of columns in each select statement for Union to work. in below example, we select one column from first select statment and also same for the second select statement
 
@@ -348,3 +352,45 @@ FROM employees;
 [In this query, the `SUM(salary) OVER (PARTITION BY dept ORDER BY salary DESC)` part is a window function that calculates the cumulative salary for each department (because we’re partitioning by `dept`), ordered by salary in descending order](https://www.sqltutorial.org/sql-window-functions/)[1](https://www.sqltutorial.org/sql-window-functions/)[2](https://learnsql.com/blog/sql-window-functions-examples/).
 
 I hope this helps! If you have any more questions, feel free to ask. 😊
+
+# Normalization
+
+# 1NF (first Normal form)
+
+1. There's no such thing in a relational database as row order. there needs to be a separate column for ordering. ([Learn Database Normalization - 1NF, 2NF, 3NF, 4NF, 5NF - YouTube](https://youtu.be/GFQaEYEc8_8?t=321))
+
+2. mixing multiple datatypes within a single column. for example, mixing int and string in a column. (Beatle_height column)
+
+3. designing a table without a primary key violates 1st Normal Form.
+
+4. storing a repeating group of data items on a single row violates 1st Normal Form. (For example, a player's inventory can have hundreds of items, keeping them in a row would mean hundreds of different columns for different items.) (Another terrible idea is to keep all these hundreds of items in a single column as string, that way we can't perform queries) - so the solution is keep a single column as Item_type. and another column quantity. - here, primary key will be (player_id and item_type)
+
+![](assets/2024-02-04-17-26-25-image.png)
+
+# 2NF - 2nd Normal Form
+
+1. Each non-key attribute must depend on the entire primary key.
+
+![](assets/2024-02-04-17-33-37-image.png)
+
+
+
+# Testing my knowledge
+
+- I'm preparing for a written test for software engineering position. Give me database written questions.
+
+Sure, here are some database-related questions you might encounter in a written test for a software engineering position:
+
+1. [**What are your approaches to write test cases for database testing?**](https://www.remoterocketship.com/advice/guide/qa-engineer/database-testing-interview-questions-and-answers)[1](https://www.remoterocketship.com/advice/guide/qa-engineer/database-testing-interview-questions-and-answers)
+2. [**How do you ensure the accuracy of the data?**](https://www.remoterocketship.com/advice/guide/qa-engineer/database-testing-interview-questions-and-answers)[1](https://www.remoterocketship.com/advice/guide/qa-engineer/database-testing-interview-questions-and-answers)
+3. [**What experience do you have with database design and development?**](https://interviewprep.org/database-engineer-interview-questions/)[2](https://interviewprep.org/database-engineer-interview-questions/)
+4. [**Describe your experience working with relational databases such as MySQL, Oracle, or SQL Server.**](https://www.remoterocketship.com/advice/guide/qa-engineer/database-testing-interview-questions-and-answers)[2](https://interviewprep.org/database-engineer-interview-questions/)
+5. [**Are you familiar with NoSQL databases such as MongoDB or Cassandra?**](https://www.remoterocketship.com/advice/guide/qa-engineer/database-testing-interview-questions-and-answers)[2](https://interviewprep.org/database-engineer-interview-questions/)
+6. [**How do you ensure data integrity when designing a database?**](https://interviewprep.org/database-engineer-interview-questions/)[2](https://interviewprep.org/database-engineer-interview-questions/)
+7. [**What is Database testing/Back-end testing?**](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)[3](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)
+8. [**What is Data Validity testing?**](https://www.remoterocketship.com/advice/guide/qa-engineer/database-testing-interview-questions-and-answers)[3](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)
+9. [**What is Data Integrity testing?**](https://www.remoterocketship.com/advice/guide/qa-engineer/database-testing-interview-questions-and-answers)[3](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)
+10. [**What is Database Performance testing?**](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)[3](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)
+11. [**What is the testing of Procedure, Triggers, and Functions?**](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)[3](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)
+
+Remember, it’s important to not only know the answers but also understand the concepts behind them. Good luck with your preparation!

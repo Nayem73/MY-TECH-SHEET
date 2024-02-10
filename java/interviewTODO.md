@@ -281,3 +281,140 @@ public class Main {
 57. Trie ****
 
 58. https://chat.openai.com/share/788f30ac-8458-4547-ba13-ddae1e5b7e12
+
+59. give me interview questions on backend
+
+60.
+
+Yes, there are other problems where the head of the linked list is not given. For example, some of the problems are:
+
+- How to find the middle node of a linked list without the head pointer?
+- How to reverse a linked list without the head pointer?
+- How to detect a loop in a linked list without the head pointer?
+- How to remove duplicates from a sorted linked list without the head pointer?
+
+You can find more examples and solutions from the following sources:
+
+- [Linked List Problems - Stanford University](http://cslibrary.stanford.edu/105/LinkedListProblems.pdf)
+- [Top 50 Problems on Linked List Data Structure asked in SDE Interviews - GeeksforGeeks](https://www.geeksforgeeks.org/delete-a-node-from-linked-list-without-head-pointer/)
+- [Delete a Node from linked list without head pointer - GeeksforGeeks](https://stackoverflow.com/questions/43574231/linked-list-troubles-list-not-linking-to-head-pointer)
+
+61.
+
+- In Therap(BD), I'm attending "Associate Software Engineer" written interview of 2 hours durion.
+  
+  Please give me some related questions.
+
+Hello, this is Copilot. I’m an AI companion that can help you with various tasks and topics. 😊
+
+I see that you are preparing for an Associate Software Engineer written interview at Therap(BD). That’s exciting! 🎉
+
+[According to some web sources](https://www.glassdoor.co.uk/Interview/Therap-BD-Interview-Questions-E2085669.htm)[1](https://www.glassdoor.co.uk/Interview/Therap-BD-Interview-Questions-E2085669.htm)[2](https://www.glassdoor.com/Interview/Therap-BD-Bangladesh-Interview-Questions-EI_IE2085669.0,9_IL.10,20_IN27.htm), the written interview may consist of multiple-choice questions and coding problems on data structures, algorithms, and databases. Some of the topics that you may encounter are:
+
+- Binary trees, heaps, stacks, queues, linked lists, hash maps, graphs, etc.
+- Sorting and searching algorithms, such as merge sort, quick sort, binary search, etc.
+- SQL queries, joins, indexes, normalization, etc.
+- Object-oriented programming concepts, such as inheritance, polymorphism, abstraction, etc.
+- Java or C# syntax, data types, operators, control structures, exceptions, etc.
+
+Here are some sample questions that you can practice with:
+
+- What is the difference between BFS and DFS? Explain with an example.
+- Write a SQL query to find the name and salary of the highest-paid employee in each department.
+- Write a Java or C# program to implement a stack using an array.
+- What is the advantage of using a hash map over an array? What is the drawback?
+- How would you check if a binary tree is balanced or not?
+
+I hope this helps you prepare for your interview. Good luck! 🍀
+
+[](https://www.glassdoor.co.uk/Interview/Therap-BD-Interview-Questions-E2085669.htm)[1](https://www.glassdoor.co.uk/Interview/Therap-BD-Interview-Questions-E2085669.htm)[: Therap BD Interview Questions (2024) | Glassdoor](https://www.glassdoor.com/Interview/Therap-BD-Bangladesh-Interview-Questions-EI_IE2085669.0,9_IL.10,20_IN27.htm) [2](https://www.glassdoor.com/Interview/Therap-BD-Bangladesh-Interview-Questions-EI_IE2085669.0,9_IL.10,20_IN27.htm): Therap BD Interview Questions in Bangladesh | Glassdoor
+
+62. Rokomari
+- vjudge(graph-topological sort, dijkstra, bellman ford, floyd warshall, ..)
+
+- vjudge(number theory), bigmod, gcd, 
+
+- famous problems: n-queen, travelling salesman
+
+- cses dp(coin change variations), spoj classicals from my profile(candy, segmented sieve), ideone history (all possible combination, permutation, combination(nCr)-lightoj, Longest increasing subsequence in O(logn)).
+
+- SOLID principles
+
+- CV topics
+
+- Project (SSLCommerz connection etc, login, etc.), docker, maven, more about view of mvc
+
+- tmp.md
+
+- collection framework
+
+- github (on docs some info by raka and me)
+
+- database acid, database transaction, database languages (ddl, dml, dql etc.)
+
+- Java generics and related stuff that I forgot.
+
+- *<u>Real good idea about pointers in C++ vs why not in java, bst in C++ vs in java</u>*
+63. Sure, here are the answers to the questions:
+    
+    1. **ArrayList vs LinkedList**: `ArrayList` and `LinkedList` are both implementations of the `List` interface in Java. The main difference is how they internally store elements. `ArrayList` is backed by an array, so it provides fast random access and is efficient when resizing is infrequent. `LinkedList`, on the other hand, is implemented as a doubly linked list, providing efficient add/remove operations, but slower get operations.
+    
+    2. **Final Keyword**: In Java, the `final` keyword can be used in several contexts. When used with a variable, the variable becomes unmodifiable. When used with a method, the method cannot be overridden in a subclass. When used with a class, the class cannot be subclassed.
+    
+    3. **Memory Management**: Java handles memory management using garbage collection. Objects are created on the heap, and when they are no longer referenced by the application, the garbage collector frees their memory.
+    
+    4. **Equals() and hashCode()**: The `equals()` method checks if two objects are equal in terms of their state (values), while `hashCode()` returns an integer that represents the object’s memory address. These methods are often overridden together. If two objects are equal according to the `equals()` method, they must have the same `hashCode()`.
+    
+    5. **Abstract Classes vs Interfaces**: Both are used for abstraction, but an `abstract class` can have method implementations and variables, while an `interface` can only declare methods and constants. A class can implement multiple interfaces but can only extend one abstract class.
+    
+    6. **Multithreading**: Multithreading in Java is a feature that allows concurrent execution of two or more parts of a program (threads) for maximum utilization of CPU.
+    
+    7. **Java Reflection**: Reflection is a feature in Java that allows an executing Java program to examine or modify the runtime behavior of applications. It’s used in various Java frameworks like Spring and Hibernate.
+    
+    8. **Exception Handling**: Java uses try-catch blocks for exception handling. Code that might throw exceptions is put in a `try` block, and the exceptions are caught and handled in `catch` blocks.
+    
+    9. **Checked vs Unchecked Exceptions**: Checked exceptions are exceptions that need to be declared in the `throws` clause of a method or caught within the method. Unchecked exceptions (runtime exceptions) don’t need to be declared or caught.
+    
+    10. **Java Collections Framework**: The Java Collections Framework provides a set of interfaces and classes for storing and manipulating a group of objects. Examples include `ArrayList`, `HashSet`, `HashMap`, etc.
+
+64. what is event driven?
+
+65. does your bst able to handle duplicates?
+
+66. Sure, here are some sample interview questions from each of the topics you mentioned:
+    
+    **Data Structures and Algorithms (DSA):**
+    
+    1. What is the difference between a stack and a queue?
+    2. Can you explain how a hash table works and where it can be used?
+    3. [Describe a situation where it’s better to use a linked list than an array](https://www.geeksforgeeks.org/top-100-data-structure-and-algorithms-dsa-interview-questions-topic-wise/)[1](https://www.geeksforgeeks.org/top-100-data-structure-and-algorithms-dsa-interview-questions-topic-wise/)[2](https://www.springboard.com/blog/software-engineering/data-structures-and-algorithms-interview-questions/)[3](https://sg.indeed.com/career-advice/interviewing/data-structures-and-algorithms-interview-questions).
+    
+    **Object-Oriented Programming (OOP):**
+    
+    1. Can you explain the concept of inheritance in OOP?
+    2. What is polymorphism and how is it implemented in OOP?
+    3. [How does encapsulation improve code security and flexibility](https://www.geeksforgeeks.org/top-100-data-structure-and-algorithms-dsa-interview-questions-topic-wise/)[4](https://www.geeksforgeeks.org/oops-interview-questions/)[5](https://www.interviewbit.com/oops-interview-questions/)[6](https://hk.indeed.com/career-advice/interviewing/object-oriented-programming-interview-questions)[7](https://www.indeed.com/career-advice/interviewing/object-oriented-programming-interview-questions)?
+    
+    **Database:**
+    
+    1. What is the difference between SQL and NoSQL databases?
+    2. Can you explain what a database transaction is and why it’s important?
+    3. [How would you design a database schema for a blog website](https://www.geeksforgeeks.org/top-100-data-structure-and-algorithms-dsa-interview-questions-topic-wise/)[8](https://www.indeed.com/career-advice/interviewing/database-interview-questions)[9](https://www.softwaretestinghelp.com/database-interview-questions/)[10](https://au.indeed.com/career-advice/interviewing/database-interview-questions)[11](https://www.indeed.com/career-advice/interviewing/dba-interview-questions)?
+    
+    **Operating Systems (OS):**
+    
+    1. What is the role of a scheduler in an operating system?
+    2. Can you explain how virtual memory works in an OS?
+    3. [What is the difference between a process and a thread](https://www.geeksforgeeks.org/top-100-data-structure-and-algorithms-dsa-interview-questions-topic-wise/)[12](https://www.geeksforgeeks.org/operating-systems-interview-questions/)[13](https://www.interviewbit.com/operating-system-interview-questions/)[14](https://in.indeed.com/career-advice/interviewing/operating-system-interview-questions)[15](https://www.indeed.com/career-advice/interviewing/operating-system-interview-questions)?
+    
+    **Computer Networks (CN):**
+    
+    1. What is the difference between TCP and UDP?
+    2. Can you explain how the DNS resolution process works?
+    3. [What is the role of a router in a network](https://www.geeksforgeeks.org/top-100-data-structure-and-algorithms-dsa-interview-questions-topic-wise/)[16](https://www.geeksforgeeks.org/networking-interview-questions/)[17](https://www.simplilearn.com/computer-networks-interview-questions-article)[18](https://in.indeed.com/career-advice/interviewing/network-interview-questions)[19](https://ca.indeed.com/career-advice/interviewing/networking-interview-questions)?
+    
+    Remember, these are just sample questions. The actual questions you might be asked in an interview can vary greatly depending on the role, the interviewer, and the specific needs of the company. It’s always a good idea to understand the fundamentals of each topic and be prepared to discuss your relevant experiences. Good luck with your interview preparation!
+
+67. ![](assets/2024-02-10-14-55-35-image.png)
+
+68. 

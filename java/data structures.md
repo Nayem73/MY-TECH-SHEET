@@ -72,3 +72,85 @@ In this pattern, `(\\s[A-Z][a-z]*)?` makes the last name optional. This pattern 
 - Deployment
 
 - Maintenance (Added by me)
+
+# Backtracking
+
+```cpp
+which of these two codes is backtracking?
+first code:
+void rec(string s, int indxS, string& new_s) {
+    if (indxS >= (int)s.length()) return;
+
+    if (s[indxS] >= 'A' && s[indxS] <= 'Z') {
+        s[indxS] += 32;
+    }
+
+    if (s[indxS] == 'a' || s[indxS] == 'e' || s[indxS] == 'i' || s[indxS] == 'o' || s[indxS] == 'u' || 
+            (s[indxS] >= '0' && s[indxS] <= '9')) {
+        //nothing.
+    } else {
+        if (s[indxS] >= 'a' && s[indxS] <= 'z') {
+            s[indxS] -= 32;
+        }
+        new_s += "*";
+        new_s += s[indxS];
+    }
+
+    rec(s, indxS+1, new_s);
+}
+
+
+second code:
+void rec(string s, int indxS, string& new_s) {
+    if (indxS >= (int)s.length()) return;
+    rec(s, indxS+1, new_s);
+
+    if (s[indxS] >= 'A' && s[indxS] <= 'Z') {
+        s[indxS] += 32;
+    }
+
+    if (s[indxS] == 'a' || s[indxS] == 'e' || s[indxS] == 'i' || s[indxS] == 'o' || s[indxS] == 'u' || 
+            (s[indxS] >= '0' && s[indxS] <= '9')) {
+        //nothing.
+    } else {
+        if (s[indxS] >= 'a' && s[indxS] <= 'z') {
+            s[indxS] -= 32;
+        }
+        new_s += "*";
+        new_s += s[indxS];
+    }
+}
+```
+
+Both of these codes use recursion, but neither of them is using backtracking in the traditional sense.
+
+Backtracking is a general algorithm for finding all (or some) solutions to some computational problems, notably constraint satisfaction problems, that incrementally builds candidates to the solutions, and abandons a candidate as soon as it determines that the candidate cannot possibly be extended to a valid solution.
+
+The difference between these two codes is the order of operations:
+
+- The **first code** processes the current character and then makes the recursive call.
+- The **second code** makes the recursive call first and then processes the current character.
+
+However, neither of these codes “backtracks” or undoes the changes it made during the recursive call. They simply process the characters in a different order. Therefore, neither of these codes is a backtracking algorithm. They are both examples of simple recursive functions.
+
+- ***<u>make it backtracking then</u>***
+
+Sure, here’s an example of a backtracking algorithm. This is a simple permutation generator, which is a common use case for backtracking:
+
+```cpp
+void permute(string s, int l, int r) {
+    if (l == r)
+        cout << s << endl;
+    else {
+        for (int i = l; i <= r; i++) {
+            swap(s[l], s[i]);  // make a choice
+            permute(s, l+1, r);  // explore the choice
+            swap(s[l], s[i]);  // undo the choice for the next iteration, this is the backtracking step
+        }
+    }
+}
+```
+
+In this code, we’re generating all permutations of a string. We make a choice by swapping two characters, then we recursively explore all permutations with this choice made. After we’re done exploring, we undo the choice (swap the characters back), which is the backtracking step. This allows us to explore all other permutations in subsequent recursive calls. This is a classic example of a backtracking algorithm.
+
+Please note that this is a different problem than the one solved by your original code. The concept of backtracking doesn’t apply to the problem your original code is solving. Backtracking is typically used in problems where you need to find all solutions, or find an optimal solution, and making a wrong choice along the way can be corrected by ‘backtracking’ and making a different choice. Your original code is simply processing each character in a string, which doesn’t involve making choices that could be ‘wrong’ or ‘right’. Therefore, it doesn’t make sense to apply backtracking to this problem. If you have a different problem in mind where backtracking could be applied, please let me know and I’d be happy to help with that!

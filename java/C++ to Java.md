@@ -1168,3 +1168,42 @@ public class Main {
     }
 }
 ```
+
+# Variables in Java are not polymorphic:
+
+- please explain why different output? please give me in depth knowledge on what's going on
+
+```java
+class Test {
+    public static void main(string[] args) {
+        Base b = new Subclass();
+        System.out.println(b.x);
+        System.out.println(b.method);
+
+    }
+}
+
+class Base {
+    int x = 2;
+    int method() {
+        return x;
+    }
+}
+
+class Subclass extends Base {
+    int x = 3;
+    int method() {
+        return x;
+    }
+}
+```
+
+The different output is due to the way Java handles **variable hiding** and **method overriding**.
+
+Let’s break it down:
+
+1. **Variable Hiding**: In your code, both `Base` and `Subclass` have a variable named `x`. When you create an object `b` of type `Base` but instantiate it as `Subclass`, `b.x` refers to the `x` in the `Base` class, not `Subclass`. <u>This is because variables in Java are not polymorphic. The variable that gets accessed is determined by the reference type, not the object type.</u> Hence, `b.x` will output `2`.
+
+2. **Method Overriding**: On the other hand, methods in Java are polymorphic. When a method is called, Java’s virtual machine determines the method to execute based on the actual class of the object, not the reference type. So, when you call `b.method()`, it refers to the `method()` in `Subclass`, not `Base`. Hence, `b.method()` will output `3`.
+
+This is a fundamental aspect of Java’s object-oriented programming model. Understanding this can help you predict how your code will behave and avoid potential bugs. I hope this helps! Let me know if you have any other questions. 😊

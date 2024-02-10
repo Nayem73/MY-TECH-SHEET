@@ -327,6 +327,18 @@ This Java example mirrors the Python example but provides a more detailed explan
 
 - To solve it, we need interfaces.
 
+- private methods in interfaces should have method body:
+
+```java
+package com.nayemtech;
+
+public interface Vehicle {
+    private Long aboutVehicle() {
+        return null;
+    }
+}
+```
+
 # Interface - why?: Java has Map interface
 
 - For example, in Java we have Map or Set as interface, why? in order to enforce or ensure that the implemented classes must follow the same structure defined in the interface. So, the HashSet, LinkedHashSet or TreeSet, these classes that implements the Set interface, must follow the structure and need to have the functionalities defined in the Set interface.
@@ -553,7 +565,7 @@ public class Fish implements Prey,Predator{
 
 1. We can't inherit multiple parent class for a single subclass, but we can do that for interfaces
 
-2. if we declare any fields in an interface, it will be of static final and so we need to initialize it like this `int age = 20` `String name = 'Karim'
+2. if we declare any fields in an interface, it will be of static final and so we need to initialize it like this `int age = 20` `String name = "Karim"`
 
 3. Also, In abstract classes we can declare non abstract methods but in interfaces, we can only declare abstract methods, default methods or static methods.
 
@@ -562,6 +574,224 @@ public class Fish implements Prey,Predator{
 5. **When Interface:** When we have lots of unrelated classes want to do a certain thing, we can declare that method in an interface and these classes can then implement the interface to override that method to do that certain thing.
 
 -------------
+
+- from [Multiple Inheritance in Java | DigitalOcean](https://www.digitalocean.com/community/tutorials/multiple-inheritance-in-java)
+
+```java
+package com.nayemtech;
+public interface InterfaceA {
+    void doSomething();
+}  
+
+package com.nayemtech;
+public interface InterfaceB {
+    void doSomething();
+}
+
+package com.nayemtech;
+public interface InterfaceC {
+    void doSomething();
+}
+
+
+package com.nayemtech;
+public class TmpMain implements InterfaceA, InterfaceB, InterfaceC {
+
+    @Override
+    public void doSomething() {
+        System.out.println("doSomething is called from TmpMain class");
+    }
+} 
+
+
+package com.nayemtech;
+
+public class Main implements InterfaceA, InterfaceB, InterfaceC {
+    @Override
+    public void doSomething() {
+        System.out.println("doSomething implementation from Main class");
+    }
+    public static void main(String[] args) {
+        InterfaceA interfaceA = new Main();
+        interfaceA.doSomething();
+
+
+        InterfaceB interfaceB = new TmpMain();
+        interfaceB.doSomething();
+
+        Main main = new Main();
+        main.doSomething();
+
+        TmpMain tmpMain = new TmpMain();
+        tmpMain.doSomething();
+    }
+
+}
+```
+
+- output: 
+  doSomething implementation from Main class
+  doSomething is called from TmpMain class
+
+----------
+
+- ***<u>Compositon and aggregation in java:</u>***
+
+- Composition and aggregation in Java is a design technique to implement a has-a relationship between classes.
+
+The difference between the two examples is that they illustrate two different types of relationships between classes in Java: composition and aggregation. In case of composition, the books cannot exist without the library, because the library owns the books and controls their lifetime. In case of aggregation, the books can exist without the library, because the library does not own the books and does not control their lifetime. The books can be borrowed by other entities, such as customers or other libraries. Composition implies a strong and exclusive ownership, while aggregation implies a weak and shared ownership.
+
+- **Composition**: This is a strong relationship where the composed object’s lifecycle is controlled by the composing object. If the composing object is destroyed, so are its composed objects. In your example, if the Library (composing object) ceases to exist, so do the Books (composed objects).
+
+- **Aggregation**: This is a weaker relationship where the aggregated objects can exist independently of the aggregating object. The aggregating object does not control the lifecycle of the aggregated objects. In your example, Books (aggregated objects) can exist independently of the Library (aggregating object).
+
+This distinction is important in object-oriented programming as it helps in building more flexible and reusable code.
+
+-----
+
+Sure, I can provide some code examples to illustrate the concepts of composition and aggregation in Java.
+
+**Composition Example:**
+
+```java
+class Book {
+    String title;
+    String author;
+
+    Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+}
+
+class Library {
+    // library contains list of books.
+    private final List<Book> books;
+
+    Library(List<Book> books) {
+        this.books = books; // Books are created when Library is created
+    }
+}
+```
+
+In this example, the `Library` class has a composition relationship with the `Book` class. If a `Library` object is destroyed, all `Book` objects associated with it will also be destroyed.
+
+**Aggregation Example:**
+
+```java
+class Book {
+    String title;
+    String author;
+
+    Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+}
+
+class Library {
+    // library contains a list of books.
+    private List<Book> books;
+
+    Library() {
+        this.books = new ArrayList<>(); // Empty book list
+    }
+
+    void addBook(Book book) {
+        this.books.add(book); // Book can exist without Library
+    }
+}
+```
+
+In this example, the `Library` class has an aggregation relationship with the `Book` class. `Book` objects can exist independently of the `Library` object. If a `Library` object is destroyed, the `Book` objects can continue to exist.
+
+
+
+Sure, I’d be happy to clarify the difference between the two examples.
+
+In the **composition** example:
+
+```java
+Library(List<Book> books) {
+    this.books = books; // Books are created when Library is created
+}
+```
+
+The `Library` object is initialized with a `List<Book>` at the time of its creation. The `Library` has full control over this list of books. If the `Library` object is destroyed, the specific list of `Book` objects that it was holding cannot be accessed anymore, as the reference to that list is lost. This is why we say in composition, the lifecycle of the composed objects (books) is tied to the composing object (library).
+
+In the **aggregation** example:
+
+```java
+void addBook(Book book) {
+    this.books.add(book); // Book can exist without Library
+}
+```
+
+The `Library` object has a method to add `Book` objects to its list. The `Book` objects can exist independently of the `Library`, and they can be added to the `Library` at any time, not just when the `Library` is created. If the `Library` object is destroyed, the `Book` objects it was holding can still exist if there are other references to these `Book` objects elsewhere in your program. This is why we say in aggregation, the aggregated objects (books) can exist independently of the aggregating object (library).
+
+So, the key difference lies in the lifecycle of the `Book` objects relative to the `Library` object. In composition, the `Book` objects are tightly coupled with the `Library` object, while in aggregation, the `Book` objects can exist independently.
+
+
+
+- in your prvious respoinse, you said "the Book objects it was holding can still exist if there are other references to these Book objects elsewhere in your program." give me example with code
+
+Sure, I can provide a code example to illustrate this concept. Let’s consider a scenario where we have a `Library` and a `Customer`. Both can have references to a `Book`.
+
+```java
+class Book {
+    String title;
+    String author;
+
+    Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+}
+
+class Library {
+    private List<Book> books;
+
+    Library() {
+        this.books = new ArrayList<>(); // Empty book list
+    }
+
+    void addBook(Book book) {
+        this.books.add(book); // Book can exist without Library
+    }
+}
+
+class Customer {
+    private List<Book> borrowedBooks;
+
+    Customer() {
+        this.borrowedBooks = new ArrayList<>(); // Empty book list
+    }
+
+    void borrowBook(Book book) {
+        this.borrowedBooks.add(book); // Customer can borrow a book
+    }
+}
+```
+
+In this example, a `Book` object can be created independently and then added to a `Library` object. A `Customer` can also borrow the `Book` from the `Library`. If the `Library` object is destroyed, the `Book` object can still exist because the `Customer` still has a reference to it.
+
+Here’s how you might use these classes in a program:
+
+```java
+Book book1 = new Book("Title1", "Author1");
+Library library = new Library();
+library.addBook(book1); // Add the book to the library
+
+Customer customer = new Customer();
+customer.borrowBook(book1); // Customer borrows the book
+
+library = null; // Destroy the library
+
+// The book still exists because the customer has a reference to it
+System.out.println(customer.borrowedBooks.get(0).title);
+```
+
+In this code, even after the `Library` object is destroyed, the `Book` object `book1` continues to exist because the `Customer` object still has a reference to it. This is an example of aggregation, where the `Book` objects can exist independently of the `Library` object.
 
 -------------
 

@@ -628,9 +628,6 @@ public class Deposit implements AccountOperation{
 AccountOperation {
     void execute();
 }
-
-
-
 ```
 
 The primary difference between the `AccountOperation` interface and the `Deposit` class in the code you provided and the `AccountOperation` interface and the `DepositOperation` class in the modified code I presented earlier lies in the level of abstraction and generality.
@@ -763,7 +760,6 @@ public class Employee {
         return duration.toDays()/365;
     }
 }
-
 ```
 
 --------
