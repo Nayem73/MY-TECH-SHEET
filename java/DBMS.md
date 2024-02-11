@@ -202,6 +202,37 @@ SELECT AVG(buy_price) FROM products;
 
 ![](assets/2024-01-08-15-09-43-image.png)
 
+---------
+
+-------
+
+In SQL, both `GROUP BY` and `HAVING` are used in conjunction with aggregate functions like `COUNT()`, `SUM()`, `AVG()`, `MAX()`, `MIN()`, etc. However, they serve different purposes:
+
+- **GROUP BY**: This is used to group rows that have the same values in specified columns into aggregated data. It is often used with aggregate functions (`COUNT`, `SUM`, `AVG`, `MAX`, `MIN`) to group the result-set by one or more columns. For example:
+  
+  ```sql
+  SELECT COUNT(id), country
+  FROM Customers
+  GROUP BY country;
+  ```
+  
+  This SQL statement lists the number of customers in each country.
+
+- **HAVING**: This is used to filter the results of aggregate functions. `HAVING` is added after `GROUP BY` to restrict the groups of returned rows to only those whose the condition is `TRUE`. `HAVING` is often used with `GROUP BY`. For example:
+  
+  ```sql
+  SELECT COUNT(id), country
+  FROM Customers
+  GROUP BY country
+  HAVING COUNT(id) > 5;
+  ```
+  
+  This SQL statement lists the number of customers in each country, but only include countries with more than 5 customers.
+
+So, if you want to aggregate your data (i.e., group it together based on certain columns), you would use `GROUP BY`. If you want to filter the aggregated data, you would use `HAVING`. Often, you’ll use them together to aggregate your data and then filter the aggregated results. It’s not a matter of using one or the other; they’re used for different things and often used together.
+
+
+
 # WildCards
 
 * in the example below, % means there wil be any number of characters and it needs to match with LLC at the end of the string.
@@ -372,8 +403,6 @@ I hope this helps! If you have any more questions, feel free to ask. 😊
 1. Each non-key attribute must depend on the entire primary key.
 
 ![](assets/2024-02-04-17-33-37-image.png)
-
-
 
 # Testing my knowledge
 

@@ -417,4 +417,4 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 
 67. ![](assets/2024-02-10-14-55-35-image.png)
 
-68. 
+68. <mark>Is every BST a balanced Binary Tree? how to make a tree balanced?</mark>
