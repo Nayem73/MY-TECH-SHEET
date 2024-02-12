@@ -6,8 +6,6 @@
 SELECT world.population
 FROM world
 WHERE world.name = 'Germany';
-
-
 ```
 
 2.
@@ -27,5 +25,4 @@ WHERE world.name IN (
 
 ```sql
 -- check
-
 ```

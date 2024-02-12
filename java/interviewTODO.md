@@ -418,3 +418,13 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 67. ![](assets/2024-02-10-14-55-35-image.png)
 
 68. <mark>Is every BST a balanced Binary Tree? how to make a tree balanced?</mark>
+
+69. is version control system important in software development? why?
+
+70. what is BRD (**Business Requirement Documents**)
+
+71. During Software Development, did you face any errors/challenges? some experience you can share with me?
+
+72. what is NULL?
+
+73. Biggest challenges an industry can face? (from collecting BRD, making SRS, Software Development, Testing, Implementation)
