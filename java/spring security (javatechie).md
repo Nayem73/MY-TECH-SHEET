@@ -4,8 +4,6 @@
 
 - when we use @ResponseBody above the above the @GetMapping or @PostMapping method, The `@ResponseBody` / above the class @RestController (not @Controller) annotation tells a controller that the object returned is automatically serialized into JSON and passed back into the HttpResponse object.
 
-
-
 # PasswordEncoder
 
 - we used bcrypt as PasswordEncoder:
@@ -16,8 +14,6 @@
         return new BCryptPasswordEncoder();
     }
 ```
-
- 
 
 # SecurityConfig
 
@@ -89,6 +85,7 @@ public class UserInfoUserDetails implements UserDetails {
 ```
 
 - So Now, I've given my custom UserDetailsService to the SecurityConfig
+
 - --------
 
 - Now, creating users according to their role, from the UserInfoController, we try to log in.
@@ -112,8 +109,6 @@ public class UserInfoUserDetails implements UserDetails {
         return authenticationProvider;
     }
 ```
-
-
 
 # JWT Token
 

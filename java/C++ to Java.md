@@ -1207,3 +1207,11 @@ Let’s break it down:
 2. **Method Overriding**: On the other hand, methods in Java are polymorphic. When a method is called, Java’s virtual machine determines the method to execute based on the actual class of the object, not the reference type. So, when you call `b.method()`, it refers to the `method()` in `Subclass`, not `Base`. Hence, `b.method()` will output `3`.
 
 This is a fundamental aspect of Java’s object-oriented programming model. Understanding this can help you predict how your code will behave and avoid potential bugs. I hope this helps! Let me know if you have any other questions. 😊
+
+# Problem Solving (do it in java)
+
+1. BFS (queue<pair<Node*, int>> q)
+
+2. cmp
+
+3. 

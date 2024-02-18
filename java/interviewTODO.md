@@ -428,3 +428,17 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 72. what is NULL?
 
 73. Biggest challenges an industry can face? (from collecting BRD, making SRS, Software Development, Testing, Implementation)
+
+# ------------------ DeadLine 18th Feb -------------------
+
+1. in your BST code, if you add negative value or duplicate, then what happens
+
+2. about pointers you used in your BST code
+
+3. Given incomplete Java code of BST, implement the rest.
+
+4. make a binary tree into a balanced binary tree
+
+5. kubernetes e kivabe dhukano hoysilo and azure e kivabe upload dewa hoysilo.
+
+6. what is thread safety(synchronized) in java

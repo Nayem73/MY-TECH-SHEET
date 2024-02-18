@@ -231,8 +231,6 @@ In SQL, both `GROUP BY` and `HAVING` are used in conjunction with aggregate func
 
 So, if you want to aggregate your data (i.e., group it together based on certain columns), you would use `GROUP BY`. If you want to filter the aggregated data, you would use `HAVING`. Often, you’ll use them together to aggregate your data and then filter the aggregated results. It’s not a matter of using one or the other; they’re used for different things and often used together.
 
-
-
 # WildCards
 
 * in the example below, % means there wil be any number of characters and it needs to match with LLC at the end of the string.

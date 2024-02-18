@@ -268,8 +268,6 @@ Which feature of OOP oencourages the code reusability / avoid duplicate code.
 3. Abstraction
 4. Encapsulation
 
-
-
 ----------
 
 **Inheritance:**

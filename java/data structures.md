@@ -176,3 +176,17 @@ In Java, `null` is a special value that represents the absence of a value or obj
 5. **Useful for Garbage Collection**: `null` can be used to make an object eligible for garbage collection. If you set an object reference to `null`, there are no more references to the object, and the Java garbage collector can reclaim the memory.
 
 Remember, understanding `null` and how to handle it is crucial to avoiding common pitfalls and writing robust Java code.
+
+------------
+
+- ekta graph e highest n^2 ta edge possible. (sobar shathe sobar edge ase)
+
+- dijkstra complexity: (n+m logn) ... worst case m = n^2 ... so worst case n^2 logn
+
+
+
+
+
+# what is a skewed tree?
+
+- A skewed tree is a binary tree where each node has only one child node or none.

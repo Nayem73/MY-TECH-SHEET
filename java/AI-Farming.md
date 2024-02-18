@@ -8,7 +8,7 @@ According to the SSLCOMMERZ github instruction, I ..
 
 3. In this TransactionInitiator class, I had to put my store_id and store_pass that I had to create from the sslcommerz website.
 
-4. This TransactionInitiator class then calls the constructRequestParameters method of ParameterBuilder class to build a key value map of the information provided. All the customer information including the payment type, method, amount, a unique transaction id is created here. We create a new instance of PaymentInfo entity to save these record(the current transaction) to database, we will validate this transaction later. We also save these information to a map and After saving these information to a map, this method returns the map back to the ParameterBuilder class
+4. This TransactionInitiator class then calls the constructRequestParameters method of ParameterBuilder class to build a key value map of the information provided. All the customer information including the payment type, method, amount, a unique transaction id is created here. We create a new instance of PaymentInfo entity to save these record(the current transaction) to database, we will validate this transaction later. We also save these information to a map and After saving these information to a map, this method returns the map back to the TransactionInitiator class.
 
 5. The ParameterBuilder class then calls the initiateTransaction method of the SSLCOMMERZ class and it returns me the paymentURL and I return this url back to the PaymentController class.
 
