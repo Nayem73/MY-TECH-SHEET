@@ -8,12 +8,6 @@
 
 5. [Ajit Kumar on LinkedIn: #career #software #design #technology #microsoft #google #jobs #ai #sap… | 46 comments](https://www.linkedin.com/posts/ajitcodes_career-software-design-activity-7148938936994705408-_KaE?utm_source=share&utm_medium=member_desktop)
 
-
-
-
-
-
-
 # Remote
 
 Forget LinkedIn and Fiverr!  
@@ -59,3 +53,11 @@ Like & Repost, if you find this helpful.
 Share your thoughts in the comments.  
 
 Don't forget to follow [Hasan Toor ✪](https://www.linkedin.com/in/ACoAADpeKY0B1uX5gp5hm8hw3EWkiqqxbZXhw4s)
+
+
+
+
+
+# ATS friendly resume create tips
+
+[How to create an AI-friendly resume? | LinkedIn](https://www.linkedin.com/news/story/how-to-create-an-ai-friendly-resume-5947988/)
