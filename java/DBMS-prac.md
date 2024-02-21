@@ -14,6 +14,11 @@ insert into student values(1, "Minhaz", "CSE");
 insert into student values(2, "Arafat", "EEE");
 insert into student(id, name) values(3, 'Rifat');
 
+INSERT INTO table_name (column1, column2, column3)
+VALUES ('value1', 'value2', 'value3'),
+VALUES ('value1', 'value2', 'value3');
+
+
 select * from student
 where
 student.name = "Rifat";

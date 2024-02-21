@@ -442,3 +442,37 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 5. kubernetes e kivabe dhukano hoysilo and azure e kivabe upload dewa hoysilo.
 
 6. what is thread safety(synchronized) in java
+
+7. Testing (blackbox and Junit) ****
+
+8. questions on different areas of computer science
+
+9. what is Software Quality Assurance? (SQA)
+
+10. Interviewer asked to create a database schema given a scenario.
+
+11. Given a fixed delimiter, you have to split a string into multiple words.
+
+12. abstract class and interface in java
+
+13. convert digit to binary, print a tree
+
+14. You want to implement a Set in Java that can store objects of user-defined classes. How can you achieve that?
+
+15. below:
+- 1. Random integer in range l,r without rand function.
+  2. Sum of digit until becoming 1 digit number.
+  3. Concat integers to make the largest integer.
+  4. Check which version is latest
+  5. find the height of a binary tree
+  6. Bug in a Java code.
+  7. Reverse a linked list
+  8. Every integer occurs twice except an integer find that integer
+
+- 9. Why you are interested to join therap
+
+
+
+16. pointers in C++
+
+17. 
