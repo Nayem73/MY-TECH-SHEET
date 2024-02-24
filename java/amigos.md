@@ -187,8 +187,6 @@ If static keyword was not used before main method, then every time we need to in
 
 ![](assets/2024-02-21-08-57-17-image.png)
 
-
-
 ------
 
 ```java
@@ -850,9 +848,9 @@ public String getName() {
   ```
 
 - <mark>There is a generate equals() and hashcode() option close to generate getters and setters. </mark>
-34. POJO(Plain Old Java Object) = a given object is an ordinary java object that has No association with any framework. in above example, the Cat class is a POJO. the Cat class does not Extend, Implement any class nor does it use any annotation like @Entity and else.
-
-35. Java Bean is a <mark>class</mark> that has to obey 3 contracts so that other frameworks can do certain things with it. These are the 3 things that a java bean has to have:
+34. POJO(Plain Old Java Object) = a given object is an ordinary java object that has No association with any framework. in above example, the Cat class is a POJO. the Cat class does not Extend, Implement any class (special class) nor does it use any annotation like @Entity and else.
+- Yes, the `Car` class can be considered a POJO (Plain Old Java Object). It’s a simple Java object that doesn’t extend any special classes (other than `Vehicle`, which is also a POJO), implement any special interfaces, or contain any prespecified annotations. It’s not bound by any special restriction other than those forced by the Java Language Specification. The `Car` class adheres to these principles, so it can be considered a POJO.
+1. Java Bean is a <mark>class</mark> that has to obey 3 contracts so that other frameworks can do certain things with it. These are the 3 things that a java bean has to have:
 - - A class must have a noarg constructor. (public)
 
 - - All the properties/fields in the class must be private. To access the private properties of the class we must use getters and setters.
@@ -2923,8 +2921,6 @@ public class Main {
   
   (I named Main class as `javamasterclassApplication`)
 
-
-
 # If an interviewer asks me, "why did you start with Spring Boot? there are other easier options." - How should I answer it?
 
 You can answer like this:
@@ -2942,8 +2938,6 @@ I chose to start with Spring Boot for several reasons:
 5. **Integration with Other Tools**: Spring Boot integrates well with other tools that I frequently use, such as Maven or Gradle for build automation, and Spring Data JPA for database access.
 
 While there may be other frameworks that are easier to learn initially, I believe that the benefits of Spring Boot make it a worthwhile investment of my time. Of course, the best tool always depends on the specific requirements of the project, and I’m open to learning and using other frameworks as needed.
-
-
 
 ### Tomcat started on port 8080 but what is Tomcat?
 

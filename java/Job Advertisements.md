@@ -54,10 +54,10 @@ Share your thoughts in the comments.
 
 Don't forget to follow [Hasan Toor ✪](https://www.linkedin.com/in/ACoAADpeKY0B1uX5gp5hm8hw3EWkiqqxbZXhw4s)
 
-
-
-
-
 # ATS friendly resume create tips
 
 [How to create an AI-friendly resume? | LinkedIn](https://www.linkedin.com/news/story/how-to-create-an-ai-friendly-resume-5947988/)
+
+------
+
+![](assets/2024-02-21-21-43-07-image.png)

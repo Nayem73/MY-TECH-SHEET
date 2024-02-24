@@ -886,3 +886,26 @@ public List<Integer> getImmutableList() {
 ```
 
 By following these practices, you ensure that even if your class contains mutable fields or returns mutable objects, the overall immutability of the class is maintained, preventing unintended modifications to its state.
+
+
+
+![Java](https://www.bing.com/th?id=OSK.HEROBYE5PwHu62pausBUq_2FftLvqYoBCoRFPQ11PLZI5fU&pid=cdx&w=320&h=189&c=7)
+
+Explore
+
+# tricky java questions
+
+- [How can you create an immutable class in Java?](https://www.testgorilla.com/blog/tricky-java-interview-questions-answers/)[1](https://www.testgorilla.com/blog/tricky-java-interview-questions-answers/)
+- [What is the difference between a checked and an unchecked exception in Java?](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[2](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)
+- [How does the HashMap class work internally in Java?](https://bing.com/search?q=similar+tricky+interview+questions+in+java)[3](https://bing.com/search?q=similar+tricky+interview+questions+in+java)
+- [What is the difference between the == and the equals() methods in Java?](https://talent500.co/blog/java-tricky-interview-questions/)[4](https://talent500.co/blog/java-tricky-interview-questions/)
+- [How can you implement a singleton design pattern in Java?](https://codequotient.com/blog/java-programming-questions-interview/)[5](https://codequotient.com/blog/java-programming-questions-interview/)
+- [What is the difference between a shallow copy and a deep copy in Java?](https://www.javaguides.net/2021/11/java-string-tricky-interview-coding.html)[6](https://www.javaguides.net/2021/11/java-string-tricky-interview-coding.html)
+- How can you avoid memory leaks in Java?
+- What is the difference between a static and a dynamic binding in Java?
+- How can you achieve multiple inheritance in Java?
+- What is the difference between a final, a finally, and a finalize keyword in Java?
+
+- [How can you achieve multiple inheritance in Java?](https://codequotient.com/blog/java-programming-questions-interview/)[3](https://codequotient.com/blog/java-programming-questions-interview/)
+- [What is the difference between a final, a finally, and a finalize keyword in Java?](https://data-flair.training/blogs/tricky-java-interview-questions/)[4](https://data-flair.training/blogs/tricky-java-interview-questions/)
+- How can you create a custom exception class in Java?
