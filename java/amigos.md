@@ -1055,7 +1055,7 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
 
 # Encapsulation
 
-1. <u>*Encapsulation in Java is the process by which data (variables) and the code that acts upon them (methods) are integrated as a <mark>single unit</mark>. By encapsulating a class's variables, other classes cannot access them, and only the methods of the class can access them.*</u>
+1. <u>*Encapsulation in Java is the process by which data (variables) and the code that acts upon them (methods) are integrated as a <mark>single unit</mark>. By encapsulating a class's variables, other classes cannot access them, and only the methods of the class can access them.*</u> Simplified: *<u>Encapsulation is the process where fields and methods are integrated as a single unit which we know as a class. By encapsulating a class's variables, other classes cannot access them, and only the methods of the class can access them.</u>*
 * ekta class e jevabe amra field declare kori and pore method toiri kore oi field gulo use kori .... ei jinisgulo je ekta class er vitor e ase .. eitai Encapsulation.
 
 * Encapsulation in Java is a powerful mechanism for storing the data members and data methods of a class together. It is done in the form of a secure field accessible by only the members of the same class.
