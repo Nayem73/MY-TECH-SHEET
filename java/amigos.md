@@ -1207,7 +1207,7 @@ public interface vehicle {
 
 * SOLID is an acronym for the first 5 object oriented design priciples. It helps us write clean and better code specially on a large code base.
 
-Assalamualaikum vai kemon asen? Ami Nayem Mehedi from Pabna University of Science and Technology. ami Therap Javafest 2023 er ekjon Finalist chilam and okhane amader direct interview er ekta offer dewa hoyechilo after graduation. ami just Thesis complete kore Interview er jonno preparation nissi, do you have any advice for me vai that I must know? about the company projects and interview etc.
+
 
 ------------------
 
