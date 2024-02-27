@@ -1185,7 +1185,7 @@ public interface Vehicle {
 
 ```java
 public interface vehicle {
-    public void foo(); //won't work because it is not from any of the 3 that is perssible for interfaces
+    public void foo(); //this works but writing public is redundant. just void foo(); is fine.
     public abstract void foo(); //will work but there's no need to write abstract cz interface will autamitcally see/convert it as abstract
     void foo(); // correct. public by default and abstract by default
 }
