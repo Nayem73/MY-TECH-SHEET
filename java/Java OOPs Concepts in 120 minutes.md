@@ -149,6 +149,18 @@ class Engine {
 
 In this example, the `Car` class simplifies the process of starting the engine. The user doesn’t need to know how the engine starts; they just need to call the `start` method of the `Car` class.
 
+# but I did not use any abstract class, abstract method or interface. Then how is it abstraction?
+
+Great question! Abstraction in object-oriented programming (OOP) is not only about using `abstract` classes, `abstract` methods, or interfaces. It’s a broader concept.
+
+Abstraction is about simplifying complex systems by breaking them down into smaller, more manageable parts and exposing only what is necessary for the interaction. It’s about hiding the details and complexity and providing a simpler interface.
+
+In your code, the `Car` class doesn’t need to know the details of how the engine starts. It only needs to know that it can call the `start` method of the `Engine` class. The details of how the engine starts are hidden inside the `Engine` class. This is abstraction.
+
+Even though you didn’t use `abstract` classes or interfaces, you’ve achieved abstraction by encapsulating the details within your classes and exposing only what’s necessary. This makes your code easier to use and understand, and that’s the essence of abstraction in OOP.
+
+
+
 2. **Code Reusability**: Abstraction promotes code reusability through inheritance and interfaces. Here’s an example using a `Shape` abstract class and `Circle` and `Rectangle` classes:
 
 ```java

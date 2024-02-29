@@ -15,8 +15,6 @@ select patients.first_name
 from patients order by len(patients.first_name), patients.first_name ASC;
 ```
 
-
-
 - Show the total amount of male patients and the total amount of female patients in the patients table.  
   Display the two results in the same row.
 
@@ -84,3 +82,79 @@ The difference in the output is due to how SQL handles multiple `SELECT` stateme
 In summary, the first query returns two separate values because it consists of two separate `SELECT` statements. The second query returns a single row with two columns because it is a single `SELECT` statement that includes two subqueries.
 
 I hope this clarifies the difference! Let me know if you have any other questions. 😊
+
+- Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+
+```sql
+This won't work:
+select admissions.patient_id, admissions.diagnosis
+from admissions
+group by admissions.diagnosis
+having count(admissions.diagnosis) > 1; 
+
+this works:
+select admissions.patient_id, admissions.diagnosis
+from admissions
+group by admissions.patient_id, admissions.diagnosis
+having count(admissions.diagnosis) > 1; 
+
+
+this also works:
+having count(*) > 1 / having count(admissions.patient_id) > 1 
+/ having count(admissions.discharge_date) > 1 .... etc.
+```
+
+- Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
+
+```sql
+Alhamdulillah!
+select patients.province_id, sum(patients.height)
+from patients
+group by patients.province_id
+having sum(patients.height) >= 7000;
+```
+
+```sql
+this also works!
+select patients.province_id, sum(patients.height)
+from patients
+join province_names on patients.province_id = province_names.province_id
+group by patients.province_id
+having sum(patients.height) >= 7000;
+```
+
+* display the first name, last name and number of duplicate patients based on their first name and last name.  
+  
+  Ex: A patient with an identical name can be considered a duplicate.
+
+```sql
+Alhamdulillah! simiar to the admitted multiple times queston
+
+select patients.first_name, patients.last_name, count(*)
+from patients
+group by patients.first_name, patients.last_name
+having count(*) > 1
+```
+
+
+
+- ```sql
+  here, I want to do a where statement where patients.allergies <> null. 
+  my question is, in which line below should I insert this where statement ?
+  select patients.allergies
+  from patients
+  group by patients.allergies
+  order by count(patients.allergies) desc
+  ```
+
+You should insert the `WHERE` clause after the `FROM` clause and before the `GROUP BY` clause. Here’s how your SQL query should look:
+
+```sql
+SELECT patients.allergies
+FROM patients
+WHERE patients.allergies IS NOT NULL
+GROUP BY patients.allergies
+ORDER BY COUNT(patients.allergies) DESC
+```
+
+In this query, `patients.allergies IS NOT NULL` will filter out the records where `allergies` is `NULL` before grouping and counting. Please note that in SQL, to check for `NULL`, we use `IS NULL` or `IS NOT NULL`, not `<> NULL`. The `<>` operator does not work with `NULL` values.

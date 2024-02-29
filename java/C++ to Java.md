@@ -1214,4 +1214,284 @@ This is a fundamental aspect of Java’s object-oriented programming model. Unde
 
 2. cmp
 
-3. 
+
+
+# Scanner related
+
+### int array
+
+```cpp
+convert below code to java:
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+  int n;
+  cin >> n;
+  vector<int> store(n);
+
+  for (int &X: store) cin >> X;
+
+  for (int X: store) cout << X << ' ';
+}
+```
+
+<style>
+ table {
+ border: 1px solid #c4c7c5;
+ border-radius: 4px;
+ font-size: 16px;
+ }
+ th {
+ padding: 18px 16px;
+ text-align: left;
+ }
+ td {
+ padding: 16px;
+ border-top: 1px solid #c4c7c5;
+ }
+ button.js-code-copy {
+ display: none;
+ }
+ .katex-mathml{
+ display: block;
+ text-align: center;
+ }
+ .katex-html {
+ display: none;
+ }
+
+</style>
+
+Sure, here is the equivalent Java code:
+
+```java
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        ArrayList<Integer> store = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            store.add(scanner.nextInt());
+        }
+
+        for (int X : store) {
+            System.out.print(X + " ");
+        }
+    }
+}
+```
+
+This Java code does the same thing as your C++ code. It reads an integer `n` from the input, then reads `n` integers into an ArrayList, and finally prints out all the integers in the ArrayList. Please note that in Java, we use `ArrayList` instead of `vector` in C++. Also, Java does not support the range-based for loop for reading input directly into a collection, so we use a traditional for loop instead. The `Scanner` class is used for reading input. Let me know if you need further assistance! 😊
+
+
+
+### String array
+
+```java
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        ArrayList<String> store = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            store.add(scanner.next());
+        }
+
+        for (String X : store) {
+            System.out.print(X + " ");
+        }
+    }
+}
+```
+
+This Java code does the same thing as your C++ code. It reads an integer `n` from the input, then reads `n` strings into an ArrayList, and finally prints out all the strings in the ArrayList. Please note that in Java, we use `ArrayList` instead of `vector` in C++. Also, Java does not support the range-based for loop for reading input directly into a collection, so we use a traditional for loop instead. The `Scanner` class is used for reading input. Let me know if you need further assistance! 😊
+
+
+
+In Java, the `Scanner` class does not have a method called `nextString()`. Instead, it provides two methods to read strings:
+
+1. `next()`: This method finds and returns the next complete token from this scanner and it breaks the input into tokens using a delimiter which is by default a whitespace. So, it only returns the next token rather than the whole line or sentence.
+
+2. `nextLine()`: This method advances this scanner past the current line and returns the input that was skipped. This method returns the rest of the current line, excluding any line separator at the end.
+
+In the code I provided, I used `next()` because it’s equivalent to the behavior of `cin >> X;` in C++, which reads the next word (delimited by whitespace). If you want to read a whole line (until the newline character), you would use `nextLine()` in Java, which is equivalent to `getline(cin, X);` in C++. I hope this helps! 😊
+
+-----
+
+### Array of Arrays
+
+```cpp
+convert below code to java:
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+  const int n = 5;
+  vector<vector<int>> store(n, vector<int> (n, -1));
+  
+  for (auto X: store) {
+      for (int Y: X) {
+          cout << Y << ' ';
+      }
+      cout << endl;
+  }
+}
+```
+
+<style>
+ table {
+ border: 1px solid #c4c7c5;
+ border-radius: 4px;
+ font-size: 16px;
+ }
+ th {
+ padding: 18px 16px;
+ text-align: left;
+ }
+ td {
+ padding: 16px;
+ border-top: 1px solid #c4c7c5;
+ }
+ button.js-code-copy {
+ display: none;
+ }
+ .katex-mathml{
+ display: block;
+ text-align: center;
+ }
+ .katex-html {
+ display: none;
+ }
+
+</style>
+
+Sure, here is the equivalent Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+    public static void main(String[] args) {
+        final int n = 5;
+        ArrayList<ArrayList<Integer>> store = new ArrayList<>();
+        /*or
+        List<List<Integer>> store = new ArrayList<>();
+        */
+        
+        for (int i = 0; i < n; i++) {
+            ArrayList<Integer> tmp = new ArrayList<>(Collections.nCopies(n, -1));
+            /*or
+            ArrayList<Integer> tmp = new ArrayList<>();
+            for (int j = 0; j < n; j++) {
+                tmp.add(-1);
+            }
+            */
+            store.add(tmp);
+        }
+
+        for (ArrayList<Integer> X : store) { //or for (var X: store) {}
+            for (int Y : X) {
+                System.out.print(Y + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+This Java code does the same thing as your C++ code. It creates a 2D ArrayList with `n` rows and `n` columns, all initialized to `-1`. Then it prints out all the elements in the 2D ArrayList. Please note that in Java, we use `ArrayList` instead of `vector` in C++. Also, Java does not support the range-based for loop for reading input directly into a collection, so we use a traditional for loop instead. The `Collections.nCopies(n, -1)` is used to initialize all elements of the ArrayList to `-1`. Let me know if you need further assistance! 😊
+
+
+
+# adj[]
+
+```cpp
+convert below code to java:
+
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> adj[10007];
+bool visited[10007];
+int dist[10007];
+
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    int u, v;
+    for (int i = 1; i <= n-1; i++) {
+        scanf("%d %d", &u, &v);
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    
+    for (int i = 0; i < n; i++) {
+        if (adj[i].empty()) continue;
+        cout << i << ": ";
+        for (int X: adj[i]) {
+            cout << X << ' ';
+        }
+        cout << endl;
+    }
+}
+```
+
+
+
+
+
+Sure, here is the equivalent Java code:
+
+```java
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer>[] adj = new ArrayList[10007];
+        boolean[] visited = new boolean[10007];
+        int[] dist = new int[10007];
+
+        for (int i = 0; i < 10007; i++) {
+            adj[i] = new ArrayList<>();
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        int u, v;
+        for (int i = 1; i <= n - 1; i++) {
+            u = scanner.nextInt();
+            v = scanner.nextInt();
+            adj[u].add(v);
+            adj[v].add(u);
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (adj[i].isEmpty()) continue;
+            System.out.print(i + ": ");
+            for (int X : adj[i]) {
+                System.out.print(X + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+This Java code does the same thing as your C++ code. It creates an array of ArrayLists to represent an adjacency list for a graph, reads edges of the graph from the input, and then prints out the adjacency list. Please note that in Java, we use `ArrayList` instead of `vector` in C++. Also, Java does not support the range-based for loop for reading input directly into a collection, so we use a traditional for loop instead. The `Scanner` class is used for reading input. Let me know if you need further assistance! 😊

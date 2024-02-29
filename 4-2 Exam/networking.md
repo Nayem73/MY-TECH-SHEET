@@ -348,3 +348,17 @@ Handling errors in data transmission is crucial to ensure data integrity and rel
    - Systems often log error information for analysis and troubleshooting purposes. Network administrators can use these logs to identify patterns of errors and take preventive measures.
 
 It's important to note that the specific error-handling mechanisms and protocols can vary depending on the technology used, such as Ethernet, Wi-Fi, or cellular networks, as well as the transport and application layer protocols (e.g., TCP, UDP). The OSI model provides a framework for understanding where errors can occur, but the exact methods and protocols for handling errors can differ based on the specific communication technologies and standards in use.
+
+
+
+
+
+--------- Interview -------
+
+
+
+# OSI models
+
+1. Application Layer: The Application Layer in the OSI model is like the part of your computer that helps your apps (like your web browser or email) talk to the internet. It’s like a translator between your apps and the network.
+
+2. Presentation Layer: The Presentation Layer in the OSI model is like a translator for data. It changes the data format from one to another so that applications can understand it.
