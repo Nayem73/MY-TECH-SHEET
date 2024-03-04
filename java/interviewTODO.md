@@ -499,3 +499,11 @@ I hope this helps you prepare for your interview. Good luck! 🍀
     - [What is the difference between a final, a finally, and a finalize keyword in Java?](https://data-flair.training/blogs/tricky-java-interview-questions/)[4](https://data-flair.training/blogs/tricky-java-interview-questions/)
     
     - How can you create a custom exception class in Java?
+
+# ----------- March -----
+
+- white box, black box testing etc.
+
+- travelling salesman, n-queen problem etc.
+
+- design pattern.

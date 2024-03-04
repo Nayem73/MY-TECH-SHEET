@@ -61,3 +61,77 @@ Don't forget to follow [Hasan Toor ✪](https://www.linkedin.com/in/ACoAADpeKY0
 ------
 
 ![](assets/2024-02-21-21-43-07-image.png)
+
+--------
+
+[
+
+![Rajesh Kumar](https://media.licdn.com/dms/image/C5603AQGhwEjtKQuc-Q/profile-displayphoto-shrink_100_100/0/1621872387066?e=1714608000&v=beta&t=3v6clex18H5DKRnoqukBE9AVkvtwoWbiMPbauY-yYPs)
+
+](https://www.linkedin.com/in/therjrajesh?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACq6gaABysrk8Os0k7NNUaiTBTeL-GP8wYg)
+
+[Rajesh KumarRajesh Kumar• 3rd+• 3rd+Software Engineer | Sharing content on AI Tools, prompts, Programming, Web Development, and Remote Jobs | Open for CollaborationsSoftware Engineer | Sharing content on AI Tools, prompts, Programming, Web Development, and Remote Jobs | Open for Collaborations](https://www.linkedin.com/in/therjrajesh?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACq6gaABysrk8Os0k7NNUaiTBTeL-GP8wYg)[
+
+8h • 8h •
+
+](https://www.linkedin.com/in/therjrajesh?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACq6gaABysrk8Os0k7NNUaiTBTeL-GP8wYg)
+
+Follow
+
+This Resume has an ATS score of more than 90  
+
+I have personally used this single-column resume in my job hunting and got amazing results.  
+
+I am sharing the exact editable template for this  
+
+To get it:-  
+
+1. Follow me (So that I can DM)  
+2. Like & Repost  
+3. Reply "Send"  
+
+👇 Check out our meticulously crafted templates:  
+
+🌐 Meta Resume Template for Software Engineers  
+
+Ideal for those seeking versatility in their resume to cater to diverse tech companies' requirements.  
+
+Get it here: https://lnkd.in/gU6QZsBu  
+
+🍏 Apple Resume Template for Software Engineers  
+
+Tailored to align with Apple's unique culture and values, this template highlights the skills Apple cherishes.  
+
+Get it here: [Apple Resume Template for Software Engineer | Tips &amp; Tricks | ATS GrabAjobs.co](https://lnkd.in/gW-8ab9z)  
+
+📦 Amazon Resume Template for Software Engineers  
+
+Crafted to match Amazon's expectations, this template empowers you to showcase your qualifications effectively.  
+
+Get it here: [Amazon: Resume Template for Software Engineer | Tips &amp; Tricks | ATS GrabAjobs.co](https://lnkd.in/gP-YZyfD)  
+
+🍿 Netflix Resume Template for Software Engineers  
+
+Impress Netflix recruiters with a resume that spotlights your most relevant skills and experiences.  
+
+Get it here: [Netflix: Resume Template for Software Engineer | Tips &amp; Tricks | ATS GrabAjobs.co](https://lnkd.in/g6FWDNZF)  
+
+🌟 Google Resume Template for Software Developers  
+
+If Google is your dream destination, this template will help you craft a resume that aligns perfectly with your expectations.  
+
+Get it here: [LinkedIn](https://lnkd.in/gC99M-Ba)  
+
+Don't miss this opportunity to leave a lasting impression. Choose the template that aligns with your career aspirations, and take one step closer to your dream job. ✨  
+
+𝐉𝐨𝐢𝐧 𝐭𝐡𝐢𝐬 Telegram 𝐠𝐫𝐨𝐮𝐩 𝐟𝐨𝐫 𝐩𝐫𝐞𝐦𝐢𝐮𝐦 𝐉𝐨𝐛𝐬/Notes: [Telegram: Contact @yourcareer0](https://t.me/yourcareer0)  
+
+Follow [Rajesh Kumar](https://www.linkedin.com/in/ACoAACq6gaABysrk8Os0k7NNUaiTBTeL-GP8wYg) for more such content  
+
+[#SoftwareEngineering](https://www.linkedin.com/feed/hashtag/?keywords=softwareengineering&highlightedUpdateUrns=urn%3Ali%3Aactivity%3A7169005329886760961)  
+[#ResumeTemplates](https://www.linkedin.com/feed/hashtag/?keywords=resumetemplates&highlightedUpdateUrns=urn%3Ali%3Aactivity%3A7169005329886760961)  
+[#DreamJob](https://www.linkedin.com/feed/hashtag/?keywords=dreamjob&highlightedUpdateUrns=urn%3Ali%3Aactivity%3A7169005329886760961)  
+[#maang](https://www.linkedin.com/feed/hashtag/?keywords=maang&highlightedUpdateUrns=urn%3Ali%3Aactivity%3A7169005329886760961)  
+[#resumetemplates](https://www.linkedin.com/feed/hashtag/?keywords=resumetemplates&highlightedUpdateUrns=urn%3Ali%3Aactivity%3A7169005329886760961)
+
+![No alt text provided for this image](https://media.licdn.com/dms/image/D5622AQHvyJ0pM-mOlg/feedshare-shrink_1280/0/1709224062665?e=1712188800&v=beta&t=uATQKlf5BLrR-GWx5if-zJdZMN_A2Wba6dwl_NTZ82o)

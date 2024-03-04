@@ -57,25 +57,72 @@ regex pattern("(Mr|Mr.|Mrs|Mrs.|Ms.|Ms)\\s[A-Z][a-z]*(\\s[A-Z][a-z]*)?");
 
 In this pattern, `(\\s[A-Z][a-z]*)?` makes the last name optional. This pattern will match both “Mr Karim” and “Mr Karim Mia”.
 
+## Validating IP Address
+
+If you want to match numbers between 0 and 255 with no leading zeros, you can modify the regular expression as follows:
+
+```c
+regex pattern("^([1-9][0-9]?|1[0-9]{2}|2[0-4][0-9]|25[0-5]|0)$");
+```
+
+Here’s how it works:
+
+- `[1-9][0-9]?` matches any number between 1 and 99.
+- `1[0-9]{2}` matches any number between 100 and 199.
+- `2[0-4][0-9]` matches any number between 200 and 249.
+- `25[0-5]` matches any number between 250 and 255.
+- `0` matches the number 0.
+
+This pattern will match any number between 0 and 255 without leading zeros. I hope this helps! Let me know if you have any other questions. 😊
+
+---------
+
+```c
+will it work?
+
+
+    string s1 = "192.168.1.1";
+    string s2 = "192.168.1.0";
+
+    string s3 = "192.168.01.1";
+    string s4 = "192.168.1.00";
+    string s5 = "192.168@1.1";
+
+    // regex pattern("(0|[1-9][0-9]?[0-9]?).[1-9][0-9]?[0-9]?.[1-9][0-9]?[0-9]?.[1-9][0-9]?[0-9]?");
+    regex pattern("(0|[1-9][0-9]?[0-9]?)\\.(0|[1-9][0-9]?[0-9]?)\\.(0|[1-9][0-9]?[0-9]?)\\.(0|[1-9][0-9]?[0-9]?)");
+
+    vector<string> store{s1,s2,s3,s4,s5};
+    for (int i = 0; i < (int)store.size(); i++) {
+        bool isMatch = regex_match(store[i], pattern);
+        cerr << store[i] << " ----- "<< isMatch<< endl;
+    }
+```
+
+The regular expression you provided will not work as expected for validating IP addresses. Here’s why:
+
+- The expression `[1-9][0-9]?[0-9]?` will match numbers from 1 to 999, which is outside the valid range for an IP address octet (0-255).
+
 # SDLC:
 
-- [Everything You Need to Know About SDLC - Bleuwire](https://bleuwire.com/everything-need-to-know-about-sdlc/)
+[Everything You Need to Know About SDLC - Bleuwire](https://bleuwire.com/everything-need-to-know-about-sdlc/)
 
-- Planning
+- **<u>Planning & Analysis:</u>** This is the initial stage where you gather business requirements, set goals, identify risks, and evaluate the feasibility of creating the product.
 
-- Design
+- **<u>Feasibility Study:</u>**  In this stage, you assess the practicality of the proposed project.
 
-- Building
+- **<u>Design:</u>** This stage involves organizing the ideas into a cohesive plan and design.
 
-- Testing
+- **<u>Building / Coding or Implementation:</u>** This is where the actual coding of the software takes place.
 
-- Deployment
+- **<u>Testing: </u>** The software is tested to ensure it works as expected.
 
-- Maintenance (Added by me)
+- **<u>Installation/Deployment:</u>** The software is deployed to the users.
+
+- **<u>Maintenance:</u>** After deployment, the software is maintained to fix bugs and implement updates.
 
 # Backtracking
 
-```cpp
+```c
 which of these two codes is backtracking?
 first code:
 void rec(string s, int indxS, string& new_s) {
@@ -137,7 +184,7 @@ However, neither of these codes “backtracks” or undoes the changes it made d
 
 Sure, here’s an example of a backtracking algorithm. This is a simple permutation generator, which is a common use case for backtracking:
 
-```cpp
+```c
 void permute(string s, int l, int r) {
     if (l == r)
         cout << s << endl;
@@ -183,10 +230,53 @@ Remember, understanding `null` and how to handle it is crucial to avoiding commo
 
 - dijkstra complexity: (n+m logn) ... worst case m = n^2 ... so worst case n^2 logn
 
-
-
-
-
 # what is a skewed tree?
 
 - A skewed tree is a binary tree where each node has only one child node or none.
+
+# Adjacency List VS Adjacency Matrix
+
+<style>
+ table {
+ border: 1px solid #c4c7c5;
+ border-radius: 4px;
+ font-size: 16px;
+ }
+ th {
+ padding: 18px 16px;
+ text-align: left;
+ }
+ td {
+ padding: 16px;
+ border-top: 1px solid #c4c7c5;
+ }
+ button.js-code-copy {
+ display: none;
+ }
+ .katex-mathml{
+ display: block;
+ text-align: center;
+ }
+ .katex-html {
+ display: none;
+ }
+
+</style>
+
+Sure, let’s compare the time and space complexity of adjacency list and adjacency matrix in graph traversal:
+
+**Adjacency Matrix**:
+
+- **Space Complexity**: An adjacency matrix requires `O(n^2)` space, where `n` is the number of nodes. [This is because it keeps a value (1/0) for every pair of nodes, whether the edge exists or not](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[1](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[2](https://stackoverflow.com/questions/32608288/time-space-complexity-of-adjacency-matrix-and-adjacency-list).
+- **Time Complexity**: The time complexity to build such a matrix is `O(n^2)`. [To check if there exists an edge between any two nodes, it takes `O(1)` time](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[1](https://www.baeldung.com/cs/adjacency-matrix-list-complexity).
+- [**Pros**: Fast to lookup and check for the presence or absence of a specific edge between any two nodes](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c)[3](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c).
+- **Cons**: Requires more space, especially if the graph is sparse (i.e., has fewer edges). [It is also slow to iterate over all edges](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[3](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c).
+
+**Adjacency List**:
+
+- **Space Complexity**: An adjacency list is more space-efficient, especially for sparse graphs. [It only contains existing edges, so its length is at most the number of edges](https://stackoverflow.com/questions/32608288/time-space-complexity-of-adjacency-matrix-and-adjacency-list)[2](https://stackoverflow.com/questions/32608288/time-space-complexity-of-adjacency-matrix-and-adjacency-list).
+- **Time Complexity**: The time complexity to build an adjacency list is `O(m + n)`, where `m` is the number of edges and `n` is the number of nodes. [To find the presence or absence of a specific edge between any two nodes, it takes `O(k)` time, where `k` is the number of neighbor nodes](https://stackoverflow.com/questions/23925009/why-does-the-time-complexity-of-dfs-and-bfs-depend-on-the-way-the-graph-is-repre)[4](https://stackoverflow.com/questions/23925009/why-does-the-time-complexity-of-dfs-and-bfs-depend-on-the-way-the-graph-is-repre).
+- **Pros**: Fast to iterate over all edges. [More space-efficient for sparse graphs](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[3](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c).
+- [**Cons**: Slightly slower than the adjacency matrix to check for the presence or absence of a specific edge between any two nodes](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c)[3](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c).
+
+[In conclusion, the choice between an adjacency list and an adjacency matrix depends on the specific requirements of your problem, such as whether the graph is sparse or dense, and whether you need to frequently check for the existence of edges](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[1](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[3](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c)[5](https://www.baeldung.com/cs/graph-adjacency-and-incidence). I hope this helps! Let me know if you have any other questions. 😊

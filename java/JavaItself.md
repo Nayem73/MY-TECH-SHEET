@@ -916,3 +916,51 @@ Explore
 - [What is the difference between a final, a finally, and a finalize keyword in Java?](https://data-flair.training/blogs/tricky-java-interview-questions/)[4](https://data-flair.training/blogs/tricky-java-interview-questions/)
 
 - How can you create a custom exception class in Java?
+
+# Date and Time
+
+```java
+import java.time.LocalDate;
+import java.time.Period;
+
+public class Main {
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+        System.out.println("Current date: " + currentDate);
+
+        // Define another date
+        LocalDate futureDate = LocalDate.of(2025, 12, 31);
+        System.out.println("Future date: " + futureDate);
+
+        // Calculate the period between the two dates
+        Period period = Period.between(currentDate, futureDate);
+
+        // Print the period
+        System.out.println("Period: " + period.getYears() + " years, " 
+                           + period.getMonths() + " months, and " 
+                           + period.getDays() + " days");
+    }
+}
+
+```
+
+
+
+No, the `Period` class in Java does not have a `getHours` method. The `Period` class is used to represent a quantity of time in terms of years, months, and days, so it provides `getYears`, `getMonths`, and `getDays` methods.
+
+If you need to work with hours, minutes, and seconds, you might want to use the `Duration` class instead. The `Duration` class represents a quantity of time in terms of seconds and nanoseconds, and it provides methods like `toHours`, `toMinutes`, and `toSeconds`.
+
+Here’s an example of how you can calculate the duration between two `LocalDateTime` objects:
+
+```java
+LocalDateTime startDateTime = LocalDateTime.of(2022, 1, 1, 6, 0);
+LocalDateTime endDateTime = LocalDateTime.of(2022, 1, 1, 9, 0);
+
+Duration duration = Duration.between(startDateTime, endDateTime);
+
+long hours = duration.toHours();
+System.out.println(hours);  // Prints 3
+```
+
+In this example, `Duration.between` is used to calculate the duration between `startDateTime` and `endDateTime`, and `toHours` is used to get the duration in hours. 📚

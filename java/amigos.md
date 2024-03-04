@@ -1152,6 +1152,29 @@ class Ostrich extends Bird {
 }
 ```
 
+or,
+
+```java
+interface Flyable {
+    void fly();
+}
+
+class Bird {
+    // common bird behavior
+}
+
+class Duck extends Bird implements Flyable {
+    public void fly() {
+        System.out.println("I can fly");
+    }
+}
+
+class Ostrich extends Bird {
+    // Ostrich doesn't implement Flyable because it can't fly
+}
+
+```
+
 Now, wherever a `FlyingBird` is expected, we can substitute it with a `Duck`, and wherever a `Bird` is expected, we can substitute it with an `Ostrich` or a `Duck`. This adheres to the Liskov Substitution Principle.
 
 ### Liskov Substitution by amigos:
@@ -1159,6 +1182,42 @@ Now, wherever a `FlyingBird` is expected, we can substitute it with a `Duck`, an
 ![](assets/2024-02-17-11-42-43-image.png)
 
 - Here, in above pic, we see subclass NoShape implements the parent class Shape so, we are saying that NoShape is a Shape but it can not have the method defined in Shape. So it can not obey the contract with parent class Shape interface. So we broke the rule.
+
+
+
+## Interface Segregation Principle:
+
+![](assets/2024-03-03-16-29-30-image.png)
+
+Sure, let’s modify the previous example to demonstrate the **Interface Segregation Principle (ISP)**.
+
+ISP states that clients should not be forced to depend upon interfaces that they do not use. This means having many client-specific interfaces is better than one general-purpose interface.
+
+In the context of the bird example, not all birds can fly. So, it’s better to separate out the `fly` method into a separate interface, say `Flyable`. Only the birds that can fly will implement this interface. Here’s how you could do it:
+
+```java
+interface Flyable {
+    void fly();
+}
+
+class Bird {
+    // common bird behavior
+}
+
+class Duck extends Bird implements Flyable {
+    public void fly() {
+        System.out.println("I can fly");
+    }
+}
+
+class Ostrich extends Bird {
+    // Ostrich doesn't implement Flyable because it can't fly
+}
+```
+
+In this example, `Duck` implements the `Flyable` interface because it can fly, while `Ostrich` does not because it can’t fly. This way, we’re not forcing non-flying birds to implement a method they can’t use, adhering to the Interface Segregation Principle. This also makes the code more maintainable and easy to understand.
+
+Remember, the key idea behind ISP is to keep your system decoupled and thus easier to refactor, change, and redeploy. It’s all about reducing the side effects of change. Hope this helps! 😊
 
 # Interface
 
@@ -1206,8 +1265,6 @@ public interface vehicle {
 # SOLID
 
 * SOLID is an acronym for the first 5 object oriented design priciples. It helps us write clean and better code specially on a large code base.
-
-
 
 ------------------
 

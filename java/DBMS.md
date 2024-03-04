@@ -386,13 +386,15 @@ I hope this helps! If you have any more questions, feel free to ask. 😊
 
 # 1NF (first Normal form)
 
-1. There's no such thing in a relational database as row order. there needs to be a separate column for ordering. ([Learn Database Normalization - 1NF, 2NF, 3NF, 4NF, 5NF - YouTube](https://youtu.be/GFQaEYEc8_8?t=321))
+1. There's no such thing in a relational database as row order. there needs to be a separate column for ordering. ([Learn Database Normalization - 1NF, 2NF, 3NF, 4NF, 5NF - YouTube](https://youtu.be/GFQaEYEc8_8?t=321)) ![](assets/2024-03-03-15-30-25-image.png)
 
 2. mixing multiple datatypes within a single column. for example, mixing int and string in a column. (Beatle_height column)
 
 3. designing a table without a primary key violates 1st Normal Form.
 
 4. storing a repeating group of data items on a single row violates 1st Normal Form. (For example, a player's inventory can have hundreds of items, keeping them in a row would mean hundreds of different columns for different items.) (Another terrible idea is to keep all these hundreds of items in a single column as string, that way we can't perform queries) - so the solution is keep a single column as Item_type. and another column quantity. - here, primary key will be (player_id and item_type)
+
+5. ![](assets/2024-03-03-15-20-03-image.png)
 
 ![](assets/2024-02-04-17-26-25-image.png)
 
@@ -401,6 +403,152 @@ I hope this helps! If you have any more questions, feel free to ask. 😊
 1. Each non-key attribute must depend on the entire primary key.
 
 ![](assets/2024-02-04-17-33-37-image.png)
+
+# 
+
+# Normalization - 2 ([Basic Concept of Database Normalization - Simple Explanation for Beginners - YouTube](https://youtu.be/xoTyrdT9SZI?list=PLLGlmW7jT-nTr1ory9o2MgsOmmx2w8FB3))
+
+### what is Normalization?
+
+Normalization is a technique of organizing the data into multiple related tables to minimize data redundancy.
+
+### Now, what is data redundancy and why should you reduce it?
+
+![](assets/2024-03-03-14-49-36-image.png)
+
+Data redundancy is - repetition of similar data at multiple places.
+
+- Repetition of data increases the size of database. Not only this, it also leads to multiple other issues like:
+
+- - Insertion Anomaies, Deletion Anomalies, Updation Anomalies./modification Anomalies
+1. Insertion Anomaly: We have a table here that has repeating data for branch, headOfDepartment, office_tel. Now we have 5 rows, but if we need to add 100 more students, we have to repeat these same data 100 more times, which leads to insertion anomaly. 
+
+![](assets/2024-03-03-14-36-06-image.png)
+
+![](assets/2024-03-03-14-36-55-image.png)
+
+- Because the repetition of data will only increase, as we insert more entries to our table.
+2. Deletion Anomaly: We have two types of data in our table - student info and branch info. Now, if we want to delete a student info, it would also delete the branch info.
+
+![](assets/2024-03-03-14-40-32-image.png)
+
+3. Updation/ Modification Anomaly: Let's say, if Mr. X leaves and Mr. Y joins as new HOD, for CSE ..... So we need to update all the student records with the new name of the HOD, this is super inefficient!!!
+
+![](assets/2024-03-03-14-44-23-image.png)
+
+During this huge amount of modification, even if a single record is left out, this will lead to inconsistent data. Hence, Updation Anomaly can lead to data inconsistency.
+
+![](assets/2024-03-03-14-48-21-image.png)
+
+# Now, we want to know how Normalization solves these problems?
+
+![](assets/2024-03-03-14-50-38-image.png)
+
+![](assets/2024-03-03-14-51-13-image.png)
+
+![](assets/2024-03-03-14-51-43-image.png)
+
+![](assets/2024-03-03-14-53-36-image.png)
+
+- Normalization is not about eliminating data redundancy, it's about minimizing data redundancy. because, we can see that, branch name is still getting repeated in the student table, but that's how it is.
+
+- Now, if we need to update the hod or office_tel number of CSE, we just need to update in one single record in the branch table and the student table will automatically be updated bcz it's connected to the branch table.
+
+![](assets/2024-03-03-14-56-46-image.png)
+
+![](assets/2024-03-03-14-57-23-image.png)
+
+Now, let's see what we could improve:
+
+1. Now, if we need to add a new student, we just need to add the student id, student name and the branch name,  (we don't need to add the entire branch info, becz it's stored in a separe table and student table is linked to it)
+
+![](assets/2024-03-03-14-59-31-image.png)
+
+2. When we need to delete student information, maybe bcz we need to add student of the new batch, even if we deleted all the student information, we'll still have the branch info in a separate table intact!
+
+![](assets/2024-03-03-15-01-19-image.png)
+
+3. Now, if we have to update the name of the hod, we just need to modify one single record in the branch table, we don't need to touch the student table.
+
+![](assets/2024-03-03-15-02-33-image.png)
+
+--------
+
+### Result:
+
+![](assets/2024-03-03-15-03-12-image.png)
+
+![](assets/2024-03-03-15-03-29-image.png)
+
+![](assets/2024-03-03-15-03-53-image.png)
+
+----------
+
+# Types of Normalization:
+
+- Normalization can be achieved in multiple ways. We have 3 basic normal forms in which we can achieve normalization.
+
+### 1st Normal Form: (4 conditions)
+
+1. each column can only have one value. In below table, all the 3 conditions of 1st NF are maintained except for one:
+
+![](assets/2024-03-03-15-22-18-image.png)
+
+![](assets/2024-03-03-15-22-42-image.png)
+
+### 2nd Normal Form (2 conditions):
+
+![](assets/2024-03-03-15-25-12-image.png)
+
+Partial Dependency: 
+
+![](assets/2024-03-03-15-26-03-image.png)
+
+- Dependency is: we depend on primary key to uniquely identify the record.
+
+![](assets/2024-03-03-15-32-46-image.png)
+
+We can see that, in the below table, if we want to uniquely identify a record, we need both student_id and subject_id to be as primary key but! if we wanted to identify teacher, teacher only depends on subject_id to identify teacher, it does not depend on student_id
+
+![](assets/2024-03-03-15-44-36-image.png)
+
+And a table to be in 2nd Normal Form, this should Not Exist! (Partial Dependency)
+
+![](assets/2024-03-03-15-45-57-image.png)
+
+- There can be many different solutions to remove partial dependency.
+
+- Our objective is to remove teacher column from the score table. We can achieve it in different ways:
+
+Way 1:
+
+![](assets/2024-03-03-15-48-36-image.png)
+
+Now it becomes:
+
+![](assets/2024-03-03-15-49-34-image.png)
+
+Way 2: we can create another table for teacher
+
+![](assets/2024-03-03-15-50-46-image.png)
+
+### 3rd Normal Form (2 conditions):
+
+![](assets/2024-03-03-15-53-35-image.png)
+
+This is Transitive dependency where total_marks depends on a non primary key column.
+
+![](assets/2024-03-03-15-59-07-image.png)
+
+Solution: take exam_name and total_marks and create a separate table.
+
+![](assets/2024-03-03-16-00-34-image.png)
+
+So, our Score table is now storing more information and it is now in 3rd normal form.
+
+![](assets/2024-03-03-16-01-31-image.png)
+
+------------
 
 # Testing my knowledge
 
@@ -421,3 +569,26 @@ Sure, here are some database-related questions you might encounter in a written 
 11. [**What is the testing of Procedure, Triggers, and Functions?**](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)[3](https://www.softwaretestinghelp.com/31-best-database-testing-interview-questions-and-answers-for-qa-testers/)
 
 Remember, it’s important to not only know the answers but also understand the concepts behind them. Good luck with your preparation!
+
+# Database Indexing
+
+![](assets/2024-03-01-06-39-45-image.png)
+
+1. primary Indexing: It is done based on the primary key.
+
+2. secondary indexing: If we are indexing based on the candidate keys, it is called secondary indexing.
+
+3. clustering indexing: when we do the indexing based on non key attributes. There can be multiple records within the table with the same countryname BD. So, if we take BD, we can make a cluster of it.
+- So, if we want to search something that has countryname BD, we can just search among the records that has countryname BD. If we tried to search among all the records containing all the countries, it would be inefficient.
+
+- This is how non key indexing - clustering indexing helps us by making a spearate cluster for a particular field.
+
+-------
+
+primary indexing is of 2 types: Dense Index & Sparse Index
+
+![](assets/2024-03-01-06-53-45-image.png)
+
+1. Dense Index: store the corresponding primary key and it's memory location for every single search key value. so it requires more space.
+
+2. 

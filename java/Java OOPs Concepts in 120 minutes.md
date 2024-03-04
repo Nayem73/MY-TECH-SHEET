@@ -95,7 +95,7 @@ Access modifiers are used to only expose the attributes, methods and classes whi
 
 # Abstraction
 
-* Abstraction is a concept of (OOP) that hides the implementation details and shows only the essential features. We achieve it by using abstract classes, abstract methods and interfaces.
+* Abstraction is a concept of (OOP) that hides the implementation details and shows only the essential features. We achieve it through different mechanisms: abstract classes, abstract methods, interfaces and encapsulation.
 * Abstraction in object-oriented programming (OOP) is a process of hiding the implementation details from the user and providing only the functionality to the user.
 * With abstraction, we can avoid duplicate codes and write better code. Let's say we have a parent class and we have multiple subclasses that extends from the parent class. All of these subclasses overrides the same method of the parent class and implements their own functionalities. Now, if that method in the parent class had any implemented code in it's method body, it would be wasted code since all the subclasses overrides it to implement their own functionalities. So we need to make that method an abstract method to avoid duplicates or unnecessary codes. Now, to make that method as an abstract method, we need to make that parent class abstract as well, which means we can not create any instance of the parent class, which is fine anyway and even better, because we are using it as a blueprint for the subclasses to organize the subclasses and we only need instance of the subclasses.
 * abstract classes cannot be instantiated explicitly. They can only be instantiated by the child classes through the internal mechanisms of java itself (inheritance)
@@ -159,8 +159,6 @@ In your code, the `Car` class doesn’t need to know the details of how the engi
 
 Even though you didn’t use `abstract` classes or interfaces, you’ve achieved abstraction by encapsulating the details within your classes and exposing only what’s necessary. This makes your code easier to use and understand, and that’s the essence of abstraction in OOP.
 
-
-
 2. **Code Reusability**: Abstraction promotes code reusability through inheritance and interfaces. Here’s an example using a `Shape` abstract class and `Circle` and `Rectangle` classes:
 
 ```java
@@ -201,6 +199,49 @@ public class Employee {
 
 In this example, the `name` field is private and can only be accessed through the `getName()` and `setName()` methods. This hides the internal implementation and protects the field from being directly accessed or modified.
 
+```java
+//another simple example
+public class BankAccount {
+    private double balance;  // Private attribute
+
+    public BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && balance >= amount) {
+            balance -= amount;
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+```
+
+# your example shows encapsulation. How is it abstraction?
+
+You're correct that the example demonstrates encapsulation, but it's important to note that encapsulation is a form of abstraction. Here's how:
+
+In object-oriented programming, **abstraction** is the process of hiding the complex details and providing a simpler interface. It allows us to represent complex systems via more understandable and manageable concepts.
+
+**Encapsulation** is one way to achieve abstraction. It involves bundling the data (attributes) and the methods that operate on the data into a single unit, a class, and controlling the access to the data by making it private and providing public methods for interaction.
+
+In the `BankAccount` example, the `balance` attribute and the methods that operate on it (`deposit`, `withdraw`, `getBalance`) are encapsulated within the `BankAccount` class. The `balance` attribute is private, and can only be accessed and modified through the public methods. This hides the internal state of the `BankAccount` object and provides a simple interface for interaction (the public methods), which is the essence of abstraction.
+
+So, while encapsulation is the technique used in the example, the result is an abstraction of a bank account. The user of the class doesn't need to know the internal workings of the `BankAccount` class to use it. They interact with the bank account through the provided methods, which is a simpler and more abstract interface. This is how encapsulation contributes to abstraction. 
+
+I hope this clarifies the relationship between encapsulation and abstraction!
+
+---------
+
 4. **Code Maintainability**: Abstraction fosters code maintainability. By separating concerns into different classes or modules, we can make changes to one part of the system without affecting others. The `Car` and `Engine` example above also illustrates this point.
 
 5. **Collaboration**: Abstraction facilitates collaboration among developers. Developers can work concurrently on different components of the application, ensuring modularity and reducing dependencies. The `Shape`, `Rectangle`, and `Circle` example above also illustrates this point.
@@ -213,7 +254,7 @@ Remember, the goal of abstraction is to reduce complexity by breaking down probl
 
 Yes, abstraction in object-oriented programming (OOP) serves several purposes beyond what you've described. Here are some additional functionalities and benefits of abstraction:
 
-1. **Encapsulation:** Abstraction often goes hand-in-hand with encapsulation, another fundamental OOP concept. Encapsulation involves bundling the data (attributes) and methods (functions) that operate on the data into a single unit, known as a class. Abstraction helps define a clear interface (through abstract methods) for interacting with the object, and the details of the implementation are hidden from the outside world.
+1. **Encapsulation:** Abstraction often goes hand-in-hand with encapsulation, another fundamental OOP concept. Encapsulation involves bundling the data (attributes) and methods (functions) that operate on the data into a single unit, known as a class. Abstraction helps define a clear interface for interacting with the object, and the details of the implementation are hidden from the outside world.
 
 2. **Modularity:** Abstraction supports the creation of modular code by allowing you to break down a complex system into smaller, more manageable components. Each class represents a module with its own responsibilities, and the interactions between these modules are simplified through well-defined interfaces.
 
@@ -326,6 +367,85 @@ Explanation:
    - It then uses the `ShapePrinter` to print the areas of these shapes, demonstrating framework development and polymorphism.
 
 This Java example mirrors the Python example but provides a more detailed explanation and additional code snippets to help illustrate each concept.
+
+----------
+
+- demonstrate code in java and explain every single way abstraction is achieved. Give me all type of code.
+
+Abstraction in Java is a concept that allows you to hide the complexity of a system and only show the necessary details to the user. This is achieved through various mechanisms such as abstract classes, interfaces, and encapsulation. Here's an example that demonstrates these concepts:
+
+```java
+// Abstract class
+abstract class Shape {
+    // Abstract method
+    abstract double area();
+}
+
+// Concrete class implementing the abstract class
+class Circle extends Shape {
+    private double radius;
+
+    // Constructor
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Implementing the abstract method
+    @Override
+    double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Interface
+interface Drawable {
+    void draw();
+}
+
+// Concrete class implementing the interface
+class Square implements Drawable {
+    private double side;
+
+    // Constructor
+    public Square(double side) {
+        this.side = side;
+    }
+
+    // Implementing the interface method
+    @Override
+    public void draw() {
+        System.out.println("Drawing a square with side " + side);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Using abstraction
+        Shape circle = new Circle(5);
+        System.out.println("Area of circle: " + circle.area());
+
+        Drawable square = new Square(10);
+        square.draw();
+    }
+}
+```
+
+Explanation:
+
+1. **Abstract Class**: `Shape` is an abstract class that defines an abstract method `area()`. This method is not implemented in the `Shape` class but must be implemented in its subclasses.
+
+2. **Concrete Class**: `Circle` is a concrete class that extends the `Shape` abstract class. It implements the `area()` method to calculate the area of a circle.
+
+3. **Interface**: `Drawable` is an interface that defines a method `draw()`. Classes that implement this interface must provide an implementation for the `draw()` method.
+
+4. **Concrete Class Implementing Interface**: `Square` is a concrete class that implements the `Drawable` interface. It provides an implementation for the `draw()` method.
+
+5. **Encapsulation**: The `Circle` and `Square` classes encapsulate the data (radius and side length, respectively) and provide methods to access and modify this data.
+
+6. **Polymorphism**: In the `main` method, we create instances of `Circle` and `Square` and store them in variables of type `Shape` and `Drawable`, respectively. This demonstrates polymorphism, where objects of different types can be treated as objects of a common superclass or interface.
+
+7. **Abstraction in Action**: The `main` method uses the `Shape` and `Drawable` abstractions to interact with the `Circle` and `Square` objects without needing to know the specific details of their implementations. This allows for flexibility and modularity in the code.
 
 # Interface
 
