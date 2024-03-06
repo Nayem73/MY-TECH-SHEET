@@ -135,3 +135,5 @@ Follow [Rajesh Kumar](https://www.linkedin.com/in/ACoAACq6gaABysrk8Os0k7NNUaiTB
 [#resumetemplates](https://www.linkedin.com/feed/hashtag/?keywords=resumetemplates&highlightedUpdateUrns=urn%3Ali%3Aactivity%3A7169005329886760961)
 
 ![No alt text provided for this image](https://media.licdn.com/dms/image/D5622AQHvyJ0pM-mOlg/feedshare-shrink_1280/0/1709224062665?e=1712188800&v=beta&t=uATQKlf5BLrR-GWx5if-zJdZMN_A2Wba6dwl_NTZ82o)
+
+![](assets/2024-03-05-07-28-38-image.png)

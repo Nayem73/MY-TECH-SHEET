@@ -1172,7 +1172,6 @@ class Duck extends Bird implements Flyable {
 class Ostrich extends Bird {
     // Ostrich doesn't implement Flyable because it can't fly
 }
-
 ```
 
 Now, wherever a `FlyingBird` is expected, we can substitute it with a `Duck`, and wherever a `Bird` is expected, we can substitute it with an `Ostrich` or a `Duck`. This adheres to the Liskov Substitution Principle.
@@ -1182,8 +1181,6 @@ Now, wherever a `FlyingBird` is expected, we can substitute it with a `Duck`, an
 ![](assets/2024-02-17-11-42-43-image.png)
 
 - Here, in above pic, we see subclass NoShape implements the parent class Shape so, we are saying that NoShape is a Shape but it can not have the method defined in Shape. So it can not obey the contract with parent class Shape interface. So we broke the rule.
-
-
 
 ## Interface Segregation Principle:
 

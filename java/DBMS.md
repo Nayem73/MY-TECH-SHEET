@@ -591,6 +591,4 @@ primary indexing is of 2 types: Dense Index & Sparse Index
 
 1. Dense Index: store the corresponding primary key and it's memory location for every single search key value. so it requires more space.
 
-
-
 ![](assets/2024-03-04-07-36-58-Rakuten%20Database%20Structure.drawio.png)

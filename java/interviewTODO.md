@@ -507,3 +507,11 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 - travelling salesman, n-queen problem etc.
 
 - design pattern.
+
+
+
+# ----- after written -----
+
+1. db schema
+
+2. stack in java.

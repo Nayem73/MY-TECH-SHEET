@@ -1214,8 +1214,6 @@ This is a fundamental aspect of Java’s object-oriented programming model. Unde
 
 2. cmp
 
-
-
 # Scanner related
 
 ### int array
@@ -1289,8 +1287,6 @@ public class Main {
 
 This Java code does the same thing as your C++ code. It reads an integer `n` from the input, then reads `n` integers into an ArrayList, and finally prints out all the integers in the ArrayList. Please note that in Java, we use `ArrayList` instead of `vector` in C++. Also, Java does not support the range-based for loop for reading input directly into a collection, so we use a traditional for loop instead. The `Scanner` class is used for reading input. Let me know if you need further assistance! 😊
 
-
-
 ### String array
 
 ```java
@@ -1316,8 +1312,6 @@ public class Main {
 
 This Java code does the same thing as your C++ code. It reads an integer `n` from the input, then reads `n` strings into an ArrayList, and finally prints out all the strings in the ArrayList. Please note that in Java, we use `ArrayList` instead of `vector` in C++. Also, Java does not support the range-based for loop for reading input directly into a collection, so we use a traditional for loop instead. The `Scanner` class is used for reading input. Let me know if you need further assistance! 😊
 
-
-
 In Java, the `Scanner` class does not have a method called `nextString()`. Instead, it provides two methods to read strings:
 
 1. `next()`: This method finds and returns the next complete token from this scanner and it breaks the input into tokens using a delimiter which is by default a whitespace. So, it only returns the next token rather than the whole line or sentence.
@@ -1339,7 +1333,7 @@ using namespace std;
 int main() {
   const int n = 5;
   vector<vector<int>> store(n, vector<int> (n, -1));
-  
+
   for (auto X: store) {
       for (int Y: X) {
           cout << Y << ' ';
@@ -1389,7 +1383,7 @@ public class Main {
         /*or
         List<List<Integer>> store = new ArrayList<>();
         */
-        
+
         for (int i = 0; i < n; i++) {
             ArrayList<Integer> tmp = new ArrayList<>(Collections.nCopies(n, -1));
             /*or
@@ -1412,8 +1406,6 @@ public class Main {
 ```
 
 This Java code does the same thing as your C++ code. It creates a 2D ArrayList with `n` rows and `n` columns, all initialized to `-1`. Then it prints out all the elements in the 2D ArrayList. Please note that in Java, we use `ArrayList` instead of `vector` in C++. Also, Java does not support the range-based for loop for reading input directly into a collection, so we use a traditional for loop instead. The `Collections.nCopies(n, -1)` is used to initialize all elements of the ArrayList to `-1`. Let me know if you need further assistance! 😊
-
-
 
 # adj[]
 
@@ -1439,7 +1431,7 @@ int main()
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
-    
+
     for (int i = 0; i < n; i++) {
         if (adj[i].empty()) continue;
         cout << i << ": ";
@@ -1450,10 +1442,6 @@ int main()
     }
 }
 ```
-
-
-
-
 
 Sure, here is the equivalent Java code:
 

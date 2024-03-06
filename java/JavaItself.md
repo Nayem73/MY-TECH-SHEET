@@ -942,10 +942,7 @@ public class Main {
                            + period.getDays() + " days");
     }
 }
-
 ```
-
-
 
 No, the `Period` class in Java does not have a `getHours` method. The `Period` class is used to represent a quantity of time in terms of years, months, and days, so it provides `getYears`, `getMonths`, and `getDays` methods.
 
@@ -964,3 +961,389 @@ System.out.println(hours);  // Prints 3
 ```
 
 In this example, `Duration.between` is used to calculate the duration between `startDateTime` and `endDateTime`, and `toHours` is used to get the duration in hours. 📚
+
+# Tricky but Common Java Interview Questions
+
+- in java, can an interface extend from a class?
+
+No, in Java, an interface cannot extend a class. An interface can only extend other interfaces1. This is because classes contain implementation details that cannot be specified within an interface. If you want to share code among all instances of an interface, you can use a (possibly abstract) class as a parent for any classes that need to implement that interface. However, if you have a situation where you want to ensure that any class that implements a certain interface also extends a certain class, you would need to manually ensure this in your code, as Java does not provide a way to enforce this at the language level.
+
+1. ---------------------
+
+Sure, here are some tricky scenarios in Java that you might find interesting:
+
+1. **Unicode in Comments**: Java supports Unicode characters in its source code, which includes comments. This can lead to some unexpected behavior. [For example, consider the following code](https://www.javatpoint.com/tricky-java-interview-questions)[1](https://www.javatpoint.com/tricky-java-interview-questions):
+
+```java
+public class A {
+    public static void main(String args[]) {
+        //\u000d System.out.println("hello");
+    }
+}
+```
+
+You might expect this code to do nothing since the `println` statement appears to be commented out. However, `\u000d` is the Unicode representation of a carriage return, so the Java compiler interprets this as a new line. [As a result, “hello” is printed to the console](https://www.javatpoint.com/tricky-java-interview-questions)[1](https://www.javatpoint.com/tricky-java-interview-questions).
+
+2. **String Comparison**: When comparing `String` objects in Java, it’s important to use the `equals()` method rather than the `==` operator. [The `==` operator checks whether two references point to the exact same object, not whether two strings contain the same characters](https://www.javatpoint.com/tricky-java-interview-questions)[1](https://www.javatpoint.com/tricky-java-interview-questions). For example:
+
+```java
+String s1 = "Java";
+String s2 = "Java";
+StringBuilder sb1 = new StringBuilder();
+sb1.append("Ja").append("va");
+System.out.println(s1 == s2);  // true
+System.out.println(s1.equals(s2));  // true
+System.out.println(sb1.toString() == s1);  // false
+System.out.println(sb1.toString().equals(s1));  // true
+```
+
+3. **Exception Handling**: The order of catch blocks matters. [If you try to catch a superclass exception type before a subclass exception type, you’ll get a compile error](https://flexiple.com/exception-handling-in-java/interview-questions)[2](https://flexiple.com/exception-handling-in-java/interview-questions). For example:
+
+```java
+try {
+    // some code
+} catch (Exception e) {
+    // handle exception
+} catch (IOException e) {
+    // handle IO exception
+}
+```
+
+In this code, `IOException` is a subclass of `Exception`. [The `catch (IOException e)` block is unreachable because the `catch (Exception e)` block above it will catch all exceptions, including `IOExceptions`](https://flexiple.com/exception-handling-in-java/interview-questions)[2](https://flexiple.com/exception-handling-in-java/interview-questions).
+
+4. [**Array and List Conversion**: Converting an array to a list and then trying to modify the list can lead to an `UnsupportedOperationException`](https://www.javatpoint.com/tricky-java-interview-questions)[1](https://www.javatpoint.com/tricky-java-interview-questions). [This is because `Arrays.asList()` returns a fixed-size list backed by the original array](https://www.javatpoint.com/tricky-java-interview-questions)[1](https://www.javatpoint.com/tricky-java-interview-questions). For example:
+
+```java
+int[] array = {6,9,8};
+List<Integer> list = new ArrayList<>();
+list.add(array[0]);
+list.add(array[2]);
+list.set(1, array[1]);
+list.remove(0);
+System.out.println(list);
+```
+
+[In this code, `list.remove(0)` will throw an `UnsupportedOperationException`](https://www.javatpoint.com/tricky-java-interview-questions)[1](https://www.javatpoint.com/tricky-java-interview-questions).
+
+These are just a few examples of tricky scenarios in Java. [There are many more, especially when dealing with more complex topics like multithreading, generics, and the Java Memory Model](https://www.testgorilla.com/blog/tricky-java-interview-questions-answers/)[3](https://www.testgorilla.com/blog/tricky-java-interview-questions-answers/)[1](https://www.javatpoint.com/tricky-java-interview-questions)[4](https://codequotient.com/blog/java-programming-questions-interview/)[5](https://www.geeksforgeeks.org/top-50-array-coding-problems-for-interviews/)[2](https://flexiple.com/exception-handling-in-java/interview-questions).
+
+2. ---------------
+
+<style>
+ table {
+ border: 1px solid #c4c7c5;
+ border-radius: 4px;
+ font-size: 16px;
+ }
+ th {
+ padding: 18px 16px;
+ text-align: left;
+ }
+ td {
+ padding: 16px;
+ border-top: 1px solid #c4c7c5;
+ }
+ button.js-code-copy {
+ display: none;
+ }
+ .katex-mathml{
+ display: block;
+ text-align: center;
+ }
+ .katex-html {
+ display: none;
+ }
+
+</style>
+
+Sure, here are some more tricky scenarios in Java that are commonly asked in interviews:
+
+1. [**Singleton Class**: A singleton class is a class that can have only one object (an instance of the class) at a time](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/). Here’s how you can create a singleton class:
+
+```java
+public class Singleton {
+    private static Singleton single_instance = null;
+
+    public String s;
+
+    private Singleton() {
+        s = "Hello I am a singleton!";
+    }
+
+    public static Singleton getInstance() {
+        if (single_instance == null)
+            single_instance = new Singleton();
+
+        return single_instance;
+    }
+}
+```
+
+2. **String vs StringBuffer vs StringBuilder**: `String` is immutable, which means once it’s created, it cannot be changed. [On the other hand, `StringBuffer` and `StringBuilder` are mutable, meaning their objects can change over time](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/). [The difference between `StringBuffer` and `StringBuilder` is that `StringBuffer` is thread-safe and synchronized, while `StringBuilder` is not](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/).
+
+3. [**Fail-Fast vs Fail-Safe**: Fail-fast iterators throw a `ConcurrentModificationException` if a collection is modified while iterating over it](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/). [On the other hand, fail-safe iterators don’t throw any exceptions because they operate on a cloned copy of the collection, not on the original collection](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/).
+
+4. [**HashMap Null Keys/Values**: `HashMap` allows one null key and multiple null values](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/). [It uses the `equals()` and `hashCode()` methods for comparison](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/).
+
+5. [**Java Memory Leak**: A memory leak in Java occurs when objects are no longer needed, but they are still being referenced from the root of the object graph, which is usually a classloader](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/). [This is a common interview question, and understanding how garbage collection works in Java can help you answer it](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/).
+
+6. [**Liskov Substitution Principle (LSP)**: LSP is a principle of Object Oriented Design and it states that, in a computer program, if `S` is a subtype of `T`, then objects of type `T` may be replaced with objects of type `S` without altering any of the desirable properties of that program](https://talent500.co/blog/java-tricky-interview-questions/)[1](https://talent500.co/blog/java-tricky-interview-questions/).
+
+Remember, these are just a few examples. [Java is a vast language with many tricky scenarios that can come up, especially in a complex system or when dealing with advanced features like multithreading, generics, and the Java Memory Model](https://www.geeksforgeeks.org/java-interview-questions/)[2](https://www.geeksforgeeks.org/java-interview-questions/)[3](https://www.interviewbit.com/java-interview-questions/)[4](https://www.simplilearn.com/tutorials/java-tutorial/java-interview-questions)[5](https://www.indeed.com/career-advice/interviewing/java-basic-interview-questions)[6](https://www.hipeople.io/interview-questions/tricky-java-interview-questions)[1](https://talent500.co/blog/java-tricky-interview-questions/). It’s always a good idea to keep learning and practicing to get a good grasp of these concepts. Good luck with your Java journey! 😊
+
+3. -----------------
+
+Absolutely! Here are some more common tricky scenarios in Java that are often asked in interviews:
+
+1. [**CyclicBarrier vs CountDownLatch**: These are both used to implement scenarios where one thread waits for one or more threads to complete their tasks before starting its processing](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html). [The main difference is that you can reuse `CyclicBarrier` even if the barrier is broken, but you cannot reuse `CountDownLatch`](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[`CyclicBarrier` is often used when a task is repeated, while `CountDownLatch` is used for a one-time task](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html).
+
+2. [**Multiple Main Methods**: Yes, you can have multiple main methods in a class](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html). While starting the application, you mention the class name to be run. [The JVM will look for the main method only in the class whose name you have mentioned](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html). [Hence there is no conflict amongst the multiple classes having the main method](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html).
+
+3. [**LinkedList vs ArrayList**: `ArrayList` is an implementation of the List interface that is based on an array](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[`ArrayList` internally handles the resizing of this array when the elements are added or removed](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html). [You can access its elements in constant time by their index in the array](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html). [On the other hand, `LinkedList` elements contain links to the previous and next element in the list](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html). [This allows for efficient insertion or removal of elements from any position in the list](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html).
+
+4. **Java Thread Lifecycle**: Understanding the lifecycle of a thread in Java is crucial. [A thread in Java has several states: New, Runnable, Running, Waiting/Blocked/Sleeping, and Terminated](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[2](https://www.geeksforgeeks.org/java-interview-questions/). [It’s important to understand how a thread transitions from one state to another](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[2](https://www.geeksforgeeks.org/java-interview-questions/).
+
+5. **Platform Independence**: Java is known as a “write once, run anywhere” language. [This means that Java code is compiled into bytecode that can run on any machine, regardless of its underlying hardware and operating system, as long as a Java Virtual Machine (JVM) is installed](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[2](https://www.geeksforgeeks.org/java-interview-questions/).
+
+6. **Java Features**: Java has several features that make it a powerful programming language. [Some of these include its simplicity, object-oriented nature, platform independence, robustness, security, and high performance](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[2](https://www.geeksforgeeks.org/java-interview-questions/).
+
+7. [**Reflection in Java**: Reflection is a feature in Java that allows an executing Java program to examine or “introspect” upon itself, and manipulate internal properties of the program](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[3](https://www.interviewbit.com/java-interview-questions/). [It’s a powerful tool for obtaining information about classes, interfaces, fields, and methods at runtime](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[3](https://www.interviewbit.com/java-interview-questions/).
+
+Remember, these are just a few examples. [Java is a vast language with many tricky scenarios that can come up, especially in a complex system or when dealing with advanced features like multithreading, generics, and the Java Memory Model](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[2](https://www.geeksforgeeks.org/java-interview-questions/)[3](https://www.interviewbit.com/java-interview-questions/)[4](https://www.simplilearn.com/tutorials/java-tutorial/java-interview-questions)[5](https://www.indeed.com/career-advice/interviewing/java-basic-interview-questions)[6](https://www.hipeople.io/interview-questions/tricky-java-interview-questions)[1](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html). It’s always a good idea to keep learning and practicing to get a good grasp of these concepts. Good luck with your Java journey! 😊
+
+4. -----
+
+Absolutely! Here are some more common tricky scenarios in Java that are often asked in interviews:
+
+1. **Platform Independence**: Java is known as a “write once, run anywhere” language. [This means that Java code is compiled into bytecode that can run on any machine, regardless of its underlying hardware and operating system, as long as a Java Virtual Machine (JVM) is installed](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+2. **Java Thread Lifecycle**: Understanding the lifecycle of a thread in Java is crucial. [A thread in Java has several states: New, Runnable, Running, Waiting/Blocked/Sleeping, and Terminated](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/). [It’s important to understand how a thread transitions from one state to another](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+3. **Java Features**: Java has several features that make it a powerful programming language. [Some of these include its simplicity, object-oriented nature, platform independence, robustness, security, and high performance](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+4. [**Reflection in Java**: Reflection is a feature in Java that allows an executing Java program to examine or “introspect” upon itself, and manipulate internal properties of the program](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/). [It’s a powerful tool for obtaining information about classes, interfaces, fields, and methods at runtime](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+5. **Importing the Same Class or Package Twice**: In Java, it is possible to import the same class or package twice. [However, it doesn’t have any impact on the runtime because the Java compiler is smart enough to include only one copy of each class](https://www.geeksforgeeks.org/java-interview-questions/)[2](https://www.interviewbit.com/java-interview-questions/).
+
+6. **Sub Packages**: In Java, importing a package does not automatically import its sub-packages. [Therefore, if a package has sub-packages, it will not suffice to import only the main package](https://www.interviewbit.com/java-interview-questions/)[2](https://www.interviewbit.com/java-interview-questions/).
+
+7. [**Liskov Substitution Principle (LSP)**: LSP is a principle of Object Oriented Design and it states that, in a computer program, if `S` is a subtype of `T`, then objects of type `T` may be replaced with objects of type `S` without altering any of the desirable properties of that program](https://talent500.co/blog/java-tricky-interview-questions/)[3](https://talent500.co/blog/java-tricky-interview-questions/).
+
+Remember, these are just a few examples. [Java is a vast language with many tricky scenarios that can come up, especially in a complex system or when dealing with advanced features like multithreading, generics, and the Java Memory Model](https://www.hipeople.io/interview-questions/tricky-java-interview-questions)[4](https://www.hipeople.io/interview-questions/tricky-java-interview-questions)[5](https://www.javacodestuffs.com/2020/05/top-20-tricky-java-interview-questions.html)[6](https://www.javatpoint.com/tricky-java-interview-questions)[1](https://www.geeksforgeeks.org/java-interview-questions/)[2](https://www.interviewbit.com/java-interview-questions/)[3](https://talent500.co/blog/java-tricky-interview-questions/). It’s always a good idea to keep learning and practicing to get a good grasp of these concepts. Good luck with your Java journey! 😊
+
+5. -----
+
+Absolutely, I’m glad you found the previous examples helpful. Here are some more tricky Java scenarios that are often asked in interviews:
+
+1. **Java Thread Lifecycle**: Understanding the lifecycle of a thread in Java is crucial. [A thread in Java has several states: New, Runnable, Running, Waiting/Blocked/Sleeping, and Terminated](https://www.interviewbit.com/java-interview-questions/)[1](https://www.interviewbit.com/java-interview-questions/). [It’s important to understand how a thread transitions from one state to another](https://www.interviewbit.com/java-interview-questions/)[1](https://www.interviewbit.com/java-interview-questions/).
+
+2. **Platform Independence**: Java is known as a “write once, run anywhere” language. [This means that Java code is compiled into bytecode that can run on any machine, regardless of its underlying hardware and operating system, as long as a Java Virtual Machine (JVM) is installed](https://www.interviewbit.com/java-interview-questions/)[2](https://www.geeksforgeeks.org/java-interview-questions/).
+
+3. **Java Features**: Java has several features that make it a powerful programming language. [Some of these include its simplicity, object-oriented nature, platform independence, robustness, security, and high performance](https://www.interviewbit.com/java-interview-questions/)[2](https://www.geeksforgeeks.org/java-interview-questions/).
+
+4. [**Reflection in Java**: Reflection is a feature in Java that allows an executing Java program to examine or “introspect” upon itself, and manipulate internal properties of the program](https://www.geeksforgeeks.org/java-interview-questions/)[2](https://www.geeksforgeeks.org/java-interview-questions/). [It’s a powerful tool for obtaining information about classes, interfaces, fields, and methods at runtime](https://www.interviewbit.com/java-interview-questions/)[2](https://www.geeksforgeeks.org/java-interview-questions/).
+
+5. **Importing the Same Class or Package Twice**: In Java, it is possible to import the same class or package twice. [However, it doesn’t have any impact on the runtime because the Java compiler is smart enough to include only one copy of each class](https://www.interviewbit.com/java-interview-questions/)[1](https://www.interviewbit.com/java-interview-questions/).
+
+6. **Sub Packages**: In Java, importing a package does not automatically import its sub-packages. [Therefore, if a package has sub-packages, it will not suffice to import only the main package](https://www.interviewbit.com/java-interview-questions/)[1](https://www.interviewbit.com/java-interview-questions/).
+
+7. [**Liskov Substitution Principle (LSP)**: LSP is a principle of Object Oriented Design and it states that, in a computer program, if `S` is a subtype of `T`, then objects of type `T` may be replaced with objects of type `S` without altering any of the desirable properties of that program](https://talent500.co/blog/java-tricky-interview-questions/)[3](https://talent500.co/blog/java-tricky-interview-questions/).
+
+Remember, these are just a few examples. [Java is a vast language with many tricky scenarios that can come up, especially in a complex system or when dealing with advanced features like multithreading, generics, and the Java Memory Model](https://www.hipeople.io/interview-questions/tricky-java-interview-questions)[4](https://www.hipeople.io/interview-questions/tricky-java-interview-questions)[5](https://www.testgorilla.com/blog/tricky-java-interview-questions-answers/)[6](https://bing.com/search?q=more+common+tricky+Java+interview+questions)[1](https://www.interviewbit.com/java-interview-questions/)[3](https://talent500.co/blog/java-tricky-interview-questions/)[2](https://www.geeksforgeeks.org/java-interview-questions/). It’s always a good idea to keep learning and practicing to get a good grasp of these concepts. Good luck with your Java journey! 😊
+
+# Java Common Interview Questions
+
+1. -------
+
+<style>
+ table {
+ border: 1px solid #c4c7c5;
+ border-radius: 4px;
+ font-size: 16px;
+ }
+ th {
+ padding: 18px 16px;
+ text-align: left;
+ }
+ td {
+ padding: 16px;
+ border-top: 1px solid #c4c7c5;
+ }
+ button.js-code-copy {
+ display: none;
+ }
+ .katex-mathml{
+ display: block;
+ text-align: center;
+ }
+ .katex-html {
+ display: none;
+ }
+
+</style>
+
+Sure, here are some common Java interview questions that are often asked:
+
+1. **Is Java Platform Independent?** Yes, Java is a Platform Independent language. Unlike many programming languages, the Java compiler compiles the program to form a bytecode or .class file. [This file is independent of the software or hardware running but needs a JVM (Java Virtual Machine) file preinstalled in the operating system for further execution of the bytecode](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+2. **What are the top Java Features?** Java is one of the most famous and most used languages in the real world, there are many features in Java that makes it better than any other language. [Some of them are: simplicity, platform independence, interpreted nature, robustness, object-oriented, security, high performance, dynamic, distributed, multithreaded, and architecture neutrality](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+3. **What is JVM?** JVM stands for Java Virtual Machine. It is a Java interpreter. [It is responsible for loading, verifying, and executing the bytecode created in Java](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+4. **How do you reverse a string in Java?** There is no reverse() utility method in the String class. However, you can create a character array from the string and then iterate it from the end to the start. [You can append the characters to a string builder and finally return the reversed string](https://www.geeksforgeeks.org/java-interview-questions/)[2](https://www.digitalocean.com/community/tutorials/java-programming-interview-questions).
+
+5. [**How do you swap two numbers without using a third variable in Java?** Swapping numbers without using a third variable is a three-step process that’s better visualized in code](https://www.geeksforgeeks.org/java-interview-questions/)[2](https://www.digitalocean.com/community/tutorials/java-programming-interview-questions):
+
+```java
+b = b + a; // now b is sum of both the numbers
+a = b - a; // b - a = (b + a) - a = b (a is swapped)
+b = b - a; // (b + a) - b = a (b is swapped)
+```
+
+6. [**Write a Java program to check if a vowel is present in a string.** The following example code shows how to use a regular expression to check whether the string contains vowels](https://www.geeksforgeeks.org/java-interview-questions/)[2](https://www.digitalocean.com/community/tutorials/java-programming-interview-questions):
+
+```java
+public static boolean stringContainsVowels(String input) {
+    return input.toLowerCase().matches(".*[aeiou].*");
+}
+```
+
+7. **Write a Java program to check if the given number is a prime number.** You can write a program to divide the given number n, by a number from 2 to n /2 and check the remainder. [If the remainder is 0, then it’s not a prime number](https://www.geeksforgeeks.org/java-interview-questions/)[2](https://www.digitalocean.com/community/tutorials/java-programming-interview-questions).
+
+Remember, these are just a few examples. [Java is a vast language with many common scenarios that can come up, especially in a complex system or when dealing with advanced features like multithreading, generics, and the Java Memory Model](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/)[2](https://www.digitalocean.com/community/tutorials/java-programming-interview-questions). It’s always a good idea to keep learning and practicing to get a good grasp of these concepts. Good luck with your Java journey! 😊
+
+2. ----
+
+<style>
+ table {
+ border: 1px solid #c4c7c5;
+ border-radius: 4px;
+ font-size: 16px;
+ }
+ th {
+ padding: 18px 16px;
+ text-align: left;
+ }
+ td {
+ padding: 16px;
+ border-top: 1px solid #c4c7c5;
+ }
+ button.js-code-copy {
+ display: none;
+ }
+ .katex-mathml{
+ display: block;
+ text-align: center;
+ }
+ .katex-html {
+ display: none;
+ }
+
+</style>
+
+You’re welcome! Here are some more common Java interview questions:
+
+1. **What is JIT?** JIT stands for Just-In-Time compiler. [It’s a part of the JVM that improves the performance of Java applications by compiling bytecodes to native machine code at runtime](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+2. [**What are Memory storages available with JVM?** JVM has various memory areas allocated for different purposes: Heap area (for all object allocations), Method area (for class level data), Stack area (for method execution), PC registers (to hold the address of the current executing instruction when a method is invoked), and Native method stacks (for native method execution)](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+3. [**What is a classloader?** A classloader is a subsystem of JVM that is used to load class files](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/). [There are three built-in classloaders in Java: Bootstrap ClassLoader, Extensions ClassLoader, and System/Application ClassLoader](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+4. **Difference between JVM, JRE, and JDK.** JVM (Java Virtual Machine) is an abstract machine that provides a runtime environment in which Java bytecode can be executed. JRE (Java Runtime Environment) is a software package that contains what is required to run a Java program. It includes the JVM, core libraries, and other additional components to run applications and applets written in Java. JDK (Java Development Kit) is a software development environment used for developing Java applications and applets. [It includes the JRE, an interpreter/loader (java), a compiler (javac), an archiver (jar), a documentation generator (javadoc), and other tools needed in Java development](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+5. **What do you know about Java security?** Java is designed to be a secure programming language. [It provides several security features such as bytecode verification, sandboxing, secure class loading, and a security manager that allows users to implement custom security policies](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+6. **What’s your experience with network programming?** Network programming in Java is quite straightforward because of its robust API. [Java provides support for TCP/IP and UDP protocols, and it has classes that make it easy to create network connections, send and receive data, and implement higher-level protocols](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+7. **How much programming in Java did you do in your previous position?** This question is more personal and depends on your past experience. [You could talk about the projects you’ve worked on, the technologies you’ve used, and the results you’ve achieved](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/).
+
+Remember, these are just a few examples. [Java is a vast language with many common scenarios that can come up, especially in a complex system or when dealing with advanced features like multithreading, generics, and the Java Memory Model](https://www.geeksforgeeks.org/java-interview-questions/)[1](https://www.geeksforgeeks.org/java-interview-questions/). It’s always a good idea to keep learning and practicing to get a good grasp of these concepts. Good luck with your Java journey! 😊
+
+3. ---
+
+# Java Techie - Java Collection Interview Questions
+
+### Comparable vs Comparator
+
+- Comparable sorts based on single value
+
+- to compare and sort with multiple values, we need Comparator.
+
+# Java Techie - Core Java Interview Questions
+
+- for inheritance between different type (class & interface), we use implements and for inheritance between same type (class & class) or (interface & interface) we use extends
+
+In Java, an interface **extends** from another interface, not implements. Here’s a quick explanation:
+
+- **Extends**: When one interface extends another, it inherits all of the methods of the parent interface. It’s similar to class inheritance, but with interfaces, there’s no actual code being inherited, just method signatures. An interface can extend multiple interfaces, which is something a class can’t do.
+
+- **Implements**: The term “implements” is used when a class uses an interface. When a class implements an interface, it promises to provide implementations for all the methods declared in the interface.
+
+Here’s a simple example:
+
+```java
+interface ParentInterface {
+    void parentMethod();
+}
+
+interface ChildInterface extends ParentInterface {
+    void childMethod();
+}
+
+class MyClass implements ChildInterface {
+    public void parentMethod() {
+        // Implementation of parentMethod
+    }
+
+    public void childMethod() {
+        // Implementation of childMethod
+    }
+}
+```
+
+In this example, `ChildInterface` extends `ParentInterface`, and `MyClass` implements `ChildInterface`. As a result, `MyClass` must provide implementations for both `parentMethod` and `childMethod`. Hope this helps! 😊
+
+- in java, can an interface implement a class?
+
+No, in Java, an interface **cannot** implement a class. Interfaces in Java can only extend other interfaces. Here’s why:
+
+- **Interfaces** are a contract or a blueprint for a class. They can contain only constants, method signatures, default methods, static methods, and nested types. They cannot contain any implementation details.
+
+- A **class** implements an interface to inherit the abstract methods of the interface. It provides the actual implementation of these methods.
+
+So, while a class can implement an interface, the reverse is not true. An interface cannot implement a class. It can, however, extend another interface, inheriting its method signatures. I hope this clears up your doubt! 😊
+
+2. ------
+
+In Java, the `extends` keyword must come before the `implements` keyword. The correct syntax is:
+
+```java
+public class Car extends Vehicle implements InterfaceA, InterfaceB {}
+```
+
+This means that the `Car` class is inheriting from the `Vehicle` class and implementing the `InterfaceA` interface. If you try to put `implements` before `extends`, you will get a syntax error. Java requires this specific order. I hope this clears up your doubt! 😊
+
+
+
+3. --------
+- usually we achieve Encapsulation in our Entity class or DTO class
+
+- Inheritance -> usually in our Service class or DAO class
+
+
+
+4. ----
+
+if you are returning any parent object as a return type in an interface/parent class, then in the child class, we can return the child object of that parent object.
+
+![](assets/2024-03-06-17-46-42-image.png)
+
+![](assets/2024-03-06-17-47-08-image.png)
+
+5. ------
+
+This is also Dynamic/runtime polymorphism where we inject the parent/class interface (InventoryService) instead of the child(InventoryServiceImpl) for dependecy injection.
+
+![](assets/2024-03-06-17-50-08-image.png)
+
+Because, I may have multiple implementations of the InventoryService.
