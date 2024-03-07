@@ -508,10 +508,16 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 
 - design pattern.
 
-
-
 # ----- after written -----
 
 1. db schema
 
 2. stack in java.
+
+3. agile
+
+4. white box, black box testing etc.
+
+5. arrays in java (char array ..)
+
+6. 

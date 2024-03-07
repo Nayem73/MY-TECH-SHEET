@@ -1323,15 +1323,10 @@ public class Car extends Vehicle implements InterfaceA, InterfaceB {}
 
 This means that the `Car` class is inheriting from the `Vehicle` class and implementing the `InterfaceA` interface. If you try to put `implements` before `extends`, you will get a syntax error. Java requires this specific order. I hope this clears up your doubt! 😊
 
-
-
 3. --------
 - usually we achieve Encapsulation in our Entity class or DTO class
 
 - Inheritance -> usually in our Service class or DAO class
-
-
-
 4. ----
 
 if you are returning any parent object as a return type in an interface/parent class, then in the child class, we can return the child object of that parent object.
@@ -1347,3 +1342,362 @@ This is also Dynamic/runtime polymorphism where we inject the parent/class inter
 ![](assets/2024-03-06-17-50-08-image.png)
 
 Because, I may have multiple implementations of the InventoryService.
+
+6. ----
+
+For an overriden method in the child class, if that method in child throws exception, then parent class method needs to throw exception as well. But if parent class method throws exception, then child class may or may not throw it, no problem.
+
+7. ----
+
+```java
+//this code prints "from Child Car class"
+
+public class Main {
+    public static void main(String[] args) {
+       Vehicle vehicle = new Car();
+       vehicle.m1();
+    }
+} 
+
+
+package com.nayemtech;
+public class Vehicle {
+    public void m1() {
+        System.out.println("from parent Vehicle class");
+    }
+}
+
+
+package com.nayemtech;
+public class Car extends Vehicle  {
+    @Override
+    public void m1() {
+        System.out.println("from Child Car class");
+    }
+}
+```
+
+Just as I know, above code will first go to the child class Car because we instantiated a Car object with reference of Vehicle object. So JVM will go to Car class first and will print  `from Child Car class` 
+
+But what happens if the child class Car did not have the overridden method m1() in it? in that case, the JVM will first visit the Car class as usual but since there's no m1 method in it, JVM will look for the m1 method in the parent class Vehicle, and execute the m1 method there without Any compilation error.
+
+```java
+//this code prints "from parent Vehicle class"
+
+public class Main {
+    public static void main(String[] args) {
+       Vehicle vehicle = new Car();
+       vehicle.m1();
+    }
+} 
+
+
+package com.nayemtech;
+public class Vehicle {
+    public void m1() {
+        System.out.println("from parent Vehicle class");
+    }
+}
+
+
+package com.nayemtech;
+public class Car extends Vehicle  {
+
+}
+```
+
+----
+
+Below code will print 45
+
+```java
+output is 45
+
+public class Main {
+    public static void main(String[] args) {
+       Vehicle vehicle = new Car();
+       System.out.println(vehicle.X);
+    }
+} 
+
+
+package com.nayemtech;
+public class Vehicle {
+   int X = 45;
+}
+
+
+package com.nayemtech;
+public class Car extends Vehicle  {
+    int X = 55555;
+}
+```
+
+The output is `45` because of the way Java handles variable hiding and polymorphism.
+
+In your code, `Vehicle vehicle = new Car();` creates a new `Car` object, but the reference type is `Vehicle`. When you access the field `X`, Java looks at the reference type (`Vehicle`), not the actual object type (`Car`), and therefore it accesses the `X` in the `Vehicle` class, not the `X` in the `Car` class.
+
+This is known as variable hiding. The `X` in `Car` hides the `X` in `Vehicle`. But when you access `X`, Java uses the reference type to determine which `X` to use. If you want to access the `X` in `Car`, you need to have a reference of type `Car`.
+
+```java
+this code will show error. It won't access the field X from the object type Car, but will will try to access
+from the reference type Vehicle, but since there's no field called X there, it will result in a compilation error
+
+public class Main {
+    public static void main(String[] args) {
+       Vehicle vehicle = new Car();
+       System.out.println(vehicle.X);
+    }
+} 
+
+
+package com.nayemtech;
+public class Vehicle {
+
+}
+
+
+package com.nayemtech;
+public class Car extends Vehicle  {
+    int X = 55555;
+}
+```
+
+------
+
+You can not override static methods or private methods. because static methods belong to the parent class itself.
+
+-----
+
+### default method in interfaces
+
+if we have default method in an interface, we can add method body. The purpose of it is, the classes that implements this interface, are not forced to override this method bcz it has method body.
+
+Static method in interface also does the same. maybe?
+
+before java 8 it was not possible. You had to override any and all methods.
+
+![](assets/2024-03-06-19-28-15-image.png)
+
+![](assets/2024-03-06-19-28-41-image.png)
+
+-----
+
+### testing the behaviour of `default` method, `static` method and normal method in an interface.
+
+```java
+package com.nayemtech;
+public interface InterfaceA {
+    static void staticMethod() {
+        System.out.println("static method in interfaceA belongs to the interface itself");
+    }
+
+    default void defaultMethod() {
+        System.out.println("default method in interfaceA does not force me to override in implemented class. " +
+                "I may or may not override it in the implemented class");
+    }
+
+    void normalMethod();
+}
+
+public class Main {
+    public static void main(String[] args) {
+       InterfaceA a = new TmpMain();
+       a.defaultMethod();
+       a.normalMethod();
+       InterfaceA.staticMethod();
+    }
+} 
+
+
+
+output:
+
+default method in interfaceA does not force me to override in implemented class. I may or may not override it in the implemented class
+normal method in the implemented class forced me to override
+static method in interfaceA belongs to the interface itself
+```
+
+-------
+
+### final, finally and finalize
+
+- final is a keyword
+
+- finally is a block
+
+- finalize is a method of object class
+
+- finally and finalize are used for cleanup purposes
+
+if something in our code is null or, if garbage collector finds any objects that is not used and we call the `System.gc()` , then the finalize() method is called.
+
+----
+
+### what is equals and hashcode method and it's contract?
+
+- If hashcode of two objects is same, there's no guarantee that the equals method of these two objects will be same.
+
+![](assets/2024-03-06-22-20-06-image.png)
+
+- in below code, the Set prints both customer1 and customer2 even though both are same. Because we did not override equals() and hashCode() method in the Customer Class. If we added that, set will only print one object because equals() and hashcode() ensures the uniqueness.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+       Customer customer1 = new Customer(3, "Nayem");
+       Customer customer2 = new Customer(3, "Nayem");
+
+       Set<Customer> st = new HashSet<>();
+       st.add(customer1);
+       st.add(customer2);
+
+       System.out.println(st);
+
+        System.out.println(customer1 == customer2); //output false
+        System.out.println(customer1.equals(customer2)); //output true
+
+        String s1 = new String("ok");
+        String s2 = new String("ok");
+
+        String s3 = "ok";
+        String s4 = "ok";
+        String s5 = "o";
+        s5 += "k";
+
+        System.out.println("string: " + (s1 == s2)); //output false
+        System.out.println("string: " + (s3 == s4)); //output true because, for
+                                   //for string literals it is stored in the string constant pool.
+                                   //and for a new string literal, jvm checks if there's any literal that's same          
+                                   //in the current string pool, if same, then it just assigns the same memory.
+        System.out.println("string: " + (s3 == s5)); //output false
+                          //because Strings are immutable. Once changed, new object is creatd.
+    }
+}
+```
+
+Overriding only the `equals()` method might seem sufficient if you’re only interested in comparing two objects for equality. However, when you use objects as keys in a `HashMap` or elements in a `HashSet`, both `equals()` and `hashCode()` methods are used, and they need to be consistent with each other. Here’s why:
+
+1. **Performance**: `HashMap` and `HashSet` use a hash table data structure for storing elements. When you add an element, it uses the `hashCode()` method to determine the “bucket” where the element should be placed. If two objects are equal (according to the `equals()` method), they should ideally have the same hash code so that they land in the same bucket. This makes the lookup operation very fast, as it can directly go to the correct bucket using the hash code, instead of having to scan through all elements.
+
+2. **Correctness**: If two equal objects have different hash codes, they would be placed in different buckets. Now, when you try to search for an element in the `HashMap` or `HashSet`, it would look in the wrong bucket (based on the hash code) and fail to find the element, even though it’s present in the collection. This would lead to incorrect behavior of the `HashMap` or `HashSet`.
+
+<u>*So, if you override `equals()`, you should also override `hashCode()` to ensure that equal objects have the same hash code. This is known as the contract between `equals()` and `hashCode()`, and is crucial for the correct functioning of collections like `HashMap` and `HashSet`*</u>
+
+------
+
+- what is exception and it's hierarchy?
+
+![](assets/2024-03-07-05-27-19-image.png)
+
+![](assets/2024-03-07-05-30-50-image.png)
+
+### write custom exception
+
+- what is throw and throws keyword
+
+![](assets/2024-03-07-06-45-19-image.png)
+
+### order of exception:
+
+![](assets/2024-03-07-06-47-32-image.png)
+
+### try, catch, finally return order
+
+![](assets/2024-03-07-06-52-56-image.png)
+
+- we can see above pic output is 3. Because, it goes to the `try` first and since there's no logical statement that causes exception, it should not go to the `catch` block, so it should return 1. But, we know `finally` block is always executed, so instead of returning 1, it goes to the `finally` block and returns 3 from there.
+
+- So in here, if we did not have `finally` block, it would've returned 1:
+
+![](assets/2024-03-07-06-57-02-image.png)
+
+- same as the firs code picture, if we had an exception and also we have finally block, although it goes to the catch block, but since finally is always executed, it returns 3 from the finally block:
+
+![](assets/2024-03-07-06-59-27-image.png)
+
+- and if we did not have the finally block, then it retuns 2 from the catch block:
+
+![](assets/2024-03-07-07-00-09-image.png)
+
+### is there any scenario where you can break the rule of `finally`?
+
+- inside finally, System.exit(0) or forcefully throw some exception from the finally itself.
+
+- Now there's no output:
+
+![](assets/2024-03-07-07-02-27-image.png)
+
+### How many way can we create String object?
+
+There's these two ways: using new keyword and using String literals:
+
+![](assets/2024-03-07-07-09-50-image.png)
+
+- How many objects are created in these both ways?
+- if you use new keyword then, two objects are created: one is stored in heap because of the new keyword, and another, because of the literal "javatechie", will be stored in String Constant Pool area
+
+![](assets/2024-03-07-10-10-36-image.png)
+
+- Now, when I create s2 in above image using just literals, it will create one object. but first jvm will check if the same literal is present in the String Constant Pool or not. If it's already present, then it won't create a new object in String Constant Pool, it will use the same reference of the existing one.
+
+- So, when we create s2 with "javatechie", no new object will be created since "javatechie" already exists in the String Constant Pool created by s1.
+
+![](assets/2024-03-07-10-23-12-image.png)
+
+### Strings are immutable
+
+```java
+      String s1 = "ok";
+      String s2 = "ok";
+      System.out.println(s1 == s2); //true
+----------------------------------------------
+
+       String s1 = "ok";
+       String s2 = "o";
+       s2 += "k";
+       System.out.println(s1 == s2); //false
+```
+
+![](assets/2024-03-07-11-18-35-image.png)
+
+### String, StringBuilder, StringBuffer
+
+![](assets/2024-03-07-11-21-02-image.png)
+
+- we use StringBuilder instead of String when there's lots of concatenation or String Modification operation.
+
+```java
+    public static void main(String[] args) {
+       String s1 = "java";
+       String s2 = s1.concat("techie");
+       System.out.println(s1);
+       System.out.println(s2);
+
+       System.out.println("StringBuilder:");
+       StringBuilder sb1 = new StringBuilder("java");
+       sb1.append("techie");
+       System.out.println(sb1);
+
+       System.out.println("StringBuffer");
+       StringBuffer sbf1 = new StringBuffer("java");
+       sbf1.append("techie");
+       System.out.println(sbf1);
+    } 
+
+output:
+java
+javatechie
+StringBuilder:
+javatechie
+StringBuffer
+javatechie
+```
+
+### write your own custom immutable class
+
+![](assets/2024-03-07-11-38-59-image.png)
+
+### Marker interface /tagging interface (serializable is a marker interface - empty interface)
+
+![](assets/2024-03-07-13-15-55-image.png)
