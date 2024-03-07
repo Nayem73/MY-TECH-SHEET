@@ -1463,6 +1463,14 @@ public class Car extends Vehicle  {
 }
 ```
 
+-------
+
+- if you throw Exception in an overriden method in child class, parent class needs to throw Exception in that method as well. but if parent class throws Exception, it's a matter of Parent class, child class may or may not throw then, no problem
+
+![](assets/2024-03-07-21-15-10-image.png)
+
+![](assets/2024-03-07-21-15-36-image.png)
+
 ------
 
 You can not override static methods or private methods. because static methods belong to the parent class itself.
@@ -1482,6 +1490,14 @@ before java 8 it was not possible. You had to override any and all methods.
 ![](assets/2024-03-06-19-28-41-image.png)
 
 -----
+
+- why must we have to add method body in default method and in static method in interfaces?
+
+- because, in interfaces what's the purpose of declaring abstract methods? the purpose is that subclasses must override the abstract method and write their own implementations. But, we know, static method belongs to the class itself, so child classes can't override it, hence there's no meaning in declaring static methods that's abstract. So we must add method body to it.
+
+- and for default methods, we may or may not override it in the subclass. Since maybe we don't override it in the subclass, hence we also need an implemented code (method body) inside the default methods. So subclasses either inherit the implemented default method directly or override it as per necessity of the subclass.
+
+-------
 
 ### testing the behaviour of `default` method, `static` method and normal method in an interface.
 

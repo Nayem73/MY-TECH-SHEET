@@ -520,4 +520,4 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 
 5. arrays in java (char array ..)
 
-6. 
+6. design pattern
