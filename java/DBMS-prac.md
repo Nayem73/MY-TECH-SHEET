@@ -300,3 +300,63 @@ This query will delete the testDB database if it exists, or do nothing otherwise
 [For more information and examples on how to delete a database in MySQL, you can check out these web pages](https://www.w3schools.com/mysql/mysql_drop_db.asp)[1](https://www.w3schools.com/mysql/mysql_drop_db.asp)[2](https://stackoverflow.com/questions/1082130/how-do-i-remove-a-mysql-database)[3](https://www.mysqltutorial.net/mysql-drop-database/)[4](https://www.slingacademy.com/article/ways-to-drop-database-mysql-8/).
 
 I hope this helps. If you have any other questions, please let me know. Have a nice day! 👋
+
+
+
+
+
+# Duplicate Rows
+
+> find duplicate rows
+
+Sure, here is a general SQL query to find duplicate rows in a table. Please replace `table_name` and `column1`, `column2`, etc. with your actual table name and column names.
+
+```sql
+SELECT column1, column2, ..., COUNT(*)
+FROM table_name
+GROUP BY column1, column2, ...
+HAVING COUNT(*) > 1;
+```
+
+This query groups the table by all its columns and then uses the `HAVING` clause to filter out the groups that appear more than once, which are the duplicate rows. If you have specific columns you want to check for duplicates, you can replace `column1, column2, ...` with those column names. If you want to check the entire row for duplicates, you should include all columns in the `GROUP BY` clause.
+
+Please note that this query will only show you the duplicated rows. If you want to delete duplicates, you would need a different approach, and you should be very careful as it involves deleting data from your table. Always make sure to backup your data before running such queries.
+
+
+
+> Delete duplicate rows
+
+
+
+Deleting duplicate rows in SQL can be a bit tricky because it involves removing data from your table. Here is a general approach to do it:
+
+1. First, create a temporary table with the distinct records from the original table:
+
+```sql
+CREATE TABLE temp_table AS
+SELECT DISTINCT *
+FROM original_table;
+```
+
+2. Then, delete everything from the original table:
+
+```sql
+DELETE FROM original_table;
+```
+
+3. After that, insert the distinct records back into the original table from the temporary table:
+
+```sql
+INSERT INTO original_table
+SELECT * FROM temp_table;
+```
+
+4. Finally, drop the temporary table as it’s no longer needed:
+
+```sql
+DROP TABLE temp_table;
+```
+
+Please replace `original_table` with your actual table name.
+
+**Important:** Always make sure to backup your data before running such queries. This is a general approach and might not work for all scenarios, especially when you have constraints or dependencies on your table. It’s always a good idea to test the queries on a small set of data or a dummy table before running them on the actual table. If your table is large, there might be more efficient ways to delete duplicates. If you’re unsure, it’s best to ask for help from a database administrator or a more experienced colleague.

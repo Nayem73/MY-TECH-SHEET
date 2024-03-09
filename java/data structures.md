@@ -281,10 +281,26 @@ Sure, let’s compare the time and space complexity of adjacency list and adjace
 
 [In conclusion, the choice between an adjacency list and an adjacency matrix depends on the specific requirements of your problem, such as whether the graph is sparse or dense, and whether you need to frequently check for the existence of edges](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[1](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[3](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c)[5](https://www.baeldung.com/cs/graph-adjacency-and-incidence). I hope this helps! Let me know if you have any other questions. 😊
 
-
-
 # BFS/DFS Time Complexity
 
 - Node amar queue te kivabe dhuktese? prottekta connected edge for loop die dekhe jein node paisi oita queue te push korsi. eivabe prottekta edge e gie gie ami node gulo queue te push korsi. Then oi node gulo while loop er madhome ashbe and then again oi node gulor edge visit korbo and jei node gulo unvisited oigulo queue te dhukabo. 
 
 - So, while loop e node paite amar for loop die edge gula traverse kora lagtese. but prottekta edge ekbar kore and prottekta node ekbar korei traverse hobe. so O(E+V)
+
+
+
+# ArrayList vs LinkeList
+
+
+
+If an interviewer asks you about the difference between an array and a linked list, you could answer like this:
+
+"Arrays and linked lists are both data structures used to store collections of data, but they have different properties and use-cases.
+
+**Array** is a contiguous block of memory with a fixed size. It allows constant-time access to any element by its index, but adding or removing elements from anywhere except the end requires shifting all elements, which takes linear time. Arrays are great when the size of the collection is known in advance and random access is frequently needed.
+
+**Linked List**, on the other hand, consists of nodes where each node contains a data field and a reference(link) to the next node in the list. It allows constant-time insertions or removals from the beginning of the list, and constant-time insertions at the end if we maintain a reference to the last node. However, accessing an element by index takes linear time as it requires traversing the list from the start. Linked lists are useful when the size of the collection is not known in advance and insertions or deletions are more frequent than random access.
+
+In summary, the choice between arrays and linked lists depends on the specific requirements of the problem you’re trying to solve."
+
+Remember, it’s important to relate the concept back to practical scenarios or experiences if you can, as this shows a deeper understanding and ability to apply the concept.
