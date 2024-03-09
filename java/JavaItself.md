@@ -1479,6 +1479,8 @@ You can not override static methods or private methods. because static methods b
 
 ### default method in interfaces
 
+The purpose of default method - to not force the implementation to override the method.
+
 if we have default method in an interface, we can add method body. The purpose of it is, the classes that implements this interface, are not forced to override this method bcz it has method body.
 
 Static method in interface also does the same. maybe?
@@ -1491,7 +1493,7 @@ before java 8 it was not possible. You had to override any and all methods.
 
 -----
 
-- why must we have to add method body in default method and in static method in interfaces?
+### why must we have to add method body in default method and in static method in interfaces?
 
 - because, in interfaces what's the purpose of declaring abstract methods? the purpose is that subclasses must override the abstract method and write their own implementations. But, we know, static method belongs to the class itself, so child classes can't override it, hence there's no meaning in declaring static methods that's abstract. So we must add method body to it.
 
@@ -1542,7 +1544,7 @@ static method in interfaceA belongs to the interface itself
 
 - finally is a block
 
-- finalize is a method of object class
+- finalize is a method of object class (used to cleanup unused objects)
 
 - finally and finalize are used for cleanup purposes
 
@@ -1610,11 +1612,19 @@ Overriding only the `equals()` method might seem sufficient if you’re only int
 
 ### write custom exception
 
-- what is throw and throws keyword
+![](assets/2024-03-08-10-21-21-image.png)
 
-![](assets/2024-03-07-06-45-19-image.png)
+![](assets/2024-03-08-10-21-54-image.png)
 
-### order of exception:
+### what is throw and throws keyword
+
+- throws keyword delegates the exception back to the method caller - whoever called this method must deal with this exception with try-catch block or use throws clause in the method signature to pass this exception to the next method caller.
+
+- we use throw keyword to throw an exception.
+
+### order of exception
+
+- parent class must be below the subclass. you know why: if the parent class is before the subclass, parent class will catch the exception, the subclass below will be redundant.
 
 ![](assets/2024-03-07-06-47-32-image.png)
 
@@ -1709,6 +1719,12 @@ javatechie
 StringBuffer
 javatechie
 ```
+
+![](assets/2024-03-08-17-27-59-image.png)
+
+![](assets/2024-03-08-17-28-40-image.png)
+
+- StringBuilder and StringBuffer both outputs same: Java Techie
 
 ### write your own custom immutable class
 

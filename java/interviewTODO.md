@@ -512,7 +512,7 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 
 1. db schema
 
-2. stack in java.
+2. implement queue, stack, .... and so on in Java.
 
 3. agile
 
@@ -521,3 +521,7 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 5. arrays in java (char array ..)
 
 6. design pattern
+
+7. time complexity of every single algorithm.
+
+8. 

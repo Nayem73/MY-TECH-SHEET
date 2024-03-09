@@ -592,3 +592,46 @@ primary indexing is of 2 types: Dense Index & Sparse Index
 1. Dense Index: store the corresponding primary key and it's memory location for every single search key value. so it requires more space.
 
 ![](assets/2024-03-04-07-36-58-Rakuten%20Database%20Structure.drawio.png)
+
+
+
+# Boolean in MySQL
+
+In MySQL, there is no specific data type called `BOOLEAN`. However, you can simulate boolean values using other data types such as `TINYINT(1)`, which is commonly used to represent boolean values. 
+
+When using `TINYINT(1)`, you can store values of 0 and 1, where 0 typically represents `false` and 1 represents `true`. You can also use other integer data types like `BIT(1)` to store boolean values, but `TINYINT(1)` is more commonly used for boolean purposes due to its compatibility and ease of use.
+
+Here's an example of how you might create a column to store boolean values:
+
+```sql
+CREATE TABLE example_table (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    is_active TINYINT(1)
+);
+```
+
+And then you can insert values into the `is_active` column like so:
+
+```sql
+INSERT INTO example_table (is_active) VALUES (1); -- true
+INSERT INTO example_table (is_active) VALUES (0); -- false
+```
+
+When retrieving data from the `is_active` column, you would interpret 1 as `true` and 0 as `false`. For example:
+
+```sql
+SELECT id, is_active FROM example_table;
+```
+
+This would give you results like:
+
+```diff
++----+-----------+
+| id | is_active |
++----+-----------+
+|  1 |         1 |
+|  2 |         0 |
++----+-----------+
+```
+
+So, while MySQL doesn't have a specific `BOOLEAN` data type, you can achieve boolean functionality using other data types such as `TINYINT(1)`.

@@ -280,3 +280,11 @@ Sure, let’s compare the time and space complexity of adjacency list and adjace
 - [**Cons**: Slightly slower than the adjacency matrix to check for the presence or absence of a specific edge between any two nodes](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c)[3](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c).
 
 [In conclusion, the choice between an adjacency list and an adjacency matrix depends on the specific requirements of your problem, such as whether the graph is sparse or dense, and whether you need to frequently check for the existence of edges](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[1](https://www.baeldung.com/cs/adjacency-matrix-list-complexity)[3](https://stackoverflow.com/questions/2218322/what-is-better-adjacency-lists-or-adjacency-matrices-for-graph-problems-in-c)[5](https://www.baeldung.com/cs/graph-adjacency-and-incidence). I hope this helps! Let me know if you have any other questions. 😊
+
+
+
+# BFS/DFS Time Complexity
+
+- Node amar queue te kivabe dhuktese? prottekta connected edge for loop die dekhe jein node paisi oita queue te push korsi. eivabe prottekta edge e gie gie ami node gulo queue te push korsi. Then oi node gulo while loop er madhome ashbe and then again oi node gulor edge visit korbo and jei node gulo unvisited oigulo queue te dhukabo. 
+
+- So, while loop e node paite amar for loop die edge gula traverse kora lagtese. but prottekta edge ekbar kore and prottekta node ekbar korei traverse hobe. so O(E+V)

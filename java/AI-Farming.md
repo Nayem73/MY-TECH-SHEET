@@ -86,3 +86,15 @@ Each of these groups of commands allows you to interact with a database in diffe
 I used ResponseEntity extensively to return a response, because it can include http status code, http headers and http body < these 3 at the same time.
 
 so when receiving the response from the frontend, i used responseentity to hold  MULTIPART_FORM_DATA as header type and the name of crop and the image as body . Then performed a HTTP post method to the fast api server of AI and received the response by a responseentity.
+
+# Deployment
+
+1. we used Docker.
+
+2. kubernetes er smallest unit holo pod. pod er modhe docker rakhte hoy
+
+3. we have 4 pods for 4 docker containers.
+
+4. we used ingress: ingress is traffic controller
+
+# ------- inside kubernetes ------

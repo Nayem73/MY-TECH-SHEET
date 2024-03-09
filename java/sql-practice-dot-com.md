@@ -136,8 +136,6 @@ group by patients.first_name, patients.last_name
 having count(*) > 1
 ```
 
-
-
 - ```sql
   here, I want to do a where statement where patients.allergies <> null. 
   my question is, in which line below should I insert this where statement ?
@@ -158,3 +156,14 @@ ORDER BY COUNT(patients.allergies) DESC
 ```
 
 In this query, `patients.allergies IS NOT NULL` will filter out the records where `allergies` is `NULL` before grouping and counting. Please note that in SQL, to check for `NULL`, we use `IS NULL` or `IS NOT NULL`, not `<> NULL`. The `<>` operator does not work with `NULL` values.
+
+-----------
+
+We want to display each patient's full name in a single column. Their last_name in all upper letters must appear first, then first_name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in decending order  
+EX: SMITH,jane
+
+```sql
+SELECT CONCAT(UPPER(patients.last_name), ',', LOWER(patients.first_name)) AS full_name
+FROM patients
+ORDER BY patients.first_name DESC;
+```
