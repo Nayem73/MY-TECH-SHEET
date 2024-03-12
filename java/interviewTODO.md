@@ -524,4 +524,8 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 
 7. time complexity of every single algorithm.
 
-8. 
+8. using namespace std (cout class std namespace er modhe ase.
+   
+   class ke access er jonno dot dewa lage, but namespace ke access er jonno colon dewa lage.)
+
+9. 

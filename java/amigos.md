@@ -1102,7 +1102,13 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
 
 # SOLID principles
 
-3. Liskov Substitution Principle: Liskov’s Substitution Principle prescribes that you can replace an object with an instance of its subtype without corrupting the program. Practically, you can replace a class with its subclass and Java’s inheritance mechanism follows this principle
+![](assets/2024-03-12-14-48-37-image.png)
+
+![](assets/2024-03-12-14-44-36-image.png)
+
+# Liskov Substitution Principle:
+
+- Liskov’s Substitution Principle prescribes that you can replace an object with an instance of its subtype without corrupting the program. Practically, you can replace a class with its subclass and Java’s inheritance mechanism follows this principle
 
 Sure, let’s consider an example to illustrate the Liskov Substitution Principle (LSP):
 
@@ -1215,6 +1221,14 @@ class Ostrich extends Bird {
 In this example, `Duck` implements the `Flyable` interface because it can fly, while `Ostrich` does not because it can’t fly. This way, we’re not forcing non-flying birds to implement a method they can’t use, adhering to the Interface Segregation Principle. This also makes the code more maintainable and easy to understand.
 
 Remember, the key idea behind ISP is to keep your system decoupled and thus easier to refactor, change, and redeploy. It’s all about reducing the side effects of change. Hope this helps! 😊
+
+
+
+# Dependency Inversion principle
+
+![](assets/2024-03-12-14-44-02-image.png)
+
+
 
 # Interface
 

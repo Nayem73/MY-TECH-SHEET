@@ -97,4 +97,280 @@ so when receiving the response from the frontend, i used responseentity to hold 
 
 4. we used ingress: ingress is traffic controller
 
-# ------- inside kubernetes ------
+### -------- Inside Docker ------
+
+```dockerfile
+# Use a Maven image to build the project
+# FROM hosse, jokhon kono ekta image amar lagbe docker hub or public kono place theke
+# FROM er por ja ase, oita hosse jei image lagbe oita.
+# ekhane maven holo image er nam with version 3.8.4
+# AS build mane holo ei image take build nam dilam
+FROM maven:3.8.4-openjdk-17 AS build
+
+# Set the working directory inside the container
+# first e root e ase jar directory /
+# then app directory te jabe. ei directory na thakle new /app directory create hobe
+# it makes /app directory as the root directory. so, joto command run hobe,
+  # sob ei /app directory tei hobe.
+WORKDIR /app
+
+# Copy the project files into the container
+# Copy command er 2 ta variable: source destination
+# 1st dot (source er all files - dot mane all) die bujhasse, jei directory te ei dockerfile ta ase,
+  # oi sobkisu 2nd dot (destination - docker image jeta ase, oi image er modhe jei root directory oita: /app)
+  # So, dockerfile jei directory te ase, oikhaner sobfile copy hoye docker image er root directory /app er modhe rakhbe.
+COPY . .
+
+# Build the project using Maven
+# Run er por ja thakbe, oita hosse command.
+RUN mvn clean package -DskipTests
+# ekhon 1st image er kaj ses. ei image ke ami build hisebe disi
+# ja run korsi sob build image er vitor /app directory te ase.
+# mvn clean package < eta run korsilam so, eta run korar jonno amra jar paise
+  # and ei jar file ei build image er vitor /app directory te ase.
+
+# amra 2ta image nitesi ei dockerfile e.
+# 1st image ta build stage er jonno & 2nd image ta deployment stage er jonno.
+
+# Use a lightweight base image for Java to run the application
+# FROM hosse, jokhon kono ekta image amar lagbe docker hub or public kono place theke
+# FROM er por ja ase, oita hosse jei image lagbe oita.
+FROM openjdk:17-jdk-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the compiled JAR file from the build stage to the current stage
+# The source file is /app/target/*.jar. This represents all .jar files in the /app/target/ directory from the build stage of a multi-stage build process.
+# The --from=build option specifies that the files should be copied from a previous build stage named build.
+# The destination is app.jar. This is where the files will be copied to in the image being built. If multiple .jar files are present in the source directory, 
+  # they will all be combined and copied as a single app.jar file in the destination. If there’s only one .jar file, it will be renamed to app.jar in the destination.
+# Remember, the destination is relative to the WORKDIR in the Dockerfile. If WORKDIR is not specified, then it’s relative to the root (/). So, if WORKDIR /myapp was specified earlier in the Dockerfile, the app.jar would actually be placed in /myapp/app.jar. If WORKDIR is not specified, app.jar would be placed in the root directory (/app.jar).
+# if the destination was specified as Dot (.) instead of app.jar, then all `.jar` files in the `/app/target/` directory from the `build` stage will be copied to the current directory in the Docker image. The names of the `.jar` files will remain the same.
+COPY --from=build /app/target/*.jar app.jar
+
+# Expose the port that your Spring Boot application runs on
+# default vabe docker container kono port expose kore na.
+# docker er ekta network system ase. so aladavabe bola lagbe ei network system er 8080 port ta expose kortesi.
+  # ebong ei port ta amar host machine e 9090 te run korte chai.
+  # so ... 9090:8080 likhbo.
+EXPOSE 8080
+
+# Run the Spring Boot application when the container starts
+# ENTRYPOINT ar RUN duitai pray same.
+# comma(,) die separate kora mane eigular modhe ekta space ase
+# direct space die likhleo run korto, but this is standard.
+ENTRYPOINT ["java", "-jar", "app.jar"]
+```
+
+---------
+
+> in dockerfile, in this line, what is the source file and what is the destination file?
+> COPY --from=build /app/target/*.jar app.jar
+
+In the Dockerfile instruction you provided:
+
+```dockerfile
+COPY --from=build /app/target/*.jar app.jar
+```
+
+- The **source file** is `/app/target/*.jar`. This represents all `.jar` files in the `/app/target/` directory from the `build` stage of a multi-stage build process.
+
+- The `--from=build` option specifies that the files should be copied from a previous build stage named `build`.
+
+- The **destination** is `app.jar`. This is where the files will be copied to in the image being built. If multiple `.jar` files are present in the source directory, they will all be combined and copied as a single `app.jar` file in the destination. If there’s only one `.jar` file, it will be renamed to `app.jar` in the destination.
+
+Remember, the destination is relative to the `WORKDIR` in the Dockerfile. If `WORKDIR` is not specified, then it’s relative to the root (`/`). So, if `WORKDIR /myapp` was specified earlier in the Dockerfile, the `app.jar` would actually be placed in `/myapp/app.jar`. If `WORKDIR` is not specified, `app.jar` would be placed in the root directory (`/app.jar`).
+
+> what if instead of app.jar destination is specified as .
+
+If the destination is specified as `.` (a dot), it means the current directory in the Docker image. Here’s the modified instruction:
+
+```dockerfile
+COPY --from=build /app/target/*.jar .
+```
+
+In this case, all `.jar` files in the `/app/target/` directory from the `build` stage will be copied to the current directory in the Docker image. The names of the `.jar` files will remain the same.
+
+The current directory is determined by the last `WORKDIR` instruction. If no `WORKDIR` has been specified, then the root directory (`/`) is the default work directory.
+
+For example, if you had `WORKDIR /app` earlier in your Dockerfile, the `.jar` files would be copied to `/app/`. If `WORKDIR` is not specified, the `.jar` files would be copied to the root directory (`/`). Each `.jar` file will maintain its original name in the destination directory.
+
+-------
+
+-------
+
+> So, ei image ta ekhon run hoye gelo. And ami Docker Hub e push korlam. So, it is currently in Docker Hub: [Docker](https://hub.docker.com/r/hsakash/ai-farming-backend)
+
+> So, How does the Kubernetes access it?
+
+### Inside Kubernetes:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-farming-backend
+  namespace: ai-farming
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: ai-farming-backend
+  template:
+    metadata:
+      labels:
+        app: ai-farming-backend
+    spec:
+      containers:
+        - name: ai-farming-backend
+          image: hsakash/ai-farming-backend:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: "500m" # 0.5 CPU cores
+              memory: "512Mi" # 512 MiB of memory
+            requests:
+              cpu: "250m" # 0.25 CPU cores
+              memory: "256Mi" # 256 MiB of memory
+          env:
+            # ________________________hemel________________________#
+            - name: PAYMENT_SERVICE_URL
+              value: https://aifarming.tech
+            - name: AI_SERVICE_URL
+              value:  http://fastapi-app-service.ai-farming:8000/predict
+
+            # ________________________hemel________________________#
+            - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+              value: com.mysql.cj.jdbc.Driver
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql-service.ai-farming:3306/world
+            - name: SPRING_DATASOURCE_USERNAME
+              value: nayemapp
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: root
+            - name: SPRING_JPA_HIBERNATE_DDL-AUTO
+              value: update
+            - name: SPRING_JPA_SHOW-SQL
+              value: "true"
+            - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+              value: org.hibernate.dialect.MySQL8Dialect
+            - name: SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL
+              value: "true"
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-farming-backend-service
+  namespace: ai-farming
+spec:
+  selector:
+    app: ai-farming-backend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer 
+---
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ai-farming-backend-hpa
+  namespace: ai-farming
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ai-farming-backend
+  minReplicas: 1 # Set your desired minimum replica count here
+  maxReplicas: 3 # Set your desired maximum replica count here
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+```
+
+- `kind: Deployment/Service`
+
+- kubernetes e ekta holo `deployment` arekta holo `service`.
+
+#### Deployment Pod
+
+- deployment karon: ami jokhon kubernetes e kono change ani -  mane kubernetes er vitor jokhon kono application run korbo ... backend, frontend, etc.. - ei jinista `deployment` er madhome run kora lagbe.
+
+- kintu `deployment` sorasori ami access korte parbo na. `deployment` kubernetes e evabe kaj kore: jei source theke ami developer dhukte parbo, public user oi source theke dhukte parbe na (ami developer jei gate die dhukte parbo - kubernetese e ja change korar korte parbo, but public user oi gate theke dhukte parbe na.) - 
+
+- ami developer er jonno `deployment` & pubic er jonno hosse `service`.
+
+- pod er vitor container thake, and ei pod er ekta port thake. Container e define korsi 8080 port, so pod eo 8080 port define kora lagbe. Mane: Docker container er kon port ta pod forward korbe.
+
+- kubernetes e ja kisu ase, sob e pod. khali ei pod docker image ta nise. Image ta nie, pod er vitor dhukayse.
+
+- prottektai ekta pod. `deployment` ekta pod, `service` ekta pod
+
+- prottekta .. joto ei `apiVersion` ja ase, oita ekta pod, then 
+
+- So, `deployment` er vitor configuration er madhome ami `deployment` pod ta define korlam.
+
+-------------------------------------
+
+- uporer code e, `Resource` jekhane leksi, ei resource define kora hoyse pod er jonno.
+
+- MiB = Mebibytes. it has something to do with power of 2 to calculate memory
+
+- so, we have defined our resource limits by defining cpu limits and memory limits
+
+- we also have `requests` limits for: kon logic e ami scale korbo. suppose for cpu, if cpu usage exceeds 50% or memory exceeds 50%, then I'll create a new pod.
+
+#### Service Pod
+
+- kubernetes e ekta application/service, arekta application/service er shathe communicate korbe pod er name onujaye. Because Pod er nam e hosse address.
+
+- so amar ekhon onno pod access kora dorkar, so ekhon service pod e ashlam
+
+- service die define kortesi oi gate die manush dhuke kothay jabe, ki korbe.
+
+- `namespace` bolte isolated environment create kore. So different namespace e, same name er class likhte parbo.
+
+- selector: kon pod select korbe
+
+- protocol: user kon protocol er madhome access korte parbe. we used TCP
+
+- targetPort hosse deployment koto port e run kortese ar port hosse user kon port e ashbe
+
+- type: LoadBalancer dile, Ip address fixed thaktese na. Ami pod name onujaye access kori. But pod new create hole oi name er jei ip address, oi address e dhukbo. Thats why we used LoadBalancer here.
+
+------------
+
+#### HorizontalPodAutoscaler Pod
+
+- Autoscaling: ami infinity porjonto scaling korte parbo na. ekta limit thakbe je ami koto porjonto resource use korbo. Besi user jodi ashe, taile ami ki infinity porjonto scale korbo? If i get ddos attacked: million user per second. In that case infinity resource allocation will be a problem.
+
+- Scaling er kind: HorizontalPodAutoscaler
+
+- scaling pod er name: ai-farming-backend-hpa
+
+- scaling pod ki korbe? deployment. karon process hosse deployment er. Service e process hosse.
+
+- so, target kind: `deployment` and name: `ai-farming-backend` ----- mane holo ei scaling pod er target hosse deployment pod.
+
+- `minReplicas: 1` meaning minimum 1 ta pod running thakbe.
+
+- load barle Replica barbe but 3 tar beshi barbe na cz we set: `maxReplicas: 3`
+
+- `averageUtilization: 50` meaning: ei scaling pod theke ami define kortesi deployment pod e jei cpu resource ase, oita 50% er besi gele, ei scaling er pod ta deployment er new ekta replica create korbe.
+
+---------
+
+--------
+
+------
+
+so, backend, frontend, ai, database - ei 4 ta pod er prottektar jonnoi upore dekhano 3ta pod kaj kortese. (Deployment Pod, Service Pod, HorizontalScaling Pod)

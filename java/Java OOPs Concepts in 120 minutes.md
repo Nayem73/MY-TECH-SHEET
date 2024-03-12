@@ -1313,3 +1313,13 @@ public class Main {
 ```
 
 In this code, `myVehicle` is an instance of an anonymous subclass of `Vehicle`. The `startEngine` method is overridden in this anonymous subclass. When `myVehicle.startEngine()` is called, it will print “The vehicle starts with a remote control.” This demonstrates how you can use an anonymous class to override a method without explicitly declaring a new named subclass. Let me know if you have any other questions! 😊
+
+
+
+# SOLID by Javatechie
+
+### 1. Single Responsibility principle
+
+- currently this BankService class does not follow single responsibility principle. Because this class is responsible for too many tasks to perform.
+
+- To achieve the goal of this single responsibility principle, we need a separate class for each single functionality.

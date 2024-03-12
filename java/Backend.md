@@ -49,6 +49,4 @@ By employing Dependency Injection, we achieve several benefits including improve
 
 This answer demonstrates your understanding of Dependency Injection, its purpose, and its benefits, which should impress the interviewer. Feel free to adjust the explanation based on your own understanding and experience.
 
-
-
 > 
