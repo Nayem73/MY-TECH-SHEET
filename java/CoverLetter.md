@@ -6,7 +6,7 @@ As a Backend Developer, I have successfully developed and delivered several proj
 
 I am proud to share that I secured the 4th place in a recent National Hackathon, where I used Spring Boot as the backend in a 24-hour, non-stop contest under pressure. Moreover, my team was among the top 10 finalists in Therap Javafest 2023. These achievements are a testament to my aptitude and capabilities to contribute significantly to any software project using various technologies.
 
-My success can be attributed to my extensive problem-solving experience gained through participation in various online and onsite programming contests during my university years. I have honed my skills in implementing different data structures and algorithms by solving over 600 programming problems in different online judges, which have solidified my programming foundation and enhanced my problem-solving skills and ability to work under pressure.
+My success can be attributed to my extensive problem-solving experience gained through participation in various online and onsite programming contests during my university years. I have honed my skills in implementing different data structures and algorithms by solving over 700 programming problems in different online judges, which have solidified my programming foundation and enhanced my problem-solving skills and ability to work under pressure.
 
 I am proficient in Java and C++. I am eager to learn new technologies and further improve my skills in Java and Spring Boot to deliver quality products.
 

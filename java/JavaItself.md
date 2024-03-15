@@ -1,25 +1,21 @@
 [Utilizing Java Arrays](https://chat.openai.com/share/2ac999dc-1484-4aef-8e2c-f67f8bf0b09b)
 
-how do I utilize these two types of array? int[] a and Cat[] cats and what is their difference with int arr = new int[5]
-package com.nayemtech;
-public class Main {
- public static void main(String[] args) {
- Cat cat = new Cat("Jupyter", "White");
- System.out.println(cat.getName());
- System.out.println(cat);
- Cat cat2 = new Cat("Jupyter", "White");
- System.out.println(cat2);
- System.out.println(cat == cat2);
- System.out.println(cat.equals(cat2));
+how do I utilize these two types of array? int[] a and Cat[] cats and what is their difference with `int arr = new int[5]`
+
+```java
  int[] a;
+ int arr[] = new int[5]; //C style array
+ int[] arr = new int[5]; //java default style array
  Cat[] cats;
- int arr[] = new int[5];
- }
-}
 
-ChatGPT
+ ---------
 
-ChatGPT
+ int[] nums = {5,6};
+//or, int nums[] = {5,6}; //again, this is C style
+ System.out.println(Arrays.toString(nums));
+```
+
+> ChatGPT
 
 In your Java code, you've declared three different types of arrays: `int[] a`, `Cat[] cats`, and `int[] arr`. Let me explain each of them:
 
@@ -54,13 +50,11 @@ In your Java code, you've declared three different types of arrays: `int[] a`, `
 
 In summary, the main difference between `int arr[] = new int[5]` and the other two declarations (`int[] a` and `Cat[] cats`) is that the former initializes the array at the time of declaration, while the latter two need separate initialization statements to assign a new array to them. Additionally, `int[] a` is an array of integers, and `Cat[] cats` is an array of objects of type `Cat`.
 
-You
+> You
 
-Also, what is the difference with above 3 different array types with int[] a2 = {5,6};
+Also, what is the difference with above 3 different array types with `int[] a2 = {5,6};`
 
-ChatGPT
-
-ChatGPT
+> ChatGPT
 
 The declaration `int[] a2 = {5, 6};` is a shorthand syntax for creating and initializing an integer array in a single line. Let's compare it with the previous three array types:
 
@@ -160,7 +154,7 @@ Java deliberately chose not to include pointers, and there are several key reaso
 
 C++
 
-```
+```cpp
 int* ptr = &x; // pointer to memory address of x
 *ptr = 10; // change value at memory address pointed to by ptr
 
@@ -171,7 +165,7 @@ ptr = &y; // now ptr points to y's memory address
 
 Java
 
-```
+```java
 int x = 5;
 // Java doesn't allow direct pointer manipulations
 
@@ -184,7 +178,7 @@ x = y; // x now refers to the same object as y (value becomes 10)
 
 C++
 
-```
+```cpp
 int* ptr = malloc(100); // allocate memory (not automatically freed)
 *ptr = 42;
 
@@ -196,7 +190,7 @@ free(ptr); // proper memory deallocation
 
 Java
 
-```
+```java
 int[] arr = new int[100]; // allocate memory (automatically freed)
 arr[0] = 42;
 
@@ -279,7 +273,7 @@ public class AutoboxingExample {
         //No autoboxing
         Integer var = new Integer(20); // A new Integer object is created with the value 20.
         var = new Integer(30); // A new Integer object is created with the value 30.
-
+        //this is depricated though: Integer(int)
 
         // Autoboxing: primitive to wrapper conversion
         Integer numWrapper = 10; // Autoboxing: int to Integer
@@ -650,6 +644,51 @@ public class Main {
 
 - you can not access an instance field or method from a static method.
 
+# <mark>Can you override static methods?</mark> (static methods are static binding[compile time polymorphism/early binding] while instace methods are dynamic binding[Run time polymorphism/Late binding] - hence static methods can't be overriden. Because we know override happens during runtime)
+
+<mark>No, you cannot override static methods in Java.</mark> Here's a breakdown of why and the concepts involved:
+
+**Method Overriding**
+
+Method overriding is a fundamental concept in object-oriented programming that allows subclasses to redefine inherited methods from parent classes. When you call an overridden method, the specific implementation used depends on the object's actual type at runtime (dynamic binding). This is a key aspect of polymorphism, enabling flexible behavior based on object inheritance.
+
+**Static Methods vs. Instance Methods**
+
+Java differentiates between static and instance methods:
+
+- **Static methods:** Belong to the class itself, not a specific object instance. You call them using the class name, not an object reference (e.g., `Math.sqrt(4)`). They are resolved at compile time (static binding).
+
+- **Instance methods:** Operate on a particular object instance. You call them using an object reference (e.g., `object.toString()`). Their resolution happens at runtime (dynamic binding).
+
+**Why Static Methods Cannot Be Overridden**
+
+Since static methods are bound at compile time, the method to be called is determined when the code is compiled, not when it runs. There's no concept of "overriding" at runtime because the specific method is already known beforehand.
+
+In contrast, with instance methods, the object type determines the actual method to be called at runtime. This allows overriding to take effect based on inheritance.
+
+**Consequences of Defining a Static Method in a Subclass**
+
+If you define a method with the same signature (name and parameter list) as a static method in the parent class, it's not considered overriding. This creates a situation called method hiding.
+
+- When you call the method using the subclass reference, the subclass's method will be executed.
+- However, if you call it using the parent class reference, the parent class's static method will still be called (since the binding happens at compile time).
+
+This can lead to unexpected behavior if not understood correctly.
+
+**In-Depth Analysis**
+
+Here's a deeper look at the concepts involved:
+
+1. **Dynamic vs. Static Binding:** Overriding relies on dynamic binding, where the actual method to be called is determined at runtime based on the object's type. Static methods lack this flexibility because their binding happens at compile time.
+
+2. **Inheritance and Polymorphism:** Overriding is a core concept of inheritance and polymorphism. Subclasses can provide specialized implementations of inherited methods, allowing for different behavior based on the object type. Static methods, by design, are not meant to be overridden as they belong to the class itself, not individual objects.
+
+3. **Use Cases of Static Methods:** Static methods are typically used for utility functions that don't require object state or for constants. They are well-suited for scenarios where the functionality belongs to the class itself, not specific objects.
+
+**Conclusion**
+
+While you cannot override static methods in Java, understanding the concepts behind method overriding, static methods, and their binding mechanisms is crucial for writing clean and maintainable object-oriented code. If you need to provide specialized behavior based on object type, consider using instance methods and inheritance.
+
 # static block
 
 - static block gets executed at the time of class loading. So, it gets executed before the main method runs. so static block should be outside any method, constructor, or other block.
@@ -719,6 +758,48 @@ from instance block
 ```
 
 In this code, “from instance block” will be printed each time `new Main();` is executed because it creates a new instance of the `Main` class, which triggers the instance initializer block.
+
+
+
+> in java, give me an example showcasing how instance initialiezer block is used.
+
+Sure, in Java, instance initializer blocks are used to initialize instance variables. They are executed each time an instance of the class is created. The instance initializer block is defined inside the class and outside the method and is created when an instance of the class is created.
+
+Here’s an example:
+
+```java
+class Test {
+    int num;
+
+    // instance initializer block
+    {
+        num = 10;
+        System.out.println("Instance initializer block called");
+    }
+
+    Test() {
+        System.out.println("Constructor called");
+    }
+
+    public static void main(String[] args) {
+        Test t1 = new Test();
+        Test t2 = new Test();
+    }
+}
+```
+
+In this example, the instance initializer block sets the value of `num` to 10. This block is called every time an instance of `Test` is created, before the constructor is called. So, when you run this program, you’ll see that “Instance initializer block called” is printed before “Constructor called” for each instance of the class.
+
+The output will be:
+
+```
+Instance initializer block called
+Constructor called
+Instance initializer block called
+Constructor called
+```
+
+This shows that the instance initializer block is called each time an instance of the class is created, before the constructor. It’s a way to centralize shared code that needs to be run during object creation, rather than duplicating the code in multiple constructors. It’s especially useful when a class has multiple constructors, as the instance initializer block contains code that must be executed regardless of which constructor is used to create the object. It helps to reduce redundancy. However, it’s generally recommended to use constructors to initialize instance variables, unless there’s a specific need to use an instance initializer block.
 
 # Comparator and Comparable
 
@@ -1733,3 +1814,11 @@ javatechie
 ### Marker interface /tagging interface (serializable is a marker interface - empty interface)
 
 ![](assets/2024-03-07-13-15-55-image.png)
+
+# D:\TBD from CorruptDisk\become-a-java-developer-and-get-the-job\09 - OOPS and Java  Polymorphism, Abstraction, Encapsulation
+
+![](assets/2024-03-12-19-18-07-image.png)
+
+<u>overloading</u>: method overloading, constructor overloading, operator (just with + operator for string and integer - java does not support operator overloading)
+
+- Java does not explicitly support operator overloading. I can just use + operator for concatenating a string or adding two integers.

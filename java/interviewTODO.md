@@ -528,4 +528,8 @@ I hope this helps you prepare for your interview. Good luck! 🍀
    
    class ke access er jonno dot dewa lage, but namespace ke access er jonno colon dewa lage.)
 
-9. 
+9. <mark>6-8</mark>:java,<mark> 8-10</mark>:interviewQuestions on Glassdoor, <mark>10-12</mark>:database
+
+10. **<u>java garbage collection:</u>** Unlike C++, where we need to use free() to deallocate memory, java does it automatically through it's garbage collection.
+
+11. optionals in java

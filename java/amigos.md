@@ -1222,13 +1222,9 @@ In this example, `Duck` implements the `Flyable` interface because it can fly, w
 
 Remember, the key idea behind ISP is to keep your system decoupled and thus easier to refactor, change, and redeploy. It’s all about reducing the side effects of change. Hope this helps! 😊
 
-
-
 # Dependency Inversion principle
 
 ![](assets/2024-03-12-14-44-02-image.png)
-
-
 
 # Interface
 
@@ -2212,7 +2208,7 @@ public class Main {
 
 ### Example on why generics was introduced by giving an example of compile time checking as well as the ClassCastException error:
 
-* currently I don't have any error except a few warnings(Raw use of parameterized class List):
+* currently I don't have any error except a few warnings(Raw use of parameterized class "List"):
 
 ```java
     public static void main(String[] args) {
