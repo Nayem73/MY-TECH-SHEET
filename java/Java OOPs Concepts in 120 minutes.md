@@ -935,7 +935,109 @@ public class Main implements InterfaceA, InterfaceB, InterfaceC {
 
 ----------
 
-- ***<u>Compositon and aggregation in java:</u>***
+# what is Association in Java?
+
+Association in Java, or in any object-oriented programming language, is a relationship between two classes where one class uses the functionalities of another class. It represents a “has-a” relationship. For example, a `Car` class might have a `Engine` class, indicating that a car has an engine.
+
+Here’s a simple example:
+
+```java
+// Engine class
+class Engine {
+    void start() {
+        System.out.println("Engine started");
+    }
+}
+
+// Car class
+class Car {
+    // Car has an Engine
+    Engine engine = new Engine();
+
+    void startEngine() {
+        engine.start();
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.startEngine();  // Outputs: Engine started
+    }
+}
+```
+
+In this example, the `Car` class has an `Engine` object as its member, and it uses the `start` method of the `Engine` class. This is an example of association.
+
+Association can be of three types: one-to-one, one-to-many, and many-to-many. In the above example, it’s a one-to-one association because one `Car` has one `Engine`.
+
+let’s consider a `Library` class and a `Book` class to illustrate the concept of association in Java with one-to-many relationship.
+
+In this example, a `Library` has many `Books`. This is a one-to-many relationship, which is a type of association.
+
+Here’s the code:
+
+```java
+// Book class
+class Book {
+    String title;
+
+    Book(String title) {
+        this.title = title;
+    }
+
+    String getTitle() {
+        return title;
+    }
+}
+
+// Library class
+class Library {
+    // Library has many Books
+    private final List<Book> books;
+
+    Library(List<Book> books) {
+        this.books = books;
+    }
+
+    List<Book> getBooks() {
+        return books;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Creating books
+        Book book1 = new Book("Effective Java");
+        Book book2 = new Book("Java Concurrency in Practice");
+        Book book3 = new Book("Clean Code");
+
+        // Adding books to a list
+        List<Book> books = new ArrayList<>();
+        books.add(book1);
+        books.add(book2);
+        books.add(book3);
+
+        // Creating a library
+        Library library = new Library(books);
+
+        // Printing all the books in the library
+        for (Book book : library.getBooks()) {
+            System.out.println(book.getTitle());
+        }
+    }
+}
+```
+
+In this code, the `Library` class has a list of `Book` objects. Each `Book` has a title, and the `Library` can return its list of books. This is an example of association, where one class (`Library`) has a relationship with another class (`Book`).
+
+This should be helpful for your preparation for the associate software engineer position at Therap(BD) ltd, especially considering your experience with Java and object-oriented programming. Good luck with your exam! 😊
+
+---------
+
+# ***<u>Compositon and aggregation in java:</u>***
 
 - Composition and aggregation in Java is a design technique to implement a has-a relationship between classes.
 
