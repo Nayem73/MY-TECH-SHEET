@@ -2664,9 +2664,17 @@ public class Main {
     public static void main(String[] args) {
        List<Double> numbers = new ArrayList<>(List.of(2.0,3.339,1.205));
        System.out.println(countGreaterThan(numbers, 1));
-
+       //numbers is double which is received by List<T> numbers, which is of Type T.
+       //But 1 is int but I'm also receiving it with T number, which is also of Type T.
+       //So, first Type T is double, meaning all type T is double, but I'm sending an int in
+       //the second type paramter, which expects a double. So, inconsistent behaviour, hence compilation Error!
+       // type T can be of any type. But once we define a type T with a certain datatype, that must be consistent throughout the code.
+       //if we define a type T as String, then all type T must be String.
+       //if we define a type T as int, then all type T must be int.
+       //if we define a type T as double, then all type T must be double.
     }
 
+    //did not put any Type inside <> So, compilation Error!
     public static <> int countGreaterThan(List<T> numbers, T number) {
         int count = 0;
         for (T X: numbers) {
@@ -2677,6 +2685,38 @@ public class Main {
         return count;
     }
 }
+
+
+wait a second! I forgot to put a datatype inside the <>
+also, I forgot to notice that, countGreaterThan method has two paramters, and
+both paramter is of type T. so once we define T with a certain datatype, it must be consistent
+meaning, we must use the same datatype throughout.
+when we pass 2 values in these 2 paramters, we first send double(list of doubles) but in the second paramter,
+we try to send 1 which is int. So inconsistent behaviour and compilation error!
+
+
+so let's fix the code:
+public class Main {
+    public static void main(String[] args) {
+        List<Double> numbers = new ArrayList<>(List.of(2.0,3.339,1.205));
+        System.out.println(countGreaterThan(numbers, 1.0));
+
+    }
+
+    public static <T> int countGreaterThan(List<T> numbers, T number) {
+        int count = 0;
+        for (T X: numbers) {
+            // X and number is of type T. and java does not know if type T is number. So it won't allow us to use > operator.
+            //that's why I'm casting them to double for now. in below section we'll learn how to deal with this error in better way In Shaa Allah.
+            if ((double)X > (double)number) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+
 ```
 
 - But during comparison `if (X > number)` we get an compile time error: `Operator > can not be applied to T, T`

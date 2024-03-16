@@ -137,3 +137,28 @@ Follow [Rajesh Kumar](https://www.linkedin.com/in/ACoAACq6gaABysrk8Os0k7NNUaiTB
 ![No alt text provided for this image](https://media.licdn.com/dms/image/D5622AQHvyJ0pM-mOlg/feedshare-shrink_1280/0/1709224062665?e=1712188800&v=beta&t=uATQKlf5BLrR-GWx5if-zJdZMN_A2Wba6dwl_NTZ82o)
 
 ![](assets/2024-03-05-07-28-38-image.png)
+
+
+
+# look for job in this order:
+
+There's a paradox in the job search process.  
+
+Companies typically look for candidates in this order:  
+
+⮑ Advertise internally, and promote people internally  
+⮑ Referrals from employees  
+⮑ Networking  
+⮑ Recruiters  
+⮑ Job boards  
+
+They might advertise on job boards at the start, but they'll prioritise candidates from other sources before looking at applications.  
+
+Paradoxically, candidates typically apply for jobs like this:  
+
+⮑ Job boards  
+⮑ Recruiters  
+⮑ Networking  
+⮑ Seeking out referrals  
+
+The best way to stand out as a candidate is to prioritise building relationships and networking, alongside applying for jobs. Meet the hiring managers in the middle.
