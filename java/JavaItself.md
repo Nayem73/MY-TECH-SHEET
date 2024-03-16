@@ -1,3 +1,15 @@
+# Class is the blueprint for objects. but what is an object?
+
+An object is the instance of a class. When a class is defined, no memory is allocated but when it is instantiated (i.e., an object is created) memory is allocated.
+
+An object includes both data (the attributes or properties of the object) and methods (the functions that handle the object’s data). It serves two main purposes:
+
+1. **Data Abstraction**: An object provides a simple way to structure and package related data. For example, a `Student` object might contain data about a student such as `name`, `id`, and `grades`.
+
+2. **Encapsulation**: Objects encapsulate both data and the methods that operate on that data, protecting the internal state of the object and providing a clear interface for interacting with the object.
+
+
+
 [Utilizing Java Arrays](https://chat.openai.com/share/2ac999dc-1484-4aef-8e2c-f67f8bf0b09b)
 
 how do I utilize these two types of array? int[] a and Cat[] cats and what is their difference with `int arr = new int[5]`
@@ -758,8 +770,6 @@ from instance block
 ```
 
 In this code, “from instance block” will be printed each time `new Main();` is executed because it creates a new instance of the `Main` class, which triggers the instance initializer block.
-
-
 
 > in java, give me an example showcasing how instance initialiezer block is used.
 

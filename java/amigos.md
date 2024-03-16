@@ -2715,8 +2715,6 @@ public class Main {
         return count;
     }
 }
-
-
 ```
 
 - But during comparison `if (X > number)` we get an compile time error: `Operator > can not be applied to T, T`
@@ -2824,6 +2822,46 @@ public class Box<T extends Comparable<T>> {
 ```
 
 * We can use any custom classes or any other classes in the bounded type parameter. in above example, we used the Comparable interface.
+
+# this does not work
+
+- reason: no instance(s) of type variable(s) T exist so that Object conforms to Comparable<T>
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        List<Object> lists = new ArrayList<>(List.of("abcd", 3333, new Main(), LocalDateTime.now(), new BigDecimal("99999.9999")));
+        System.out.println(countElements(lists));
+    }
+
+    public static <T extends Comparable<T>> int countElements(List<T> lists) {
+        int cnt = 0;
+        for (T curElement: lists) {
+            cnt++;
+        }
+
+        return cnt;
+    }
+}
+```
+
+The constraint `<T extends Comparable<T> & Comparator<T>>` requires that the elements in the list implement both `Comparable<T>` and `Comparator<T>`. However, not all of the types you’re using (`String`, `Integer`, `Main`, `LocalDateTime`, `BigDecimal`) implement both of these interfaces.
+
+If you want to satisfy these constraints, you would need to create custom classes that implement both `Comparable<T>` and `Comparator<T>`. However, this might not be necessary or practical depending on what you’re trying to achieve with your code.
+
+If your goal is simply to count the elements in a list, you don’t need these constraints at all. You can use a wildcard (`?`) or a simple generic type parameter (`<T>`) instead. Here’s how you can modify your `countElements` method:
+
+```java
+public static int countElements(List<?> lists) {
+    int cnt = 0;
+    for (Object curElement: lists) {
+        cnt++;
+    }
+    return cnt;
+}
+```
+
+In this updated `countElements` method, we use a wildcard (`?`) as the type parameter, which means the method can accept a list of any type. This should be helpful for your preparation for the associate software engineer position at Therap BD, especially considering your experience with Java. Good luck with your exam! 😊
 
 # Multiple types in the bounded type parameters
 
@@ -2995,7 +3033,7 @@ public class Main {
 
 # TypeErasure
 
-* We know that, the reason we use generics, is because the provide strong compile time checking which reduces the risk of ClassCastException and the explicit casting of objects.
+* We know that, the reason we use generics, is because it provides strong compile time checking which reduces the risk of ClassCastException and the explicit casting of objects.
 
 * So the compiler uses `TypeErasure` , which is a feature that removes all generic type code in the java bytecode and adds casting if necessary.
 
@@ -3008,6 +3046,16 @@ public class Main {
 * and they will be casted/transformed by the compiler like below:
 
 ![](assets/2024-01-15-09-51-50-image.png)
+
+# Optionals in Java
+
+- before optionals, we needed to check with `if (null) then this` `else that`
+
+- The main purpose of an optional, is to explicitly tell, that value in it might not exist and you need to account for that possibility.
+
+- `think of optional as a box.` `The box either contains a value, so we get a box with a value.` `Or, the box contains nothing, so we just get the empty box.`
+
+![](assets/2024-03-16-14-57-51-image.png)
 
 # Testing
 

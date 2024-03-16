@@ -138,8 +138,6 @@ Follow [Rajesh Kumar](https://www.linkedin.com/in/ACoAACq6gaABysrk8Os0k7NNUaiTB
 
 ![](assets/2024-03-05-07-28-38-image.png)
 
-
-
 # look for job in this order:
 
 There's a paradox in the job search process.  
@@ -162,3 +160,7 @@ Paradoxically, candidates typically apply for jobs like this:
 ⮑ Seeking out referrals  
 
 The best way to stand out as a candidate is to prioritise building relationships and networking, alongside applying for jobs. Meet the hiring managers in the middle.
+
+# written
+
+![](assets/2024-03-16-12-01-49-image.png)

@@ -533,3 +533,5 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 10. **<u>java garbage collection:</u>** Unlike C++, where we need to use free() to deallocate memory, java does it automatically through it's garbage collection.
 
 11. optionals in java
+
+12. Time complexity of algos and ds

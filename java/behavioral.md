@@ -1,0 +1,9 @@
+Sure, I’d be happy to help you prepare for your interview at Therap(BD) Ltd. Here are some suggestions on how you might answer these common interview questions, personalized based on your profile:
+
+1. **Where do you see yourself after five years?** You could say something like: “In five years, I see myself as a seasoned software engineer who has not only deepened my expertise in Java and data structures but also broadened my skills in other areas such as Docker and Kubernetes, which I’m currently interested in learning. I hope to take on larger projects and possibly move into a leadership role where I can guide and mentor other engineers.”
+
+2. **What are your strengths?** Based on your profile, you could mention: “One of my key strengths is my solid foundation in implementing different data structures and algorithms, honed by solving over 600 programming problems in different online judges. This has enhanced my problem-solving skills and ability to work under pressure. Additionally, I have a good understanding of database design and SQL, and I’m fluent in English, which helps me communicate effectively in a global team.”
+
+3. **What are your weaknesses?** It’s important to be honest about your weaknesses but also to show that you’re working to improve in these areas. For example, you could say: “One area I’m working on is getting up to speed with containerization technologies like Docker and Kubernetes. While I have a strong foundation in many areas of software engineering, I recognize the importance of these tools in modern development workflows and am taking steps to learn and incorporate them into my skill set.”
+
+Remember, these are just suggestions. It’s important to make your answers your own - they should reflect your personal experiences and aspirations. Good luck with your interview! 😊

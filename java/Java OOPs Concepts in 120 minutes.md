@@ -939,7 +939,7 @@ public class Main implements InterfaceA, InterfaceB, InterfaceC {
 
 - Composition and aggregation in Java is a design technique to implement a has-a relationship between classes.
 
-The difference between the two examples is that they illustrate two different types of relationships between classes in Java: composition and aggregation. In case of composition, the books cannot exist without the library, because the library owns the books and controls their lifetime. In case of aggregation, the books can exist without the library, because the library does not own the books and does not control their lifetime. The books can be borrowed by other entities, such as customers or other libraries. Composition implies a strong and exclusive ownership, while aggregation implies a weak and shared ownership.
+The difference between the two examples is that they illustrate two different types of relationships between classes in Java: composition and aggregation. In case of composition, the books cannot exist without the library, because the library owns the books and controls their lifetime. In case of aggregation, the books can exist without the library, because the library does not own the books and does not control their lifetime. The books can be borrowed by other entities, such as customers or other libraries.*<u> Composition implies a strong and exclusive ownership, while aggregation implies a weak and shared ownership.</u>*
 
 - **Composition**: This is a strong relationship where the composed object’s lifecycle is controlled by the composing object. If the composing object is destroyed, so are its composed objects. In your example, if the Library (composing object) ceases to exist, so do the Books (composed objects).
 
@@ -1313,8 +1313,6 @@ public class Main {
 ```
 
 In this code, `myVehicle` is an instance of an anonymous subclass of `Vehicle`. The `startEngine` method is overridden in this anonymous subclass. When `myVehicle.startEngine()` is called, it will print “The vehicle starts with a remote control.” This demonstrates how you can use an anonymous class to override a method without explicitly declaring a new named subclass. Let me know if you have any other questions! 😊
-
-
 
 # SOLID by Javatechie
 
