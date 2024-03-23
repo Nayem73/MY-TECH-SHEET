@@ -234,8 +234,6 @@ student_id | student_name | address_id | subject_id
 1          | John Doe     | 1          | 2
 2          | Jane Smith   | 2          | 1
 
-
-
 > copilot
 
 The table you’ve provided is a representation of data, not a schema. However, it does seem to violate some database normalization rules and best practices. Here’s why:
@@ -273,8 +271,6 @@ Table: Student_Subjects
 ```
 
 In this schema, the `Student_Addresses` and `Student_Subjects` tables are junction tables that represent the many-to-many relationships. Each row in these tables represents a relationship between a student and an address or a subject. This allows you to represent multiple addresses and subjects for each student. 😊
-
-
 
 > chatGPT ([ChatGPT](https://chat.openai.com/share/78fcbf00-0fbe-4e94-9576-00f6f2b917ea))
 
@@ -378,8 +374,6 @@ Here's how the data would look in this revised structure:
 
 This revised structure ensures better data integrity, reduces redundancy, and allows for more efficient queries. It also provides flexibility for future expansions or changes in the database schema.
 
-
-
 > Gemini (https://g.co/gemini/share/5f2efb6d5b04)
 
 Yes, the table you provided violates a database best practice related to data redundancy and normalization. Here's a breakdown of the issue:
@@ -416,3 +410,110 @@ With this approach, you'd have a separate record for each student in the "Studen
 - **Simplified Queries:** Retrieving data becomes more efficient as queries can target specific tables based on the desired information.
 
 In conclusion, separating student information, addresses, and enrolled subjects into dedicated tables with proper foreign key relationships is a more normalized and efficient approach compared to the table you provided. This promotes better data organization, reduces redundancy, and simplifies data management in your database.
+
+# [Microsoft Copilot: Your everyday AI companion](https://copilot.microsoft.com/sl/eFuSsViC948)
+
+# Music Streaming Service DB schema
+
+Sure, let’s consider a scenario where we have a music streaming service. In this service, we have artists, albums by those artists, songs in those albums, and users who listen to those songs. Here’s a simple SQL schema for this:
+
+```sql
+CREATE TABLE Artists (
+    ArtistID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Genre VARCHAR(100)
+);
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY,
+    UserName VARCHAR(100)
+);
+
+CREATE TABLE Albums (
+    AlbumID INT PRIMARY KEY,
+    Title VARCHAR(100),
+    ArtistID INT,
+    ReleaseYear INT,
+    FOREIGN KEY (ArtistID) REFERENCES Artists(ArtistID)
+);
+
+CREATE TABLE Songs (
+    SongID INT PRIMARY KEY,
+    Title VARCHAR(100),
+    AlbumID INT,
+    FOREIGN KEY (AlbumID) REFERENCES Albums(AlbumID)
+);
+
+CREATE TABLE UserSongs (
+    UserID INT,
+    SongID INT,
+    LastListened DATE,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (SongID) REFERENCES Songs(SongID),
+    PRIMARY KEY (UserID, SongID)
+);
+```
+
+In this schema:
+
+- `Artists` table stores information about artists and their genres.
+- `Users` table stores information about users.
+- `Albums` table stores information about albums, including the artist who created each album and the year it was released.
+- `Songs` table stores information about songs and the album each song belongs to.
+- `UserSongs` table is a junction table that links users to the songs they have listened to, along with the last listened date.
+
+This is a basic schema and might need to be adjusted based on your specific requirements. For instance, if a song can belong to multiple albums, you might want to create a separate junction table for that. Similarly, if a user can listen to the same song multiple times, you might need to adjust the schema accordingly. Also, you might want to add more fields to these tables based on your needs. For example, you might want to add a `Duration` field to the `Songs` table to store the duration of each song.
+
+Remember, designing a database schema requires a good understanding of the data and the relationships between different entities. It’s always a good idea to spend some time thinking about these aspects before you start writing your SQL commands. Good luck with your interview! 😊
+
+----
+
+# Interview Schema
+
+> find the uncle of user with id = 5
+
+```sql
+-- Insert records into Users
+INSERT INTO Users (id, name, gender, father_id, mother_id)
+VALUES (1, 'John', 'male', NULL, NULL),
+       (2, 'Jane', 'female', NULL, NULL),
+       (3, 'Bob', 'male', 1, 2),
+       (4, 'Alice', 'female', 1, 2),
+       (5, 'Charlie', 'male', 3, 4),
+       (6, 'David', 'male', 3, 4),
+       (7, 'Eve', 'female', 3, 4),
+       (8, 'Frank', 'male', 6, 7),
+       (9, 'Grace', 'female', 6, 7),
+       (10, 'Harry', 'male', 6, 7);
+
+-- Insert records into Siblings
+INSERT INTO Siblings (user1, user2)
+VALUES (3, 4),  -- Bob and Alice are siblings
+       (5, 6),  -- Charlie and David are siblings
+       (5, 7),  -- Charlie and Eve are siblings
+       (6, 7),  -- David and Eve are siblings
+       (8, 9),  -- Frank and Grace are siblings
+       (8, 10), -- Frank and Harry are siblings
+       (9, 10); -- Grace and Harry are siblings
+
+```
+
+> ans:
+
+```sql
+SELECT u.*
+FROM Users u
+JOIN Siblings s ON (u.id = s.user1 AND s.user2 = 3 AND u.gender = 'male')
+OR (u.id = s.user2 AND s.user1 = 3 AND u.gender = 'male');
+
+```
+
+> return only the uncle names
+
+```sql
+SELECT u.name
+FROM Users u
+JOIN Siblings s ON (u.id = s.user1 AND s.user2 = 3 AND u.gender = 'male')
+OR (u.id = s.user2 AND s.user1 = 3 AND u.gender = 'male');
+
+```

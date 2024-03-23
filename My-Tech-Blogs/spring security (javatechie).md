@@ -113,3 +113,4 @@ public class UserInfoUserDetails implements UserDetails {
 # JWT Token
 
 - The disadvantage of above approach is kind of nothing but for each and every endpoint, we will need to provide our username and password. for example product with page 1, page 2 << each of them would require putting in username, password.
+- so, if we could store the log in session for a particular time, once the user logs in(then we generate a token, and store it in browser, and this token will be used to access the website thoughout the permitted session), he will be able to access the website for all endpoints for a particular session. and when the session expires, the token will become invalid and user will need to re log in to get a new token.

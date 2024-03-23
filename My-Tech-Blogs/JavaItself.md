@@ -8,8 +8,6 @@ An object includes both data (the attributes or properties of the object) and me
 
 2. **Encapsulation**: Objects encapsulate both data and the methods that operate on that data, protecting the internal state of the object and providing a clear interface for interacting with the object.
 
-
-
 [Utilizing Java Arrays](https://chat.openai.com/share/2ac999dc-1484-4aef-8e2c-f67f8bf0b09b)
 
 how do I utilize these two types of array? int[] a and Cat[] cats and what is their difference with `int arr = new int[5]`
@@ -615,9 +613,11 @@ These are just a few examples. The `Collections` class provides many more utilit
 
 - It is a class where only one instance of that class can ever exist! This is typically done by:
   
-  - 1. Ensuring all the constructors are private
+  - 1. creating a private and static instance of the Singleton class itself.
     
-    2. Creating a method that returns a reference to the instance.
+    2. Ensuring all the constructors are private so that we can't create any instance of this Singleton class a second time.
+    
+    3. Creating a static method that returns a reference to the instance.
 
 ```java
 package com.nayemtech;
@@ -649,6 +649,8 @@ public class Main {
     }
 }
 ```
+
+### Should we
 
 # static vs non static call rules
 

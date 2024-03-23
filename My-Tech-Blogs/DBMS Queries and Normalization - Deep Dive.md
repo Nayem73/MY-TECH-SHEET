@@ -593,8 +593,6 @@ primary indexing is of 2 types: Dense Index & Sparse Index
 
 ![](assets/2024-03-04-07-36-58-Rakuten%20Database%20Structure.drawio.png)
 
-
-
 # Boolean in MySQL
 
 In MySQL, there is no specific data type called `BOOLEAN`. However, you can simulate boolean values using other data types such as `TINYINT(1)`, which is commonly used to represent boolean values. 

@@ -510,6 +510,16 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 
 # ----- after written -----
 
+db: schema practice with copilot + youtube, normalization on youtube, transaction, acid, indexing and other concepts
+
+java: pdfs in downloads-d, javatechie hashmap framework video, normal array+map+etc. implement, pair in java
+
+problem solving: welldev, 10most common, neetcode, 
+
+![](assets/2024-03-16-12-01-49-image.png)
+
+-------
+
 1. db schema
 
 2. implement queue, stack, .... and so on in Java.
@@ -535,3 +545,5 @@ I hope this helps you prepare for your interview. Good luck! 🍀
 11. optionals in java
 
 12. Time complexity of algos and ds
+
+13. how do you create a custom hash function for hashmap?

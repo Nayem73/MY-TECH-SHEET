@@ -164,3 +164,17 @@ The best way to stand out as a candidate is to prioritise building relationships
 # written
 
 ![](assets/2024-03-16-12-01-49-image.png)
+
+-----
+
+![](assets/2024-03-21-06-52-26-image.png)
+
+--------
+
+https://www.reddit.com/r/bangladesh/comments/163h5sk/is_3035k_bdt_considered_standard_as_a_starting/
+
+![](assets/2024-03-21-14-03-18-image.png)
+
+-------
+
+![text](https://media.licdn.com/dms/image/D5622AQHB3SGttNfxNQ/feedshare-shrink_800/0/1710684025364?e=1714003200&v=beta&t=aypaBn4LuhJbYUxzc3tJpfIa13wtNcL4Dpnjfud7YS0)
