@@ -1834,3 +1834,72 @@ javatechie
 <u>overloading</u>: method overloading, constructor overloading, operator (just with + operator for string and integer - java does not support operator overloading)
 
 - Java does not explicitly support operator overloading. I can just use + operator for concatenating a string or adding two integers.
+
+
+
+# Method Hiding (parent class has a static method and child class has a static method with the same method signature)
+
+Method hiding in Java occurs when a subclass defines a static method with the same name and signature as a static method in its superclass. When you call a static method through a reference variable of a superclass, the method defined in the superclass will be called. However, if you call the same static method through a reference variable of the subclass, the method defined in the subclass will be called.
+
+### Rules for Method Hiding:
+
+1. The method in the subclass must have the same name and signature as the static method in the superclass.
+2. The method in the subclass must be declared with the `static` keyword.
+3. You cannot override a static method in Java (only hide it).
+
+### Example:
+
+Let's illustrate method hiding with an example:
+
+```java
+public class Parent {
+    public static void staticMethod() {
+        System.out.println("Static method in Parent class");
+    }
+}
+
+public class Child extends Parent {
+    public static void staticMethod() {
+        System.out.println("Static method in Child class");
+    }
+}
+```
+
+In this example:
+
+- `Parent` class has a static method `staticMethod()`.
+- `Child` class extends `Parent` and also has a static method `staticMethod()` with the same name and signature.
+
+### Calling Static Methods:
+
+1. **Using Parent Reference Variable**:
+   
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           Parent parent = new Parent();
+           parent.staticMethod();  // Output: "Static method in Parent class"
+       }
+   }
+   ```
+   
+    When calling `staticMethod()` through a `Parent` reference, the static method in the `Parent` class is called.
+
+2. **Using Child Reference Variable**:
+   
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           Parent child = new Child();
+           child.staticMethod();  // Output: "Static method in Parent class"
+       }
+   }
+   ```
+   
+    Even when using a `Child` reference, the static method from the `Parent` class is called due to method hiding.
+
+### Conclusion:
+
+In method hiding, the static method in the subclass hides the static method in the superclass. The method invoked is determined by the reference type (compile-time polymorphism) rather than the object type (runtime polymorphism) because static methods are resolved at compile-time.
+
+It's important to note that method hiding is usually discouraged because it can lead to confusion and unexpected behavior. It's often better to use instance methods and overriding (dynamic method dispatch) instead of static methods and hiding.
