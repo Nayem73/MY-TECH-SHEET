@@ -66,3 +66,23 @@ In SQL, DDL, DML, DQL, and DCL are acronyms that represent different types of op
 4. **DCL (Data Control Language)**: These are commands that control access to the database, like granting or revoking permissions. [Examples are `GRANT`, `REVOKE`, and `DENY`](https://learnsql.com/blog/what-is-dql-ddl-dml-in-sql/)[1](https://learnsql.com/blog/what-is-dql-ddl-dml-in-sql/)[2](https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/).
 
 Each of these groups of commands allows you to interact with a database in different ways, and they’re all important parts of SQL.
+
+
+
+# in an ecommerce site, when ther's only one item left and 2 users orders it at the same time, how does the database acid property handle it?
+
+
+
+[In an e-commerce site, when there’s only one item left and two users order it at the same time, the database’s ACID (Atomicity, Consistency, Isolation, Durability) properties play a crucial role in handling this situation](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[1](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[2](https://airbyte.com/data-engineering-resources/transactional-databases-explained-acid-properties-and-best-practice).
+
+Here’s how each property helps:
+
+1. [**Atomicity**: This property ensures that a transaction (an order in this case) is treated as a single, indivisible unit](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[1](https://www.geeksforgeeks.org/acid-properties-in-dbms/). That means either the entire transaction is completed, or none of it is. [If a transaction fails at any point, all changes are rolled back, and the database remains unchanged](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[1](https://www.geeksforgeeks.org/acid-properties-in-dbms/). So, if two users try to order the last item simultaneously, only one transaction will be completed, and the other will be rolled back.
+
+2. [**Consistency**: This property ensures that a transaction brings the database from one valid state to another](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[1](https://www.geeksforgeeks.org/acid-properties-in-dbms/). In this context, it means that the number of items in stock can’t go below zero. If two users try to order the last item at the same time, the consistency property will ensure that the item count doesn’t go negative.
+
+3. [**Isolation**: This property ensures that concurrent execution of transactions leaves the database in the same state that would have been obtained if the transactions were executed sequentially](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[1](https://www.geeksforgeeks.org/acid-properties-in-dbms/). So, even if two users place an order for the last item at the same time, the database handles them as if they were placed one after the other.
+
+4. [**Durability**: This property ensures that once a transaction has been committed, it will remain committed even in the case of a system failure](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[1](https://www.geeksforgeeks.org/acid-properties-in-dbms/). This means that once an order is successfully placed, it’s final and will persist, even if the system crashes immediately afterward.
+
+So, in the scenario you described, the ACID properties of the database ensure that only one user can successfully order the last item. The other user’s transaction will not be completed, and they would typically receive a message indicating that the item is no longer available.
