@@ -43,9 +43,11 @@ Sure, let’s break down the ACID properties using the bank transaction example:
 
 1. **Atomicity**: This means that all steps of the transaction happen completely or not at all. In our example, if any step of the money transfer fails (like if there’s not enough money in the savings account, or if there’s a system error while updating the checking account), the entire transaction should fail. No money should be subtracted from the savings account unless it can be added to the checking account.
 
-2. **Consistency**: This ensures that the transaction brings the database from one valid state to another, maintaining the integrity of the data. In our example, consistency ensures that the total amount of money in the savings and checking accounts remains the same before and after the transaction.
+2. **Consistency**: This ensures that the transaction brings the database from one valid state to another, maintaining the integrity of the data. In our example, consistency ensures that the total amount of money in the savings and checking accounts remains the same before and after the transaction. 
+   If savings a/c=1500 and checking a/c = 300 and we transferred 100 tk from savings account to checking account then after a successful transaction, savings a/c = 1400 and checking a/c= 400. So it is logically consistent. Under no circumstances it could be something like savings = 1500 and checking = 400 or vice versa which is inconsistent.
 
 3. **Isolation**: This means that multiple transactions happening at the same time won’t affect each other. For example, even if two people are trying to withdraw money from the same account at the same time, each transaction would be processed separately, ensuring that each sees a “snapshot” of the account balance that’s unaffected by the other transaction.
+   check out Concurrency Control.
 
 4. **Durability**: This ensures that once a transaction is completed, it will remain so, even in the event of a power loss, crash, or other error. In our example, once the money transfer is completed, the changes to the savings and checking accounts will be saved and will persist even if the system crashes immediately after.
 
