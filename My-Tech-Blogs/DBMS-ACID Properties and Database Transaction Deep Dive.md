@@ -67,11 +67,7 @@ In SQL, DDL, DML, DQL, and DCL are acronyms that represent different types of op
 
 Each of these groups of commands allows you to interact with a database in different ways, and they’re all important parts of SQL.
 
-
-
 # in an ecommerce site, when ther's only one item left and 2 users orders it at the same time, how does the database acid property handle it?
-
-
 
 [In an e-commerce site, when there’s only one item left and two users order it at the same time, the database’s ACID (Atomicity, Consistency, Isolation, Durability) properties play a crucial role in handling this situation](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[1](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[2](https://airbyte.com/data-engineering-resources/transactional-databases-explained-acid-properties-and-best-practice).
 
@@ -86,3 +82,23 @@ Here’s how each property helps:
 4. [**Durability**: This property ensures that once a transaction has been committed, it will remain committed even in the case of a system failure](https://www.geeksforgeeks.org/acid-properties-in-dbms/)[1](https://www.geeksforgeeks.org/acid-properties-in-dbms/). This means that once an order is successfully placed, it’s final and will persist, even if the system crashes immediately afterward.
 
 So, in the scenario you described, the ACID properties of the database ensure that only one user can successfully order the last item. The other user’s transaction will not be completed, and they would typically receive a message indicating that the item is no longer available.
+
+
+
+# Keys
+
+Sure, I can explain the difference between a unique key and other types of keys in a database. Here are some common types of keys:
+
+1. **Unique Key**: A unique key is a set of one or more fields/columns of a table that uniquely identify a record in a database table. You can say that it is little like a primary key but it can accept only one null value and it cannot have duplicate values.
+
+2. **Primary Key**: A primary key is a field in a table which uniquely identifies each row/record in a database table. Primary keys must contain unique values. A primary key column cannot have NULL values. A table can have only one primary key, which may consist of single or multiple fields.
+
+3. **Foreign Key**: A foreign key is a column or a set of columns in one table, that is used to establish a link between the data in two tables. It is a field in a table that is a primary key in another table. A foreign key can accept multiple null, duplicate values.
+
+4. **Candidate Key**: A candidate key is a set of one or more fields/columns that can identify a record uniquely in a table. There can be multiple candidate keys in a table. Each candidate key can work as a primary key, to uniquely identify each record in a table.
+
+5. **Composite Key**: A composite key is a combination of two or more columns in a table that can be used to uniquely identify each row in the table when the columns are combined uniqueness is guaranteed, but when taken individually the columns do not guarantee uniqueness.
+
+6. **Secondary Key**: A secondary key is a non-unique field that can be used for data retrieval. This key does not provide uniqueness, but allows for fast access to data when the primary key is not known.
+
+So, the main difference between a unique key and other types of keys is that a unique key allows for null values (although only one), and it cannot have duplicate values. Other keys have different properties and constraints. For example, a primary key does not allow nulls and must be unique, a foreign key is used to link two tables, and so on.
