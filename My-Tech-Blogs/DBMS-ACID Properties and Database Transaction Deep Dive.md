@@ -89,7 +89,9 @@ So, in the scenario you described, the ACID properties of the database ensure th
 
 Sure, I can explain the difference between a unique key and other types of keys in a database. Here are some common types of keys:
 
-1. **Unique Key**: A unique key is a set of one or more fields/columns of a table that uniquely identify a record in a database table. You can say that it is little like a primary key but it can accept only one null value and it cannot have duplicate values.
+1. **Unique Key**: A unique key is a set of one or more fields/columns of a table that uniquely identify a record in a database table. You can say that it is little like a primary key but it can accept only one null value and it cannot have duplicate values. 
+   
+   > the main difference between a unique key and other types of keys is that a unique key allows for null values (although only one), and it cannot have duplicate values. Other keys have different properties and constraints. For example, a primary key does not allow nulls and must be unique, a foreign key is used to link two tables, and so on.
 
 2. **Primary Key**: A primary key is a field in a table which uniquely identifies each row/record in a database table. Primary keys must contain unique values. A primary key column cannot have NULL values. A table can have only one primary key, which may consist of single or multiple fields.
 
@@ -98,12 +100,11 @@ Sure, I can explain the difference between a unique key and other types of keys 
 4. **Candidate Key**: A candidate key is a set of one or more fields/columns that can identify a record uniquely in a table. There can be multiple candidate keys in a table. Each candidate key can work as a primary key, to uniquely identify each record in a table.
 
 5.  **Super Key:** A super key is a set of one or more columns (attributes) that can uniquely identify a record in a table. It may contain additional attributes that are not necessary for unique identification. Super key is a superset of a candidate key.
-- So, the main difference between a super key and a candidate key is that a super key is a set of attributes that can uniquely identify a record, but may contain additional attributes, while a candidate key is the minimal set of attributes that can uniquely identify a record.
+   
+   > So, the main difference between a super key and a candidate key is that a super key is a set of attributes that can uniquely identify a record, but may contain additional attributes, while a candidate key is the minimal set of attributes that can uniquely identify a record.
 
 ![](assets/2024-04-18-10-14-16-image.png)
 
 1. **Composite Key**: A composite key is a combination of two or more columns in a table that can be used to uniquely identify each row in the table when the columns are combined uniqueness is guaranteed, but when taken individually the columns do not guarantee uniqueness.
 
 2. **Secondary Key**: A secondary key is a non-unique field that can be used for data retrieval. This key does not provide uniqueness, but allows for fast access to data when the primary key is not known.
-
-So, the main difference between a unique key and other types of keys is that a unique key allows for null values (although only one), and it cannot have duplicate values. Other keys have different properties and constraints. For example, a primary key does not allow nulls and must be unique, a foreign key is used to link two tables, and so on.
