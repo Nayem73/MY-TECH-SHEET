@@ -301,10 +301,6 @@ This query will delete the testDB database if it exists, or do nothing otherwise
 
 I hope this helps. If you have any other questions, please let me know. Have a nice day! 👋
 
-
-
-
-
 # Duplicate Rows
 
 > find duplicate rows
@@ -322,11 +318,7 @@ This query groups the table by all its columns and then uses the `HAVING` clause
 
 Please note that this query will only show you the duplicated rows. If you want to delete duplicates, you would need a different approach, and you should be very careful as it involves deleting data from your table. Always make sure to backup your data before running such queries.
 
-
-
 > Delete duplicate rows
-
-
 
 Deleting duplicate rows in SQL can be a bit tricky because it involves removing data from your table. Here is a general approach to do it:
 

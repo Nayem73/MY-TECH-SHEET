@@ -547,3 +547,15 @@ problem solving: welldev, 10most common, neetcode,
 12. Time complexity of algos and ds
 
 13. how do you create a custom hash function for hashmap?
+
+14. ----------
+
+15. --------------bjet
+
+------
+
+1. bipatite graph
+
+2. prefix and postfix
+
+3. 

@@ -95,6 +95,12 @@ Access modifiers are used to only expose the attributes, methods and classes whi
 
 # Abstraction
 
+> Abstraction is a fundamental concept in object-oriented programming (OOP) that helps in reducing complexity and increasing efficiency. It is the process of hiding the implementation details from the user and providing only the functionality to the user.
+> 
+> Let’s take an example of a car. When you drive a car, you don’t need to know the complexity of how the engine works, or how the braking system operates. All you need to know is how to interact with the car’s controls like the steering wheel, pedals, and switches. This is abstraction. The complex details are hidden from the driver, allowing them to use the car without understanding the intricate mechanisms that make it work.
+> 
+> *<u>In programming, a similar concept applies. For instance, when you <mark>use a method (Or call a method</mark>) from a library in your code, you don’t need to know how that method is implemented. You only need to know its name, what it does, and what parameters it needs. The details of how it accomplishes its task are abstracted away.</u>*
+
 * Abstraction is a concept of (OOP) that hides the implementation details and shows only the essential features. We achieve it through different mechanisms: abstract classes, abstract methods, interfaces and encapsulation.
 * Abstraction in object-oriented programming (OOP) is a process of hiding the implementation details from the user and providing only the functionality to the user.
 * With abstraction, we can avoid duplicate codes and write better code. Let's say we have a parent class and we have multiple subclasses that extends from the parent class. All of these subclasses overrides the same method of the parent class and implements their own functionalities. Now, if that method in the parent class had any implemented code in it's method body, it would be wasted code since all the subclasses overrides it to implement their own functionalities. So we need to make that method an abstract method to avoid duplicates or unnecessary codes. Now, to make that method as an abstract method, we need to make that parent class abstract as well, which means we can not create any instance of the parent class, which is fine anyway and even better, because we are using it as a blueprint for the subclasses to organize the subclasses and we only need instance of the subclasses.

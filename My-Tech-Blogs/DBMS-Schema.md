@@ -495,7 +495,6 @@ VALUES (3, 4),  -- Bob and Alice are siblings
        (8, 9),  -- Frank and Grace are siblings
        (8, 10), -- Frank and Harry are siblings
        (9, 10); -- Grace and Harry are siblings
-
 ```
 
 > ans:
@@ -505,7 +504,6 @@ SELECT u.*
 FROM Users u
 JOIN Siblings s ON (u.id = s.user1 AND s.user2 = 3 AND u.gender = 'male')
 OR (u.id = s.user2 AND s.user1 = 3 AND u.gender = 'male');
-
 ```
 
 > return only the uncle names
@@ -515,5 +513,99 @@ SELECT u.name
 FROM Users u
 JOIN Siblings s ON (u.id = s.user1 AND s.user2 = 3 AND u.gender = 'male')
 OR (u.id = s.user2 AND s.user1 = 3 AND u.gender = 'male');
-
 ```
+
+
+
+# Relational Database - System Design - from Copilot and chatGPT
+
+## chatGPT
+
+https://chat.openai.com/share/06489b09-a294-42f2-b188-8c6ab26a2c98
+
+## copilot
+
+create a relational database where you have students, and teachers teach students on specific subjects based on their specialties. Now create it.
+
+## Copilot
+
+Sure, I can help you design a relational database schema for this. Here's a simple example using SQL:
+
+CREATE TABLE Teachers (
+    TeacherID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Specialty VARCHAR(100)
+);
+
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(100)
+);
+
+CREATE TABLE Subjects (
+    SubjectID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    TeacherID INT,
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
+);
+
+CREATE TABLE StudentSubjects (
+    StudentID INT,
+    SubjectID INT,
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID),
+    PRIMARY KEY (StudentID, SubjectID)
+);
+
+In this schema:
+
+- Teachers table stores information about teachers and their specialties.
+- Students table stores information about students.
+- Subjects table stores information about subjects and the teacher who teaches each subject.
+- StudentSubjects table is a junction table that links students to the subjects they are learning.
+  Please note that this is a basic schema and might need to be adjusted based on your specific requirements. For instance, if a teacher can have multiple specialties, you might want to create a separate table for specialties and link it to the teachers. Similarly, if a subject can be taught by multiple teachers, you might need to adjust the schema accordingly. Also, you might want to add more fields to these tables based on your needs. For example, you might want to add a Grade field to the StudentSubjects table to store the grade of each student in each subject.
+  
+  ## You
+  
+  In an interview, I'll face something similar like your previous chat response. Please give me something similar with a different example or scenario.
+  
+  ## Copilot
+  
+  Sure, let's consider a different scenario where we have a library system. In this system, we have books, authors who write the books, and readers who borrow the books. Here's a simple SQL schema for this:
+
+CREATE TABLE Authors (
+    AuthorID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Specialty VARCHAR(100)
+);
+
+CREATE TABLE Readers (
+    ReaderID INT PRIMARY KEY,
+    Name VARCHAR(100)
+);
+
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY,
+    Title VARCHAR(100),
+    AuthorID INT,
+    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
+);
+
+CREATE TABLE ReaderBooks (
+    ReaderID INT,
+    BookID INT,
+    BorrowDate DATE,
+    ReturnDate DATE,
+    FOREIGN KEY (ReaderID) REFERENCES Readers(ReaderID),
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    PRIMARY KEY (ReaderID, BookID)
+);
+
+In this schema:
+
+- Authors table stores information about authors and their specialties.
+- Readers table stores information about readers.
+- Books table stores information about books and the author who wrote each book.
+- ReaderBooks table is a junction table that links readers to the books they have borrowed, along with the borrow and return dates.
+  Again, this is a basic schema and might need to be adjusted based on your specific requirements. For instance, if a book can have multiple authors, you might want to create a separate junction table for that. Similarly, if a reader can borrow the same book multiple times, you might need to adjust the schema accordingly. Also, you might want to add more fields to these tables based on your needs. For example, you might want to add a DueDate field to the ReaderBooks table to store the due date for each borrowed book. You might also want to add a Genre field to the Books table to store the genre of each book.
+  Remember, designing a database schema requires a good understanding of the data and the relationships between different entities. It's always a good idea to spend some time thinking about these aspects before you start writing your SQL commands. Good luck with your interview! 😊

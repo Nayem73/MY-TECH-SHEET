@@ -1835,8 +1835,6 @@ javatechie
 
 - Java does not explicitly support operator overloading. I can just use + operator for concatenating a string or adding two integers.
 
-
-
 # Method Hiding (parent class has a static method and child class has a static method with the same method signature)
 
 Method hiding in Java occurs when a subclass defines a static method with the same name and signature as a static method in its superclass. When you call a static method through a reference variable of a superclass, the method defined in the superclass will be called. However, if you call the same static method through a reference variable of the subclass, the method defined in the subclass will be called.

@@ -167,3 +167,23 @@ SELECT CONCAT(UPPER(patients.last_name), ',', LOWER(patients.first_name)) AS ful
 FROM patients
 ORDER BY patients.first_name DESC;
 ```
+
+
+
+--------
+
+# Don't use = when comparing to NULL in sql
+
+The SQL query you’ve written is almost correct, but there’s a small mistake. In SQL, when comparing with `NULL`, you should use `IS NULL` or `IS NOT NULL`, not `=` or `!=`. Here’s the corrected query:
+
+```sql
+SELECT patients.first_name, patients.last_name
+FROM patients
+WHERE patients.allergies IS NULL;
+```
+
+This query will select the first and last names of patients who do not have any allergies recorded in the database. If `patients.allergies` is `NULL`, it means that no value has been recorded. Please note that `NULL` is different from an empty string or zero, as `NULL` represents the absence of data. So, when checking for `NULL`, we use `IS NULL` or `IS NOT NULL`. Hope this helps! 😊
+
+
+
+------

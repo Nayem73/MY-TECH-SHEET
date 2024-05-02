@@ -50,8 +50,10 @@ store simple values, we use primitive data types. like int num = 5; but
 when we want to store complex values, reference types and objects come 
 into play.  
 8. Point pointA = new Point(2,5); pointA here is an object which is a reference type.  
-9. Heap:  
 
+# Memory Management and GC (Java Garbage Collection)
+
+9. Heap:  
 - Space is used to store objects and JRE classes at runtime.  
 
 - New objects are always created in heap space.  
@@ -82,15 +84,35 @@ into play.
     
     Remember, proper management of Heap and Stack memory is crucial for creating a performant and error-free application. 😊
 
-12. All the instruction 
+12. ### GC
+    
+    Sure, I’d be happy to explain Java Garbage Collection (GC) in a beginner-friendly way!
+    
+    In Java, memory management is mostly handled automatically by the **Garbage Collector (GC)**. Here’s a simple explanation:
+    
+    1. **What is Garbage Collection?** Garbage Collection is a process that **automatically frees up memory** that is no longer needed by your program. This “no longer needed” memory is what we call “garbage”.
+    
+    2. **Why do we need it?** In programming, especially in a language like Java, you often create objects. These objects take up memory. When you’re done using an object, ideally, you want to free up the memory it was using, so it can be used for other things. If this doesn’t happen, your program could use up all of the available memory, slowing down your computer or even causing the program to crash. This is known as a **memory leak**. The GC helps prevent memory leaks by automatically reclaiming this memory.
+    
+    3. **How does it work?** The GC works in the background, and its operation is largely invisible to you as a programmer. It keeps track of all the objects your program has created but is no longer using. When it identifies such objects, it frees up the memory they were using.
+    
+    4. **When does Garbage Collection happen?** The exact timing of when the GC runs is unpredictable and depends on many factors. Generally, the GC runs when the program is not doing much else or when the program is running low on available memory.
+    
+    5. **What is an eligible object for GC?** An object is eligible for garbage collection when it is no longer reachable from the root of the object tree - that is, there are no references to the object from other objects or variables.
+    
+    Remember, while the GC is very helpful, it’s not a silver bullet. As a programmer, you still need to be mindful of how you’re using memory, especially for larger, more complex applications.
+    
+    I hope this helps! If you have any more questions, feel free to ask. 😊
+
+13. All the instruction 
     written in a Dockerfile are instructions to docker for setting up the 
     image. Now keep in mind, the image is the template/blueprint for the container. 
     The image is what you don't run in the end, You run a container based on
     a image.  
 
-13. for primitives, default values are 0 and for Reference types, default value is null  
+14. for primitives, default values are 0 and for Reference types, default value is null  
 
-14. # Static keyword
+15. # Static keyword
 * Static keyword indicates that either a property(attribute) or method belongs to the class itself rather than the instance. for example, all the fields in the Person class belongs to alex, which is an instance of class Person. These fields does not belong to the class itself.
 
 ```java
@@ -231,7 +253,23 @@ On the other hand, `this` keyword refers to the current instance of the class. S
 
 3 million of countv variable would be creatd but if used static then just one instance of count
 
-1. enums in java:  
+# enums in java:
+
+Sure, I’d be happy to explain Enums in a beginner-friendly way!
+
+1. **What is an Enum?** Enum, short for enumeration, is a special data type in programming languages like Java that allows you to define a variable that can have one of a few predefined values. The values in this enumerated list are called enums.
+
+2. **Why do we need it?** Enums are used when we know the possible values a variable can have, and we want to restrict it to those values to prevent unexpected values and bugs. For example, if we have a variable that represents the days of the week, we can use an enum to ensure that this variable can only hold the values MONDAY, TUESDAY, WEDNESDAY, etc.
+
+3. **How does it work?** In Java, you define an enum using the `enum` keyword. For example, `enum Day { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY; }` defines an enum for the days of the week. You can then create a variable of type `Day` and assign it one of the predefined values: `Day day = Day.MONDAY;`.
+
+4. **When do we use Enums?** Enums are used when we want a variable to only have a specific set of values. They are commonly used for things like days of the week, directions (NORTH, SOUTH, EAST, WEST), states of a process (STARTED, RUNNING, STOPPED), etc.
+
+5. **What are the benefits of using Enums?** Enums increase code readability and prevent invalid values from being set. They also allow you to group related constants together in one place, which can make your code easier to understand and maintain.
+
+Remember, while enums can be very useful, they’re not suitable for all situations. If the set of values for a variable is not known at compile time, or can change, then a different data type would be more appropriate.
+
+I hope this helps! If you have any more questions, feel free to ask. 😊
 
 ```java
 enum Gender {  
@@ -266,7 +304,7 @@ as object. (need to touch on generics in amigos video for more)
     
     1. **String Literals**: String literals are defined directly within double quotes. For example, `String str = "Hello";`. When a string literal is created, the JVM checks the string constant pool first. If the string already exists in the pool, a reference to the pooled instance is returned. If the string doesn’t exist in the pool, a new string instance is created and placed in the pool. This is why string literals are also known as interned strings.
     
-    2. **String Objects**: String objects are created with the `new` keyword, like `String str = new String("Hello");`. In this case, a new object is created in the heap memory whether or not an identical string exists in the string constant pool.
+    2. **String Objects**: String objects are created with the `new` keyword, like `String str = new String("Hello");`. In this case, a new object is created in the heap memory whether or not an identical string exists in the string constant pool. So it was for the new keyword. But we also have a String literal "Hello", so next, if the String pool already contains "Hello" then the same reference is used else, it creates a new object in String pool for "Hello". So, for `str = new String("Hello")` two objects are created.
     
     The key differences between string literals and string objects are:
     
@@ -290,7 +328,7 @@ as object. (need to touch on generics in amigos video for more)
     formattedString = String.format("like printing Strings in C & extra 
     feature: numToString=%s, num=%s\n", numToString, num);  
 
-22. for money, never use double. Use BigDecimal instead.
+22. # for money, never use double. Use `BigDecimal` instead.
 
 23. Throwable is a superclass of all types of Errors and Exceptions.  
 
@@ -1051,6 +1089,17 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
 
 1. Protected: can be used for the class itself(Super class) as well as it's subclasses. (Within the same package too?)
 
+### Class level access modifiers are: `public` and `default`:
+
+In Java, there are four access modifiers that you can use at the class level:
+
+1. **public**: The class is accessible by any other class in the Java program, even in different packages.
+2. **protected**: This modifier is not applicable for classes. It’s used for variables, constructors, and methods, allowing access within the same package and subclasses in other packages.
+3. **default** (no modifier): If you do not specify an access modifier, it’s considered as default. The class is only accessible within the same package.
+4. **private**: This modifier is not applicable for classes. It’s used for variables, constructors, and methods, restricting their access within the same class only.
+
+So, for class level, you can use either `public` or `default` access modifiers. The `protected` and `private` access modifiers are not applicable for classes. They are used for members of a class (variables, methods, constructors).
+
 -----
 
 # Encapsulation
@@ -1072,15 +1121,23 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
    
    here, Programmer class and Manager class both inherits  Employee class. If not, then both the programmer class and manager class would need to have the same fields(fileds in Employee class) in both of them classes.
 
-## Multi level Inheritance
+### Multiple Inheritance: (Java does NOT support it)
+
+This is when a class can inherit from more than one superclass. Java does not support multiple inheritance with classes due to the *<u>“Diamond Problem”</u>*. However, a class can implement multiple interfaces, which is a form of multiple inheritance.
+
+### Multi-Level Inheritance: (Java supports it)
+
+This is when a class is derived from a class which is also derived from another class, i.e., a class having more than one parent class but at different levels. In Java, a class can inherit from a superclass, which can itself inherit from another superclass, and this can continue, forming a chain of inheritance.
 
 # Abstract Keyword
 
 1. If we use Abstract keyword on a class, we can not instantiate that class, we then use it through Inheritance.
 
-2. It does not make sense to create an(instance of) Animal on it's own. Because we have Cat (class) and Dog (class) which inherits Animal class. So it does not make sense to create an instance of Animal class and we name it dog, because we already have Dog class which inherits Animal class.
+2. Abstract classes can not be instantiated because Abstract classes are designed to be inherited by other classes where those other classes that inherits the abstract class must follow the contract with the abstract class.
 
-3. ```java
+3. It does not make sense to create an(instance of) Animal on it's own. Because we have Cat (class) and Dog (class) which inherits Animal class. So it does not make sense to create an instance of Animal class and we name it dog, because we already have Dog class which inherits Animal class.
+
+4. ```java
    abstract public class Animal {
    
        private String name;
@@ -1107,6 +1164,14 @@ This way, you avoid the inaccuracies that can arise from using the `double` cons
 ![](assets/2024-03-12-14-44-36-image.png)
 
 # Liskov Substitution Principle:
+
+> Parent e jei method gulo thakbe, sei sobgulo child e **thaktei** hobe. Child e onnano aro method besi thakuk problem nai, but parent er gulo thaktei hobe.
+
+> Child class should be substitutable by the parent class
+> 
+> `Shape NoShape = new NoShape();`
+> 
+> We can see that, here, NoShape can not be substituted by Shape. Hence it breaks Liskov Substitution Principle.
 
 - Liskov’s Substitution Principle prescribes that you can replace an object with an instance of its subtype without corrupting the program. Practically, you can replace a class with its subclass and Java’s inheritance mechanism follows this principle
 
@@ -1189,6 +1254,8 @@ Now, wherever a `FlyingBird` is expected, we can substitute it with a `Duck`, an
 - Here, in above pic, we see subclass NoShape implements the parent class Shape so, we are saying that NoShape is a Shape but it can not have the method defined in Shape. So it can not obey the contract with parent class Shape interface. So we broke the rule.
 
 ## Interface Segregation Principle:
+
+#### Liskov substitution and Interface segragation can be understood from the same example (example of social media) in this JavaTechie video https://youtu.be/BM_lSZPMClo
 
 ![](assets/2024-03-03-16-29-30-image.png)
 

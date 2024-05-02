@@ -591,6 +591,14 @@ primary indexing is of 2 types: Dense Index & Sparse Index
 
 1. Dense Index: store the corresponding primary key and it's memory location for every single search key value. so it requires more space.
 
+# Concurrency Control Protocols
+
+![](assets/2024-04-18-11-23-48-image.png)
+
+![](assets/2024-04-18-11-24-18-image.png)
+
+# Rakuten E-commerce
+
 ![](assets/2024-03-04-07-36-58-Rakuten%20Database%20Structure.drawio.png)
 
 # Boolean in MySQL
@@ -633,3 +641,5 @@ This would give you results like:
 ```
 
 So, while MySQL doesn't have a specific `BOOLEAN` data type, you can achieve boolean functionality using other data types such as `TINYINT(1)`.
+
+# 

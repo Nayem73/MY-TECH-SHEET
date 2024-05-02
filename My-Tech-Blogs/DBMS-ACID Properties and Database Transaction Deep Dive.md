@@ -47,7 +47,7 @@ Sure, let’s break down the ACID properties using the bank transaction example:
    If savings a/c=1500 and checking a/c = 300 and we transferred 100 tk from savings account to checking account then after a successful transaction, savings a/c = 1400 and checking a/c= 400. So it is logically consistent. Under no circumstances it could be something like savings = 1500 and checking = 400 or vice versa which is inconsistent.
 
 3. **Isolation**: This means that multiple transactions happening at the same time won’t affect each other. For example, even if two people are trying to withdraw money from the same account at the same time, each transaction would be processed separately, ensuring that each sees a “snapshot” of the account balance that’s unaffected by the other transaction.
-   check out Concurrency Control.
+   check out Concurrency Control. [DBMS Full Course for Beginners | Learn Database Management System from Scratch | What is DBMS - YouTube](https://youtu.be/c5HAwKX-suM)
 
 4. **Durability**: This ensures that once a transaction is completed, it will remain so, even in the event of a power loss, crash, or other error. In our example, once the money transfer is completed, the changes to the savings and checking accounts will be saved and will persist even if the system crashes immediately after.
 
@@ -85,8 +85,6 @@ Here’s how each property helps:
 
 So, in the scenario you described, the ACID properties of the database ensure that only one user can successfully order the last item. The other user’s transaction will not be completed, and they would typically receive a message indicating that the item is no longer available.
 
-
-
 # Keys
 
 Sure, I can explain the difference between a unique key and other types of keys in a database. Here are some common types of keys:
@@ -101,7 +99,7 @@ Sure, I can explain the difference between a unique key and other types of keys 
 
 4. **Candidate Key**: A candidate key is a set of one or more fields/columns that can identify a record uniquely in a table. There can be multiple candidate keys in a table. Each candidate key can work as a primary key, to uniquely identify each record in a table.
 
-5.  **Super Key:** A super key is a set of one or more columns (attributes) that can uniquely identify a record in a table. It may contain additional attributes that are not necessary for unique identification. Super key is a superset of a candidate key.
+5. **Super Key:** A super key is a set of one or more columns (attributes) that can uniquely identify a record in a table. It may contain additional attributes that are not necessary for unique identification. Super key is a superset of a candidate key.
    
    > So, the main difference between a super key and a candidate key is that a super key is a set of attributes that can uniquely identify a record, but may contain additional attributes, while a candidate key is the minimal set of attributes that can uniquely identify a record.
 

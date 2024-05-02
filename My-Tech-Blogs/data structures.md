@@ -283,7 +283,7 @@ Sure, let’s compare the time and space complexity of adjacency list and adjace
 
 # BFS/DFS Time Complexity
 
-- Node amar queue te kivabe dhuktese? prottekta connected edge for loop die dekhe jein node paisi oita queue te push korsi. eivabe prottekta edge e gie gie ami node gulo queue te push korsi. Then oi node gulo while loop er madhome ashbe and then again oi node gulor edge visit korbo and jei node gulo unvisited oigulo queue te dhukabo. 
+- Node amar queue te kivabe dhuktese? prottekta connected edge for loop die dekhe jei node paisi oita queue te push korsi. eivabe prottekta edge e gie gie ami node gulo queue te push korsi. Then oi node gulo while loop er madhome ashbe and then again oi node gulor edge visit korbo and jei node gulo unvisited oigulo queue te dhukabo. 
 
 - So, while loop e node paite amar for loop die edge gula traverse kora lagtese. but prottekta edge ekbar kore and prottekta node ekbar korei traverse hobe. so O(E+V)
 
@@ -300,8 +300,6 @@ If an interviewer asks you about the difference between an array and a linked li
 In summary, the choice between arrays and linked lists depends on the specific requirements of the problem you’re trying to solve."
 
 Remember, it’s important to relate the concept back to practical scenarios or experiences if you can, as this shows a deeper understanding and ability to apply the concept.
-
-
 
 # Number Series:
 
@@ -347,8 +345,6 @@ Number series questions are often used in software engineering interviews to ass
 
 When solving these problems, candidates should demonstrate their ability to analyze the given series, identify the underlying pattern, and extrapolate to find the next numbers in the sequence. Additionally, candidates may be asked to explain their thought process and reasoning behind their answers.
 
-
-
 2. > Gemin(https://g.co/gemini/share/db8039c0f174)
    
    Software engineering interviews don't very frequently use classic number series questions like "What's the next number in 2, 4, 7, 11, ...?". However, they might assess similar skills through other means. Here's what you might encounter:
@@ -372,11 +368,7 @@ When solving these problems, candidates should demonstrate their ability to anal
    
    Remember, the focus is less on memorizing specific sequences and more on your ability to identify patterns, analyze problems logically, and potentially translate those findings into code.
 
-
-
 > Copilot
-
-
 
 Sure, here are some examples of software engineering interview questions related to number series:
 
@@ -399,3 +391,7 @@ Sure, here are some examples of software engineering interview questions related
 9. **Number Reversal Series**: In this type of series, numbers are presented in reverse order or with their digits reversed, and you need to decipher the pattern. For example, consider the series: 21, 31, 41, 51. Can you identify the next number in the series?
 
 [Remember, the key to solving these problems is to identify the pattern or rule that the series follows](https://www.geeksforgeeks.org/number-series-in-quantitative-aptitude/)[1](https://www.geeksforgeeks.org/number-series-in-quantitative-aptitude/)[2](https://www.geeksforgeeks.org/number-series-logical-reasoning-questions/). Good luck with your interview preparation! 😊
+
+# Bellman Ford:
+
+https://chat.openai.com/share/eec76f31-f44b-4472-9988-f017c9a361a1
