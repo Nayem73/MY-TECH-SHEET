@@ -129,4 +129,62 @@ Day 1:
     
      - good evening
 
-11. 
+11. Brother sister dad mom etc = family (kazoku or かぞくor 家族) :
+    
+    > かぞく
+    > 
+    > 家族 (kazoku) - family
+    > 
+    > にん
+    > 
+    > 人 (nin) - people/persons
+    > 
+    > 家族 は 七人 です。(kazoku wa shichi nin des) - There are  7  people in my family.
+    
+    
+    
+    > younger brother
+    > おとうと
+    > 
+    > 弟 さん - younger brother (oto oto san)
+    
+    
+    
+    
+    > older brother
+    > おにい
+    > 
+    > お兄 さん (oni i san)
+    > 
+    >  - older brother
+    
+    
+    
+    > younger sister
+    > いもうと
+    > 
+    > 妹さん (imo oto san) - younger sister
+    
+    
+    
+    
+    > Parents
+    > りょうしん
+    > 
+    > ご 両親 (go riyoshin)
+    > 
+    >  - parents (formal)
+    
+    
+    
+    > Grandpa
+    > おじいさん (o ji i san) - grandfather
+    
+    
+    
+    
+    > 
+
+12. どうも (do o mo) - thank you
+
+13. 
