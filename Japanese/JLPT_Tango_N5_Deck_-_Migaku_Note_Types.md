@@ -139,52 +139,151 @@ Day 1:
     > 
     > 人 (nin) - people/persons
     > 
+    > ひとり
+    > 
+    > 一人 (hitori) - one person/people
+    > 
+    > ふたり
+    > 
+    > 二人 (futari) - two people
+    > 
+    > さんにん
+    > 
+    > 三人 (san nin) - three people
+    > 
     > 家族 は 七人 です。(kazoku wa shichi nin des) - There are  7  people in my family.
-    
-    
-    
-    > younger brother
-    > おとうと
-    > 
-    > 弟 さん - younger brother (oto oto san)
-    
-    
-    
-    
-    > older brother
-    > おにい
-    > 
-    > お兄 さん (oni i san)
-    > 
-    >  - older brother
-    
-    
-    
-    > younger sister
-    > いもうと
-    > 
-    > 妹さん (imo oto san) - younger sister
-    
-    
-    
-    
-    > Parents
-    > りょうしん
-    > 
-    > ご 両親 (go riyoshin)
-    > 
-    >  - parents (formal)
-    
-    
-    
-    > Grandpa
-    > おじいさん (o ji i san) - grandfather
-    
-    
-    
-    
-    > 
+
+```markdown
+> Father
+> おとう
+> お父さん (o to o sa n) - father
+
+> Mother
+> おかあ
+> お母さん (o ka a sa n) - mother
+
+
+> Siblings
+> きょうだい
+> 兄弟 (ki yo o da i) - siblings
+
+> younger brother
+> おとうと
+> 
+> 弟 さん - younger brother (oto oto san)
+
+
+
+
+> older brother
+> おにい
+> 
+> お兄 さん (oni i san)
+> 
+>  - older brother
+
+
+
+> younger sister
+> いもうと
+> 
+> 妹さん (imo oto san) - younger sister
+
+> older sister
+> おねえ
+お姉さん (o ne e sa n) - older sister
+
+
+> Parents
+> りょうしん
+> 
+> ご 両親 (go riyoshin)
+> 
+>  - parents (formal)
+
+
+
+> Grandpa
+> おじいさん (o ji i san) - grandfather
+
+
+
+> おばあさん - grandmother
+```
 
 12. どうも (do o mo) - thank you
 
-13. 
+13. こちら こそ (ko chi ra ko so) - me too, same here
+
+14. Number of people:
+    
+    - にん
+      
+      人 (nin) - people/person
+      
+      ひとり
+      
+      一人 (hitori) - one person/people
+      
+      ふたり
+      
+      二人 (futari) - two people
+
+      さんにん
+    
+      三人 (sa n ni n) - three people
+    
+    
+      よにん
+    
+      四人 (yo ni n) - four people
+    
+    
+      ごにん
+    
+      五人 (go ni n) - five people
+    
+    
+      ろくにん
+    
+      六人 (ro ku ni n) - six people
+    
+    
+      しちにん
+    
+      七人 (shi chi ni n / na na ri n) - seven people
+    
+    
+      はちにん
+    
+      八人 (ha chi ni n) - eight people
+    
+    
+      くにん
+    
+      九人 (ku ni n / k yu ri n) - nine people
+    
+    
+      じゅうにん
+    
+      十人 (ji yu o ni n) - ten people
+
+15. ![](assets/2024-05-06-07-23-53-image.png)
+    Nan nin des ka?
+    
+    San nin des.
+
+16. おとな
+    
+    大人 (o to na) - adult
+
+17. こども
+    
+    子供 (ko do mo) - child
+
+18. おとこのひと
+    男の人 - man
+
+19. あなたの名前は何ですか？ お父さんの職業はなんですか？(Anata no namae wa nanidesu ka? Otōsan no shokugyō wa nandesu ka?) = what is your name? what does your father do? 
+
+20. 
