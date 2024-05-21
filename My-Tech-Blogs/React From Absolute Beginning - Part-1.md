@@ -889,3 +889,134 @@ const userReducer = (state = initialState, action) => {
 ```
 
 If you’ve checked all of these and the issue still persists, please let me know so I can help you further! 😊
+
+
+
+
+
+
+
+--------
+
+# React technologies
+
+When updating your CV with React-related technologies, it's important to highlight a comprehensive skill set that showcases your expertise in the React ecosystem and relevant tools. Here’s a list of technologies and skills to consider including:
+
+1. **Core React Skills:**
+   
+   - React.js
+   - JSX
+   - Functional Components
+   - Class Components
+   - React Hooks (useState, useEffect, useContext, etc.)
+
+2. **State Management:**
+   
+   - Redux
+   - Redux Toolkit
+   - Context API
+   - MobX
+   - Zustand
+
+3. **Routing:**
+   
+   - React Router
+
+4. **Styling:**
+   
+   - CSS-in-JS (Styled Components, Emotion)
+   - SASS/SCSS
+   - CSS Modules
+   - Tailwind CSS
+   - Bootstrap
+
+5. **Forms:**
+   
+   - Formik
+   - React Hook Form
+
+6. **API Integration:**
+   
+   - Axios
+   - Fetch API
+   - GraphQL (Apollo Client)
+
+7. **Build Tools:**
+   
+   - Webpack
+   - Babel
+   - Vite
+   - Create React App
+
+8. **Testing:**
+   
+   - Jest
+   - React Testing Library
+   - Enzyme
+   - Cypress
+
+9. **Type Checking:**
+   
+   - TypeScript
+   - PropTypes
+
+10. **Version Control:**
+    
+    - Git
+    - GitHub
+    - GitLab
+
+11. **Deployment and CI/CD:**
+    
+    - Netlify
+    - Vercel
+    - Heroku
+    - Docker
+    - Jenkins
+    - GitHub Actions
+
+12. **Performance Optimization:**
+    
+    - React.memo
+    - useMemo
+    - useCallback
+    - Code splitting (React.lazy, Suspense)
+    - Web Vitals
+
+13. **Backend Technologies (if relevant):**
+    
+    - Node.js
+    - Express.js
+    - Next.js (for server-side rendering)
+    - Firebase
+
+14. **Development Tools:**
+    
+    - Visual Studio Code
+    - ESLint
+    - Prettier
+
+15. **Collaboration Tools:**
+    
+    - Jira
+    - Trello
+    - Slack
+
+### Example CV Section:
+
+**Front-End Development Skills:**
+
+- **Languages & Frameworks:** JavaScript (ES6+), React.js, HTML5, CSS3
+- **State Management:** Redux, Context API
+- **Routing:** React Router
+- **Styling:** CSS-in-JS (Styled Components), SASS, Tailwind CSS
+- **API Integration:** Axios, Fetch API, GraphQL (Apollo Client)
+- **Build Tools:** Webpack, Babel, Create React App, Vite
+- **Testing:** Jest, React Testing Library, Enzyme
+- **Type Checking:** TypeScript, PropTypes
+- **Version Control:** Git, GitHub
+- **Deployment & CI/CD:** Netlify, Vercel, Docker, GitHub Actions
+- **Performance Optimization:** React.memo, useMemo, useCallback, Code splitting (React.lazy, Suspense)
+- **Development Tools:** Visual Studio Code, ESLint, Prettier
+
+Including these technologies will help to demonstrate your comprehensive knowledge and versatility in React development, making your CV stand out to potential employers.
