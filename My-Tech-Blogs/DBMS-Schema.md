@@ -515,8 +515,6 @@ JOIN Siblings s ON (u.id = s.user1 AND s.user2 = 3 AND u.gender = 'male')
 OR (u.id = s.user2 AND s.user1 = 3 AND u.gender = 'male');
 ```
 
-
-
 # Relational Database - System Design - from Copilot and chatGPT
 
 ## chatGPT
@@ -560,8 +558,11 @@ CREATE TABLE StudentSubjects (
 In this schema:
 
 - Teachers table stores information about teachers and their specialties.
+
 - Students table stores information about students.
+
 - Subjects table stores information about subjects and the teacher who teaches each subject.
+
 - StudentSubjects table is a junction table that links students to the subjects they are learning.
   Please note that this is a basic schema and might need to be adjusted based on your specific requirements. For instance, if a teacher can have multiple specialties, you might want to create a separate table for specialties and link it to the teachers. Similarly, if a subject can be taught by multiple teachers, you might need to adjust the schema accordingly. Also, you might want to add more fields to these tables based on your needs. For example, you might want to add a Grade field to the StudentSubjects table to store the grade of each student in each subject.
   
