@@ -888,7 +888,7 @@ public String getName() {
 - <mark>There is a generate equals() and hashcode() option close to generate getters and setters. </mark>
 34. POJO(Plain Old Java Object) = a given object is an ordinary java object that has No association with any framework. in above example, the Cat class is a POJO. the Cat class does not Extend, Implement any class (special class) nor does it use any annotation like @Entity and else.
 - Yes, the `Car` class can be considered a POJO (Plain Old Java Object). It’s a simple Java object that doesn’t extend any special classes (other than `Vehicle`, which is also a POJO), implement any special interfaces, or contain any prespecified annotations. It’s not bound by any special restriction other than those forced by the Java Language Specification. The `Car` class adheres to these principles, so it can be considered a POJO.
-1. Java Bean is a <mark>class</mark> that has to obey 3 contracts so that other frameworks can do certain things with it. These are the 3 things that a java bean has to have:
+1. Java Bean is a <mark>class</mark> that has to obey 3 contracts so that other frameworks can do certain things with it. These are the 3 things that a java bean has/ to have:
 - - A class must have a noarg constructor. (public)
 
 - - All the properties/fields in the class must be private. To access the private properties of the class we must use getters and setters.
