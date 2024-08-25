@@ -163,7 +163,7 @@ Abstraction is about simplifying complex systems by breaking them down into smal
 
 In your code, the `Car` class doesn’t need to know the details of how the engine starts. It only needs to know that it can call the `start` method of the `Engine` class. The details of how the engine starts are hidden inside the `Engine` class. This is abstraction.
 
-Even though you didn’t use `abstract` classes or interfaces, you’ve achieved abstraction by encapsulating the details within your classes and exposing only what’s necessary. This makes your code easier to use and understand, and that’s the essence of abstraction in OOP.
+*<u>Even though you didn’t use `abstract` classes or interfaces, you’ve achieved abstraction by encapsulating the details within your classes and exposing only what’s necessary.</u>* This makes your code easier to use and understand, and that’s the essence of abstraction in OOP.
 
 2. **Code Reusability**: Abstraction promotes code reusability through inheritance and interfaces. Here’s an example using a `Shape` abstract class and `Circle` and `Rectangle` classes:
 
@@ -481,7 +481,7 @@ public interface Vehicle {
 
 - For example, in Java we have Map or Set as interface, why? in order to enforce or ensure that the implemented classes must follow the same structure defined in the interface. So, the HashSet, LinkedHashSet or TreeSet, these classes that implements the Set interface, must follow the structure and need to have the functionalities defined in the Set interface.
 
-# why Java chose to use interface instead of abstract classes for Map or Set
+# <mark><u>*why Java chose to use interface instead of abstract classes for Map or Set*</u></mark>
 
 Great question! The choice between using an interface or an abstract class in Java depends on the design requirements. Here are some reasons why `Map` and `Set` are interfaces instead of abstract classes:
 
@@ -518,6 +518,10 @@ class Bird implements Flyable, Eatable {
 ```
 
 In this example, `Bird` can implement both `Flyable` and `Eatable` because they are interfaces. If they were abstract classes, `Bird` could only extend one of them.
+
+### *<u>The reason why a class can implement multiple interfaces is that, even if there are same methods in multiple interfaces that are implemented, it won't cause any conflict in the subclass because those methods are abstract methods. (on the other hand, extending multiple classes is the opposite: there, the methods may not be abstract, so if the classes contain same method with different implementations, subclass won't know which method to take!)</u>*
+
+### (There's a catch though! After Java 8, even interfaces can have default methods that may have method body. What now?)
 
 # Polymorphism
 
@@ -1038,8 +1042,6 @@ public class Main {
 ```
 
 In this code, the `Library` class has a list of `Book` objects. Each `Book` has a title, and the `Library` can return its list of books. This is an example of association, where one class (`Library`) has a relationship with another class (`Book`).
-
-This should be helpful for your preparation for the associate software engineer position at Therap(BD) ltd, especially considering your experience with Java and object-oriented programming. Good luck with your exam! 😊
 
 ---------
 
