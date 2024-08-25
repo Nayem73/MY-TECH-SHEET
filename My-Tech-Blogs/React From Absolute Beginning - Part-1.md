@@ -1015,8 +1015,6 @@ When updating your CV with React-related technologies, it's important to highlig
 
 Including these technologies will help to demonstrate your comprehensive knowledge and versatility in React development, making your CV stand out to potential employers.
 
-
-
 -----
 
 # steps of Learning React
