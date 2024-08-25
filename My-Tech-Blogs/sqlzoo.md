@@ -339,14 +339,14 @@ select world.name, concat(round(world.population/(
 ) * 100, 0), '%') as percentage
 from world
 where world.continent = 'Europe'
-    
+
 -- output:
-name	concat(round(..
-Albania	3%
-Andorra	0%
-Austria	11%
-Belarus	11%
-Belgium	14%
+name    concat(round(..
+Albania    3%
+Andorra    0%
+Austria    11%
+Belarus    11%
+Belgium    14%
 ```
 
 6. Which countries have a GDP greater than every country in Europe? [Give the **name** only.] (Some countries may have NULL gdp values)
@@ -385,8 +385,6 @@ where world.gdp > (
   where world.continent = 'Europe'
 );
 ```
-
-
 
 # [SUM and COUNT - SQLZoo](https://www.sqlzoo.net/wiki/SUM_and_COUNT)
 
@@ -428,18 +426,18 @@ where world.name IN (
 
 ```sql
 select world.continent, count(world.name)
-from world group by world.continent; 
+from world
+group by world.continent; 
 
 
 -- output:
-continent	count(world.n..
-Africa	54
-Asia	47
-Europe	44
-Insular Oceania	14
-North America	23
-South America	12
-
+continent    count(world.n..
+Africa    54
+Asia    47
+Europe    44
+Insular Oceania    14
+North America    23
+South America    12
 ```
 
 2. For each continent show the total population:
@@ -451,14 +449,13 @@ group by world.continent;
 
 
 -- output:
-continent	sum(world.pop..
-Africa	1364367473
-Asia	4635206388
-Europe	765378695
-Insular Oceania	46247099
-North America	593576652
-South America	425724580
-
+continent    sum(world.pop..
+Africa    1364367473
+Asia    4635206388
+Europe    765378695
+Insular Oceania    46247099
+North America    593576652
+South America    425724580
 ```
 
 3. Rules for using `WHERE` and `GROUP BY` together:  The WHERE filter takes place before the aggregating function. 
@@ -473,12 +470,11 @@ group by world.continent
 
 
 -- output
-continent	count(world.n..
-Africa	1
-Asia	4
-North America	1
-South America	1
-
+continent    count(world.n..
+Africa    1
+Asia    4
+North America    1
+South America    1
 ```
 
 ### Having
@@ -487,5 +483,10 @@ South America	1
 4. Show the total population of those continents with a total population of at least half a billion (500000000)
 
 ```sql
-
+select world.continent, sum(world.population)
+from world
+group by world.continent
+having sum(world.population) >= 500000000
 ```
+
+### *<u>Now, see the differences why we used `where` clause in the previous  code and why we used `having` clause in this code.</u>*

@@ -168,8 +168,6 @@ FROM patients
 ORDER BY patients.first_name DESC;
 ```
 
-
-
 --------
 
 # Don't use = when comparing to NULL in sql
@@ -183,7 +181,5 @@ WHERE patients.allergies IS NULL;
 ```
 
 This query will select the first and last names of patients who do not have any allergies recorded in the database. If `patients.allergies` is `NULL`, it means that no value has been recorded. Please note that `NULL` is different from an empty string or zero, as `NULL` represents the absence of data. So, when checking for `NULL`, we use `IS NULL` or `IS NOT NULL`. Hope this helps! 😊
-
-
 
 ------
