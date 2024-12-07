@@ -1129,6 +1129,10 @@ This is when a class can inherit from more than one superclass. Java does not su
 
 This is when a class is derived from a class which is also derived from another class, i.e., a class having more than one parent class but at different levels. In Java, a class can inherit from a superclass, which can itself inherit from another superclass, and this can continue, forming a chain of inheritance.
 
+### Diamond Problem:
+
+[ChatGPT - diamond problem](https://chatgpt.com/share/6741a412-6c58-800d-8abe-90e271e255dd)
+
 # Abstract Keyword
 
 1. If we use Abstract keyword on a class, we can not instantiate that class, we then use it through Inheritance.
