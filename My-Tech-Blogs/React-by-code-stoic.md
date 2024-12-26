@@ -156,3 +156,18 @@ export default function () {
 ```
 
 # Arrow Function
+
+Dear Sir/Madam,
+
+I am writing as a follow-up to my previous email regarding the corrections needed for the "**Itinerary with Information (滞在予定表)**" and "**Flight Itinerary Issued by Travel Agency or Airline Office (予約確認書)**" forms.
+
+In my earlier email, I mentioned that the departure point in the "**Itinerary with Information (滞在予定表)**" form is incorrectly listed as Bole International Airport and Dubai International Airport. However, it should be **Hazrat Shahjalal International Airport in Dhaka, Bangladesh.**
+
+Additionally, I have noticed another issue in the same "**Itinerary with Information (滞在予定表)**" form. The departure date from Japan after the internship is currently listed as **14th February**, but I believe it should be **24th February.**
+
+I would be grateful if you could review these points and make the necessary corrections. Please let me know if you require any additional information or documents from my side to resolve these matters.
+
+Thank you for your attention and continued support. I look forward to hearing from you.
+
+Sincerely,  
+Nayem Mehedi
